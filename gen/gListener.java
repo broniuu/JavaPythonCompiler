@@ -17,33 +17,83 @@ public interface gListener extends ParseTreeListener {
 	 */
 	void exitProg(gParser.ProgContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link gParser#function}.
+	 * Enter a parse tree produced by {@link gParser#p_line}.
 	 * @param ctx the parse tree
 	 */
-	void enterFunction(gParser.FunctionContext ctx);
+	void enterP_line(gParser.P_lineContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link gParser#function}.
+	 * Exit a parse tree produced by {@link gParser#p_line}.
 	 * @param ctx the parse tree
 	 */
-	void exitFunction(gParser.FunctionContext ctx);
+	void exitP_line(gParser.P_lineContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link gParser#j_params}.
+	 * Enter a parse tree produced by {@link gParser#j_line}.
 	 * @param ctx the parse tree
 	 */
-	void enterJ_params(gParser.J_paramsContext ctx);
+	void enterJ_line(gParser.J_lineContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link gParser#j_params}.
+	 * Exit a parse tree produced by {@link gParser#j_line}.
 	 * @param ctx the parse tree
 	 */
-	void exitJ_params(gParser.J_paramsContext ctx);
+	void exitJ_line(gParser.J_lineContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link gParser#j_param}.
+	 * Enter a parse tree produced by {@link gParser#j_function_call}.
 	 * @param ctx the parse tree
 	 */
-	void enterJ_param(gParser.J_paramContext ctx);
+	void enterJ_function_call(gParser.J_function_callContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link gParser#j_param}.
+	 * Exit a parse tree produced by {@link gParser#j_function_call}.
 	 * @param ctx the parse tree
 	 */
-	void exitJ_param(gParser.J_paramContext ctx);
+	void exitJ_function_call(gParser.J_function_callContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#j_args}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_args(gParser.J_argsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#j_args}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_args(gParser.J_argsContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#j_arg}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_arg(gParser.J_argContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#j_arg}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_arg(gParser.J_argContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#p_function_call}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_function_call(gParser.P_function_callContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#p_function_call}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_function_call(gParser.P_function_callContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#p_args}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_args(gParser.P_argsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#p_args}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_args(gParser.P_argsContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#p_arg}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_arg(gParser.P_argContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#p_arg}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_arg(gParser.P_argContext ctx);
 }

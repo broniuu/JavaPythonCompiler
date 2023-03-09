@@ -1,16 +1,31 @@
 grammar g;
-prog: function | EOF;
+prog: (java | python) EOF;
 
-function: FUNCTION_NAME '(' j_params ')';
+java: p_line*;
 
-j_params: ( j_param',')* j_param;
+python: j_line*;
 
-j_param: (TYPE ID) | function | NUM | STRING;
+p_line: p_function_call ;
 
-FUNCTION_NAME: 'Seq' | 'Cond';
+j_line: j_function_call ';';
+
+j_function_call: FUNCTION_NAME ('(' j_args ')' | '()');
+
+j_args: ( j_arg ',')* j_arg;
+
+j_arg: (TYPE ID) | j_function_call | NUM | STRING;
+
+p_function_call: FUNCTION_NAME ('(' p_args ')' | '()');
+
+p_args: ( p_arg ',')* p_arg;
+
+p_arg: ID | P_STRING | NUM | p_function_call;
+
+FUNCTION_NAME: 'Seq' | 'Cond' | 'BranchRe' | 'Branch' | 'ConcurRe' | 'Concur' | 'Para' | 'Loop';
 TYPE : 'int' | 'char' | 'String' | 'double' | 'float' | 'bool';
 ID : [a-zA-Z][a-zA-Z0-9_]*;
 NUM : '0' | '-'?[1-9][0-9]*;
 STRING: '"' .* '"';
+P_STRING: ('\'' | '"') .* ( '\'' | '"' ) ;
 
 WS: [ \t\n\r]+ ->skip;
