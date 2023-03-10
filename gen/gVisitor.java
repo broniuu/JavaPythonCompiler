@@ -16,6 +16,18 @@ public interface gVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitProg(gParser.ProgContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link gParser#java}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJava(gParser.JavaContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#python}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPython(gParser.PythonContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link gParser#p_line}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -63,4 +75,58 @@ public interface gVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitP_arg(gParser.P_argContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#j_initialization}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_initialization(gParser.J_initializationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#j_int_initialization}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_int_initialization(gParser.J_int_initializationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#j_string_initialization}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_string_initialization(gParser.J_string_initializationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#j_bool_initialization}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_bool_initialization(gParser.J_bool_initializationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#j_float_initialization}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_float_initialization(gParser.J_float_initializationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#j_double_initialization}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_double_initialization(gParser.J_double_initializationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#j_char_initialization}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_char_initialization(gParser.J_char_initializationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#p_declaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_declaration(gParser.P_declarationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#j_type}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_type(gParser.J_typeContext ctx);
 }

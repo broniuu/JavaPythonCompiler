@@ -1,31 +1,83 @@
 grammar g;
 prog: (java | python) EOF;
 
-java: p_line*;
+java: j_line*;
 
-python: j_line*;
+python: p_line*;
 
-p_line: p_function_call ;
+p_line: p_function_call | p_declaration ;
 
-j_line: j_function_call ';';
+j_line: j_function_call | j_initialization ';';
 
 j_function_call: FUNCTION_NAME ('(' j_args ')' | '()');
 
 j_args: ( j_arg ',')* j_arg;
 
-j_arg: (TYPE ID) | j_function_call | NUM | STRING;
+j_arg
+    : BOOL
+    | j_function_call
+    | NUMBER
+    | STRING
+    | (j_type ID)
+    ;
 
 p_function_call: FUNCTION_NAME ('(' p_args ')' | '()');
 
 p_args: ( p_arg ',')* p_arg;
 
-p_arg: ID | P_STRING | NUM | p_function_call;
+p_arg
+    : BOOL
+    | P_STRING
+    | NUMBER
+    | p_function_call
+    | ID
+    ;
+
+//initialization
+j_initialization
+    : j_int_initialization
+    | j_float_initialization
+    | j_double_initialization
+    | j_bool_initialization
+    | j_string_initialization
+    | j_char_initialization
+    ;
+
+j_int_initialization:
+    INT_TYPE ID '=' (NUMBER | ID);
+j_string_initialization:
+    STRING_TYPE ID '=' (STRING | ID);
+j_bool_initialization:
+    BOOL_TYPE ID '=' (BOOL | ID);
+j_float_initialization:
+    FLOAT_TYPE ID '=' (DOBULE | ID);
+j_double_initialization:
+    DOUBLE_TYPE ID '=' (DOBULE | ID);
+j_char_initialization:
+    CHAR_TYPE ID '=' (CHAR | ID);
+
+p_declaration: ID '=' (ID | NUMBER | STRING | BOOL);
+
+j_type : INT_TYPE | CHAR_TYPE  | STRING_TYPE | DOUBLE_TYPE | FLOAT_TYPE | BOOL_TYPE;
 
 FUNCTION_NAME: 'Seq' | 'Cond' | 'BranchRe' | 'Branch' | 'ConcurRe' | 'Concur' | 'Para' | 'Loop';
-TYPE : 'int' | 'char' | 'String' | 'double' | 'float' | 'bool';
+
+//Types
+
+INT_TYPE : 'int';
+CHAR_TYPE : 'char';
+STRING_TYPE : 'String';
+DOUBLE_TYPE : 'double';
+FLOAT_TYPE : 'float';
+BOOL_TYPE : 'boolean';
 ID : [a-zA-Z][a-zA-Z0-9_]*;
-NUM : '0' | '-'?[1-9][0-9]*;
+
+//Values
+NUMBER : '0' | '-'?[1-9][0-9]*;
+CHAR: '\'' . '\'';
+DOBULE: '-'?('0'|[1-9][0-9]*)('.'[0-9]+)?;
 STRING: '"' .* '"';
 P_STRING: ('\'' | '"') .* ( '\'' | '"' ) ;
+BOOL: 'true' | 'false';
 
 WS: [ \t\n\r]+ ->skip;
