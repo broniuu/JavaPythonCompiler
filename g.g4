@@ -43,6 +43,8 @@ j_initialization
     | j_char_initialization
     ;
 
+
+
 j_int_initialization:
     INT_TYPE ID '=' (NUMBER | ID);
 j_string_initialization:
@@ -81,3 +83,159 @@ P_STRING: ('\'' | '"') .* ( '\'' | '"' ) ;
 BOOL: 'true' | 'false';
 
 WS: [ \t\n\r]+ ->skip;
+
+
+//For loop
+statement
+	:	forStatement
+	;
+
+forStatement
+	:	basicForStatement
+	;
+
+basicForStatement
+	:	'for' '(' forInit? ';' expression? ';' forUpdate? ')' statement
+	;
+
+forInit
+	:	statementExpressionList
+	|	localVariableDeclaration
+	;
+
+localVariableDeclaration
+	:	j_initialization
+	;
+
+forUpdate
+	:	statementExpressionList
+	;
+
+statementExpressionList
+	:	statementExpression (',' statementExpression)*
+	;
+expression
+	:	assignmentExpression
+	;
+assignmentExpression
+	:	conditionalExpression
+	|	assignment
+	;
+
+assignment
+	:	leftHandSide assignmentOperator expression
+	;
+
+leftHandSide
+	:	expressionName
+	;
+
+assignmentOperator
+	:	'='
+	|	'*='
+	|	'/='
+	|	'%='
+	|	'+='
+	|	'-='
+	|	'<<='
+	|	'>>='
+	|	'>>>='
+	|	'&='
+	|	'^='
+	|	'|='
+	;
+
+conditionalExpression
+	:	conditionalOrExpression
+	|	conditionalOrExpression '?' expression ':' conditionalExpression
+	;
+
+conditionalOrExpression
+	:	conditionalAndExpression
+	|	conditionalOrExpression '||' conditionalAndExpression
+	;
+
+conditionalAndExpression
+	:	inclusiveOrExpression
+	|	conditionalAndExpression '&&' inclusiveOrExpression
+	;
+
+inclusiveOrExpression
+	:	exclusiveOrExpression
+	|	inclusiveOrExpression '|' exclusiveOrExpression
+	;
+
+exclusiveOrExpression
+	:	andExpression
+	|	exclusiveOrExpression '^' andExpression
+	;
+
+andExpression
+	:	equalityExpression
+	|	andExpression '&' equalityExpression
+	;
+
+equalityExpression
+	:	relationalExpression
+	|	equalityExpression '==' relationalExpression
+	|	equalityExpression '!=' relationalExpression
+	;
+
+relationalExpression
+	:	shiftExpression
+	|	relationalExpression '<' shiftExpression
+	|	relationalExpression '>' shiftExpression
+	|	relationalExpression '<=' shiftExpression
+	|	relationalExpression '>=' shiftExpression
+	;
+
+shiftExpression
+	:	additiveExpression
+	|	shiftExpression '<' '<' additiveExpression
+	|	shiftExpression '>' '>' additiveExpression
+	|	shiftExpression '>' '>' '>' additiveExpression
+	;
+
+additiveExpression
+	:	multiplicativeExpression
+	|	additiveExpression '+' multiplicativeExpression
+	|	additiveExpression '-' multiplicativeExpression
+	;
+
+multiplicativeExpression
+	:	unaryExpression
+	|	multiplicativeExpression '*' unaryExpression
+	|	multiplicativeExpression '/' unaryExpression
+	|	multiplicativeExpression '%' unaryExpression
+	;
+
+unaryExpression
+	:	preIncrementExpression
+	|	preDecrementExpression
+	|	'+' unaryExpression
+	|	'-' unaryExpression
+	;
+
+preIncrementExpression
+	:	'++' unaryExpression
+	;
+
+preDecrementExpression
+	:	'--' unaryExpression
+	;
+
+expressionName
+	:	Identifier
+	|	ambiguousName '.' Identifier
+	;
+
+ambiguousName
+	:	Identifier
+	|	ambiguousName '.' Identifier
+	;
+
+statementExpression
+	:	assignment
+	|	preIncrementExpression
+	|	preDecrementExpression
+	;
