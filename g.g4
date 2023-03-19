@@ -5,7 +5,7 @@ java: j_line*;
 
 python: p_line*;
 
-p_line: p_function_call | p_declaration ;
+p_line: p_function_call | p_declaration | p_forloop;
 
 j_line: j_function_call | j_initialization | j_forloop';';
 
@@ -85,7 +85,7 @@ BOOL: 'true' | 'false';
 WS: [ \t\n\r]+ ->skip;
 
 
-//For loop
+//For loop java
 
 j_forloop
     : statement
@@ -116,7 +116,7 @@ forUpdate
 	;
 
 expression
-	:	ID* condition NUMBER
+	:	ID condition NUMBER
 	;
 
 condition
@@ -133,3 +133,17 @@ incDecExpression
 	|	ID '--'
 	;
 
+// For loop python
+
+p_forloop
+    :   'for' ID 'in' p_sequence ':' p_line*
+    ;
+
+p_sequence
+    :   P_STRING
+    |   p_range
+    ;
+
+p_range
+    : 'range' '(' NUMBER ')'
+    ;
