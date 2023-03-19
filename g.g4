@@ -7,7 +7,7 @@ python: p_line*;
 
 p_line: p_function_call | p_declaration ;
 
-j_line: j_function_call | j_initialization ';';
+j_line: j_function_call | j_initialization | j_forloop';';
 
 j_function_call: FUNCTION_NAME ('(' j_args ')' | '()');
 
@@ -86,6 +86,11 @@ WS: [ \t\n\r]+ ->skip;
 
 
 //For loop
+
+j_forloop
+    : statement
+    ;
+
 statement
 	:	forStatement
 	;
@@ -95,147 +100,36 @@ forStatement
 	;
 
 basicForStatement
-	:	'for' '(' forInit? ';' expression? ';' forUpdate? ')' statement
+	:	'for' '(' forInit? ';' expression? ';' forUpdate? ')' '{' j_line* '}'
 	;
 
 forInit
-	:	statementExpressionList
-	|	localVariableDeclaration
+	:	localVariableDeclaration
 	;
 
 localVariableDeclaration
-	:	j_initialization
+	:	j_int_initialization
 	;
 
 forUpdate
-	:	statementExpressionList
+	:	incDecExpression
 	;
 
-statementExpressionList
-	:	statementExpression (',' statementExpression)*
-	;
 expression
-	:	assignmentExpression
-	;
-assignmentExpression
-	:	conditionalExpression
-	|	assignment
+	:	ID* condition NUMBER
 	;
 
-assignment
-	:	leftHandSide assignmentOperator expression
+condition
+    :   '>'
+    |   '<'
+    |   '>='
+    |   '<='
+    ;
+
+incDecExpression
+	:	'++' ID
+	|	'--' ID
+	|	ID '++'
+	|	ID '--'
 	;
 
-leftHandSide
-	:	expressionName
-	;
-
-assignmentOperator
-	:	'='
-	|	'*='
-	|	'/='
-	|	'%='
-	|	'+='
-	|	'-='
-	|	'<<='
-	|	'>>='
-	|	'>>>='
-	|	'&='
-	|	'^='
-	|	'|='
-	;
-
-conditionalExpression
-	:	conditionalOrExpression
-	|	conditionalOrExpression '?' expression ':' conditionalExpression
-	;
-
-conditionalOrExpression
-	:	conditionalAndExpression
-	|	conditionalOrExpression '||' conditionalAndExpression
-	;
-
-conditionalAndExpression
-	:	inclusiveOrExpression
-	|	conditionalAndExpression '&&' inclusiveOrExpression
-	;
-
-inclusiveOrExpression
-	:	exclusiveOrExpression
-	|	inclusiveOrExpression '|' exclusiveOrExpression
-	;
-
-exclusiveOrExpression
-	:	andExpression
-	|	exclusiveOrExpression '^' andExpression
-	;
-
-andExpression
-	:	equalityExpression
-	|	andExpression '&' equalityExpression
-	;
-
-equalityExpression
-	:	relationalExpression
-	|	equalityExpression '==' relationalExpression
-	|	equalityExpression '!=' relationalExpression
-	;
-
-relationalExpression
-	:	shiftExpression
-	|	relationalExpression '<' shiftExpression
-	|	relationalExpression '>' shiftExpression
-	|	relationalExpression '<=' shiftExpression
-	|	relationalExpression '>=' shiftExpression
-	;
-
-shiftExpression
-	:	additiveExpression
-	|	shiftExpression '<' '<' additiveExpression
-	|	shiftExpression '>' '>' additiveExpression
-	|	shiftExpression '>' '>' '>' additiveExpression
-	;
-
-additiveExpression
-	:	multiplicativeExpression
-	|	additiveExpression '+' multiplicativeExpression
-	|	additiveExpression '-' multiplicativeExpression
-	;
-
-multiplicativeExpression
-	:	unaryExpression
-	|	multiplicativeExpression '*' unaryExpression
-	|	multiplicativeExpression '/' unaryExpression
-	|	multiplicativeExpression '%' unaryExpression
-	;
-
-unaryExpression
-	:	preIncrementExpression
-	|	preDecrementExpression
-	|	'+' unaryExpression
-	|	'-' unaryExpression
-	;
-
-preIncrementExpression
-	:	'++' unaryExpression
-	;
-
-preDecrementExpression
-	:	'--' unaryExpression
-	;
-
-expressionName
-	:	Identifier
-	|	ambiguousName '.' Identifier
-	;
-
-ambiguousName
-	:	Identifier
-	|	ambiguousName '.' Identifier
-	;
-
-statementExpression
-	:	assignment
-	|	preIncrementExpression
-	|	preDecrementExpression
-	;
