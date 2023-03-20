@@ -7,7 +7,7 @@ python: p_line*;
 
 p_line: p_function_call | p_declaration | p_forloop;
 
-j_line: (j_function_call | j_initialization ';') | j_loop;
+j_line: ((j_function_call | j_initialization) ';') | j_loop;
 
 j_function_call: FUNCTION_NAME ('(' j_args ')' | '()');
 
