@@ -7,7 +7,7 @@ python: p_line*;
 
 p_line: p_function_call | p_declaration | p_forloop;
 
-j_line: j_function_call | j_initialization | j_forloop';';
+j_line: j_function_call | j_initialization | j_loop';';
 
 j_function_call: FUNCTION_NAME ('(' j_args ')' | '()');
 
@@ -58,7 +58,7 @@ j_double_initialization:
 j_char_initialization:
     CHAR_TYPE ID '=' (CHAR | ID);
 
-p_declaration: ID '=' (ID | NUMBER | STRING | BOOL);
+p_declaration: ID '=' (ID | NUMBER | STRING | BOOL | '['p_type']');
 
 j_type : INT_TYPE | CHAR_TYPE  | STRING_TYPE | DOUBLE_TYPE | FLOAT_TYPE | BOOL_TYPE;
 
@@ -87,13 +87,23 @@ WS: [ \t\n\r]+ ->skip;
 
 //For loop java
 
-j_forloop
+j_loop
     : statement
     ;
 
 statement
 	:	forStatement
+	|   whileStatement
 	;
+
+whileStatement
+    : 'while' '(' conditionStatement ')' stmt
+    ;
+
+conditionStatement
+    : ID condition NUMBER
+    | BOOL
+    ;
 
 forStatement
 	:	basicForStatement
@@ -145,13 +155,24 @@ incDecExpression
 // For loop python
 
 p_forloop
-    :   'for' ID 'in' p_sequence ':' p_line*
+    :   'for' ID 'in' p_exp ':' p_line*
     ;
 
-p_sequence
+p_exp
     :   P_STRING
+    |   ID
     |   p_range
+    |   p_list
     ;
+
+p_list
+    : '[' (p_type (',' p_type)*)? ']'
+    ;
+
+p_type
+    :   NUMBER
+    |   STRING
+    |   BOOL;
 
 p_range
     : 'range' '(' NUMBER ')'
