@@ -5,9 +5,9 @@ java: j_line*;
 
 python: p_line*;
 
-p_line: p_function_call | p_declaration ;
+p_line: p_function_call | p_declaration | p_forloop;
 
-j_line: (j_function_call | j_initialization) ';';
+j_line: j_function_call | j_initialization | j_forloop';';
 
 j_function_call: FUNCTION_NAME ('(' j_args ')' | '()');
 
@@ -42,6 +42,8 @@ j_initialization
     | j_string_initialization
     | j_char_initialization
     ;
+
+
 
 j_int_initialization:
     INT_TYPE ID '=' (NUMBER | ID);
@@ -81,3 +83,76 @@ P_STRING: ('\'' | '"') .* ( '\'' | '"' ) ;
 BOOL: 'true' | 'false';
 
 WS: [ \t\n\r]+ ->skip;
+
+
+//For loop java
+
+j_forloop
+    : statement
+    ;
+
+statement
+	:	forStatement
+	;
+
+forStatement
+	:	basicForStatement
+	;
+
+basicForStatement
+	:	'for' '(' forInit? ';' expression? ';' forUpdate? ')' stmt
+	;
+
+stmt
+    :   block
+    |   j_line
+    ;
+
+block
+    : '{' j_line* '}'
+    ;
+
+forInit
+	:	localVariableDeclaration
+	;
+
+localVariableDeclaration
+	:	j_int_initialization
+	;
+
+forUpdate
+	:	incDecExpression
+	;
+
+expression
+	:	ID condition NUMBER
+	;
+
+condition
+    :   '>'
+    |   '<'
+    |   '>='
+    |   '<='
+    ;
+
+incDecExpression
+	:	'++' ID
+	|	'--' ID
+	|	ID '++'
+	|	ID '--'
+	;
+
+// For loop python
+
+p_forloop
+    :   'for' ID 'in' p_sequence ':' p_line*
+    ;
+
+p_sequence
+    :   P_STRING
+    |   p_range
+    ;
+
+p_range
+    : 'range' '(' NUMBER ')'
+    ;
