@@ -129,4 +129,118 @@ public interface gVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitJ_type(gParser.J_typeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#j_loop}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_loop(gParser.J_loopContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStatement(gParser.StatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#whileStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitWhileStatement(gParser.WhileStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#conditionStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitConditionStatement(gParser.ConditionStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#forStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitForStatement(gParser.ForStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#basicForStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBasicForStatement(gParser.BasicForStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#stmt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStmt(gParser.StmtContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#block}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBlock(gParser.BlockContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#forInit}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitForInit(gParser.ForInitContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#localVariableDeclaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLocalVariableDeclaration(gParser.LocalVariableDeclarationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#forUpdate}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitForUpdate(gParser.ForUpdateContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpression(gParser.ExpressionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#condition}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCondition(gParser.ConditionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#incDecExpression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIncDecExpression(gParser.IncDecExpressionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#p_forloop}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_forloop(gParser.P_forloopContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#p_exp}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_exp(gParser.P_expContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#p_list}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_list(gParser.P_listContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#p_type}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_type(gParser.P_typeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#p_range}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_range(gParser.P_rangeContext ctx);
 }
