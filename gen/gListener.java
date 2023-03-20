@@ -207,6 +207,16 @@ public interface gListener extends ParseTreeListener {
 	 */
 	void exitJ_type(gParser.J_typeContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link gParser#p_string}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_string(gParser.P_stringContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#p_string}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_string(gParser.P_stringContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link gParser#j_loop}.
 	 * @param ctx the parse tree
 	 */

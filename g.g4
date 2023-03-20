@@ -27,7 +27,7 @@ p_args: ( p_arg ',')* p_arg;
 
 p_arg
     : BOOL
-    | P_STRING
+    | p_string
     | NUMBER
     | p_function_call
     | ID
@@ -58,9 +58,11 @@ j_double_initialization:
 j_char_initialization:
     CHAR_TYPE ID '=' (CHAR | ID);
 
-p_declaration: ID '=' (ID | NUMBER | STRING | BOOL | '['p_type']');
+p_declaration: ID '=' (ID | NUMBER | STRING | BOOL | '['p_type']' | p_string);
 
 j_type : INT_TYPE | CHAR_TYPE  | STRING_TYPE | DOUBLE_TYPE | FLOAT_TYPE | BOOL_TYPE;
+
+p_string: STRING |  STRING_SMALL;
 
 FUNCTION_NAME: 'Seq' | 'Cond' | 'BranchRe' | 'Branch' | 'ConcurRe' | 'Concur' | 'Para' | 'Loop';
 
@@ -78,8 +80,8 @@ ID : [a-zA-Z][a-zA-Z0-9_]*;
 NUMBER : '0' | '-'?[1-9][0-9]*;
 CHAR: '\'' . '\'';
 DOBULE: '-'?('0'|[1-9][0-9]*)('.'[0-9]+)?;
-STRING: '"' .* '"';
-P_STRING: ('\'' | '"') .* ( '\'' | '"' ) ;
+STRING: '"' .*? '"';
+STRING_SMALL: ('\'' .*? '\'');
 BOOL: 'true' | 'false';
 
 WS: [ \t\n\r]+ ->skip;
@@ -159,7 +161,7 @@ p_forloop
     ;
 
 p_exp
-    :   P_STRING
+    :   p_string
     |   ID
     |   p_range
     |   p_list

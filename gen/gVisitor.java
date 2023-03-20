@@ -130,6 +130,12 @@ public interface gVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitJ_type(gParser.J_typeContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link gParser#p_string}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_string(gParser.P_stringContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link gParser#j_loop}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
