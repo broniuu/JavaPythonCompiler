@@ -113,24 +113,24 @@ j_type: INT_TYPE | CHAR_TYPE | STRING_TYPE | DOUBLE_TYPE | FLOAT_TYPE | BOOL_TYP
 
 FUNCTION_NAME: 'Seq' | 'Cond' | 'BranchRe' | 'Branch' | 'ConcurRe' | 'Concur' | 'Para' | 'Loop';
 
-//Types
-INT_TYPE : 'int';
-CHAR_TYPE : 'char';
-STRING_TYPE : 'String';
-DOUBLE_TYPE : 'double';
-FLOAT_TYPE : 'float';
-BOOL_TYPE : 'boolean';
-ID : [a-zA-Z][a-zA-Z0-9_]*;
-
 //Values
-NUMBER : '0' | '-'?[1-9][0-9]*;
+NUMBER: '0' | '-'?[1-9][0-9]*;
 CHAR: '\'' . '\'';
 DOBULE: '-'?('0'|[1-9][0-9]*)('.'[0-9]+)?;
 STRING: '"' .*? '"';
 STRING_SMALL: ('\'' .*? '\'');
 BOOL: 'true' | 'false';
 
-WS: [ \t\n\r]+ ->skip;
+//Types
+INT_TYPE: 'int';
+CHAR_TYPE: 'char';
+STRING_TYPE: 'String';
+DOUBLE_TYPE: 'double';
+FLOAT_TYPE: 'float';
+BOOL_TYPE: 'boolean';
+ID: [a-zA-Z][a-zA-Z0-9_]*;
+
+WS: [\t\n\r]+ -> skip;
 
 //For loop java
 j_loop
