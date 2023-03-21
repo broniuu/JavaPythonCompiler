@@ -5,7 +5,7 @@ java: j_line*;
 
 python: p_line*;
 
-p_line: p_function_call | p_declaration | p_forloop;
+p_line: p_function_call | p_assignment | p_forloop;
 
 j_line: ((j_function_call | j_initialization) ';') | j_loop;
 
@@ -41,33 +41,61 @@ j_initialization
     | j_bool_initialization
     | j_string_initialization
     | j_char_initialization
+    | j_array_initialization
     ;
 
-
-
 j_int_initialization:
-    INT_TYPE ID '=' (NUMBER | ID);
+    INT_TYPE ID '=' (ID | NUMBER);
 j_string_initialization:
-    STRING_TYPE ID '=' (STRING | ID);
+    STRING_TYPE ID '=' (ID | STRING);
 j_bool_initialization:
-    BOOL_TYPE ID '=' (BOOL | ID);
+    BOOL_TYPE ID '=' (ID | BOOL);
 j_float_initialization:
-    FLOAT_TYPE ID '=' (DOBULE | ID);
+    FLOAT_TYPE ID '=' (ID | DOBULE);
 j_double_initialization:
-    DOUBLE_TYPE ID '=' (DOBULE | ID);
+    DOUBLE_TYPE ID '=' (ID | DOBULE);
 j_char_initialization:
-    CHAR_TYPE ID '=' (CHAR | ID);
+    CHAR_TYPE ID '=' (ID | CHAR);
+j_array_initialization
+    : INT_TYPE '[]' ID '=' (ID
+        | ('new' INT_TYPE '[' NUMBER ']' ('{' (NUMBER (',' NUMBER)*)? '}')?)
+        | (('new' INT_TYPE '[]')? '{' (NUMBER (',' NUMBER)*)? '}')
+    )
+    | STRING_TYPE '[]' ID '=' (ID
+        | ('new' STRING_TYPE '[' NUMBER ']' ('{' (STRING (',' STRING)*)? '}')?)
+        | (('new' STRING_TYPE '[]')? '{' (STRING (',' STRING)*)? '}')
+    )
+    | BOOL_TYPE '[]' ID '=' (ID
+        | ('new' BOOL_TYPE '[' NUMBER ']' ('{' (BOOL (',' BOOL)*)? '}')?)
+        | (('new' BOOL_TYPE '[]')? '{' (BOOL (',' BOOL)*)? '}')
+    )
+    | FLOAT_TYPE '[]' ID '=' (ID
+        | ('new' FLOAT_TYPE '[' NUMBER ']' ('{' (DOBULE (',' DOBULE)*)? '}')?)
+        | (('new' FLOAT_TYPE '[]')? '{' (DOBULE (',' DOBULE)*)? '}')
+    )
+    | DOUBLE_TYPE '[]' ID '=' (ID
+        | ('new' DOUBLE_TYPE '[' NUMBER ']' ('{' (DOBULE (',' DOBULE)*)? '}')?)
+        | (('new' DOUBLE_TYPE '[]')? '{' (DOBULE (',' DOBULE)*)? '}')
+    )
+    | CHAR_TYPE '[]' ID '=' (ID
+        | ('new' CHAR_TYPE '[' NUMBER ']' ('{' (CHAR (',' CHAR)*)? '}')?)
+        | (('new' CHAR_TYPE '[]')? '{' (CHAR (',' CHAR)*)? '}')
+    )
+    ;
 
-p_declaration: ID '=' (ID | NUMBER | STRING | BOOL | '['p_type']' | p_string);
+p_assignment: ID '=' p_rhs_value;
 
-j_type : INT_TYPE | CHAR_TYPE  | STRING_TYPE | DOUBLE_TYPE | FLOAT_TYPE | BOOL_TYPE;
+p_rhs_value: ID | NUMBER | BOOL | p_string | p_list;
 
 p_string: STRING |  STRING_SMALL;
+
+p_list: '[' (p_rhs_value (',' p_rhs_value)*)? ']';
+
+j_type: INT_TYPE | CHAR_TYPE | STRING_TYPE | DOUBLE_TYPE | FLOAT_TYPE | BOOL_TYPE;
 
 FUNCTION_NAME: 'Seq' | 'Cond' | 'BranchRe' | 'Branch' | 'ConcurRe' | 'Concur' | 'Para' | 'Loop';
 
 //Types
-
 INT_TYPE : 'int';
 CHAR_TYPE : 'char';
 STRING_TYPE : 'String';
@@ -86,9 +114,7 @@ BOOL: 'true' | 'false';
 
 WS: [ \t\n\r]+ ->skip;
 
-
 //For loop java
-
 j_loop
     : statement
     ;
@@ -166,15 +192,6 @@ p_exp
     |   p_range
     |   p_list
     ;
-
-p_list
-    : '[' (p_type (',' p_type)*)? ']'
-    ;
-
-p_type
-    :   NUMBER
-    |   STRING
-    |   BOOL;
 
 p_range
     : 'range' '(' NUMBER ')'
