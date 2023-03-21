@@ -7,7 +7,7 @@ python: p_line*;
 
 p_line: p_function_call | p_assignment | p_forloop;
 
-j_line: ((j_function_call | j_initialization) ';') | j_loop;
+j_line: ((j_declaration | j_array_declaration | j_initialization | j_function_call) ';') | j_loop;
 
 j_function_call: FUNCTION_NAME ('(' j_args ')' | '()');
 
@@ -31,6 +31,24 @@ p_arg
     | NUMBER
     | p_function_call
     | ID
+    ;
+
+j_declaration
+    : INT_TYPE ID
+    | STRING_TYPE ID
+    | BOOL_TYPE ID
+    | FLOAT_TYPE ID
+    | DOUBLE_TYPE ID
+    | CHAR_TYPE ID
+    ;
+
+j_array_declaration
+    : INT_TYPE '[]' ID
+    | STRING_TYPE '[]' ID
+    | BOOL_TYPE '[]' ID
+    | FLOAT_TYPE '[]' ID
+    | DOUBLE_TYPE '[]' ID
+    | CHAR_TYPE '[]' ID
     ;
 
 //initialization
