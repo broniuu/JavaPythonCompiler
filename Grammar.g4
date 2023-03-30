@@ -1,4 +1,4 @@
-grammar g;
+grammar Grammar;
 prog: (
     j_seqSeq
     | p_seqSeq

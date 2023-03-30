@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue"})
-public class gParser extends Parser {
+public class GrammarParser extends Parser {
 	static { RuntimeMetaData.checkVersion("4.11.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -130,14 +130,14 @@ public class gParser extends Parser {
 	@Override
 	public ATN getATN() { return _ATN; }
 
-	public gParser(TokenStream input) {
+	public GrammarParser(TokenStream input) {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ProgContext extends ParserRuleContext {
-		public TerminalNode EOF() { return getToken(gParser.EOF, 0); }
+		public TerminalNode EOF() { return getToken(GrammarParser.EOF, 0); }
 		public J_seqSeqContext j_seqSeq() {
 			return getRuleContext(J_seqSeqContext.class,0);
 		}
@@ -162,15 +162,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_prog; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterProg(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterProg(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitProg(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitProg(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitProg(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitProg(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -250,15 +250,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_java; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterJava(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterJava(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitJava(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitJava(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitJava(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitJava(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -311,15 +311,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_python; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterPython(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterPython(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitPython(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitPython(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitPython(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitPython(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -378,15 +378,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_p_line; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterP_line(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterP_line(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitP_line(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitP_line(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitP_line(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitP_line(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -465,15 +465,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_j_line; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterJ_line(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterJ_line(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitJ_line(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitJ_line(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitJ_line(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitJ_line(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -543,7 +543,7 @@ public class gParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class J_function_callContext extends ParserRuleContext {
-		public TerminalNode ID() { return getToken(gParser.ID, 0); }
+		public TerminalNode ID() { return getToken(GrammarParser.ID, 0); }
 		public J_argsContext j_args() {
 			return getRuleContext(J_argsContext.class,0);
 		}
@@ -553,15 +553,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_j_function_call; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterJ_function_call(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterJ_function_call(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitJ_function_call(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitJ_function_call(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitJ_function_call(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitJ_function_call(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -623,15 +623,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_j_args; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterJ_args(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterJ_args(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitJ_args(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitJ_args(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitJ_args(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitJ_args(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -678,28 +678,28 @@ public class gParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class J_argContext extends ParserRuleContext {
-		public TerminalNode BOOL_JAVA() { return getToken(gParser.BOOL_JAVA, 0); }
+		public TerminalNode BOOL_JAVA() { return getToken(GrammarParser.BOOL_JAVA, 0); }
 		public J_function_callContext j_function_call() {
 			return getRuleContext(J_function_callContext.class,0);
 		}
-		public TerminalNode NUMBER() { return getToken(gParser.NUMBER, 0); }
-		public TerminalNode STRING() { return getToken(gParser.STRING, 0); }
-		public TerminalNode ID() { return getToken(gParser.ID, 0); }
+		public TerminalNode NUMBER() { return getToken(GrammarParser.NUMBER, 0); }
+		public TerminalNode STRING() { return getToken(GrammarParser.STRING, 0); }
+		public TerminalNode ID() { return getToken(GrammarParser.ID, 0); }
 		public J_argContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_j_arg; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterJ_arg(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterJ_arg(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitJ_arg(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitJ_arg(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitJ_arg(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitJ_arg(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -761,7 +761,7 @@ public class gParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class P_function_callContext extends ParserRuleContext {
-		public TerminalNode ID() { return getToken(gParser.ID, 0); }
+		public TerminalNode ID() { return getToken(GrammarParser.ID, 0); }
 		public P_argsContext p_args() {
 			return getRuleContext(P_argsContext.class,0);
 		}
@@ -771,15 +771,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_p_function_call; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterP_function_call(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterP_function_call(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitP_function_call(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitP_function_call(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitP_function_call(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitP_function_call(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -841,15 +841,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_p_args; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterP_args(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterP_args(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitP_args(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitP_args(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitP_args(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitP_args(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -896,30 +896,30 @@ public class gParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class P_argContext extends ParserRuleContext {
-		public TerminalNode BOOL_PYTHON() { return getToken(gParser.BOOL_PYTHON, 0); }
+		public TerminalNode BOOL_PYTHON() { return getToken(GrammarParser.BOOL_PYTHON, 0); }
 		public P_stringContext p_string() {
 			return getRuleContext(P_stringContext.class,0);
 		}
-		public TerminalNode NUMBER() { return getToken(gParser.NUMBER, 0); }
+		public TerminalNode NUMBER() { return getToken(GrammarParser.NUMBER, 0); }
 		public P_function_callContext p_function_call() {
 			return getRuleContext(P_function_callContext.class,0);
 		}
-		public TerminalNode ID() { return getToken(gParser.ID, 0); }
+		public TerminalNode ID() { return getToken(GrammarParser.ID, 0); }
 		public P_argContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_p_arg; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterP_arg(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterP_arg(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitP_arg(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitP_arg(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitP_arg(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitP_arg(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -981,28 +981,28 @@ public class gParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class J_declarationContext extends ParserRuleContext {
-		public TerminalNode INT_TYPE() { return getToken(gParser.INT_TYPE, 0); }
-		public TerminalNode ID() { return getToken(gParser.ID, 0); }
-		public TerminalNode STRING_TYPE() { return getToken(gParser.STRING_TYPE, 0); }
-		public TerminalNode BOOL_TYPE() { return getToken(gParser.BOOL_TYPE, 0); }
-		public TerminalNode FLOAT_TYPE() { return getToken(gParser.FLOAT_TYPE, 0); }
-		public TerminalNode DOUBLE_TYPE() { return getToken(gParser.DOUBLE_TYPE, 0); }
-		public TerminalNode CHAR_TYPE() { return getToken(gParser.CHAR_TYPE, 0); }
+		public TerminalNode INT_TYPE() { return getToken(GrammarParser.INT_TYPE, 0); }
+		public TerminalNode ID() { return getToken(GrammarParser.ID, 0); }
+		public TerminalNode STRING_TYPE() { return getToken(GrammarParser.STRING_TYPE, 0); }
+		public TerminalNode BOOL_TYPE() { return getToken(GrammarParser.BOOL_TYPE, 0); }
+		public TerminalNode FLOAT_TYPE() { return getToken(GrammarParser.FLOAT_TYPE, 0); }
+		public TerminalNode DOUBLE_TYPE() { return getToken(GrammarParser.DOUBLE_TYPE, 0); }
+		public TerminalNode CHAR_TYPE() { return getToken(GrammarParser.CHAR_TYPE, 0); }
 		public J_declarationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_j_declaration; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterJ_declaration(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterJ_declaration(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitJ_declaration(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitJ_declaration(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitJ_declaration(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitJ_declaration(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1085,28 +1085,28 @@ public class gParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class J_array_declarationContext extends ParserRuleContext {
-		public TerminalNode INT_TYPE() { return getToken(gParser.INT_TYPE, 0); }
-		public TerminalNode ID() { return getToken(gParser.ID, 0); }
-		public TerminalNode STRING_TYPE() { return getToken(gParser.STRING_TYPE, 0); }
-		public TerminalNode BOOL_TYPE() { return getToken(gParser.BOOL_TYPE, 0); }
-		public TerminalNode FLOAT_TYPE() { return getToken(gParser.FLOAT_TYPE, 0); }
-		public TerminalNode DOUBLE_TYPE() { return getToken(gParser.DOUBLE_TYPE, 0); }
-		public TerminalNode CHAR_TYPE() { return getToken(gParser.CHAR_TYPE, 0); }
+		public TerminalNode INT_TYPE() { return getToken(GrammarParser.INT_TYPE, 0); }
+		public TerminalNode ID() { return getToken(GrammarParser.ID, 0); }
+		public TerminalNode STRING_TYPE() { return getToken(GrammarParser.STRING_TYPE, 0); }
+		public TerminalNode BOOL_TYPE() { return getToken(GrammarParser.BOOL_TYPE, 0); }
+		public TerminalNode FLOAT_TYPE() { return getToken(GrammarParser.FLOAT_TYPE, 0); }
+		public TerminalNode DOUBLE_TYPE() { return getToken(GrammarParser.DOUBLE_TYPE, 0); }
+		public TerminalNode CHAR_TYPE() { return getToken(GrammarParser.CHAR_TYPE, 0); }
 		public J_array_declarationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_j_array_declaration; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterJ_array_declaration(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterJ_array_declaration(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitJ_array_declaration(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitJ_array_declaration(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitJ_array_declaration(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitJ_array_declaration(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1228,15 +1228,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_j_initialization; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterJ_initialization(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterJ_initialization(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitJ_initialization(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitJ_initialization(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitJ_initialization(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitJ_initialization(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1312,27 +1312,27 @@ public class gParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class J_int_initializationContext extends ParserRuleContext {
-		public TerminalNode INT_TYPE() { return getToken(gParser.INT_TYPE, 0); }
-		public List<TerminalNode> ID() { return getTokens(gParser.ID); }
+		public TerminalNode INT_TYPE() { return getToken(GrammarParser.INT_TYPE, 0); }
+		public List<TerminalNode> ID() { return getTokens(GrammarParser.ID); }
 		public TerminalNode ID(int i) {
-			return getToken(gParser.ID, i);
+			return getToken(GrammarParser.ID, i);
 		}
-		public TerminalNode NUMBER() { return getToken(gParser.NUMBER, 0); }
+		public TerminalNode NUMBER() { return getToken(GrammarParser.NUMBER, 0); }
 		public J_int_initializationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_j_int_initialization; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterJ_int_initialization(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterJ_int_initialization(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitJ_int_initialization(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitJ_int_initialization(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitJ_int_initialization(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitJ_int_initialization(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1375,27 +1375,27 @@ public class gParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class J_string_initializationContext extends ParserRuleContext {
-		public TerminalNode STRING_TYPE() { return getToken(gParser.STRING_TYPE, 0); }
-		public List<TerminalNode> ID() { return getTokens(gParser.ID); }
+		public TerminalNode STRING_TYPE() { return getToken(GrammarParser.STRING_TYPE, 0); }
+		public List<TerminalNode> ID() { return getTokens(GrammarParser.ID); }
 		public TerminalNode ID(int i) {
-			return getToken(gParser.ID, i);
+			return getToken(GrammarParser.ID, i);
 		}
-		public TerminalNode STRING() { return getToken(gParser.STRING, 0); }
+		public TerminalNode STRING() { return getToken(GrammarParser.STRING, 0); }
 		public J_string_initializationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_j_string_initialization; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterJ_string_initialization(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterJ_string_initialization(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitJ_string_initialization(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitJ_string_initialization(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitJ_string_initialization(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitJ_string_initialization(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1438,27 +1438,27 @@ public class gParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class J_bool_initializationContext extends ParserRuleContext {
-		public TerminalNode BOOL_TYPE() { return getToken(gParser.BOOL_TYPE, 0); }
-		public List<TerminalNode> ID() { return getTokens(gParser.ID); }
+		public TerminalNode BOOL_TYPE() { return getToken(GrammarParser.BOOL_TYPE, 0); }
+		public List<TerminalNode> ID() { return getTokens(GrammarParser.ID); }
 		public TerminalNode ID(int i) {
-			return getToken(gParser.ID, i);
+			return getToken(GrammarParser.ID, i);
 		}
-		public TerminalNode BOOL_JAVA() { return getToken(gParser.BOOL_JAVA, 0); }
+		public TerminalNode BOOL_JAVA() { return getToken(GrammarParser.BOOL_JAVA, 0); }
 		public J_bool_initializationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_j_bool_initialization; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterJ_bool_initialization(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterJ_bool_initialization(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitJ_bool_initialization(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitJ_bool_initialization(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitJ_bool_initialization(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitJ_bool_initialization(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1501,27 +1501,27 @@ public class gParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class J_float_initializationContext extends ParserRuleContext {
-		public TerminalNode FLOAT_TYPE() { return getToken(gParser.FLOAT_TYPE, 0); }
-		public List<TerminalNode> ID() { return getTokens(gParser.ID); }
+		public TerminalNode FLOAT_TYPE() { return getToken(GrammarParser.FLOAT_TYPE, 0); }
+		public List<TerminalNode> ID() { return getTokens(GrammarParser.ID); }
 		public TerminalNode ID(int i) {
-			return getToken(gParser.ID, i);
+			return getToken(GrammarParser.ID, i);
 		}
-		public TerminalNode DOBULE() { return getToken(gParser.DOBULE, 0); }
+		public TerminalNode DOBULE() { return getToken(GrammarParser.DOBULE, 0); }
 		public J_float_initializationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_j_float_initialization; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterJ_float_initialization(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterJ_float_initialization(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitJ_float_initialization(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitJ_float_initialization(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitJ_float_initialization(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitJ_float_initialization(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1564,27 +1564,27 @@ public class gParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class J_double_initializationContext extends ParserRuleContext {
-		public TerminalNode DOUBLE_TYPE() { return getToken(gParser.DOUBLE_TYPE, 0); }
-		public List<TerminalNode> ID() { return getTokens(gParser.ID); }
+		public TerminalNode DOUBLE_TYPE() { return getToken(GrammarParser.DOUBLE_TYPE, 0); }
+		public List<TerminalNode> ID() { return getTokens(GrammarParser.ID); }
 		public TerminalNode ID(int i) {
-			return getToken(gParser.ID, i);
+			return getToken(GrammarParser.ID, i);
 		}
-		public TerminalNode DOBULE() { return getToken(gParser.DOBULE, 0); }
+		public TerminalNode DOBULE() { return getToken(GrammarParser.DOBULE, 0); }
 		public J_double_initializationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_j_double_initialization; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterJ_double_initialization(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterJ_double_initialization(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitJ_double_initialization(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitJ_double_initialization(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitJ_double_initialization(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitJ_double_initialization(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1627,27 +1627,27 @@ public class gParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class J_char_initializationContext extends ParserRuleContext {
-		public TerminalNode CHAR_TYPE() { return getToken(gParser.CHAR_TYPE, 0); }
-		public List<TerminalNode> ID() { return getTokens(gParser.ID); }
+		public TerminalNode CHAR_TYPE() { return getToken(GrammarParser.CHAR_TYPE, 0); }
+		public List<TerminalNode> ID() { return getTokens(GrammarParser.ID); }
 		public TerminalNode ID(int i) {
-			return getToken(gParser.ID, i);
+			return getToken(GrammarParser.ID, i);
 		}
-		public TerminalNode CHAR() { return getToken(gParser.CHAR, 0); }
+		public TerminalNode CHAR() { return getToken(GrammarParser.CHAR, 0); }
 		public J_char_initializationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_j_char_initialization; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterJ_char_initialization(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterJ_char_initialization(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitJ_char_initialization(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitJ_char_initialization(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitJ_char_initialization(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitJ_char_initialization(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1690,53 +1690,53 @@ public class gParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class J_array_initializationContext extends ParserRuleContext {
-		public List<TerminalNode> INT_TYPE() { return getTokens(gParser.INT_TYPE); }
+		public List<TerminalNode> INT_TYPE() { return getTokens(GrammarParser.INT_TYPE); }
 		public TerminalNode INT_TYPE(int i) {
-			return getToken(gParser.INT_TYPE, i);
+			return getToken(GrammarParser.INT_TYPE, i);
 		}
-		public List<TerminalNode> ID() { return getTokens(gParser.ID); }
+		public List<TerminalNode> ID() { return getTokens(GrammarParser.ID); }
 		public TerminalNode ID(int i) {
-			return getToken(gParser.ID, i);
+			return getToken(GrammarParser.ID, i);
 		}
-		public List<TerminalNode> NUMBER() { return getTokens(gParser.NUMBER); }
+		public List<TerminalNode> NUMBER() { return getTokens(GrammarParser.NUMBER); }
 		public TerminalNode NUMBER(int i) {
-			return getToken(gParser.NUMBER, i);
+			return getToken(GrammarParser.NUMBER, i);
 		}
-		public List<TerminalNode> STRING_TYPE() { return getTokens(gParser.STRING_TYPE); }
+		public List<TerminalNode> STRING_TYPE() { return getTokens(GrammarParser.STRING_TYPE); }
 		public TerminalNode STRING_TYPE(int i) {
-			return getToken(gParser.STRING_TYPE, i);
+			return getToken(GrammarParser.STRING_TYPE, i);
 		}
-		public List<TerminalNode> STRING() { return getTokens(gParser.STRING); }
+		public List<TerminalNode> STRING() { return getTokens(GrammarParser.STRING); }
 		public TerminalNode STRING(int i) {
-			return getToken(gParser.STRING, i);
+			return getToken(GrammarParser.STRING, i);
 		}
-		public List<TerminalNode> BOOL_TYPE() { return getTokens(gParser.BOOL_TYPE); }
+		public List<TerminalNode> BOOL_TYPE() { return getTokens(GrammarParser.BOOL_TYPE); }
 		public TerminalNode BOOL_TYPE(int i) {
-			return getToken(gParser.BOOL_TYPE, i);
+			return getToken(GrammarParser.BOOL_TYPE, i);
 		}
-		public List<TerminalNode> BOOL_JAVA() { return getTokens(gParser.BOOL_JAVA); }
+		public List<TerminalNode> BOOL_JAVA() { return getTokens(GrammarParser.BOOL_JAVA); }
 		public TerminalNode BOOL_JAVA(int i) {
-			return getToken(gParser.BOOL_JAVA, i);
+			return getToken(GrammarParser.BOOL_JAVA, i);
 		}
-		public List<TerminalNode> FLOAT_TYPE() { return getTokens(gParser.FLOAT_TYPE); }
+		public List<TerminalNode> FLOAT_TYPE() { return getTokens(GrammarParser.FLOAT_TYPE); }
 		public TerminalNode FLOAT_TYPE(int i) {
-			return getToken(gParser.FLOAT_TYPE, i);
+			return getToken(GrammarParser.FLOAT_TYPE, i);
 		}
-		public List<TerminalNode> DOBULE() { return getTokens(gParser.DOBULE); }
+		public List<TerminalNode> DOBULE() { return getTokens(GrammarParser.DOBULE); }
 		public TerminalNode DOBULE(int i) {
-			return getToken(gParser.DOBULE, i);
+			return getToken(GrammarParser.DOBULE, i);
 		}
-		public List<TerminalNode> DOUBLE_TYPE() { return getTokens(gParser.DOUBLE_TYPE); }
+		public List<TerminalNode> DOUBLE_TYPE() { return getTokens(GrammarParser.DOUBLE_TYPE); }
 		public TerminalNode DOUBLE_TYPE(int i) {
-			return getToken(gParser.DOUBLE_TYPE, i);
+			return getToken(GrammarParser.DOUBLE_TYPE, i);
 		}
-		public List<TerminalNode> CHAR_TYPE() { return getTokens(gParser.CHAR_TYPE); }
+		public List<TerminalNode> CHAR_TYPE() { return getTokens(GrammarParser.CHAR_TYPE); }
 		public TerminalNode CHAR_TYPE(int i) {
-			return getToken(gParser.CHAR_TYPE, i);
+			return getToken(GrammarParser.CHAR_TYPE, i);
 		}
-		public List<TerminalNode> CHAR() { return getTokens(gParser.CHAR); }
+		public List<TerminalNode> CHAR() { return getTokens(GrammarParser.CHAR); }
 		public TerminalNode CHAR(int i) {
-			return getToken(gParser.CHAR, i);
+			return getToken(GrammarParser.CHAR, i);
 		}
 		public J_array_initializationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1744,15 +1744,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_j_array_initialization; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterJ_array_initialization(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterJ_array_initialization(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitJ_array_initialization(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitJ_array_initialization(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitJ_array_initialization(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitJ_array_initialization(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2544,7 +2544,7 @@ public class gParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class P_assignmentContext extends ParserRuleContext {
-		public TerminalNode ID() { return getToken(gParser.ID, 0); }
+		public TerminalNode ID() { return getToken(GrammarParser.ID, 0); }
 		public P_rhs_valueContext p_rhs_value() {
 			return getRuleContext(P_rhs_valueContext.class,0);
 		}
@@ -2554,15 +2554,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_p_assignment; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterP_assignment(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterP_assignment(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitP_assignment(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitP_assignment(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitP_assignment(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitP_assignment(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2594,9 +2594,9 @@ public class gParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class P_rhs_valueContext extends ParserRuleContext {
-		public TerminalNode ID() { return getToken(gParser.ID, 0); }
-		public TerminalNode NUMBER() { return getToken(gParser.NUMBER, 0); }
-		public TerminalNode BOOL_PYTHON() { return getToken(gParser.BOOL_PYTHON, 0); }
+		public TerminalNode ID() { return getToken(GrammarParser.ID, 0); }
+		public TerminalNode NUMBER() { return getToken(GrammarParser.NUMBER, 0); }
+		public TerminalNode BOOL_PYTHON() { return getToken(GrammarParser.BOOL_PYTHON, 0); }
 		public P_stringContext p_string() {
 			return getRuleContext(P_stringContext.class,0);
 		}
@@ -2609,15 +2609,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_p_rhs_value; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterP_rhs_value(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterP_rhs_value(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitP_rhs_value(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitP_rhs_value(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitP_rhs_value(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitP_rhs_value(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2682,23 +2682,23 @@ public class gParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class P_stringContext extends ParserRuleContext {
-		public TerminalNode STRING() { return getToken(gParser.STRING, 0); }
-		public TerminalNode STRING_SMALL() { return getToken(gParser.STRING_SMALL, 0); }
+		public TerminalNode STRING() { return getToken(GrammarParser.STRING, 0); }
+		public TerminalNode STRING_SMALL() { return getToken(GrammarParser.STRING_SMALL, 0); }
 		public P_stringContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_p_string; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterP_string(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterP_string(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitP_string(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitP_string(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitP_string(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitP_string(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2747,15 +2747,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_p_list; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterP_list(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterP_list(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitP_list(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitP_list(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitP_list(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitP_list(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2812,27 +2812,27 @@ public class gParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class J_typeContext extends ParserRuleContext {
-		public TerminalNode INT_TYPE() { return getToken(gParser.INT_TYPE, 0); }
-		public TerminalNode CHAR_TYPE() { return getToken(gParser.CHAR_TYPE, 0); }
-		public TerminalNode STRING_TYPE() { return getToken(gParser.STRING_TYPE, 0); }
-		public TerminalNode DOUBLE_TYPE() { return getToken(gParser.DOUBLE_TYPE, 0); }
-		public TerminalNode FLOAT_TYPE() { return getToken(gParser.FLOAT_TYPE, 0); }
-		public TerminalNode BOOL_TYPE() { return getToken(gParser.BOOL_TYPE, 0); }
+		public TerminalNode INT_TYPE() { return getToken(GrammarParser.INT_TYPE, 0); }
+		public TerminalNode CHAR_TYPE() { return getToken(GrammarParser.CHAR_TYPE, 0); }
+		public TerminalNode STRING_TYPE() { return getToken(GrammarParser.STRING_TYPE, 0); }
+		public TerminalNode DOUBLE_TYPE() { return getToken(GrammarParser.DOUBLE_TYPE, 0); }
+		public TerminalNode FLOAT_TYPE() { return getToken(GrammarParser.FLOAT_TYPE, 0); }
+		public TerminalNode BOOL_TYPE() { return getToken(GrammarParser.BOOL_TYPE, 0); }
 		public J_typeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_j_type; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterJ_type(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterJ_type(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitJ_type(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitJ_type(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitJ_type(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitJ_type(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2878,15 +2878,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_j_loop; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterJ_loop(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterJ_loop(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitJ_loop(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitJ_loop(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitJ_loop(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitJ_loop(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2926,15 +2926,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_statement; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterStatement(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterStatement(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitStatement(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitStatement(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitStatement(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitStatement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2989,15 +2989,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_whileStatement; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterWhileStatement(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterWhileStatement(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitWhileStatement(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitWhileStatement(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitWhileStatement(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitWhileStatement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -3033,27 +3033,27 @@ public class gParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ConditionStatementContext extends ParserRuleContext {
-		public TerminalNode ID() { return getToken(gParser.ID, 0); }
+		public TerminalNode ID() { return getToken(GrammarParser.ID, 0); }
 		public Condition_greater_lessContext condition_greater_less() {
 			return getRuleContext(Condition_greater_lessContext.class,0);
 		}
-		public TerminalNode NUMBER() { return getToken(gParser.NUMBER, 0); }
-		public TerminalNode BOOL_JAVA() { return getToken(gParser.BOOL_JAVA, 0); }
+		public TerminalNode NUMBER() { return getToken(GrammarParser.NUMBER, 0); }
+		public TerminalNode BOOL_JAVA() { return getToken(GrammarParser.BOOL_JAVA, 0); }
 		public ConditionStatementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_conditionStatement; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterConditionStatement(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterConditionStatement(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitConditionStatement(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitConditionStatement(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitConditionStatement(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitConditionStatement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -3109,15 +3109,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_forStatement; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterForStatement(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterForStatement(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitForStatement(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitForStatement(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitForStatement(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitForStatement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -3163,15 +3163,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_basicForStatement; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterBasicForStatement(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterBasicForStatement(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitBasicForStatement(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitBasicForStatement(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitBasicForStatement(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitBasicForStatement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -3252,15 +3252,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_stmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterStmt(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterStmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitStmt(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitStmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitStmt(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitStmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -3324,15 +3324,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_block; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterBlock(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterBlock(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitBlock(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitBlock(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitBlock(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitBlock(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -3386,15 +3386,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_forInit; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterForInit(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterForInit(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitForInit(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitForInit(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitForInit(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitForInit(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -3431,15 +3431,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_localVariableDeclaration; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterLocalVariableDeclaration(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterLocalVariableDeclaration(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitLocalVariableDeclaration(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitLocalVariableDeclaration(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitLocalVariableDeclaration(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitLocalVariableDeclaration(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -3476,15 +3476,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_forUpdate; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterForUpdate(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterForUpdate(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitForUpdate(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitForUpdate(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitForUpdate(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitForUpdate(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -3512,26 +3512,26 @@ public class gParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ExpressionContext extends ParserRuleContext {
-		public TerminalNode ID() { return getToken(gParser.ID, 0); }
+		public TerminalNode ID() { return getToken(GrammarParser.ID, 0); }
 		public Condition_greater_lessContext condition_greater_less() {
 			return getRuleContext(Condition_greater_lessContext.class,0);
 		}
-		public TerminalNode NUMBER() { return getToken(gParser.NUMBER, 0); }
+		public TerminalNode NUMBER() { return getToken(GrammarParser.NUMBER, 0); }
 		public ExpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_expression; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterExpression(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterExpression(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitExpression(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitExpression(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitExpression(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitExpression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -3569,15 +3569,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_condition_greater_less; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterCondition_greater_less(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterCondition_greater_less(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitCondition_greater_less(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitCondition_greater_less(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitCondition_greater_less(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitCondition_greater_less(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -3620,15 +3620,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_condition_equal_unequal; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterCondition_equal_unequal(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterCondition_equal_unequal(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitCondition_equal_unequal(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitCondition_equal_unequal(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitCondition_equal_unequal(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitCondition_equal_unequal(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -3665,22 +3665,22 @@ public class gParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class IncDecExpressionContext extends ParserRuleContext {
-		public TerminalNode ID() { return getToken(gParser.ID, 0); }
+		public TerminalNode ID() { return getToken(GrammarParser.ID, 0); }
 		public IncDecExpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_incDecExpression; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterIncDecExpression(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterIncDecExpression(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitIncDecExpression(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitIncDecExpression(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitIncDecExpression(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitIncDecExpression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -3743,7 +3743,7 @@ public class gParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class P_forloopContext extends ParserRuleContext {
-		public TerminalNode ID() { return getToken(gParser.ID, 0); }
+		public TerminalNode ID() { return getToken(GrammarParser.ID, 0); }
 		public P_expContext p_exp() {
 			return getRuleContext(P_expContext.class,0);
 		}
@@ -3759,15 +3759,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_p_forloop; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterP_forloop(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterP_forloop(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitP_forloop(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitP_forloop(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitP_forloop(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitP_forloop(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -3823,7 +3823,7 @@ public class gParser extends Parser {
 		public P_stringContext p_string() {
 			return getRuleContext(P_stringContext.class,0);
 		}
-		public TerminalNode ID() { return getToken(gParser.ID, 0); }
+		public TerminalNode ID() { return getToken(GrammarParser.ID, 0); }
 		public P_rangeContext p_range() {
 			return getRuleContext(P_rangeContext.class,0);
 		}
@@ -3836,15 +3836,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_p_exp; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterP_exp(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterP_exp(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitP_exp(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitP_exp(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitP_exp(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitP_exp(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -3902,22 +3902,22 @@ public class gParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class P_rangeContext extends ParserRuleContext {
-		public TerminalNode NUMBER() { return getToken(gParser.NUMBER, 0); }
+		public TerminalNode NUMBER() { return getToken(GrammarParser.NUMBER, 0); }
 		public P_rangeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_p_range; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterP_range(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterP_range(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitP_range(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitP_range(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitP_range(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitP_range(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -3966,15 +3966,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_j_if; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterJ_if(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterJ_if(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitJ_if(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitJ_if(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitJ_if(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitJ_if(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -4035,9 +4035,9 @@ public class gParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class J_conditionContext extends ParserRuleContext {
-		public List<TerminalNode> BOOL_JAVA() { return getTokens(gParser.BOOL_JAVA); }
+		public List<TerminalNode> BOOL_JAVA() { return getTokens(GrammarParser.BOOL_JAVA); }
 		public TerminalNode BOOL_JAVA(int i) {
-			return getToken(gParser.BOOL_JAVA, i);
+			return getToken(GrammarParser.BOOL_JAVA, i);
 		}
 		public List<J_function_callContext> j_function_call() {
 			return getRuleContexts(J_function_callContext.class);
@@ -4048,25 +4048,25 @@ public class gParser extends Parser {
 		public Condition_equal_unequalContext condition_equal_unequal() {
 			return getRuleContext(Condition_equal_unequalContext.class,0);
 		}
-		public List<TerminalNode> ID() { return getTokens(gParser.ID); }
+		public List<TerminalNode> ID() { return getTokens(GrammarParser.ID); }
 		public TerminalNode ID(int i) {
-			return getToken(gParser.ID, i);
+			return getToken(GrammarParser.ID, i);
 		}
-		public List<TerminalNode> STRING() { return getTokens(gParser.STRING); }
+		public List<TerminalNode> STRING() { return getTokens(GrammarParser.STRING); }
 		public TerminalNode STRING(int i) {
-			return getToken(gParser.STRING, i);
+			return getToken(GrammarParser.STRING, i);
 		}
-		public List<TerminalNode> NUMBER() { return getTokens(gParser.NUMBER); }
+		public List<TerminalNode> NUMBER() { return getTokens(GrammarParser.NUMBER); }
 		public TerminalNode NUMBER(int i) {
-			return getToken(gParser.NUMBER, i);
+			return getToken(GrammarParser.NUMBER, i);
 		}
-		public List<TerminalNode> DOBULE() { return getTokens(gParser.DOBULE); }
+		public List<TerminalNode> DOBULE() { return getTokens(GrammarParser.DOBULE); }
 		public TerminalNode DOBULE(int i) {
-			return getToken(gParser.DOBULE, i);
+			return getToken(GrammarParser.DOBULE, i);
 		}
-		public List<TerminalNode> CHAR() { return getTokens(gParser.CHAR); }
+		public List<TerminalNode> CHAR() { return getTokens(GrammarParser.CHAR); }
 		public TerminalNode CHAR(int i) {
-			return getToken(gParser.CHAR, i);
+			return getToken(GrammarParser.CHAR, i);
 		}
 		public List<IncDecExpressionContext> incDecExpression() {
 			return getRuleContexts(IncDecExpressionContext.class);
@@ -4083,15 +4083,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_j_condition; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterJ_condition(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterJ_condition(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitJ_condition(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitJ_condition(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitJ_condition(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitJ_condition(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -4312,15 +4312,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_p_if; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterP_if(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterP_if(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitP_if(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitP_if(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitP_if(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitP_if(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -4398,7 +4398,7 @@ public class gParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class P_conditionContext extends ParserRuleContext {
-		public TerminalNode BOOL_PYTHON() { return getToken(gParser.BOOL_PYTHON, 0); }
+		public TerminalNode BOOL_PYTHON() { return getToken(GrammarParser.BOOL_PYTHON, 0); }
 		public List<P_function_callContext> p_function_call() {
 			return getRuleContexts(P_function_callContext.class);
 		}
@@ -4408,25 +4408,25 @@ public class gParser extends Parser {
 		public Condition_equal_unequalContext condition_equal_unequal() {
 			return getRuleContext(Condition_equal_unequalContext.class,0);
 		}
-		public List<TerminalNode> STRING_SMALL() { return getTokens(gParser.STRING_SMALL); }
+		public List<TerminalNode> STRING_SMALL() { return getTokens(GrammarParser.STRING_SMALL); }
 		public TerminalNode STRING_SMALL(int i) {
-			return getToken(gParser.STRING_SMALL, i);
+			return getToken(GrammarParser.STRING_SMALL, i);
 		}
-		public List<TerminalNode> STRING() { return getTokens(gParser.STRING); }
+		public List<TerminalNode> STRING() { return getTokens(GrammarParser.STRING); }
 		public TerminalNode STRING(int i) {
-			return getToken(gParser.STRING, i);
+			return getToken(GrammarParser.STRING, i);
 		}
-		public List<TerminalNode> ID() { return getTokens(gParser.ID); }
+		public List<TerminalNode> ID() { return getTokens(GrammarParser.ID); }
 		public TerminalNode ID(int i) {
-			return getToken(gParser.ID, i);
+			return getToken(GrammarParser.ID, i);
 		}
-		public List<TerminalNode> NUMBER() { return getTokens(gParser.NUMBER); }
+		public List<TerminalNode> NUMBER() { return getTokens(GrammarParser.NUMBER); }
 		public TerminalNode NUMBER(int i) {
-			return getToken(gParser.NUMBER, i);
+			return getToken(GrammarParser.NUMBER, i);
 		}
-		public List<TerminalNode> DOBULE() { return getTokens(gParser.DOBULE); }
+		public List<TerminalNode> DOBULE() { return getTokens(GrammarParser.DOBULE); }
 		public TerminalNode DOBULE(int i) {
-			return getToken(gParser.DOBULE, i);
+			return getToken(GrammarParser.DOBULE, i);
 		}
 		public Condition_greater_lessContext condition_greater_less() {
 			return getRuleContext(Condition_greater_lessContext.class,0);
@@ -4437,15 +4437,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_p_condition; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterP_condition(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterP_condition(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitP_condition(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitP_condition(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitP_condition(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitP_condition(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -4606,15 +4606,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_j_arg_code_block; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterJ_arg_code_block(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterJ_arg_code_block(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitJ_arg_code_block(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitJ_arg_code_block(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitJ_arg_code_block(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitJ_arg_code_block(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -4657,15 +4657,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_j_arg_condition; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterJ_arg_condition(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterJ_arg_condition(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitJ_arg_condition(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitJ_arg_condition(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitJ_arg_condition(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitJ_arg_condition(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -4706,15 +4706,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_j_arg_function; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterJ_arg_function(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterJ_arg_function(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitJ_arg_function(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitJ_arg_function(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitJ_arg_function(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitJ_arg_function(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -4755,15 +4755,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_j_arg_special_function; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterJ_arg_special_function(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterJ_arg_special_function(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitJ_arg_special_function(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitJ_arg_special_function(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitJ_arg_special_function(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitJ_arg_special_function(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -4806,15 +4806,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_j_arg_universal; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterJ_arg_universal(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterJ_arg_universal(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitJ_arg_universal(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitJ_arg_universal(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitJ_arg_universal(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitJ_arg_universal(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -4873,15 +4873,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_p_arg_code_block; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterP_arg_code_block(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterP_arg_code_block(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitP_arg_code_block(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitP_arg_code_block(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitP_arg_code_block(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitP_arg_code_block(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -4924,15 +4924,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_p_arg_condition; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterP_arg_condition(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterP_arg_condition(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitP_arg_condition(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitP_arg_condition(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitP_arg_condition(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitP_arg_condition(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -4973,15 +4973,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_p_arg_function; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterP_arg_function(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterP_arg_function(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitP_arg_function(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitP_arg_function(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitP_arg_function(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitP_arg_function(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -5022,15 +5022,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_p_arg_special_function; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterP_arg_special_function(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterP_arg_special_function(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitP_arg_special_function(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitP_arg_special_function(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitP_arg_special_function(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitP_arg_special_function(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -5073,15 +5073,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_p_arg_universal; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterP_arg_universal(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterP_arg_universal(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitP_arg_universal(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitP_arg_universal(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitP_arg_universal(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitP_arg_universal(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -5143,15 +5143,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_j_seqSeq; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterJ_seqSeq(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterJ_seqSeq(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitJ_seqSeq(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitJ_seqSeq(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitJ_seqSeq(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitJ_seqSeq(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -5203,15 +5203,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_p_seqSeq; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterP_seqSeq(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterP_seqSeq(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitP_seqSeq(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitP_seqSeq(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitP_seqSeq(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitP_seqSeq(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -5263,15 +5263,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_j_choice; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterJ_choice(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterJ_choice(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitJ_choice(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitJ_choice(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitJ_choice(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitJ_choice(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -5327,15 +5327,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_p_choice; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterP_choice(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterP_choice(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitP_choice(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitP_choice(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitP_choice(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitP_choice(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -5394,15 +5394,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_p_repeat; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterP_repeat(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterP_repeat(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitP_repeat(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitP_repeat(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitP_repeat(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitP_repeat(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -5461,15 +5461,15 @@ public class gParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_j_repeat; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).enterJ_repeat(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterJ_repeat(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gListener ) ((gListener)listener).exitJ_repeat(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitJ_repeat(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gVisitor ) return ((gVisitor<? extends T>)visitor).visitJ_repeat(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitJ_repeat(this);
 			else return visitor.visitChildren(this);
 		}
 	}
