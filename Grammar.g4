@@ -5,7 +5,14 @@ prog: (
     | j_choice
     | p_choice
     | j_repeat
-    | p_repeat)
+    | p_repeat
+    | j_loop
+    | p_loop
+    | j_para
+    | p_para
+    | j_cond
+    | p_cond
+    )
     EOF;
 
 java: j_line*;
