@@ -271,10 +271,10 @@ p_repeat : 'repeat('p_arg_universal ',' p_arg_universal ',' p_arg_condition ',' 
 j_repeat : 'repeat('j_arg_universal ',' j_arg_universal ',' j_arg_condition ',' j_arg_universal')';
 
 j_loop
-    :   'Loop('j_arg_universal ','j_arg_universal','j_arg_universal','j_arg_universal ')'
+    :   'Loop('j_arg_universal ','j_arg_condition','j_arg_universal','j_arg_universal ')'
     ;
 p_loop
-    :   'Loop('p_arg_universal ','p_arg_universal','p_arg_universal','p_arg_universal ')'
+    :   'Loop('p_arg_universal ','p_arg_condition','p_arg_universal','p_arg_universal ')'
     ;
 j_para
     :   'Para('j_arg_universal ','j_arg_universal','j_arg_universal','j_arg_universal ')'
@@ -283,8 +283,8 @@ p_para
     :   'Para('p_arg_universal ','p_arg_universal','p_arg_universal','p_arg_universal ')'
     ;
 j_cond
-    :   'Cond('j_arg_universal ','j_arg_universal','j_arg_universal','j_arg_universal ')'
+    :   'Cond('j_arg_condition ','j_arg_universal','j_arg_universal','j_arg_universal ')'
     ;
 p_cond
-    :   'Cond('p_arg_universal ','p_arg_universal','p_arg_universal','p_arg_universal ')'
+    :   'Cond('p_arg_condition ','p_arg_universal','p_arg_universal','p_arg_universal ')'
     ;
