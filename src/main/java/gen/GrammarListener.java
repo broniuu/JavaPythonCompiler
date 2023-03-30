@@ -267,15 +267,15 @@ public interface GrammarListener extends ParseTreeListener {
 	 */
 	void exitJ_type(GrammarParser.J_typeContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GrammarParser#j_loop}.
+	 * Enter a parse tree produced by {@link GrammarParser#j_loopFun}.
 	 * @param ctx the parse tree
 	 */
-	void enterJ_loop(GrammarParser.J_loopContext ctx);
+	void enterJ_loopFun(GrammarParser.J_loopFunContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GrammarParser#j_loop}.
+	 * Exit a parse tree produced by {@link GrammarParser#j_loopFun}.
 	 * @param ctx the parse tree
 	 */
-	void exitJ_loop(GrammarParser.J_loopContext ctx);
+	void exitJ_loopFun(GrammarParser.J_loopFunContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GrammarParser#statement}.
 	 * @param ctx the parse tree
@@ -646,4 +646,154 @@ public interface GrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitJ_repeat(GrammarParser.J_repeatContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#j_repeat_first_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_repeat_first_action(GrammarParser.J_repeat_first_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#j_repeat_first_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_repeat_first_action(GrammarParser.J_repeat_first_actionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#j_repeat_second_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_repeat_second_action(GrammarParser.J_repeat_second_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#j_repeat_second_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_repeat_second_action(GrammarParser.J_repeat_second_actionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#j_repeat_third_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_repeat_third_action(GrammarParser.J_repeat_third_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#j_repeat_third_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_repeat_third_action(GrammarParser.J_repeat_third_actionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#j_loop}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_loop(GrammarParser.J_loopContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#j_loop}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_loop(GrammarParser.J_loopContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#p_loop}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_loop(GrammarParser.P_loopContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#p_loop}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_loop(GrammarParser.P_loopContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#j_para}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_para(GrammarParser.J_paraContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#j_para}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_para(GrammarParser.J_paraContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#p_para}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_para(GrammarParser.P_paraContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#p_para}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_para(GrammarParser.P_paraContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#j_cond}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_cond(GrammarParser.J_condContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#j_cond}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_cond(GrammarParser.J_condContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#p_cond}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_cond(GrammarParser.P_condContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#p_cond}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_cond(GrammarParser.P_condContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#j_seq}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_seq(GrammarParser.J_seqContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#j_seq}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_seq(GrammarParser.J_seqContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#p_seq}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_seq(GrammarParser.P_seqContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#p_seq}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_seq(GrammarParser.P_seqContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#j_branch}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_branch(GrammarParser.J_branchContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#j_branch}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_branch(GrammarParser.J_branchContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#p_branch}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_branch(GrammarParser.P_branchContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#p_branch}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_branch(GrammarParser.P_branchContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#j_branchRe}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_branchRe(GrammarParser.J_branchReContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#j_branchRe}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_branchRe(GrammarParser.J_branchReContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#p_branchRe}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_branchRe(GrammarParser.P_branchReContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#p_branchRe}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_branchRe(GrammarParser.P_branchReContext ctx);
 }

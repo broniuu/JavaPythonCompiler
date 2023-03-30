@@ -266,14 +266,19 @@ j_arg_code_block : ('`' java '`');
 j_arg_condition: '``'j_condition'``';
 j_arg_function: '~'j_function_call'~';
 j_arg_special_function
-    : j_seqSeq;
+    : j_seqSeq
+    | j_choice
+    | j_repeat
+    | j_seq;
 j_arg_universal: j_arg_code_block | j_arg_function | j_arg_special_function;
 
 p_arg_code_block : ('`' python '`');
 p_arg_condition: '``'p_condition'``';
 p_arg_function: '~'p_function_call'~';
 p_arg_special_function
-    : p_seqSeq;
+    : p_seqSeq
+    | p_choice
+    | p_repeat;
 p_arg_universal: p_arg_code_block | p_arg_function | p_arg_special_function;
 
 j_seqSeq : 'seqSeq('j_arg_universal ',' j_arg_universal ',' j_arg_universal')';
@@ -281,14 +286,17 @@ p_seqSeq : 'seqSeq('p_arg_universal ',' p_arg_universal ',' p_arg_universal')';
 j_choice : 'choice('j_arg_universal ',' j_arg_universal ',' j_arg_universal',' j_arg_universal')';
 p_choice : 'choice('p_arg_universal ',' p_arg_universal ',' p_arg_universal ',' p_arg_universal')';
 p_repeat : 'repeat('p_arg_universal ',' p_arg_universal ',' p_arg_condition ',' p_arg_universal')';
-j_repeat : 'repeat('j_arg_universal ',' j_arg_universal ',' j_arg_condition ',' j_arg_universal')';
+j_repeat : 'repeat('j_repeat_first_action ',' j_repeat_second_action ',' j_arg_universal ',' j_repeat_third_action')';
+j_repeat_first_action: j_arg_universal;
+j_repeat_second_action: j_arg_universal;
+j_repeat_third_action: j_arg_universal;
 
-j_loop : 'Loop('j_arg_universal ','j_arg_condition','j_arg_universal','j_arg_universal ')';
-p_loop : 'Loop('p_arg_universal ','p_arg_condition','p_arg_universal','p_arg_universal ')';
-j_para : 'Para('j_arg_universal ','j_arg_universal','j_arg_universal','j_arg_universal ')';
-p_para : 'Para('p_arg_universal ','p_arg_universal','p_arg_universal','p_arg_universal ')';
-j_cond : 'Cond('j_arg_condition ','j_arg_universal','j_arg_universal','j_arg_universal ')';
-p_cond : 'Cond('p_arg_condition ','p_arg_universal','p_arg_universal','p_arg_universal ')';
+j_loop : 'loop('j_arg_universal ','j_arg_condition','j_arg_universal','j_arg_universal ')';
+p_loop : 'loop('p_arg_universal ','p_arg_condition','p_arg_universal','p_arg_universal ')';
+j_para : 'para('j_arg_universal ','j_arg_universal','j_arg_universal','j_arg_universal ')';
+p_para : 'para('p_arg_universal ','p_arg_universal','p_arg_universal','p_arg_universal ')';
+j_cond : 'cond('j_arg_condition ','j_arg_universal','j_arg_universal','j_arg_universal ')';
+p_cond : 'cond('p_arg_condition ','p_arg_universal','p_arg_universal','p_arg_universal ')';
 
 j_seq : 'seq('j_arg_universal ',' j_arg_universal')';
 p_seq : 'seq('p_arg_universal ',' p_arg_universal')';
