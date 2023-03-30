@@ -14,7 +14,7 @@ python: p_line*;
 
 p_line: p_function_call | p_assignment | p_forloop | p_if;
 
-j_line: ((j_declaration | j_array_declaration | j_initialization | j_function_call | j_loop | j_if) ';');
+j_line: ((j_declaration | j_array_declaration | j_initialization | j_function_call | j_loopFun | j_if) ';');
 
 j_function_call: ID ('(' j_args ')' | '()');
 
@@ -139,7 +139,7 @@ ID: [a-zA-Z][a-zA-Z0-9_]*;
 WS: [ \t\r\n]+ -> skip;
 
 //For loop java
-j_loop
+j_loopFun
     : statement
     ;
 
@@ -269,3 +269,22 @@ j_choice : 'choice('j_arg_universal ',' j_arg_universal ',' j_arg_universal',' j
 p_choice : 'choice('p_arg_universal ',' p_arg_universal ',' p_arg_universal ',' p_arg_universal')';
 p_repeat : 'repeat('p_arg_universal ',' p_arg_universal ',' p_arg_condition ',' p_arg_universal')';
 j_repeat : 'repeat('j_arg_universal ',' j_arg_universal ',' j_arg_condition ',' j_arg_universal')';
+
+j_loop
+    :   'Loop('j_arg_universal ','j_arg_universal','j_arg_universal','j_arg_universal ')'
+    ;
+p_loop
+    :   'Loop('p_arg_universal ','p_arg_universal','p_arg_universal','p_arg_universal ')'
+    ;
+j_para
+    :   'Para('j_arg_universal ','j_arg_universal','j_arg_universal','j_arg_universal ')'
+    ;
+p_para
+    :   'Para('p_arg_universal ','p_arg_universal','p_arg_universal','p_arg_universal ')'
+    ;
+j_cond
+    :   'Cond('j_arg_universal ','j_arg_universal','j_arg_universal','j_arg_universal ')'
+    ;
+p_cond
+    :   'Cond('p_arg_universal ','p_arg_universal','p_arg_universal','p_arg_universal ')'
+    ;
