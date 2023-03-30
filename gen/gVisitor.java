@@ -76,6 +76,18 @@ public interface gVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitP_arg(gParser.P_argContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link gParser#j_declaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_declaration(gParser.J_declarationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#j_array_declaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_array_declaration(gParser.J_array_declarationContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link gParser#j_initialization}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -118,23 +130,41 @@ public interface gVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitJ_char_initialization(gParser.J_char_initializationContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link gParser#p_declaration}.
+	 * Visit a parse tree produced by {@link gParser#j_array_initialization}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitP_declaration(gParser.P_declarationContext ctx);
+	T visitJ_array_initialization(gParser.J_array_initializationContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link gParser#j_type}.
+	 * Visit a parse tree produced by {@link gParser#p_assignment}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitJ_type(gParser.J_typeContext ctx);
+	T visitP_assignment(gParser.P_assignmentContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#p_rhs_value}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_rhs_value(gParser.P_rhs_valueContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link gParser#p_string}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitP_string(gParser.P_stringContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#p_list}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_list(gParser.P_listContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#j_type}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_type(gParser.J_typeContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link gParser#j_loop}.
 	 * @param ctx the parse tree
@@ -208,11 +238,17 @@ public interface gVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExpression(gParser.ExpressionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link gParser#condition}.
+	 * Visit a parse tree produced by {@link gParser#condition_greater_less}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitCondition(gParser.ConditionContext ctx);
+	T visitCondition_greater_less(gParser.Condition_greater_lessContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#condition_equal_unequal}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCondition_equal_unequal(gParser.Condition_equal_unequalContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link gParser#incDecExpression}.
 	 * @param ctx the parse tree
@@ -232,21 +268,129 @@ public interface gVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitP_exp(gParser.P_expContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link gParser#p_list}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitP_list(gParser.P_listContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link gParser#p_type}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitP_type(gParser.P_typeContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link gParser#p_range}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitP_range(gParser.P_rangeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#j_if}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_if(gParser.J_ifContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#j_condition}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_condition(gParser.J_conditionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#p_if}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_if(gParser.P_ifContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#p_condition}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_condition(gParser.P_conditionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#j_arg_code_block}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_arg_code_block(gParser.J_arg_code_blockContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#j_arg_condition}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_arg_condition(gParser.J_arg_conditionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#j_arg_function}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_arg_function(gParser.J_arg_functionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#j_arg_special_function}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_arg_special_function(gParser.J_arg_special_functionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#j_arg_universal}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_arg_universal(gParser.J_arg_universalContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#p_arg_code_block}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_arg_code_block(gParser.P_arg_code_blockContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#p_arg_condition}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_arg_condition(gParser.P_arg_conditionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#p_arg_function}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_arg_function(gParser.P_arg_functionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#p_arg_special_function}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_arg_special_function(gParser.P_arg_special_functionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#p_arg_universal}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_arg_universal(gParser.P_arg_universalContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#j_seqSeq}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_seqSeq(gParser.J_seqSeqContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#p_seqSeq}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_seqSeq(gParser.P_seqSeqContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#j_choice}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_choice(gParser.J_choiceContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#p_choice}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_choice(gParser.P_choiceContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#p_repeat}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_repeat(gParser.P_repeatContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gParser#j_repeat}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_repeat(gParser.J_repeatContext ctx);
 }

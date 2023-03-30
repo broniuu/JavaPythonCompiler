@@ -1,5 +1,12 @@
 grammar g;
-prog: (java | python) EOF;
+prog: (
+    j_seqSeq
+    | p_seqSeq
+    | j_choice
+    | p_choice
+    | j_repeat
+    | p_repeat)
+    EOF;
 
 java: j_line*;
 
@@ -7,9 +14,9 @@ python: p_line*;
 
 p_line: p_function_call | p_assignment | p_forloop | p_if;
 
-j_line: ((j_declaration | j_array_declaration | j_initialization | j_function_call) ';') | j_loop | j_if;
+j_line: ((j_declaration | j_array_declaration | j_initialization | j_function_call | j_loop | j_if) ';');
 
-j_function_call: FUNCTION_NAME ('(' j_args ')' | '()');
+j_function_call: ID ('(' j_args ')' | '()');
 
 j_args: ( j_arg ',')* j_arg;
 
@@ -18,10 +25,10 @@ j_arg
     | j_function_call
     | NUMBER
     | STRING
-    | (j_type ID)
+    | ID
     ;
 
-p_function_call: FUNCTION_NAME ('(' p_args ')' | '()');
+p_function_call: ID ('(' p_args ')' | '()');
 
 p_args: ( p_arg ',')* p_arg;
 
@@ -110,8 +117,6 @@ p_string: STRING |  STRING_SMALL;
 p_list: '[' (p_rhs_value (',' p_rhs_value)*)? ']';
 
 j_type: INT_TYPE | CHAR_TYPE | STRING_TYPE | DOUBLE_TYPE | FLOAT_TYPE | BOOL_TYPE;
-
-FUNCTION_NAME: 'Seq' | 'Cond' | 'BranchRe' | 'Branch' | 'ConcurRe' | 'Concur' | 'Para' | 'Loop';
 
 //Values
 NUMBER: '0' | '-'?[1-9][0-9]*;
@@ -224,9 +229,9 @@ p_range
 // If java
 
 j_if
-    : 'if' '(' j_if_declaration (('||' | '&&') j_if_declaration)* ')' stmt;
+    : 'if' '(' j_condition (('||' | '&&') j_condition)* ')' stmt;
 
-j_if_declaration
+j_condition
     : BOOL_JAVA | j_function_call
     | (BOOL_JAVA | ID) condition_equal_unequal (BOOL_JAVA | ID)
     | (STRING | ID) condition_equal_unequal (STRING | ID)
@@ -236,10 +241,31 @@ j_if_declaration
 // If python
 
 p_if
-    : 'if ' p_if_declaration (('or' | 'and') p_if_declaration)* ':' p_line+;
+    : 'if ' p_condition (('or' | 'and') p_condition)* ':' p_line+;
 
-p_if_declaration
+p_condition
     : BOOL_PYTHON | p_function_call
     | (STRING_SMALL | STRING | ID) condition_equal_unequal (STRING_SMALL | STRING | ID)
     | (ID | NUMBER | DOBULE | p_function_call) (condition_greater_less | condition_equal_unequal) (ID | NUMBER | DOBULE | p_function_call)
     ;
+
+j_arg_code_block : ('`' java '`');
+j_arg_condition: '``'j_condition'``';
+j_arg_function: '~'j_function_call'~';
+j_arg_special_function
+    : j_seqSeq;
+j_arg_universal: j_arg_code_block | j_arg_function | j_arg_special_function;
+
+p_arg_code_block : ('`' python '`');
+p_arg_condition: '``'p_condition'``';
+p_arg_function: '~'p_function_call'~';
+p_arg_special_function
+    : p_seqSeq;
+p_arg_universal: p_arg_code_block | p_arg_function | p_arg_special_function;
+
+j_seqSeq : 'seqSeq('j_arg_universal ',' j_arg_universal ',' j_arg_universal')';
+p_seqSeq : 'seqSeq('p_arg_universal ',' p_arg_universal ',' p_arg_universal')';
+j_choice : 'choice('j_arg_universal ',' j_arg_universal ',' j_arg_universal',' j_arg_universal')';
+p_choice : 'choice('p_arg_universal ',' p_arg_universal ',' p_arg_universal ',' p_arg_universal')';
+p_repeat : 'repeat('p_arg_universal ',' p_arg_universal ',' p_arg_condition ',' p_arg_universal')';
+j_repeat : 'repeat('j_arg_universal ',' j_arg_universal ',' j_arg_condition ',' j_arg_universal')';

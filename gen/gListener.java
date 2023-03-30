@@ -117,6 +117,26 @@ public interface gListener extends ParseTreeListener {
 	 */
 	void exitP_arg(gParser.P_argContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link gParser#j_declaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_declaration(gParser.J_declarationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#j_declaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_declaration(gParser.J_declarationContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#j_array_declaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_array_declaration(gParser.J_array_declarationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#j_array_declaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_array_declaration(gParser.J_array_declarationContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link gParser#j_initialization}.
 	 * @param ctx the parse tree
 	 */
@@ -187,25 +207,35 @@ public interface gListener extends ParseTreeListener {
 	 */
 	void exitJ_char_initialization(gParser.J_char_initializationContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link gParser#p_declaration}.
+	 * Enter a parse tree produced by {@link gParser#j_array_initialization}.
 	 * @param ctx the parse tree
 	 */
-	void enterP_declaration(gParser.P_declarationContext ctx);
+	void enterJ_array_initialization(gParser.J_array_initializationContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link gParser#p_declaration}.
+	 * Exit a parse tree produced by {@link gParser#j_array_initialization}.
 	 * @param ctx the parse tree
 	 */
-	void exitP_declaration(gParser.P_declarationContext ctx);
+	void exitJ_array_initialization(gParser.J_array_initializationContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link gParser#j_type}.
+	 * Enter a parse tree produced by {@link gParser#p_assignment}.
 	 * @param ctx the parse tree
 	 */
-	void enterJ_type(gParser.J_typeContext ctx);
+	void enterP_assignment(gParser.P_assignmentContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link gParser#j_type}.
+	 * Exit a parse tree produced by {@link gParser#p_assignment}.
 	 * @param ctx the parse tree
 	 */
-	void exitJ_type(gParser.J_typeContext ctx);
+	void exitP_assignment(gParser.P_assignmentContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#p_rhs_value}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_rhs_value(gParser.P_rhs_valueContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#p_rhs_value}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_rhs_value(gParser.P_rhs_valueContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link gParser#p_string}.
 	 * @param ctx the parse tree
@@ -216,6 +246,26 @@ public interface gListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitP_string(gParser.P_stringContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#p_list}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_list(gParser.P_listContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#p_list}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_list(gParser.P_listContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#j_type}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_type(gParser.J_typeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#j_type}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_type(gParser.J_typeContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link gParser#j_loop}.
 	 * @param ctx the parse tree
@@ -337,15 +387,25 @@ public interface gListener extends ParseTreeListener {
 	 */
 	void exitExpression(gParser.ExpressionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link gParser#condition}.
+	 * Enter a parse tree produced by {@link gParser#condition_greater_less}.
 	 * @param ctx the parse tree
 	 */
-	void enterCondition(gParser.ConditionContext ctx);
+	void enterCondition_greater_less(gParser.Condition_greater_lessContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link gParser#condition}.
+	 * Exit a parse tree produced by {@link gParser#condition_greater_less}.
 	 * @param ctx the parse tree
 	 */
-	void exitCondition(gParser.ConditionContext ctx);
+	void exitCondition_greater_less(gParser.Condition_greater_lessContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#condition_equal_unequal}.
+	 * @param ctx the parse tree
+	 */
+	void enterCondition_equal_unequal(gParser.Condition_equal_unequalContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#condition_equal_unequal}.
+	 * @param ctx the parse tree
+	 */
+	void exitCondition_equal_unequal(gParser.Condition_equal_unequalContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link gParser#incDecExpression}.
 	 * @param ctx the parse tree
@@ -377,26 +437,6 @@ public interface gListener extends ParseTreeListener {
 	 */
 	void exitP_exp(gParser.P_expContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link gParser#p_list}.
-	 * @param ctx the parse tree
-	 */
-	void enterP_list(gParser.P_listContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link gParser#p_list}.
-	 * @param ctx the parse tree
-	 */
-	void exitP_list(gParser.P_listContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link gParser#p_type}.
-	 * @param ctx the parse tree
-	 */
-	void enterP_type(gParser.P_typeContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link gParser#p_type}.
-	 * @param ctx the parse tree
-	 */
-	void exitP_type(gParser.P_typeContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link gParser#p_range}.
 	 * @param ctx the parse tree
 	 */
@@ -406,4 +446,204 @@ public interface gListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitP_range(gParser.P_rangeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#j_if}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_if(gParser.J_ifContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#j_if}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_if(gParser.J_ifContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#j_condition}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_condition(gParser.J_conditionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#j_condition}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_condition(gParser.J_conditionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#p_if}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_if(gParser.P_ifContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#p_if}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_if(gParser.P_ifContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#p_condition}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_condition(gParser.P_conditionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#p_condition}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_condition(gParser.P_conditionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#j_arg_code_block}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_arg_code_block(gParser.J_arg_code_blockContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#j_arg_code_block}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_arg_code_block(gParser.J_arg_code_blockContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#j_arg_condition}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_arg_condition(gParser.J_arg_conditionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#j_arg_condition}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_arg_condition(gParser.J_arg_conditionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#j_arg_function}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_arg_function(gParser.J_arg_functionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#j_arg_function}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_arg_function(gParser.J_arg_functionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#j_arg_special_function}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_arg_special_function(gParser.J_arg_special_functionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#j_arg_special_function}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_arg_special_function(gParser.J_arg_special_functionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#j_arg_universal}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_arg_universal(gParser.J_arg_universalContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#j_arg_universal}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_arg_universal(gParser.J_arg_universalContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#p_arg_code_block}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_arg_code_block(gParser.P_arg_code_blockContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#p_arg_code_block}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_arg_code_block(gParser.P_arg_code_blockContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#p_arg_condition}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_arg_condition(gParser.P_arg_conditionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#p_arg_condition}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_arg_condition(gParser.P_arg_conditionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#p_arg_function}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_arg_function(gParser.P_arg_functionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#p_arg_function}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_arg_function(gParser.P_arg_functionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#p_arg_special_function}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_arg_special_function(gParser.P_arg_special_functionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#p_arg_special_function}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_arg_special_function(gParser.P_arg_special_functionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#p_arg_universal}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_arg_universal(gParser.P_arg_universalContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#p_arg_universal}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_arg_universal(gParser.P_arg_universalContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#j_seqSeq}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_seqSeq(gParser.J_seqSeqContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#j_seqSeq}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_seqSeq(gParser.J_seqSeqContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#p_seqSeq}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_seqSeq(gParser.P_seqSeqContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#p_seqSeq}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_seqSeq(gParser.P_seqSeqContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#j_choice}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_choice(gParser.J_choiceContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#j_choice}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_choice(gParser.J_choiceContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#p_choice}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_choice(gParser.P_choiceContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#p_choice}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_choice(gParser.P_choiceContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#p_repeat}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_repeat(gParser.P_repeatContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#p_repeat}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_repeat(gParser.P_repeatContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gParser#j_repeat}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_repeat(gParser.J_repeatContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gParser#j_repeat}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_repeat(gParser.J_repeatContext ctx);
 }
