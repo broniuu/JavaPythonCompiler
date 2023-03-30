@@ -12,6 +12,12 @@ prog: (
     | p_para
     | j_cond
     | p_cond
+    | j_seq
+    | p_seq
+    | j_branch
+    | p_branch
+    | j_branchRe
+    | p_branchRe
     )
     EOF;
 
@@ -283,3 +289,10 @@ j_para : 'Para('j_arg_universal ','j_arg_universal','j_arg_universal','j_arg_uni
 p_para : 'Para('p_arg_universal ','p_arg_universal','p_arg_universal','p_arg_universal ')';
 j_cond : 'Cond('j_arg_condition ','j_arg_universal','j_arg_universal','j_arg_universal ')';
 p_cond : 'Cond('p_arg_condition ','p_arg_universal','p_arg_universal','p_arg_universal ')';
+
+j_seq : 'seq('j_arg_universal ',' j_arg_universal')';
+p_seq : 'seq('p_arg_universal ',' p_arg_universal')';
+j_branch : 'branch('j_arg_condition ',' j_arg_universal ',' j_arg_universal')';
+p_branch : 'branch('p_arg_universal ',' p_arg_universal ',' p_arg_universal')';
+j_branchRe : 'branchRe('j_arg_universal ',' j_arg_universal ',' j_arg_universal')';
+p_branchRe : 'branchRe('p_arg_universal ',' p_arg_universal ',' p_arg_universal')';
