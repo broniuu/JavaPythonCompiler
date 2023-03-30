@@ -4,104 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b057e99-973e-4e13-a072-76bcb70fe167" name="Changes" comment="add rest of files">
-      <change afterPath="$PROJECT_DIR$/src/main/java/JavaGrammarListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/Grammar.interp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/Grammar.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/GrammarBaseListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/GrammarBaseVisitor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/GrammarLexer.interp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/GrammarLexer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/GrammarLexer.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/GrammarListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/GrammarParser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/GrammarVisitor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Grammar.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Grammar.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GrammarScriptListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gen/Grammar.interp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gen/Grammar.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gen/GrammarBaseListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gen/GrammarBaseVisitor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gen/GrammarLexer.interp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gen/GrammarLexer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gen/GrammarLexer.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gen/GrammarListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gen/GrammarParser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gen/GrammarVisitor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GrammarScriptListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarBaseListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarBaseListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarBaseVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarBaseVisitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarLexer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarLexer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$BasicForStatementContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$BasicForStatementContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$BlockContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$BlockContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$ConditionStatementContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$ConditionStatementContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$Condition_equal_unequalContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$Condition_equal_unequalContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$Condition_greater_lessContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$Condition_greater_lessContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$ExpressionContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$ExpressionContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$ForInitContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$ForInitContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$ForStatementContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$ForStatementContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$ForUpdateContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$ForUpdateContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$IncDecExpressionContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$IncDecExpressionContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_argContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_argContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_arg_code_blockContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_arg_code_blockContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_arg_conditionContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_arg_conditionContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_arg_functionContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_arg_functionContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_arg_special_functionContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_arg_special_functionContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_arg_universalContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_arg_universalContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_argsContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_argsContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_array_declarationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_array_declarationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_array_initializationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_array_initializationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_bool_initializationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_bool_initializationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_char_initializationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_char_initializationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_choiceContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_choiceContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_conditionContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_conditionContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_declarationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_declarationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_double_initializationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_double_initializationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_float_initializationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_float_initializationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_function_callContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_function_callContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_ifContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_ifContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_initializationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_initializationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_int_initializationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_int_initializationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_lineContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_lineContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_loopContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_loopContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_repeatContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_repeatContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_seqSeqContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_seqSeqContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_string_initializationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_string_initializationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_typeContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_typeContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$JavaContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$JavaContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$LocalVariableDeclarationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$LocalVariableDeclarationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_argContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_argContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_arg_code_blockContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_arg_code_blockContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_arg_conditionContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_arg_conditionContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_arg_functionContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_arg_functionContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_arg_special_functionContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_arg_special_functionContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_arg_universalContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_arg_universalContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_argsContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_argsContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_assignmentContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_assignmentContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_choiceContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_choiceContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_conditionContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_conditionContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_expContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_expContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_forloopContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_forloopContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_function_callContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_function_callContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_ifContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_ifContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_lineContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_lineContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_listContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_listContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_rangeContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_rangeContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_repeatContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_repeatContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_rhs_valueContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_rhs_valueContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_seqSeqContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_seqSeqContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_stringContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_stringContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$ProgContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$ProgContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$PythonContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$PythonContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$StatementContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$StatementContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$StmtContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$StmtContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$WhileStatementContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$WhileStatementContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarVisitor.class" afterDir="false" />
+    <list default="true" id="3b057e99-973e-4e13-a072-76bcb70fe167" name="Changes" comment="add seq and loop">
+      <change beforePath="$PROJECT_DIR$/src/main/java/JavaGrammarListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JavaGrammarListener.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +89,7 @@
       <workItem from="1680177329698" duration="730000" />
       <workItem from="1680178092862" duration="96000" />
       <workItem from="1680178198658" duration="3153000" />
-      <workItem from="1680193916592" duration="9920000" />
+      <workItem from="1680193916592" duration="10309000" />
     </task>
     <task id="LOCAL-00001" summary="Create maven project">
       <created>1680178304516</created>
@@ -208,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680184239539</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add seq and loop">
+      <created>1680204050944</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1680204050944</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,6 +129,7 @@
     <MESSAGE value="Create maven project" />
     <MESSAGE value="fix maven project" />
     <MESSAGE value="add rest of files" />
-    <option name="LAST_COMMIT_MESSAGE" value="add rest of files" />
+    <MESSAGE value="add seq and loop" />
+    <option name="LAST_COMMIT_MESSAGE" value="add seq and loop" />
   </component>
 </project>
