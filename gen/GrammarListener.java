@@ -267,15 +267,15 @@ public interface GrammarListener extends ParseTreeListener {
 	 */
 	void exitJ_type(GrammarParser.J_typeContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GrammarParser#j_loop}.
+	 * Enter a parse tree produced by {@link GrammarParser#j_loopFun}.
 	 * @param ctx the parse tree
 	 */
-	void enterJ_loop(GrammarParser.J_loopContext ctx);
+	void enterJ_loopFun(GrammarParser.J_loopFunContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GrammarParser#j_loop}.
+	 * Exit a parse tree produced by {@link GrammarParser#j_loopFun}.
 	 * @param ctx the parse tree
 	 */
-	void exitJ_loop(GrammarParser.J_loopContext ctx);
+	void exitJ_loopFun(GrammarParser.J_loopFunContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GrammarParser#statement}.
 	 * @param ctx the parse tree
@@ -646,4 +646,64 @@ public interface GrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitJ_repeat(GrammarParser.J_repeatContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#j_loop}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_loop(GrammarParser.J_loopContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#j_loop}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_loop(GrammarParser.J_loopContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#p_loop}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_loop(GrammarParser.P_loopContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#p_loop}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_loop(GrammarParser.P_loopContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#j_para}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_para(GrammarParser.J_paraContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#j_para}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_para(GrammarParser.J_paraContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#p_para}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_para(GrammarParser.P_paraContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#p_para}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_para(GrammarParser.P_paraContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#j_cond}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_cond(GrammarParser.J_condContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#j_cond}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_cond(GrammarParser.J_condContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#p_cond}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_cond(GrammarParser.P_condContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#p_cond}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_cond(GrammarParser.P_condContext ctx);
 }

@@ -166,11 +166,11 @@ public interface GrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitJ_type(GrammarParser.J_typeContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link GrammarParser#j_loop}.
+	 * Visit a parse tree produced by {@link GrammarParser#j_loopFun}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitJ_loop(GrammarParser.J_loopContext ctx);
+	T visitJ_loopFun(GrammarParser.J_loopFunContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GrammarParser#statement}.
 	 * @param ctx the parse tree
@@ -393,4 +393,40 @@ public interface GrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitJ_repeat(GrammarParser.J_repeatContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#j_loop}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_loop(GrammarParser.J_loopContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#p_loop}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_loop(GrammarParser.P_loopContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#j_para}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_para(GrammarParser.J_paraContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#p_para}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_para(GrammarParser.P_paraContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#j_cond}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_cond(GrammarParser.J_condContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#p_cond}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_cond(GrammarParser.P_condContext ctx);
 }
