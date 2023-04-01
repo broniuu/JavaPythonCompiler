@@ -9,7 +9,7 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 public class Main {
     public static void main(String[] args) {
         CharStream codePointCharStream = CharStreams
-                .fromString("repeat(`int a = 1;`, `int c = 2;`, ``ab < 2``, `int i = 5;`)");
+                .fromString("");
         GrammarLexer lexer = new GrammarLexer(codePointCharStream);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         GrammarParser parser = new GrammarParser(tokens);

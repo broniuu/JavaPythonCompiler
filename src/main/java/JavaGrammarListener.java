@@ -17,6 +17,7 @@ public class JavaGrammarListener extends GrammarBaseListener{
 
     @Override
     public void exitJ_repeat_first_action(GrammarParser.J_repeat_first_actionContext ctx) {
+        printTabs();
         code.append("do {\n");
         tabNumber++;
     }
@@ -24,6 +25,7 @@ public class JavaGrammarListener extends GrammarBaseListener{
     @Override
     public void exitJ_repeat_second_action(GrammarParser.J_repeat_second_actionContext ctx) {
         tabNumber--;
+        printTabs();
         code.append("} while(");
     }
 
@@ -35,6 +37,28 @@ public class JavaGrammarListener extends GrammarBaseListener{
     @Override
     public void enterJ_repeat_third_action(GrammarParser.J_repeat_third_actionContext ctx) {
         code.append(")\n");
+    }
+
+    @Override
+    public void enterJ_choice_second_action(GrammarParser.J_choice_second_actionContext ctx) {
+        printTabs();
+        code.append("if () {\n");
+        tabNumber++;
+    }
+
+    @Override
+    public void enterJ_choice_third_action(GrammarParser.J_choice_third_actionContext ctx) {
+        tabNumber--;
+        printTabs();
+        code.append("} else {\n");
+        tabNumber++;
+    }
+
+    @Override
+    public void enterJ_choice_fourth_action(GrammarParser.J_choice_fourth_actionContext ctx) {
+        tabNumber--;
+        printTabs();
+        code.append("}\n");
     }
 
     @Override

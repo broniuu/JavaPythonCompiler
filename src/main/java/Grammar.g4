@@ -283,10 +283,14 @@ p_arg_universal: p_arg_code_block | p_arg_function | p_arg_special_function;
 
 j_seqSeq : 'seqSeq('j_arg_universal ',' j_arg_universal ',' j_arg_universal')';
 p_seqSeq : 'seqSeq('p_arg_universal ',' p_arg_universal ',' p_arg_universal')';
-j_choice : 'choice('j_arg_universal ',' j_arg_universal ',' j_arg_universal',' j_arg_universal')';
+j_choice : 'choice('j_choice_first_action ',' j_choice_second_action ',' j_choice_third_action',' j_choice_fourth_action')';
+j_choice_first_action: j_arg_universal;
+j_choice_second_action: j_arg_universal;
+j_choice_third_action: j_arg_universal;
+j_choice_fourth_action: j_arg_universal;
 p_choice : 'choice('p_arg_universal ',' p_arg_universal ',' p_arg_universal ',' p_arg_universal')';
 p_repeat : 'repeat('p_arg_universal ',' p_arg_universal ',' p_arg_condition ',' p_arg_universal')';
-j_repeat : 'repeat('j_repeat_first_action ',' j_repeat_second_action ',' j_arg_universal ',' j_repeat_third_action')';
+j_repeat : 'repeat('j_repeat_first_action ',' j_repeat_second_action ',' j_arg_condition ',' j_repeat_third_action')';
 j_repeat_first_action: j_arg_universal;
 j_repeat_second_action: j_arg_universal;
 j_repeat_third_action: j_arg_universal;
