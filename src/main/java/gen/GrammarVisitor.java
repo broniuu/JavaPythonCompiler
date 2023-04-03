@@ -376,12 +376,6 @@ public interface GrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitJ_choice(GrammarParser.J_choiceContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link GrammarParser#j_choice_first_action}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitJ_choice_first_action(GrammarParser.J_choice_first_actionContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link GrammarParser#j_choice_second_action}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -406,11 +400,47 @@ public interface GrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitP_choice(GrammarParser.P_choiceContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link GrammarParser#p_choice_second_action}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_choice_second_action(GrammarParser.P_choice_second_actionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#p_choice_third_action}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_choice_third_action(GrammarParser.P_choice_third_actionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#p_choice_fourth_action}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_choice_fourth_action(GrammarParser.P_choice_fourth_actionContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link GrammarParser#p_repeat}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitP_repeat(GrammarParser.P_repeatContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#p_repeat_first_action}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_repeat_first_action(GrammarParser.P_repeat_first_actionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#p_repeat_second_action}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_repeat_second_action(GrammarParser.P_repeat_second_actionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#p_repeat_third_action}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_repeat_third_action(GrammarParser.P_repeat_third_actionContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GrammarParser#j_repeat}.
 	 * @param ctx the parse tree

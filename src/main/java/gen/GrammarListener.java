@@ -617,16 +617,6 @@ public interface GrammarListener extends ParseTreeListener {
 	 */
 	void exitJ_choice(GrammarParser.J_choiceContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GrammarParser#j_choice_first_action}.
-	 * @param ctx the parse tree
-	 */
-	void enterJ_choice_first_action(GrammarParser.J_choice_first_actionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GrammarParser#j_choice_first_action}.
-	 * @param ctx the parse tree
-	 */
-	void exitJ_choice_first_action(GrammarParser.J_choice_first_actionContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link GrammarParser#j_choice_second_action}.
 	 * @param ctx the parse tree
 	 */
@@ -667,6 +657,36 @@ public interface GrammarListener extends ParseTreeListener {
 	 */
 	void exitP_choice(GrammarParser.P_choiceContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link GrammarParser#p_choice_second_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_choice_second_action(GrammarParser.P_choice_second_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#p_choice_second_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_choice_second_action(GrammarParser.P_choice_second_actionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#p_choice_third_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_choice_third_action(GrammarParser.P_choice_third_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#p_choice_third_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_choice_third_action(GrammarParser.P_choice_third_actionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#p_choice_fourth_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_choice_fourth_action(GrammarParser.P_choice_fourth_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#p_choice_fourth_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_choice_fourth_action(GrammarParser.P_choice_fourth_actionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link GrammarParser#p_repeat}.
 	 * @param ctx the parse tree
 	 */
@@ -676,6 +696,36 @@ public interface GrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitP_repeat(GrammarParser.P_repeatContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#p_repeat_first_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_repeat_first_action(GrammarParser.P_repeat_first_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#p_repeat_first_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_repeat_first_action(GrammarParser.P_repeat_first_actionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#p_repeat_second_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_repeat_second_action(GrammarParser.P_repeat_second_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#p_repeat_second_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_repeat_second_action(GrammarParser.P_repeat_second_actionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#p_repeat_third_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_repeat_third_action(GrammarParser.P_repeat_third_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#p_repeat_third_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_repeat_third_action(GrammarParser.P_repeat_third_actionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GrammarParser#j_repeat}.
 	 * @param ctx the parse tree

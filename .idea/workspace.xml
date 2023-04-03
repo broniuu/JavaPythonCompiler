@@ -4,23 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b057e99-973e-4e13-a072-76bcb70fe167" name="Changes" comment="add tab">
-      <change afterPath="$PROJECT_DIR$/src/main/java/przylady_do_testowania.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="3b057e99-973e-4e13-a072-76bcb70fe167" name="Changes" comment="fixes">
+      <change afterPath="$PROJECT_DIR$/src/main/java/PythonGrammarListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/file.japy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/PythonGrammarListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/file.japy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_choice_fourth_actionContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_choice_second_actionContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_repeat_first_actionContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_repeat_second_actionContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_repeat_third_actionContext.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Grammar.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Grammar.g4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/JavaGrammarListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JavaGrammarListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gen/Grammar.interp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gen/Grammar.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gen/GrammarBaseListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gen/GrammarBaseVisitor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gen/GrammarLexer.interp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gen/GrammarLexer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gen/GrammarLexer.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gen/GrammarListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gen/GrammarParser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gen/GrammarVisitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gen/Grammar.interp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gen/Grammar.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gen/GrammarBaseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gen/GrammarBaseListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gen/GrammarBaseVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gen/GrammarBaseVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gen/GrammarListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gen/GrammarListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gen/GrammarParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gen/GrammarParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gen/GrammarVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gen/GrammarVisitor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/JavaGrammarListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JavaGrammarListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarBaseListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarBaseListener.class" afterDir="false" />
@@ -50,6 +53,10 @@
       <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_branchReContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_branchReContext.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_char_initializationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_char_initializationContext.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_choiceContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_choiceContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_choice_first_actionContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$P_choice_third_actionContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_choice_fourth_actionContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_choice_fourth_actionContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_choice_second_actionContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_choice_second_actionContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_choice_third_actionContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_choice_third_actionContext.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_condContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_condContext.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_conditionContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_conditionContext.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_declarationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gen/GrammarParser$J_declarationContext.class" afterDir="false" />
@@ -144,7 +151,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Uczelnia/III_Semsestr/Kompilatory/JavaPythonCompiler/src/main/java/gen",
+    "last_opened_file_path": "C:/Uczelnia/III_Semsestr/Kompilatory/JavaPythonCompiler",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -152,16 +159,17 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.sourceCode",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Uczelnia\III_Semsestr\Kompilatory\JavaPythonCompiler\src\main\java" />
-      <recent name="C:\Uczelnia\III_Semsestr\Kompilatory\JavaPythonCompiler\src\main" />
+      <recent name="C:\Uczelnia\III_Semsestr\Kompilatory\JavaPythonCompiler\src" />
       <recent name="C:\Uczelnia\III_Semsestr\Kompilatory\JavaPythonCompiler\src\main\resources" />
       <recent name="C:\Uczelnia\III_Semsestr\Kompilatory\JavaPythonCompiler\src\main\java\gen" />
-      <recent name="C:\Uczelnia\III_Semsestr\Kompilatory\JavaPythonCompiler" />
+      <recent name="C:\Uczelnia\III_Semsestr\Kompilatory\JavaPythonCompiler\src\main" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
@@ -194,6 +202,9 @@
       <workItem from="1680178092862" duration="96000" />
       <workItem from="1680178198658" duration="3153000" />
       <workItem from="1680193916592" duration="10309000" />
+      <workItem from="1680340620142" duration="2890000" />
+      <workItem from="1680449633476" duration="515000" />
+      <workItem from="1680553477965" duration="665000" />
     </task>
     <task id="LOCAL-00001" summary="Create maven project">
       <created>1680178304516</created>
@@ -223,7 +234,21 @@
       <option name="project" value="LOCAL" />
       <updated>1680204050944</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add java handling">
+      <created>1680339180434</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1680339180434</updated>
+    </task>
+    <task id="LOCAL-00006" summary="add java handling gen">
+      <created>1680339225316</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1680339225316</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,6 +259,10 @@
     <MESSAGE value="fix maven project" />
     <MESSAGE value="add rest of files" />
     <MESSAGE value="add seq and loop" />
-    <option name="LAST_COMMIT_MESSAGE" value="add seq and loop" />
+    <MESSAGE value="add java handling" />
+    <MESSAGE value="add java handling gen" />
+    <MESSAGE value="add python handling repeat" />
+    <MESSAGE value="fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixes" />
   </component>
 </project>

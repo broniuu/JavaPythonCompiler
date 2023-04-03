@@ -7,12 +7,10 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 import java.io.Console;
 
 public class JavaGrammarListener extends GrammarBaseListener{
-    private StringBuilder code = new StringBuilder();
+    private final StringBuilder code = new StringBuilder();
     private int tabNumber = 0;
     private void printTabs(){
-        for (int i = 0; i < tabNumber; ++i) {
-            code.append("\t");
-        }
+        code.append("\t".repeat(Math.max(0, tabNumber)));
     }
 
     @Override
