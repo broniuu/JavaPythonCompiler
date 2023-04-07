@@ -262,7 +262,7 @@ p_condition
     | (ID | NUMBER | DOBULE | p_function_call) (condition_greater_less | condition_equal_unequal) (ID | NUMBER | DOBULE | p_function_call)
     ;
 
-j_arg_code_block : ('`' java '`');
+j_arg_code_block : ('`' ~(';' | '`')* ';' '`');
 j_arg_condition: '``'j_condition'``';
 j_arg_function: '~'j_function_call'~';
 j_arg_special_function
@@ -272,7 +272,7 @@ j_arg_special_function
     | j_seq;
 j_arg_universal: j_arg_code_block | j_arg_function | j_arg_special_function;
 
-p_arg_code_block : ('`' python '`');
+p_arg_code_block : ('`' ~(';' | '`')* '`');
 p_arg_condition: '``'p_condition'``';
 p_arg_function: '~'p_function_call'~';
 p_arg_special_function
