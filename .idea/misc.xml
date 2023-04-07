@@ -6,7 +6,7 @@
         <PerGrammarGenerationSettings>
           <option name="fileName" value="$PROJECT_DIR$/src/main/java/Grammar.g4" />
           <option name="autoGen" value="true" />
-          <option name="outputDir" value="C:\Uczelnia\III_Semsestr\Kompilatory\JavaPythonCompiler\src\main\java\gen" />
+          <option name="outputDir" value="C:\Uczelnia\III_Semsestr\Kompilatory\JavaPythonCompiler\src\main\java" />
           <option name="libDir" value="" />
           <option name="encoding" value="UTF-8" />
           <option name="pkg" value="gen" />

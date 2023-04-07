@@ -9,10 +9,10 @@ import java.io.Console;
 public class JavaGrammarListener extends GrammarBaseListener{
     private final StringBuilder code = new StringBuilder();
     private int tabNumber = 0;
+    private final String CODE_BLOCK_SIGN = "`";
     private void printTabs(){
         code.append("\t".repeat(Math.max(0, tabNumber)));
     }
-
     @Override
     public void exitJ_repeat_first_action(GrammarParser.J_repeat_first_actionContext ctx) {
         printTabs();
@@ -71,6 +71,15 @@ public class JavaGrammarListener extends GrammarBaseListener{
             code.append(context.getChild(i).getText()).append(" ");
         }
         code.append(context.getChild(maxLastChildIndex).getText());
+    }
+
+    @Override
+    public void enterJ_arg_universal(GrammarParser.J_arg_universalContext ctx) {
+        printTabs();
+        if (ctx.J_ARG_CODE_BLOCK() != null){
+            code.append(ctx.J_ARG_CODE_BLOCK().getText().replace(CODE_BLOCK_SIGN,""));
+            code.append("\n");
+        }
     }
 
     @Override

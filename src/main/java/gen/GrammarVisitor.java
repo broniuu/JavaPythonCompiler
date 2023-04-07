@@ -1,4 +1,5 @@
-package gen;// Generated from java-escape by ANTLR 4.11.1
+// Generated from java-escape by ANTLR 4.11.1
+package gen;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -298,12 +299,6 @@ public interface GrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitP_condition(GrammarParser.P_conditionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link GrammarParser#j_arg_code_block}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitJ_arg_code_block(GrammarParser.J_arg_code_blockContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link GrammarParser#j_arg_condition}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -327,12 +322,6 @@ public interface GrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitJ_arg_universal(GrammarParser.J_arg_universalContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link GrammarParser#p_arg_code_block}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitP_arg_code_block(GrammarParser.P_arg_code_blockContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GrammarParser#p_arg_condition}.
 	 * @param ctx the parse tree

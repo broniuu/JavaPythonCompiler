@@ -5,7 +5,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 public class PythonGrammarListener extends GrammarBaseListener {
     private final StringBuilder code = new StringBuilder();
     private int tabNumber = 0;
-
+    private final String CODE_BLOCK_SIGN = "`";
     private void printTabs(){
         code.append("\t".repeat(Math.max(0, tabNumber)));
     }
@@ -48,6 +48,15 @@ public class PythonGrammarListener extends GrammarBaseListener {
             code.append(context.getChild(i).getText()).append(" ");
         }
         code.append(context.getChild(maxLastChildIndex).getText());
+    }
+
+    @Override
+    public void enterP_arg_universal(GrammarParser.P_arg_universalContext ctx) {
+        printTabs();
+        if(ctx.P_ARG_CODE_BLOCK() != null){
+            code.append(ctx.P_ARG_CODE_BLOCK().getText().replace(CODE_BLOCK_SIGN,""));
+            code.append("\n");
+        }
     }
 
     @Override
