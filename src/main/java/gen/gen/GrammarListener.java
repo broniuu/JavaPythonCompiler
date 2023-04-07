@@ -1,4 +1,5 @@
 // Generated from java-escape by ANTLR 4.11.1
+package gen;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -487,16 +488,6 @@ public interface GrammarListener extends ParseTreeListener {
 	 */
 	void exitP_condition(GrammarParser.P_conditionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GrammarParser#j_arg_code_block}.
-	 * @param ctx the parse tree
-	 */
-	void enterJ_arg_code_block(GrammarParser.J_arg_code_blockContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GrammarParser#j_arg_code_block}.
-	 * @param ctx the parse tree
-	 */
-	void exitJ_arg_code_block(GrammarParser.J_arg_code_blockContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link GrammarParser#j_arg_condition}.
 	 * @param ctx the parse tree
 	 */
@@ -536,16 +527,6 @@ public interface GrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitJ_arg_universal(GrammarParser.J_arg_universalContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link GrammarParser#p_arg_code_block}.
-	 * @param ctx the parse tree
-	 */
-	void enterP_arg_code_block(GrammarParser.P_arg_code_blockContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GrammarParser#p_arg_code_block}.
-	 * @param ctx the parse tree
-	 */
-	void exitP_arg_code_block(GrammarParser.P_arg_code_blockContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GrammarParser#p_arg_condition}.
 	 * @param ctx the parse tree
