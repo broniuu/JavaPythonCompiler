@@ -1,6 +1,7 @@
 import gen.GrammarBaseListener;
 import gen.GrammarParser;
 import org.antlr.v4.runtime.RuleContext;
+import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
@@ -10,9 +11,16 @@ public class JavaGrammarListener extends GrammarBaseListener{
     private final StringBuilder code = new StringBuilder();
     private int tabNumber = 0;
     private final String CODE_BLOCK_SIGN = "`";
+    private boolean errorOccurred = false;
     private void printTabs(){
         code.append("\t".repeat(Math.max(0, tabNumber)));
     }
+
+    @Override
+    public void visitErrorNode(ErrorNode node) {
+        errorOccurred = true;
+    }
+
     @Override
     public void exitJ_repeat_first_action(GrammarParser.J_repeat_first_actionContext ctx) {
         printTabs();
@@ -94,6 +102,8 @@ public class JavaGrammarListener extends GrammarBaseListener{
 
     @Override
     public void exitProg(GrammarParser.ProgContext ctx) {
-        System.out.println(code);
+        if (!errorOccurred){
+            System.out.println(code);
+        }
     }
 }

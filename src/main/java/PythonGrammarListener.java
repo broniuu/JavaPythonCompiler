@@ -1,13 +1,21 @@
 import gen.GrammarBaseListener;
 import gen.GrammarParser;
+import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
+
+import java.io.Console;
 
 public class PythonGrammarListener extends GrammarBaseListener {
     private final StringBuilder code = new StringBuilder();
     private int tabNumber = 0;
     private final String CODE_BLOCK_SIGN = "`";
+    private boolean errorOccurred = false;
     private void printTabs(){
         code.append("\t".repeat(Math.max(0, tabNumber)));
+    }
+    @Override
+    public void visitErrorNode(ErrorNode node) {
+        errorOccurred = true;
     }
     @Override
     public void exitP_repeat_first_action(GrammarParser.P_repeat_first_actionContext ctx) {
@@ -21,7 +29,6 @@ public class PythonGrammarListener extends GrammarBaseListener {
         printTabs();
         code.append("if ");
     }
-
     @Override
     public void enterP_condition(GrammarParser.P_conditionContext ctx) {
         separateChildrenWithSpace(ctx);
@@ -35,6 +42,27 @@ public class PythonGrammarListener extends GrammarBaseListener {
         code.append("break \n");
         tabNumber--;
         tabNumber--;
+    }
+
+    @Override
+    public void enterP_choice_second_action(GrammarParser.P_choice_second_actionContext ctx) {
+        printTabs();
+        code.append("if :\n");
+        tabNumber++;
+    }
+
+    @Override
+    public void enterP_choice_third_action(GrammarParser.P_choice_third_actionContext ctx) {
+        tabNumber--;
+        printTabs();
+        code.append("else:\n");
+        tabNumber++;
+    }
+
+    @Override
+    public void enterP_choice_fourth_action(GrammarParser.P_choice_fourth_actionContext ctx) {
+        tabNumber--;
+        printTabs();
     }
 
     @Override
@@ -58,7 +86,6 @@ public class PythonGrammarListener extends GrammarBaseListener {
             code.append("\n");
         }
     }
-
     @Override
     public void enterP_line(GrammarParser.P_lineContext ctx) {
         printTabs();
@@ -70,6 +97,8 @@ public class PythonGrammarListener extends GrammarBaseListener {
     }
     @Override
     public void exitProg(GrammarParser.ProgContext ctx) {
-        System.out.println(code);
+        if (!errorOccurred){
+            System.out.println(code);
+        }
     }
 }
