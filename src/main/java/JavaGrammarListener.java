@@ -83,6 +83,18 @@ public class JavaGrammarListener extends GrammarBaseListener{
     }
 
     @Override
+    public void enterJ_cond(GrammarParser.J_condContext ctx) {
+        super.enterJ_cond(ctx);
+    }
+
+    @Override
+    public void exitJ_cond(GrammarParser.J_condContext ctx) {
+        super.exitJ_cond(ctx);
+    }
+
+
+
+    @Override
     public void enterJ_line(GrammarParser.J_lineContext ctx) {
         printTabs();
     }

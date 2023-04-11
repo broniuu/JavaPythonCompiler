@@ -305,7 +305,11 @@ j_loop : 'loop('j_arg_universal ','j_arg_condition','j_arg_universal','j_arg_uni
 p_loop : 'loop('p_arg_universal ','p_arg_condition','p_arg_universal','p_arg_universal ')';
 j_para : 'para('j_arg_universal ','j_arg_universal','j_arg_universal','j_arg_universal ')';
 p_para : 'para('p_arg_universal ','p_arg_universal','p_arg_universal','p_arg_universal ')';
-j_cond : 'cond('j_arg_condition ','j_arg_universal','j_arg_universal','j_arg_universal ')';
+j_cond : 'cond('j_cond_first_action','j_cond_second_action','j_cond_third_action','j_cond_fourth_action ')';
+j_cond_first_action : j_arg_condition;
+j_cond_second_action : j_arg_universal;
+j_cond_third_action : j_arg_universal;
+j_cond_fourth_action : j_arg_universal;
 p_cond : 'cond('p_arg_condition ','p_arg_universal','p_arg_universal','p_arg_universal ')';
 
 j_seq : 'seq('j_arg_universal ',' j_arg_universal')';
