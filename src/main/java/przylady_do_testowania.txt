@@ -1,3 +1,5 @@
 repeat(`int a = 1;`, choice(`char cd = 'a';`, `char cda = 'b';`, `char cd = 'a';`, `char aa = 'b';`), ``ab < 2``, `int i = 5;`)
 repeat(`p = 234`, `d = 344`, `p < d` `a = p + d`)
 cond(``a == true``, `int a = 0;`, `int b = 1;`, `int c = 2;`)
+loop(`int a = 1;`, ``x == true``, `int b = 1;`, `int c = 2;`)
+para(`int a = 1;`, `int q = 4;`, `int b = 1;`, `int c = 2;`)

@@ -1,4 +1,4 @@
-// Generated from java-escape by ANTLR 4.11.1
+// Generated from C:/Users/dawpy/Documents/GitHub/JavaPythonCompiler/src/main/java\Grammar.g4 by ANTLR 4.12.0
 package gen;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -758,6 +758,46 @@ public interface GrammarListener extends ParseTreeListener {
 	 */
 	void exitJ_loop(GrammarParser.J_loopContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link GrammarParser#j_loop_first_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_loop_first_action(GrammarParser.J_loop_first_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#j_loop_first_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_loop_first_action(GrammarParser.J_loop_first_actionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#j_loop_second_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_loop_second_action(GrammarParser.J_loop_second_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#j_loop_second_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_loop_second_action(GrammarParser.J_loop_second_actionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#j_loop_third_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_loop_third_action(GrammarParser.J_loop_third_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#j_loop_third_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_loop_third_action(GrammarParser.J_loop_third_actionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#j_loop_fourth_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_loop_fourth_action(GrammarParser.J_loop_fourth_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#j_loop_fourth_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_loop_fourth_action(GrammarParser.J_loop_fourth_actionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link GrammarParser#p_loop}.
 	 * @param ctx the parse tree
 	 */
@@ -778,6 +818,46 @@ public interface GrammarListener extends ParseTreeListener {
 	 */
 	void exitJ_para(GrammarParser.J_paraContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link GrammarParser#j_para_first_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_para_first_action(GrammarParser.J_para_first_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#j_para_first_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_para_first_action(GrammarParser.J_para_first_actionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#j_para_second_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_para_second_action(GrammarParser.J_para_second_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#j_para_second_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_para_second_action(GrammarParser.J_para_second_actionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#j_para_third_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_para_third_action(GrammarParser.J_para_third_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#j_para_third_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_para_third_action(GrammarParser.J_para_third_actionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#j_para_fourth_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_para_fourth_action(GrammarParser.J_para_fourth_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#j_para_fourth_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_para_fourth_action(GrammarParser.J_para_fourth_actionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link GrammarParser#p_para}.
 	 * @param ctx the parse tree
 	 */
@@ -797,6 +877,46 @@ public interface GrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitJ_cond(GrammarParser.J_condContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#j_cond_first_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_cond_first_action(GrammarParser.J_cond_first_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#j_cond_first_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_cond_first_action(GrammarParser.J_cond_first_actionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#j_cond_second_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_cond_second_action(GrammarParser.J_cond_second_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#j_cond_second_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_cond_second_action(GrammarParser.J_cond_second_actionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#j_cond_third_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_cond_third_action(GrammarParser.J_cond_third_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#j_cond_third_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_cond_third_action(GrammarParser.J_cond_third_actionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#j_cond_fourth_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterJ_cond_fourth_action(GrammarParser.J_cond_fourth_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#j_cond_fourth_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitJ_cond_fourth_action(GrammarParser.J_cond_fourth_actionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GrammarParser#p_cond}.
 	 * @param ctx the parse tree
