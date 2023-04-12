@@ -209,12 +209,12 @@ public class JavaGrammarListener extends GrammarBaseListener{
     public void exitJ_para_third_action(GrammarParser.J_para_third_actionContext ctx) {
         code.append("};\n");
         tabNumber--;
+        code.append("first_runnable.start();\n");
+        code.append("second_runnable.start();\n");
     }
 
     @Override
     public void enterJ_para_fourth_action(GrammarParser.J_para_fourth_actionContext ctx) {
-        code.append("first_runnable.start();\n");
-        code.append("second_runnable.start();\n");
         super.enterJ_para_fourth_action(ctx);
     }
 

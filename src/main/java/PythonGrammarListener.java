@@ -60,6 +60,92 @@ public class PythonGrammarListener extends GrammarBaseListener {
     }
 
     @Override
+    public void enterP_cond_first_action(GrammarParser.P_cond_first_actionContext ctx) {
+        code.append("if ");
+    }
+
+    @Override
+    public void exitP_cond_first_action(GrammarParser.P_cond_first_actionContext ctx) {
+        code.append(":\n");
+        tabNumber++;
+    }
+
+    @Override
+    public void exitP_cond_second_action(GrammarParser.P_cond_second_actionContext ctx) {
+        tabNumber--;
+    }
+
+    @Override
+    public void enterP_cond_third_action(GrammarParser.P_cond_third_actionContext ctx) {
+        code.append("else:\n");
+        tabNumber++;
+    }
+
+    @Override
+    public void exitP_cond_third_action(GrammarParser.P_cond_third_actionContext ctx) {
+        tabNumber--;
+    }
+
+
+    @Override
+    public void enterP_loop_second_action(GrammarParser.P_loop_second_actionContext ctx) {
+        code.append("while ");
+    }
+
+    @Override
+    public void exitP_loop_second_action(GrammarParser.P_loop_second_actionContext ctx) {
+        code.append(":\n");
+        tabNumber++;
+    }
+
+
+
+    @Override
+    public void exitP_loop_third_action(GrammarParser.P_loop_third_actionContext ctx) {
+        tabNumber--;
+    }
+
+    @Override
+    public void enterP_para_first_action(GrammarParser.P_para_first_actionContext ctx) {
+        super.enterP_para_first_action(ctx);
+    }
+
+    @Override
+    public void exitP_para_first_action(GrammarParser.P_para_first_actionContext ctx) {
+        super.exitP_para_first_action(ctx);
+    }
+
+    @Override
+    public void enterP_para_second_action(GrammarParser.P_para_second_actionContext ctx) {
+        code.append("first_thread = threading.Thread(target=");
+    }
+
+    @Override
+    public void exitP_para_second_action(GrammarParser.P_para_second_actionContext ctx) {
+        code.append(", name='first_thread')\n");
+    }
+
+    @Override
+    public void enterP_para_third_action(GrammarParser.P_para_third_actionContext ctx) {
+        code.append("second_thread = threading.Thread(target=");
+    }
+
+    @Override
+    public void exitP_para_third_action(GrammarParser.P_para_third_actionContext ctx) {
+        code.append(", name='second_thread')\n");
+    }
+
+    @Override
+    public void enterP_para_fourth_action(GrammarParser.P_para_fourth_actionContext ctx) {
+        super.enterP_para_fourth_action(ctx);
+    }
+
+    @Override
+    public void exitP_para_fourth_action(GrammarParser.P_para_fourth_actionContext ctx) {
+        super.exitP_para_fourth_action(ctx);
+    }
+
+    @Override
     public void enterP_line(GrammarParser.P_lineContext ctx) {
         printTabs();
     }

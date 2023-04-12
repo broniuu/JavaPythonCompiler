@@ -808,6 +808,46 @@ public interface GrammarListener extends ParseTreeListener {
 	 */
 	void exitP_loop(GrammarParser.P_loopContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link GrammarParser#p_loop_first_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_loop_first_action(GrammarParser.P_loop_first_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#p_loop_first_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_loop_first_action(GrammarParser.P_loop_first_actionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#p_loop_second_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_loop_second_action(GrammarParser.P_loop_second_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#p_loop_second_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_loop_second_action(GrammarParser.P_loop_second_actionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#p_loop_third_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_loop_third_action(GrammarParser.P_loop_third_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#p_loop_third_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_loop_third_action(GrammarParser.P_loop_third_actionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#p_loop_fourth_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_loop_fourth_action(GrammarParser.P_loop_fourth_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#p_loop_fourth_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_loop_fourth_action(GrammarParser.P_loop_fourth_actionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link GrammarParser#j_para}.
 	 * @param ctx the parse tree
 	 */
@@ -868,6 +908,46 @@ public interface GrammarListener extends ParseTreeListener {
 	 */
 	void exitP_para(GrammarParser.P_paraContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link GrammarParser#p_para_first_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_para_first_action(GrammarParser.P_para_first_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#p_para_first_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_para_first_action(GrammarParser.P_para_first_actionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#p_para_second_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_para_second_action(GrammarParser.P_para_second_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#p_para_second_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_para_second_action(GrammarParser.P_para_second_actionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#p_para_third_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_para_third_action(GrammarParser.P_para_third_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#p_para_third_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_para_third_action(GrammarParser.P_para_third_actionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#p_para_fourth_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_para_fourth_action(GrammarParser.P_para_fourth_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#p_para_fourth_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_para_fourth_action(GrammarParser.P_para_fourth_actionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link GrammarParser#j_cond}.
 	 * @param ctx the parse tree
 	 */
@@ -927,6 +1007,46 @@ public interface GrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitP_cond(GrammarParser.P_condContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#p_cond_first_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_cond_first_action(GrammarParser.P_cond_first_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#p_cond_first_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_cond_first_action(GrammarParser.P_cond_first_actionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#p_cond_second_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_cond_second_action(GrammarParser.P_cond_second_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#p_cond_second_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_cond_second_action(GrammarParser.P_cond_second_actionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#p_cond_third_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_cond_third_action(GrammarParser.P_cond_third_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#p_cond_third_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_cond_third_action(GrammarParser.P_cond_third_actionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GrammarParser#p_cond_fourth_action}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_cond_fourth_action(GrammarParser.P_cond_fourth_actionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GrammarParser#p_cond_fourth_action}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_cond_fourth_action(GrammarParser.P_cond_fourth_actionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GrammarParser#j_seq}.
 	 * @param ctx the parse tree
