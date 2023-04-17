@@ -1,4 +1,4 @@
-// Generated from C:/Users/dawpy/Documents/GitHub/JavaPythonCompiler/src/main/java\Grammar.g4 by ANTLR 4.12.0
+// Generated from java-escape by ANTLR 4.11.1
 package gen;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue"})
 public class GrammarParser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.12.0", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.11.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -151,7 +151,7 @@ public class GrammarParser extends Parser {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "Grammar.g4"; }
+	public String getGrammarFileName() { return "java-escape"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -413,7 +413,7 @@ public class GrammarParser extends Parser {
 			setState(245);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 142989288236146688L) != 0)) {
+			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 142989288236146688L) != 0) {
 				{
 				{
 				setState(242);
@@ -474,7 +474,7 @@ public class GrammarParser extends Parser {
 			setState(251);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 72057594574815232L) != 0)) {
+			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 72057594574815232L) != 0) {
 				{
 				{
 				setState(248);
@@ -2912,7 +2912,7 @@ public class GrammarParser extends Parser {
 			setState(675);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 72840446316904960L) != 0)) {
+			if (((_la) & ~0x3f) == 0 && ((1L << _la) & 72840446316904960L) != 0) {
 				{
 				setState(667);
 				p_rhs_value();
@@ -2986,7 +2986,7 @@ public class GrammarParser extends Parser {
 			{
 			setState(679);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 70931694131085312L) != 0)) ) {
+			if ( !(((_la) & ~0x3f) == 0 && ((1L << _la) & 70931694131085312L) != 0) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -3354,7 +3354,7 @@ public class GrammarParser extends Parser {
 			setState(713);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 72057594044219392L) != 0)) {
+			if (((_la) & ~0x3f) == 0 && ((1L << _la) & 72057594044219392L) != 0) {
 				{
 				setState(712);
 				forUpdate();
@@ -3489,7 +3489,7 @@ public class GrammarParser extends Parser {
 			setState(726);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 142989288236146688L) != 0)) {
+			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 142989288236146688L) != 0) {
 				{
 				{
 				setState(723);
@@ -3731,7 +3731,7 @@ public class GrammarParser extends Parser {
 			{
 			setState(741);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 491520L) != 0)) ) {
+			if ( !(((_la) & ~0x3f) == 0 && ((1L << _la) & 491520L) != 0) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -4617,7 +4617,7 @@ public class GrammarParser extends Parser {
 				{
 				setState(839);
 				_la = _input.LA(1);
-				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 72268700270460928L) != 0)) ) {
+				if ( !(((_la) & ~0x3f) == 0 && ((1L << _la) & 72268700270460928L) != 0) ) {
 				_errHandler.recoverInline(this);
 				}
 				else {
@@ -4629,7 +4629,7 @@ public class GrammarParser extends Parser {
 				condition_equal_unequal();
 				setState(841);
 				_la = _input.LA(1);
-				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 72268700270460928L) != 0)) ) {
+				if ( !(((_la) & ~0x3f) == 0 && ((1L << _la) & 72268700270460928L) != 0) ) {
 				_errHandler.recoverInline(this);
 				}
 				else {
