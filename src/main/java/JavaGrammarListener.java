@@ -91,6 +91,147 @@ public class JavaGrammarListener extends GrammarBaseListener{
     }
 
     @Override
+    public void enterJ_cond(GrammarParser.J_condContext ctx) {
+        super.enterJ_cond(ctx);
+    }
+
+    @Override
+    public void exitJ_cond(GrammarParser.J_condContext ctx) {
+        super.exitJ_cond(ctx);
+    }
+
+    @Override
+    public void enterJ_cond_first_action(GrammarParser.J_cond_first_actionContext ctx) {
+        code.append("if (");
+    }
+
+    @Override
+    public void exitJ_cond_first_action(GrammarParser.J_cond_first_actionContext ctx) {
+        code.append(") {\n");
+        tabNumber++;
+    }
+
+    @Override
+    public void enterJ_cond_second_action(GrammarParser.J_cond_second_actionContext ctx) {
+        super.enterJ_cond_second_action(ctx);
+    }
+
+    @Override
+    public void exitJ_cond_second_action(GrammarParser.J_cond_second_actionContext ctx) {
+        code.append("}");
+    }
+
+    @Override
+    public void enterJ_cond_third_action(GrammarParser.J_cond_third_actionContext ctx) {
+        code.append(" else {\n");
+    }
+
+    @Override
+    public void exitJ_cond_third_action(GrammarParser.J_cond_third_actionContext ctx) {
+        code.append("}\n");
+        tabNumber--;
+    }
+
+    @Override
+    public void enterJ_cond_fourth_action(GrammarParser.J_cond_fourth_actionContext ctx) {
+        super.enterJ_cond_fourth_action(ctx);
+    }
+
+    @Override
+    public void exitJ_cond_fourth_action(GrammarParser.J_cond_fourth_actionContext ctx) {
+        super.exitJ_cond_fourth_action(ctx);
+    }
+
+    @Override
+    public void enterJ_loop_first_action(GrammarParser.J_loop_first_actionContext ctx) {
+        super.enterJ_loop_first_action(ctx);
+    }
+
+    @Override
+    public void exitJ_loop_first_action(GrammarParser.J_loop_first_actionContext ctx) {
+        super.exitJ_loop_first_action(ctx);
+    }
+
+    @Override
+    public void enterJ_loop_second_action(GrammarParser.J_loop_second_actionContext ctx) {
+        code.append("while (");
+    }
+
+    @Override
+    public void exitJ_loop_second_action(GrammarParser.J_loop_second_actionContext ctx) {
+        code.append(") {\n");
+        tabNumber++;
+    }
+
+    @Override
+    public void enterJ_loop_third_action(GrammarParser.J_loop_third_actionContext ctx) {
+        super.enterJ_loop_third_action(ctx);
+    }
+
+    @Override
+    public void exitJ_loop_third_action(GrammarParser.J_loop_third_actionContext ctx) {
+        code.append("}\n");
+        tabNumber--;
+    }
+
+    @Override
+    public void enterJ_loop_fourth_action(GrammarParser.J_loop_fourth_actionContext ctx) {
+        super.enterJ_loop_fourth_action(ctx);
+    }
+
+    @Override
+    public void exitJ_loop_fourth_action(GrammarParser.J_loop_fourth_actionContext ctx) {
+        super.exitJ_loop_fourth_action(ctx);
+    }
+
+
+    @Override
+    public void enterJ_para_first_action(GrammarParser.J_para_first_actionContext ctx) {
+        super.enterJ_para_first_action(ctx);
+    }
+
+    @Override
+    public void exitJ_para_first_action(GrammarParser.J_para_first_actionContext ctx) {
+        super.exitJ_para_first_action(ctx);
+    }
+
+    @Override
+    public void enterJ_para_second_action(GrammarParser.J_para_second_actionContext ctx) {
+        code.append("Runnable first_runnable = () -> {\n");
+        tabNumber++;
+    }
+
+    @Override
+    public void exitJ_para_second_action(GrammarParser.J_para_second_actionContext ctx) {
+        code.append("};\n");
+        tabNumber--;
+    }
+
+    @Override
+    public void enterJ_para_third_action(GrammarParser.J_para_third_actionContext ctx) {
+        code.append("Runnable second_runnable = () -> {\n");
+        tabNumber++;
+    }
+
+    @Override
+    public void exitJ_para_third_action(GrammarParser.J_para_third_actionContext ctx) {
+        code.append("};\n");
+        tabNumber--;
+        code.append("first_runnable.start();\n");
+        code.append("second_runnable.start();\n");
+    }
+
+    @Override
+    public void enterJ_para_fourth_action(GrammarParser.J_para_fourth_actionContext ctx) {
+        super.enterJ_para_fourth_action(ctx);
+    }
+
+    @Override
+    public void exitJ_para_fourth_action(GrammarParser.J_para_fourth_actionContext ctx) {
+        super.exitJ_para_fourth_action(ctx);
+    }
+
+    @Override
     public void enterJ_line(GrammarParser.J_lineContext ctx) {
         printTabs();
     }

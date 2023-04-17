@@ -1,4 +1,4 @@
-// Generated from java-escape by ANTLR 4.11.1
+// Generated from C:/Users/dawpy/Documents/GitHub/JavaPythonCompiler/src/main/java\Grammar.g4 by ANTLR 4.12.0
 package gen;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -461,11 +461,59 @@ public interface GrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitJ_loop(GrammarParser.J_loopContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link GrammarParser#j_loop_first_action}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_loop_first_action(GrammarParser.J_loop_first_actionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#j_loop_second_action}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_loop_second_action(GrammarParser.J_loop_second_actionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#j_loop_third_action}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_loop_third_action(GrammarParser.J_loop_third_actionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#j_loop_fourth_action}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_loop_fourth_action(GrammarParser.J_loop_fourth_actionContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link GrammarParser#p_loop}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitP_loop(GrammarParser.P_loopContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#p_loop_first_action}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_loop_first_action(GrammarParser.P_loop_first_actionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#p_loop_second_action}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_loop_second_action(GrammarParser.P_loop_second_actionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#p_loop_third_action}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_loop_third_action(GrammarParser.P_loop_third_actionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#p_loop_fourth_action}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_loop_fourth_action(GrammarParser.P_loop_fourth_actionContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GrammarParser#j_para}.
 	 * @param ctx the parse tree
@@ -473,11 +521,59 @@ public interface GrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitJ_para(GrammarParser.J_paraContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link GrammarParser#j_para_first_action}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_para_first_action(GrammarParser.J_para_first_actionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#j_para_second_action}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_para_second_action(GrammarParser.J_para_second_actionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#j_para_third_action}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_para_third_action(GrammarParser.J_para_third_actionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#j_para_fourth_action}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_para_fourth_action(GrammarParser.J_para_fourth_actionContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link GrammarParser#p_para}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitP_para(GrammarParser.P_paraContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#p_para_first_action}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_para_first_action(GrammarParser.P_para_first_actionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#p_para_second_action}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_para_second_action(GrammarParser.P_para_second_actionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#p_para_third_action}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_para_third_action(GrammarParser.P_para_third_actionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#p_para_fourth_action}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_para_fourth_action(GrammarParser.P_para_fourth_actionContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GrammarParser#j_cond}.
 	 * @param ctx the parse tree
@@ -485,11 +581,59 @@ public interface GrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitJ_cond(GrammarParser.J_condContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link GrammarParser#j_cond_first_action}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_cond_first_action(GrammarParser.J_cond_first_actionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#j_cond_second_action}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_cond_second_action(GrammarParser.J_cond_second_actionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#j_cond_third_action}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_cond_third_action(GrammarParser.J_cond_third_actionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#j_cond_fourth_action}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJ_cond_fourth_action(GrammarParser.J_cond_fourth_actionContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link GrammarParser#p_cond}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitP_cond(GrammarParser.P_condContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#p_cond_first_action}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_cond_first_action(GrammarParser.P_cond_first_actionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#p_cond_second_action}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_cond_second_action(GrammarParser.P_cond_second_actionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#p_cond_third_action}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_cond_third_action(GrammarParser.P_cond_third_actionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GrammarParser#p_cond_fourth_action}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitP_cond_fourth_action(GrammarParser.P_cond_fourth_actionContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GrammarParser#j_seq}.
 	 * @param ctx the parse tree
