@@ -8,3 +8,4 @@ loop(`a = 1`, ``a > b``, `b = 4`, `c = 2`)
 para(`a = 1`, `fun1`, `fun2`, `c = 2`)
 choice(`p = 234`, `d = 344`, `p < d`, `a = p + d`)
 seqSeq(`p = 234`, `d = 344`, `p < d`)
+seq(`a = 34;`, `b = 21`, `c = b + a`);

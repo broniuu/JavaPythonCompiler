@@ -13,7 +13,7 @@ import java.net.URL;
 public class Main {
     public static void main(String[] args) throws IOException {
         CharStream codePointCharStream = CharStreams.fromString(
-                "para(`a = 1`, `fun1`, `fun2`, `c = 2`)"
+                "seq(`int a = 34;`, `int b = 21 + a;`)"
         );
         GrammarLexer lexer = new GrammarLexer(codePointCharStream);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
