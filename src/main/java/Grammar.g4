@@ -270,7 +270,14 @@ j_arg_special_function
     : j_seqSeq
     | j_choice
     | j_repeat
-    | j_seq;
+    | j_loop
+    | j_para
+    | j_cond
+    | j_seq
+    | j_branch
+    | j_branchRe
+    ;
+
 j_arg_universal: J_ARG_CODE_BLOCK | j_arg_function | j_arg_special_function;
 
 P_ARG_CODE_BLOCK : ('`' (~[;`])*? '`');
@@ -279,7 +286,15 @@ p_arg_function: '~'p_function_call'~';
 p_arg_special_function
     : p_seqSeq
     | p_choice
-    | p_repeat;
+    | p_repeat
+    | p_loop
+    | p_para
+    | p_cond
+    | p_seq
+    | p_branch
+    | p_branchRe
+    ;
+
 p_arg_universal: P_ARG_CODE_BLOCK | p_arg_function | p_arg_special_function;
 
 j_seqSeq : 'seqSeq('j_arg_universal ',' j_arg_universal ',' j_arg_universal')';
@@ -321,16 +336,13 @@ p_para_first_action : p_arg_universal;
 p_para_second_action : p_arg_universal;
 p_para_third_action : p_arg_universal;
 p_para_fourth_action : p_arg_universal;
-j_cond : 'cond('j_cond_first_action','j_cond_second_action','j_cond_third_action','j_cond_fourth_action ')';
-j_cond_first_action : j_arg_condition;
-j_cond_second_action : j_arg_universal;
-j_cond_third_action : j_arg_universal;
-j_cond_fourth_action : j_arg_universal;
-p_cond : 'cond('p_cond_first_action','p_cond_second_action','p_cond_third_action','p_cond_fourth_action ')';
-p_cond_first_action : p_arg_condition;
-p_cond_second_action : p_arg_universal;
-p_cond_third_action : p_arg_universal;
-p_cond_fourth_action : p_arg_universal;
+
+j_cond: 'cond' '(' j_cond_first_arg ',' j_arg_universal ',' j_cond_third_arg ',' j_arg_universal ')';
+j_cond_first_arg: j_arg_condition;
+j_cond_third_arg: j_arg_universal;
+p_cond: 'cond' '(' p_cond_first_arg ',' p_arg_universal ',' p_cond_third_arg ',' p_arg_universal ')';
+p_cond_first_arg: p_arg_condition;
+p_cond_third_arg: p_arg_universal;
 
 j_seq : 'seq('j_arg_universal ',' j_arg_universal')';
 p_seq : 'seq('p_arg_universal ',' p_arg_universal')';

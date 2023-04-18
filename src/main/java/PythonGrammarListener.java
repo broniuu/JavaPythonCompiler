@@ -86,33 +86,6 @@ public class PythonGrammarListener extends GrammarBaseListener {
             code.append("\n");
         }
     }
-    @Override
-    public void enterP_cond_first_action(GrammarParser.P_cond_first_actionContext ctx) {
-        code.append("if ");
-    }
-
-    @Override
-    public void exitP_cond_first_action(GrammarParser.P_cond_first_actionContext ctx) {
-        code.append(":\n");
-        tabNumber++;
-    }
-
-    @Override
-    public void exitP_cond_second_action(GrammarParser.P_cond_second_actionContext ctx) {
-        tabNumber--;
-    }
-
-    @Override
-    public void enterP_cond_third_action(GrammarParser.P_cond_third_actionContext ctx) {
-        code.append("else:\n");
-        tabNumber++;
-    }
-
-    @Override
-    public void exitP_cond_third_action(GrammarParser.P_cond_third_actionContext ctx) {
-        tabNumber--;
-    }
-
 
     @Override
     public void enterP_loop_second_action(GrammarParser.P_loop_second_actionContext ctx) {
@@ -124,8 +97,6 @@ public class PythonGrammarListener extends GrammarBaseListener {
         code.append(":\n");
         tabNumber++;
     }
-
-
 
     @Override
     public void exitP_loop_third_action(GrammarParser.P_loop_third_actionContext ctx) {
@@ -170,6 +141,27 @@ public class PythonGrammarListener extends GrammarBaseListener {
     @Override
     public void exitP_para_fourth_action(GrammarParser.P_para_fourth_actionContext ctx) {
         super.exitP_para_fourth_action(ctx);
+    }
+
+    @Override
+    public void enterP_cond_first_arg(GrammarParser.P_cond_first_argContext ctx) {
+        code.append("if ");
+    }
+
+    @Override
+    public void exitP_cond_first_arg(GrammarParser.P_cond_first_argContext ctx) {
+        code.append(":\n");
+        tabNumber++;
+    }
+
+    @Override
+    public void enterP_cond_third_arg(GrammarParser.P_cond_third_argContext ctx) {
+        code.append("else:\n");
+    }
+
+    @Override
+    public void exitP_cond_third_arg(GrammarParser.P_cond_third_argContext ctx) {
+        tabNumber--;
     }
 
     @Override

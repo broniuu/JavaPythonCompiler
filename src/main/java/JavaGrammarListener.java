@@ -91,58 +91,6 @@ public class JavaGrammarListener extends GrammarBaseListener{
     }
 
     @Override
-    public void enterJ_cond(GrammarParser.J_condContext ctx) {
-        super.enterJ_cond(ctx);
-    }
-
-    @Override
-    public void exitJ_cond(GrammarParser.J_condContext ctx) {
-        super.exitJ_cond(ctx);
-    }
-
-    @Override
-    public void enterJ_cond_first_action(GrammarParser.J_cond_first_actionContext ctx) {
-        code.append("if (");
-    }
-
-    @Override
-    public void exitJ_cond_first_action(GrammarParser.J_cond_first_actionContext ctx) {
-        code.append(") {\n");
-        tabNumber++;
-    }
-
-    @Override
-    public void enterJ_cond_second_action(GrammarParser.J_cond_second_actionContext ctx) {
-        super.enterJ_cond_second_action(ctx);
-    }
-
-    @Override
-    public void exitJ_cond_second_action(GrammarParser.J_cond_second_actionContext ctx) {
-        code.append("}");
-    }
-
-    @Override
-    public void enterJ_cond_third_action(GrammarParser.J_cond_third_actionContext ctx) {
-        code.append(" else {\n");
-    }
-
-    @Override
-    public void exitJ_cond_third_action(GrammarParser.J_cond_third_actionContext ctx) {
-        code.append("}\n");
-        tabNumber--;
-    }
-
-    @Override
-    public void enterJ_cond_fourth_action(GrammarParser.J_cond_fourth_actionContext ctx) {
-        super.enterJ_cond_fourth_action(ctx);
-    }
-
-    @Override
-    public void exitJ_cond_fourth_action(GrammarParser.J_cond_fourth_actionContext ctx) {
-        super.exitJ_cond_fourth_action(ctx);
-    }
-
-    @Override
     public void enterJ_loop_first_action(GrammarParser.J_loop_first_actionContext ctx) {
         super.enterJ_loop_first_action(ctx);
     }
@@ -229,6 +177,28 @@ public class JavaGrammarListener extends GrammarBaseListener{
     @Override
     public void exitJ_para_fourth_action(GrammarParser.J_para_fourth_actionContext ctx) {
         super.exitJ_para_fourth_action(ctx);
+    }
+
+    @Override
+    public void enterJ_cond_first_arg(GrammarParser.J_cond_first_argContext ctx) {
+        code.append("if (");
+    }
+
+    @Override
+    public void exitJ_cond_first_arg(GrammarParser.J_cond_first_argContext ctx) {
+        code.append(") {\n");
+        tabNumber++;
+    }
+
+    @Override
+    public void enterJ_cond_third_arg(GrammarParser.J_cond_third_argContext ctx) {
+        code.append("} else {\n");
+    }
+
+    @Override
+    public void exitJ_cond_third_arg(GrammarParser.J_cond_third_argContext ctx) {
+        code.append("}\n");
+        tabNumber--;
     }
 
     @Override
