@@ -10,6 +10,10 @@ prog: (
     | p_loop
     | j_para
     | p_para
+    | j_concur
+    | p_concur
+    | j_concurRe
+    | p_concurRe
     | j_cond
     | p_cond
     | j_seq
@@ -272,6 +276,8 @@ j_arg_special_function
     | j_repeat
     | j_loop
     | j_para
+    | j_concur
+    | j_concurRe
     | j_cond
     | j_seq
     | j_branch
@@ -289,6 +295,8 @@ p_arg_special_function
     | p_repeat
     | p_loop
     | p_para
+    | p_concur
+    | p_concurRe
     | p_cond
     | p_seq
     | p_branch
@@ -343,6 +351,22 @@ j_cond_third_arg: j_arg_universal;
 p_cond: 'cond' '(' p_cond_first_arg ',' p_arg_universal ',' p_cond_third_arg ',' p_arg_universal ')';
 p_cond_first_arg: p_arg_condition;
 p_cond_third_arg: p_arg_universal;
+
+j_concur: 'concur' '(' j_arg_universal ',' j_concur_second_arg ',' j_concur_third_arg ')';
+j_concur_second_arg: j_arg_universal;
+j_concur_third_arg: j_arg_universal;
+p_concur: 'concur' '(' p_arg_universal ',' p_concur_second_arg ',' p_concur_third_arg ')';
+p_concur_second_arg: p_arg_universal;
+p_concur_third_arg: p_arg_universal;
+
+j_concurRe: 'concurRe' '(' j_concurRe_first_arg ',' j_concurRe_second_arg ',' j_concurRe_third_arg ')';
+j_concurRe_first_arg: j_arg_universal;
+j_concurRe_second_arg: j_arg_universal;
+j_concurRe_third_arg: j_arg_universal;
+p_concurRe: 'concurRe' '(' p_concurRe_first_arg ',' p_concurRe_second_arg ',' p_concurRe_third_arg ')';
+p_concurRe_first_arg: p_arg_universal;
+p_concurRe_second_arg: p_arg_universal;
+p_concurRe_third_arg: p_arg_universal;
 
 j_seq : 'seq('j_arg_universal ',' j_arg_universal')';
 p_seq : 'seq('p_arg_universal ',' p_arg_universal')';

@@ -165,6 +165,51 @@ public class PythonGrammarListener extends GrammarBaseListener {
     }
 
     @Override
+    public void enterP_concur_second_arg(GrammarParser.P_concur_second_argContext ctx) {
+        code.append("threading.Thread(\n\ttarget=lambda : ");
+    }
+
+    @Override
+    public void exitP_concur_second_arg(GrammarParser.P_concur_second_argContext ctx) {
+        code.append(").start()\n");
+    }
+
+    @Override
+    public void enterP_concur_third_arg(GrammarParser.P_concur_third_argContext ctx) {
+        enterP_concur_second_arg(null);
+    }
+
+    @Override
+    public void exitP_concur_third_arg(GrammarParser.P_concur_third_argContext ctx) {
+        exitP_concur_second_arg(null);
+    }
+
+    @Override
+    public void enterP_concurRe_first_arg(GrammarParser.P_concurRe_first_argContext ctx) {
+        code.append("thread1 = threading.Thread(\n\ttarget=lambda : ");
+    }
+
+    @Override
+    public void exitP_concurRe_first_arg(GrammarParser.P_concurRe_first_argContext ctx) {
+        code.append(")\nthread1.start()\n");
+    }
+
+    @Override
+    public void enterP_concurRe_second_arg(GrammarParser.P_concurRe_second_argContext ctx) {
+        code.append("thread2 = threading.Thread(\n\ttarget=lambda : ");
+    }
+
+    @Override
+    public void exitP_concurRe_second_arg(GrammarParser.P_concurRe_second_argContext ctx) {
+        code.append(")\nthread2.start()\n");
+    }
+
+    @Override
+    public void enterP_concurRe_third_arg(GrammarParser.P_concurRe_third_argContext ctx) {
+        code.append("thread1.join()\nthread2.join()\n");
+    }
+
+    @Override
     public void enterP_line(GrammarParser.P_lineContext ctx) {
         printTabs();
     }

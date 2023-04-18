@@ -202,6 +202,71 @@ public class JavaGrammarListener extends GrammarBaseListener{
     }
 
     @Override
+    public void enterJ_concur_second_arg(GrammarParser.J_concur_second_argContext ctx) {
+        code.append("new Thread(() -> {\n");
+        tabNumber++;
+    }
+
+    @Override
+    public void exitJ_concur_second_arg(GrammarParser.J_concur_second_argContext ctx) {
+        code.append("}).start();\n");
+        tabNumber--;
+    }
+
+    @Override
+    public void enterJ_concur_third_arg(GrammarParser.J_concur_third_argContext ctx) {
+        enterJ_concur_second_arg(null);
+    }
+
+    @Override
+    public void exitJ_concur_third_arg(GrammarParser.J_concur_third_argContext ctx) {
+        exitJ_concur_second_arg(null);
+    }
+
+    @Override
+    public void enterJ_concurRe_first_arg(GrammarParser.J_concurRe_first_argContext ctx) {
+        code.append("{\n");
+        code.append("\tThread thread1 = new Thread(() -> {\n");
+        tabNumber += 2;
+    }
+
+    @Override
+    public void exitJ_concurRe_first_arg(GrammarParser.J_concurRe_first_argContext ctx) {
+        code.append("\t});\n\tthread1.start();\n");
+    }
+
+    @Override
+    public void enterJ_concurRe_second_arg(GrammarParser.J_concurRe_second_argContext ctx) {
+        code.append("\tThread thread2 = new Thread(() -> {\n");
+    }
+
+    @Override
+    public void exitJ_concurRe_second_arg(GrammarParser.J_concurRe_second_argContext ctx) {
+        code.append("\t});\n\tthread2.start();\n");
+    }
+
+    @Override
+    public void enterJ_concurRe_third_arg(GrammarParser.J_concurRe_third_argContext ctx) {
+        tabNumber--;
+        code.append(
+                """
+                \ttry {
+                \t\tthread1.join();
+                \t\tthread2.join();
+                \t} catch (InterruptedException e) {
+                \t\te.printStackTrace();
+                \t}
+                """
+        );
+    }
+
+    @Override
+    public void exitJ_concurRe_third_arg(GrammarParser.J_concurRe_third_argContext ctx) {
+        code.append("}\n");
+        tabNumber--;
+    }
+
+    @Override
     public void enterJ_line(GrammarParser.J_lineContext ctx) {
         printTabs();
     }
