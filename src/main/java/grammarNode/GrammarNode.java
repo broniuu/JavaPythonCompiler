@@ -5,10 +5,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class GrammarNode {
+public abstract class GrammarNode {
     protected int maxNodesNumber = 0;
     protected List<GrammarNode> grammarNodes = new ArrayList<>();
-    public boolean addGrammarNode(GrammarNode grammarNode){
+    private boolean addGrammarNode(GrammarNode grammarNode){
         if (grammarNodes.size() >= maxNodesNumber) {
             return false; // cannot add more children
         }
