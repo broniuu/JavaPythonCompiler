@@ -18,10 +18,6 @@ prog: (
     | p_cond
     | j_seq
     | p_seq
-    | j_branch
-    | p_branch
-    | j_branchRe
-    | p_branchRe
     )
     EOF;
 
@@ -299,8 +295,8 @@ p_arg_special_function
     | p_concurRe
     | p_cond
     | p_seq
-    | p_branch
-    | p_branchRe
+    | j_branches
+    | p_branches
     ;
 
 p_arg_universal: P_ARG_CODE_BLOCK | p_arg_function | p_arg_special_function;
@@ -368,9 +364,21 @@ p_concurRe_first_arg: p_arg_universal;
 p_concurRe_second_arg: p_arg_universal;
 p_concurRe_third_arg: p_arg_universal;
 
-j_seq : 'seq('j_arg_universal ',' j_arg_universal')';
-p_seq : 'seq('p_arg_universal ',' p_arg_universal')';
-j_branch : 'branch('j_arg_condition ',' j_arg_universal ',' j_arg_universal')';
-p_branch : 'branch('p_arg_universal ',' p_arg_universal ',' p_arg_universal')';
-j_branchRe : 'branchRe('j_arg_universal ',' j_arg_universal ',' j_arg_universal')';
-p_branchRe : 'branchRe('p_arg_universal ',' p_arg_universal ',' p_arg_universal')';
+j_seq : 'seq('(j_branches | (j_arg_universal ',' j_arg_universal)) ')';
+p_seq : 'seq('(p_branches | (p_arg_universal ',' p_arg_universal))')';
+j_branches : j_branch ',' j_branchRe;
+p_branches : p_branch ',' p_branchRe;
+j_branch : 'branch('j_branch_first_arg ',' j_branch_second_arg ',' j_branch_third_arg')';
+j_branch_first_arg: j_arg_condition;
+j_branch_second_arg: j_arg_universal;
+j_branch_third_arg: j_arg_universal;
+p_branch : 'branch('p_branch_first_arg ',' p_branch_second_arg ',' p_branch_third_arg')';
+p_branch_first_arg: p_arg_condition;
+p_branch_second_arg: p_arg_universal;
+p_branch_third_arg: p_arg_universal;
+j_branchRe : 'branchRe('j_branchRe_first_arg ',' j_branchRe_second_arg ',' j_arg_universal')';
+j_branchRe_first_arg: j_arg_universal;
+j_branchRe_second_arg: j_arg_universal;
+p_branchRe : 'branchRe('p_branchRe_first_arg ',' p_branchRe_second_arg ',' p_arg_universal')';
+p_branchRe_first_arg: p_arg_universal;
+p_branchRe_second_arg: p_arg_universal;
