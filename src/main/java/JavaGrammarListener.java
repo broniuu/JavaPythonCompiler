@@ -1,15 +1,14 @@
 import gen.GrammarBaseListener;
 import gen.GrammarParser;
-import grammarNode.GrammarCodeNode;
+import grammarNode.CodeBlockNode;
 import grammarNode.GrammarNode;
-import grammarNode.SeqGrammarNode;
-import grammarNode.StartGrammarNode;
+import grammarNode.StartNode;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 public class JavaGrammarListener extends GrammarBaseListener {
     private StringBuilder currentCodeBuilder = new StringBuilder();
-    private StartGrammarNode grammarNode = new StartGrammarNode();
+    private StartNode grammarNode = new StartNode();
     private int currentBranchNestingDegree = -1;
 
     private int tabNumber = 0;
@@ -41,6 +40,11 @@ public class JavaGrammarListener extends GrammarBaseListener {
 
     @Override
     public void enterJ_condition(GrammarParser.J_conditionContext ctx) {
+
+    }
+
+    @Override
+    public void enterJ_arg_condition(GrammarParser.J_arg_conditionContext ctx) {
         separateChildrenWithSpace(ctx);
     }
 
@@ -79,23 +83,29 @@ public class JavaGrammarListener extends GrammarBaseListener {
 
     private void separateChildrenWithSpace(ParseTree context) {
         var maxLastChildIndex = context.getChildCount() - 1;
+        StringBuilder localStringBuilder = new StringBuilder();
         for (int i = 0; i < maxLastChildIndex; ++i) {
-            currentCodeBuilder.append(context.getChild(i).getText()).append(" ");
+            localStringBuilder.append(context.getChild(i).getText()).append(" ");
         }
-        currentCodeBuilder.append(context.getChild(maxLastChildIndex).getText());
+        localStringBuilder.append(context.getChild(maxLastChildIndex).getText());
+        grammarNode.addCodeBlockNodeToTree(localStringBuilder.toString());
     }
 
     @Override
     public void enterJ_seq(GrammarParser.J_seqContext ctx) {
-        grammarNode.addGrammarNodeToTree(new SeqGrammarNode());
+        if (ctx.children.stream().noneMatch(x -> x instanceof GrammarParser.J_branchesContext))
+            grammarNode.addSeqNodeToTree();
+    }
+
+    @Override
+    public void enterJ_branches(GrammarParser.J_branchesContext ctx) {
+        grammarNode.addBranchBranchReNodeToTree();
     }
 
     @Override
     public void enterJ_arg_universal(GrammarParser.J_arg_universalContext ctx) {
         if (ctx.J_ARG_CODE_BLOCK() != null) {
-            GrammarCodeNode grammarCodeNode = new GrammarCodeNode();
-            grammarCodeNode.setCode(ctx.J_ARG_CODE_BLOCK().getText().replace(CODE_BLOCK_SIGN, ""));
-            grammarNode.addGrammarNodeToTree(grammarCodeNode);
+            grammarNode.addCodeBlockNodeToTree(ctx.J_ARG_CODE_BLOCK().getText());
         }
     }
 
@@ -267,27 +277,6 @@ public class JavaGrammarListener extends GrammarBaseListener {
                         \t}
                         """
         );
-    }
-
-    @Override
-    public void exitJ_concurRe_third_arg(GrammarParser.J_concurRe_third_argContext ctx) {
-        currentCodeBuilder.append("}\n");
-        tabNumber--;
-    }
-
-    @Override
-    public void enterJ_branch_first_arg(GrammarParser.J_branch_first_argContext ctx) {
-//        currentCodeBuilder.pushNewEmptyCode(); //
-        currentBranchNestingDegree++;
-
-        printTabs();
-        currentCodeBuilder.append("if (");
-    }
-
-    @Override
-    public void exitJ_branch_first_arg(GrammarParser.J_branch_first_argContext ctx) {
-        currentCodeBuilder.append(") { \n");
-        tabNumber++;
     }
     @Override
     public void enterJ_line(GrammarParser.J_lineContext ctx) {

@@ -1,42 +1,30 @@
 package grammarNode;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
+import java.util.Optional;
 
 public abstract class GrammarNode {
-    protected int maxNodesNumber = 0;
-    protected List<GrammarNode> grammarNodes = new ArrayList<>();
-    private boolean addGrammarNode(GrammarNode grammarNode){
-        if (grammarNodes.size() >= maxNodesNumber) {
-            return false; // cannot add more children
+    protected int maxChildrenNumber = 0;
+    protected List<GrammarNode> childGrammarNodes = new ArrayList<>();
+    protected void addChild(GrammarNode grammarNode){
+        Optional<GrammarNode> firstNotFilledChild = childGrammarNodes.stream()
+                .filter(GrammarNode::notFilled).findFirst();
+        if (firstNotFilledChild.isEmpty()){
+            if (this.notFilled()) childGrammarNodes.add(grammarNode);
+            return;
         }
-        grammarNodes.add(grammarNode);
-        return true;
+        firstNotFilledChild.get().addChild(grammarNode);
     }
-    public boolean allNodesSet;
-
+    public boolean notFilled() {
+        return this.childGrammarNodes.size() < this.maxChildrenNumber;
+    }
     public StringBuilder getCode() {
         return new StringBuilder();
     }
-
-    public boolean addGrammarNodeToTree(GrammarNode node) {
-        Queue<GrammarNode> queue = new LinkedList<>();
-        queue.add(this); // rozpoczynamy od korzenia
-
-        while (!queue.isEmpty()) {
-            GrammarNode current = queue.poll();
-            if (current.addGrammarNode(node)) {
-                return true; // udało się dodać węzeł
-            }
-            queue.addAll(current.getGrammarNodes());
-        }
-        return false; // nie udało się dodać węzła (brak miejsca w drzewie)
+    public List<GrammarNode> getChildren() {
+        return childGrammarNodes;
     }
 
-    public List<GrammarNode> getGrammarNodes() {
-        return grammarNodes;
-    }
 }
 

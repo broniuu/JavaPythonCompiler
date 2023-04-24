@@ -4,16 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55ac1dd5-855f-479b-b3d2-b5ad1f12cf02" name="Changes" comment="add codebuilders">
-      <change afterPath="$PROJECT_DIR$/src/main/java/grammarNode/GrammarCodeNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/grammarNode/GrammarNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/grammarNode/SeqGrammarNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/grammarNode/StartGrammarNode.java" afterDir="false" />
+    <list default="true" id="55ac1dd5-855f-479b-b3d2-b5ad1f12cf02" name="Changes" comment="fix abstract">
+      <change afterPath="$PROJECT_DIR$/src/main/java/grammarNode/BranchBranchReNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/JavaGrammarListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JavaGrammarListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codeBuilder/CodeStackBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codeBuilder/ICodeStackBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/grammarNode/GrammarCodeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/grammarNode/CodeBlockNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/grammarNode/GrammarNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/grammarNode/GrammarNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/grammarNode/SeqGrammarNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/grammarNode/SeqNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/grammarNode/StartGrammarNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/grammarNode/StartNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/JavaGrammarListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JavaGrammarListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
     </list>
@@ -121,7 +120,9 @@
       <workItem from="1680553477965" duration="665000" />
       <workItem from="1682105299500" duration="2921000" />
       <workItem from="1682147347411" duration="8958000" />
-      <workItem from="1682164367124" duration="6610000" />
+      <workItem from="1682164367124" duration="6976000" />
+      <workItem from="1682274702384" duration="6219000" />
+      <workItem from="1682281737084" duration="1640000" />
     </task>
     <task id="LOCAL-00001" summary="Create maven project">
       <created>1680178304516</created>
@@ -214,7 +215,21 @@
       <option name="project" value="LOCAL" />
       <updated>1682152833055</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="add tree structure">
+      <created>1682171190897</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1682171190897</updated>
+    </task>
+    <task id="LOCAL-00015" summary="fix abstract">
+      <created>1682171345779</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1682171345779</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,41 +261,30 @@
     <MESSAGE value="fix listeners" />
     <MESSAGE value="add .gitignore" />
     <MESSAGE value="add codebuilders" />
-    <option name="LAST_COMMIT_MESSAGE" value="add codebuilders" />
+    <MESSAGE value="add tree structure" />
+    <MESSAGE value="fix abstract" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix abstract" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/JavaGrammarListener.java</url>
-          <line>304</line>
+          <line>293</line>
           <option name="timeStamp" value="40" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/JavaGrammarListener.java</url>
-          <line>94</line>
-          <option name="timeStamp" value="47" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/JavaGrammarListener.java</url>
-          <line>98</line>
-          <option name="timeStamp" value="50" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/JavaGrammarListener.java</url>
-          <line>90</line>
-          <option name="timeStamp" value="52" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/JavaGrammarListener.java</url>
-          <line>99</line>
-          <option name="timeStamp" value="53" />
+          <url>file://$PROJECT_DIR$/src/main/java/Main.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="55" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
+        <PinnedItemInfo parentTag="grammarNode.SeqGrammarNode" memberName="maxNodesNumber" />
         <PinnedItemInfo parentTag="codeBuilder.CodeStackBuilder" memberName="codeStack" />
+        <PinnedItemInfo parentTag="grammarNode.BranchBranchReNode" memberName="childGrammarNodes" />
       </pinned-members>
     </pin-to-top-manager>
     <watches-manager>
@@ -291,6 +295,11 @@
         <watch expression="branchConditionCodeStackBuilder" language="JAVA" custom="JavaGrammarListener" />
         <watch expression="branchReCodeStackBuilder" language="JAVA" custom="JavaGrammarListener" />
         <watch expression="baseCodeBuilder" language="JAVA" custom="JavaGrammarListener" />
+        <watch expression="ctx" />
+        <watch expression="((java.util.ArrayList)((BranchBranchReNode)((java.util.ArrayList)((BranchBranchReNode)((JavaGrammarListener)this).grammarNode.childGrammarNodes.get(0)).childGrammarNodes).get(1)).childGrammarNodes).get(0)" custom="grammarNode.BranchBranchReNode,JavaGrammarListener,java.util.ArrayList" />
+        <watch expression="((java.util.ArrayList)((BranchBranchReNode)((java.util.ArrayList)((BranchBranchReNode)((JavaGrammarListener)this).grammarNode.childGrammarNodes.get(0)).childGrammarNodes).get(1)).childGrammarNodes).get(0)" custom="grammarNode.BranchBranchReNode,JavaGrammarListener,java.util.ArrayList" />
+        <watch expression="this" />
+        <watch expression="this" />
       </configuration>
     </watches-manager>
   </component>
