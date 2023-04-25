@@ -4,17 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55ac1dd5-855f-479b-b3d2-b5ad1f12cf02" name="Changes" comment="fix abstract">
-      <change afterPath="$PROJECT_DIR$/src/main/java/grammarNode/BranchBranchReNode.java" afterDir="false" />
+    <list default="true" id="55ac1dd5-855f-479b-b3d2-b5ad1f12cf02" name="Changes" comment="add input from file">
+      <change afterPath="$PROJECT_DIR$/src/main/java/tree/javaNodes/BranchBranchReJavaNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tree/javaNodes/ChoiceJavaNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tree/javaNodes/SeqJavaNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/input.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Grammar.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Grammar.g4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/JavaGrammarListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JavaGrammarListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/grammarNode/GrammarCodeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/grammarNode/CodeBlockNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/grammarNode/GrammarNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/grammarNode/GrammarNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/grammarNode/SeqGrammarNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/grammarNode/SeqNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/grammarNode/StartGrammarNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/grammarNode/StartNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/PythonGrammarListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PythonGrammarListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/grammarNode/BranchBranchReNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/grammarNode/CodeBlockNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tree/CodeBlockNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/grammarNode/GrammarNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tree/GrammarNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/grammarNode/SeqNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/grammarNode/StartNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tree/MainJavaNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/JavaGrammarListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JavaGrammarListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/PythonGrammarListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/PythonGrammarListener.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,14 +80,15 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="tree" />
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Uczelnia\III_Semsestr\Kompilatory\JavaPythonCompiler\src\main\resources" />
+      <recent name="C:\Uczelnia\III_Semsestr\Kompilatory\JavaPythonCompiler" />
       <recent name="C:\Uczelnia\III_Semsestr\Kompilatory\JavaPythonCompiler\src\main\java" />
       <recent name="C:\Uczelnia\III_Semsestr\Kompilatory\JavaPythonCompiler\src" />
-      <recent name="C:\Uczelnia\III_Semsestr\Kompilatory\JavaPythonCompiler\src\main\resources" />
       <recent name="C:\Uczelnia\III_Semsestr\Kompilatory\JavaPythonCompiler\src\main\java\gen" />
-      <recent name="C:\Uczelnia\III_Semsestr\Kompilatory\JavaPythonCompiler\src\main" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
@@ -123,6 +131,8 @@
       <workItem from="1682164367124" duration="6976000" />
       <workItem from="1682274702384" duration="6219000" />
       <workItem from="1682281737084" duration="1640000" />
+      <workItem from="1682352571038" duration="6032000" />
+      <workItem from="1682440967369" duration="7913000" />
     </task>
     <task id="LOCAL-00001" summary="Create maven project">
       <created>1680178304516</created>
@@ -229,7 +239,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682171345779</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="add adding children to tree">
+      <created>1682352634973</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1682352634973</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,20 +280,18 @@
     <MESSAGE value="add codebuilders" />
     <MESSAGE value="add tree structure" />
     <MESSAGE value="fix abstract" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix abstract" />
+    <MESSAGE value="add adding children to tree" />
+    <MESSAGE value="add choice node" />
+    <MESSAGE value="add input from file" />
+    <option name="LAST_COMMIT_MESSAGE" value="add input from file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/JavaGrammarListener.java</url>
-          <line>293</line>
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Main.java</url>
-          <line>37</line>
-          <option name="timeStamp" value="55" />
+          <url>file://$PROJECT_DIR$/src/main/java/tree/javaNodes/BranchBranchReJavaNode.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="56" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -289,15 +304,6 @@
     </pin-to-top-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="currentCodeBuilder" language="JAVA" custom="JavaGrammarListener" />
-        <watch expression="branchIfCodeStackBuilder" language="JAVA" custom="JavaGrammarListener" />
-        <watch expression="branchElseCodeStackBuilder" language="JAVA" custom="JavaGrammarListener" />
-        <watch expression="branchConditionCodeStackBuilder" language="JAVA" custom="JavaGrammarListener" />
-        <watch expression="branchReCodeStackBuilder" language="JAVA" custom="JavaGrammarListener" />
-        <watch expression="baseCodeBuilder" language="JAVA" custom="JavaGrammarListener" />
-        <watch expression="ctx" />
-        <watch expression="((java.util.ArrayList)((BranchBranchReNode)((java.util.ArrayList)((BranchBranchReNode)((JavaGrammarListener)this).grammarNode.childGrammarNodes.get(0)).childGrammarNodes).get(1)).childGrammarNodes).get(0)" custom="grammarNode.BranchBranchReNode,JavaGrammarListener,java.util.ArrayList" />
-        <watch expression="((java.util.ArrayList)((BranchBranchReNode)((java.util.ArrayList)((BranchBranchReNode)((JavaGrammarListener)this).grammarNode.childGrammarNodes.get(0)).childGrammarNodes).get(1)).childGrammarNodes).get(0)" custom="grammarNode.BranchBranchReNode,JavaGrammarListener,java.util.ArrayList" />
         <watch expression="this" />
         <watch expression="this" />
       </configuration>

@@ -1,4 +1,6 @@
-package grammarNode;
+package tree;
+
+import codeBuilder.JavaCodeBuilder;
 
 public class CodeBlockNode extends GrammarNode {
     private String code;
@@ -7,8 +9,9 @@ public class CodeBlockNode extends GrammarNode {
         maxChildrenNumber = 0;
     }
     @Override
-    public StringBuilder getCode() {
-        return new StringBuilder().append(code.replace(CODE_BLOCK_SIGN, ""));
+    public JavaCodeBuilder getCode(int tabsNumber) {
+        return codeStringBuilder
+                .append(code.replace(CODE_BLOCK_SIGN, ""));
     }
 
     public void setCode(String code) {
