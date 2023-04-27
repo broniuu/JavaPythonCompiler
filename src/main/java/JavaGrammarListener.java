@@ -44,6 +44,11 @@ public class JavaGrammarListener extends GrammarBaseListener {
     }
 
     @Override
+    public void enterJ_seqSeq(GrammarParser.J_seqSeqContext ctx) {
+        grammarNode.addSeqSeqJavaNode();
+    }
+
+    @Override
     public void exitProg(GrammarParser.ProgContext ctx) {
         System.out.println(grammarNode.getCode());
     }

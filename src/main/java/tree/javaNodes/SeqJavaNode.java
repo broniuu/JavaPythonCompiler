@@ -12,7 +12,7 @@ public class SeqJavaNode extends GrammarNode {
         JavaCodeBuilder firsArgument = childGrammarNodes.get(0).getCode(tabNumber);
         JavaCodeBuilder secondArgument = childGrammarNodes.get(1).getCode(tabNumber);
         return codeStringBuilder
-                .appendTabs(tabNumber).append(firsArgument).append("\n")
+                .append(firsArgument).append("\n")
                 .appendTabs(tabNumber).append(secondArgument).append("\n");
     }
 }

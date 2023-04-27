@@ -4,6 +4,7 @@ import codeBuilder.JavaCodeBuilder;
 import tree.javaNodes.BranchBranchReJavaNode;
 import tree.javaNodes.ChoiceJavaNode;
 import tree.javaNodes.SeqJavaNode;
+import tree.javaNodes.SeqSeqJavaNode;
 
 public class MainJavaNode extends GrammarNode {
     public MainJavaNode() {
@@ -28,4 +29,5 @@ public class MainJavaNode extends GrammarNode {
         this.addChild(new BranchBranchReJavaNode());
     }
     public void addChoiceJavaNode() {this.addChild(new ChoiceJavaNode());}
+    public void addSeqSeqJavaNode() {this.addChild(new SeqSeqJavaNode());}
 }
