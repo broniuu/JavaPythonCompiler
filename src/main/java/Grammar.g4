@@ -1,33 +1,30 @@
 grammar Grammar;
-prog: (
-    j_seqSeq
-    | p_seqSeq
-    | j_choice
-    | p_choice
-    | j_repeat
-    | p_repeat
-    | j_loop
-    | p_loop
-    | j_para
-    | p_para
-    | j_concur
-    | p_concur
-    | j_concurRe
-    | p_concurRe
-    | j_cond
-    | p_cond
-    | j_seq
-    | p_seq
-    | j_branch
-    | p_branch
-    | j_branchRe
-    | p_branchRe
-    )
-    EOF;
+prog: (java| python) EOF;
 
-java: j_line*;
+java: (
+          j_seqSeq
+          | j_choice
+          | j_repeat
+          | j_loop
+          | j_para
+          | j_concur
+          | j_concurRe
+          | j_cond
+          | j_seq
+          );
 
-python: p_line*;
+python: (
+            j_seqSeq
+            | p_seqSeq
+            | p_choice
+            | p_repeat
+            | p_loop
+            | p_para
+            | p_concur
+            | p_concurRe
+            | p_cond
+            | p_seq
+            );
 
 p_line: p_function_call | p_assignment | p_forloop | p_if;
 
@@ -299,78 +296,39 @@ p_arg_special_function
     | p_concurRe
     | p_cond
     | p_seq
-    | p_branch
-    | p_branchRe
+    | j_branches
+    | p_branches
     ;
 
 p_arg_universal: P_ARG_CODE_BLOCK | p_arg_function | p_arg_special_function;
 
 j_seqSeq : 'seqSeq('j_arg_universal ',' j_arg_universal ',' j_arg_universal')';
 p_seqSeq : 'seqSeq('p_arg_universal ',' p_arg_universal ',' p_arg_universal')';
-j_choice : 'choice('j_arg_universal ',' j_choice_second_action ',' j_choice_third_action',' j_choice_fourth_action')';
-j_choice_second_action: j_arg_universal;
-j_choice_third_action: j_arg_universal;
-j_choice_fourth_action: j_arg_universal;
-p_choice : 'choice('p_arg_universal ',' p_choice_second_action ',' p_choice_third_action ',' p_choice_fourth_action')';
-p_choice_second_action: p_arg_universal;
-p_choice_third_action: p_arg_universal;
-p_choice_fourth_action: p_arg_universal;
-p_repeat : 'repeat('p_repeat_first_action ',' p_repeat_second_action ',' p_arg_condition ',' p_repeat_third_action')';
-p_repeat_first_action: p_arg_universal;
-p_repeat_second_action: p_arg_universal;
-p_repeat_third_action: p_arg_universal;
-j_repeat : 'repeat('j_repeat_first_action ',' j_repeat_second_action ',' j_arg_condition ',' j_repeat_third_action')';
-j_repeat_first_action: j_arg_universal;
-j_repeat_second_action: j_arg_universal;
-j_repeat_third_action: j_arg_universal;
+j_choice : 'choice('j_arg_universal ',' j_arg_universal ',' j_arg_universal',' j_arg_universal')';
+p_choice : 'choice('p_arg_universal ',' p_arg_universal ',' p_arg_universal ',' p_arg_universal')';
+p_repeat : 'repeat('p_arg_universal ',' p_arg_universal ',' p_arg_condition ',' p_arg_universal')';
+j_repeat : 'repeat('j_arg_universal ',' j_arg_universal ',' j_arg_condition ',' j_arg_universal')';
 
-j_loop : 'loop('j_loop_first_action ','j_loop_second_action','j_loop_third_action','j_loop_fourth_action')';
-j_loop_first_action : j_arg_universal;
-j_loop_second_action : j_arg_condition;
-j_loop_third_action : j_arg_universal;
-j_loop_fourth_action : j_arg_universal;
-p_loop : 'loop('p_loop_first_action ','p_loop_second_action','p_loop_third_action','p_loop_fourth_action')';
-p_loop_first_action : p_arg_universal;
-p_loop_second_action : p_arg_condition;
-p_loop_third_action : p_arg_universal;
-p_loop_fourth_action : p_arg_universal;
-j_para : 'para('j_para_first_action ','j_para_second_action','j_para_third_action','j_para_fourth_action ')';
-j_para_first_action : j_arg_universal;
-j_para_second_action : j_arg_universal;
-j_para_third_action : j_arg_universal;
-j_para_fourth_action : j_arg_universal;
-p_para : 'para('p_para_first_action ','p_para_second_action','p_para_third_action','p_para_fourth_action ')';
-p_para_first_action : p_arg_universal;
-p_para_second_action : p_arg_universal;
-p_para_third_action : p_arg_universal;
-p_para_fourth_action : p_arg_universal;
+j_loop : 'loop('j_arg_universal ','j_arg_universal','j_arg_universal','j_arg_universal')';
+p_loop : 'loop('p_arg_universal ','p_arg_universal','p_arg_universal','p_arg_universal')';
+j_para : 'para('j_arg_universal ','j_arg_universal','j_arg_universal','j_arg_universal ')';
+p_para : 'para('p_arg_universal ','p_arg_universal','p_arg_universal','p_arg_universal ')';
 
-j_cond: 'cond' '(' j_cond_first_arg ',' j_arg_universal ',' j_cond_third_arg ',' j_arg_universal ')';
-j_cond_first_arg: j_arg_condition;
-j_cond_third_arg: j_arg_universal;
-p_cond: 'cond' '(' p_cond_first_arg ',' p_arg_universal ',' p_cond_third_arg ',' p_arg_universal ')';
-p_cond_first_arg: p_arg_condition;
-p_cond_third_arg: p_arg_universal;
+j_cond: 'cond' '(' j_arg_condition ',' j_arg_universal ',' j_arg_condition ',' j_arg_universal ')';
+p_cond: 'cond' '(' p_arg_condition ',' p_arg_universal ',' p_arg_condition ',' p_arg_universal ')';
 
-j_concur: 'concur' '(' j_arg_universal ',' j_concur_second_arg ',' j_concur_third_arg ')';
-j_concur_second_arg: j_arg_universal;
-j_concur_third_arg: j_arg_universal;
-p_concur: 'concur' '(' p_arg_universal ',' p_concur_second_arg ',' p_concur_third_arg ')';
-p_concur_second_arg: p_arg_universal;
-p_concur_third_arg: p_arg_universal;
+j_concur: 'concur' '(' j_arg_universal ',' j_arg_universal ',' j_arg_universal ')';
+p_concur: 'concur' '(' p_arg_universal ',' p_arg_universal ',' p_arg_universal ')';
+j_concurRe: 'concurRe' '(' j_arg_universal ',' j_arg_universal ',' j_arg_universal ')';
+p_concurRe: 'concurRe' '(' p_arg_universal ',' p_arg_universal ',' p_arg_universal ')';
 
-j_concurRe: 'concurRe' '(' j_concurRe_first_arg ',' j_concurRe_second_arg ',' j_concurRe_third_arg ')';
-j_concurRe_first_arg: j_arg_universal;
-j_concurRe_second_arg: j_arg_universal;
-j_concurRe_third_arg: j_arg_universal;
-p_concurRe: 'concurRe' '(' p_concurRe_first_arg ',' p_concurRe_second_arg ',' p_concurRe_third_arg ')';
-p_concurRe_first_arg: p_arg_universal;
-p_concurRe_second_arg: p_arg_universal;
-p_concurRe_third_arg: p_arg_universal;
-
-j_seq : 'seq('j_arg_universal ',' j_arg_universal')';
-p_seq : 'seq('p_arg_universal ',' p_arg_universal')';
+j_seq : 'seq('(j_branches | j_seq_normal_args) ')';
+p_seq : 'seq('(p_branches | p_seq_normal_args)')';
+j_seq_normal_args: j_arg_universal ',' j_arg_universal;
+p_seq_normal_args: p_arg_universal ',' p_arg_universal;
+j_branches: j_branch ',' j_branchRe;
+p_branches: p_branch ',' p_branchRe;
 j_branch : 'branch('j_arg_condition ',' j_arg_universal ',' j_arg_universal')';
-p_branch : 'branch('p_arg_universal ',' p_arg_universal ',' p_arg_universal')';
+p_branch : 'branch('p_arg_condition ',' p_arg_universal ',' p_arg_universal')';
 j_branchRe : 'branchRe('j_arg_universal ',' j_arg_universal ',' j_arg_universal')';
 p_branchRe : 'branchRe('p_arg_universal ',' p_arg_universal ',' p_arg_universal')';

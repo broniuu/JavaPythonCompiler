@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55ac1dd5-855f-479b-b3d2-b5ad1f12cf02" name="Changes" comment="fix problems">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="55ac1dd5-855f-479b-b3d2-b5ad1f12cf02" name="Changes" comment="add input from file">
+      <change afterPath="$PROJECT_DIR$/src/main/java/tree/javaNodes/SeqSeqJavaNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/przylady_do_testowania.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/przylady_do_testowania.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/JavaGrammarListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JavaGrammarListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tree/MainJavaNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tree/MainJavaNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tree/javaNodes/SeqJavaNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tree/javaNodes/SeqJavaNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,6 +20,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -26,7 +28,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="experimental" />
+        <entry key="$PROJECT_DIR$" value="feature/branch-branchRe" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -57,6 +59,7 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
@@ -65,12 +68,16 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="tree" />
+      <recent name="" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Uczelnia\III_Semsestr\Kompilatory\JavaPythonCompiler\src\main\resources" />
+      <recent name="C:\Uczelnia\III_Semsestr\Kompilatory\JavaPythonCompiler" />
       <recent name="C:\Uczelnia\III_Semsestr\Kompilatory\JavaPythonCompiler\src\main\java" />
       <recent name="C:\Uczelnia\III_Semsestr\Kompilatory\JavaPythonCompiler\src" />
-      <recent name="C:\Uczelnia\III_Semsestr\Kompilatory\JavaPythonCompiler\src\main\resources" />
       <recent name="C:\Uczelnia\III_Semsestr\Kompilatory\JavaPythonCompiler\src\main\java\gen" />
-      <recent name="C:\Uczelnia\III_Semsestr\Kompilatory\JavaPythonCompiler\src\main" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
@@ -89,13 +96,14 @@
       <list>
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="3b057e99-973e-4e13-a072-76bcb70fe167" name="Changes" comment="" />
+      <changelist id="55ac1dd5-855f-479b-b3d2-b5ad1f12cf02" name="Changes" comment="add .gitignore" />
       <created>1680177327789</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -107,6 +115,15 @@
       <workItem from="1680340620142" duration="2890000" />
       <workItem from="1680449633476" duration="515000" />
       <workItem from="1680553477965" duration="665000" />
+      <workItem from="1682105299500" duration="2921000" />
+      <workItem from="1682147347411" duration="8958000" />
+      <workItem from="1682164367124" duration="6976000" />
+      <workItem from="1682274702384" duration="6219000" />
+      <workItem from="1682281737084" duration="1640000" />
+      <workItem from="1682352571038" duration="6032000" />
+      <workItem from="1682440967369" duration="7913000" />
+      <workItem from="1682453525704" duration="160000" />
+      <workItem from="1682605863279" duration="2114000" />
     </task>
     <task id="LOCAL-00001" summary="Create maven project">
       <created>1680178304516</created>
@@ -185,7 +202,49 @@
       <option name="project" value="LOCAL" />
       <updated>1680859096559</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="add .gitignore">
+      <created>1682094882636</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1682094882636</updated>
+    </task>
+    <task id="LOCAL-00013" summary="add codebuilders">
+      <created>1682152833055</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1682152833055</updated>
+    </task>
+    <task id="LOCAL-00014" summary="add tree structure">
+      <created>1682171190897</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1682171190897</updated>
+    </task>
+    <task id="LOCAL-00015" summary="fix abstract">
+      <created>1682171345779</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1682171345779</updated>
+    </task>
+    <task id="LOCAL-00016" summary="add adding children to tree">
+      <created>1682352634973</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1682352634973</updated>
+    </task>
+    <task id="LOCAL-00017" summary="add input from file">
+      <created>1682453545798</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1682453545798</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -215,6 +274,37 @@
     <MESSAGE value="add gen" />
     <MESSAGE value="fix argument plus error" />
     <MESSAGE value="fix listeners" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix listeners" />
+    <MESSAGE value="add .gitignore" />
+    <MESSAGE value="add codebuilders" />
+    <MESSAGE value="add tree structure" />
+    <MESSAGE value="fix abstract" />
+    <MESSAGE value="add adding children to tree" />
+    <MESSAGE value="add choice node" />
+    <MESSAGE value="add input from file" />
+    <option name="LAST_COMMIT_MESSAGE" value="add input from file" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/tree/javaNodes/BranchBranchReJavaNode.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="grammarNode.SeqGrammarNode" memberName="maxNodesNumber" />
+        <PinnedItemInfo parentTag="codeBuilder.CodeStackBuilder" memberName="codeStack" />
+        <PinnedItemInfo parentTag="grammarNode.BranchBranchReNode" memberName="childGrammarNodes" />
+      </pinned-members>
+    </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="this" />
+        <watch expression="this" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

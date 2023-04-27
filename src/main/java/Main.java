@@ -1,20 +1,20 @@
 import gen.GrammarLexer;
 import gen.GrammarParser;
-import org.antlr.v4.runtime.BailErrorStrategy;
-import org.antlr.v4.runtime.CharStream;
-import org.antlr.v4.runtime.CharStreams;
-import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.URL;
+import java.io.InputStream;
+import java.nio.file.Paths;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        CharStream codePointCharStream = CharStreams.fromString(
-                "seq(`int a = 34;`, `int b = 21 + a;`)"
-        );
+        ClassLoader classLoader = Main.class.getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream("input.txt");
+        assert inputStream != null;
+        CharStream codePointCharStream = CharStreams.fromStream(inputStream);
         GrammarLexer lexer = new GrammarLexer(codePointCharStream);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         GrammarParser parser = new GrammarParser(tokens);
@@ -29,6 +29,5 @@ public class Main {
         } catch (RuntimeException ex){
             System.out.println(ex.getMessage());
         }
-
     }
 }
