@@ -1,4 +1,4 @@
-package tree.javaNodes;
+package tree.java.specialFunctionsNodes;
 
 import codeBuilder.JavaCodeBuilder;
 import tree.GrammarNode;

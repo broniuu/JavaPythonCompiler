@@ -11,7 +11,7 @@ java: (
           | j_concurRe
           | j_cond
           | j_seq
-          );
+          ) j_function_declaration*;
 
 python: (
             j_seqSeq
@@ -28,6 +28,12 @@ python: (
 
 p_line: p_function_call | p_assignment | p_forloop | p_if;
 
+j_function_declaration: j_type ID (('(' j_params ')') | '()');
+
+j_params: ( j_function_param ',')* j_function_param;
+
+j_function_param: j_type ID;
+
 j_line: ((j_declaration | j_array_declaration | j_initialization | j_function_call | j_loopFun | j_if) ';');
 
 j_function_call: ID ('(' j_function_args ')' | '()');
@@ -40,6 +46,7 @@ j_function_arg
     | NUMBER
     | STRING
     | ID
+    | CHAR
     ;
 
 p_function_call: ID ('(' p_args ')' | '()');
@@ -130,7 +137,7 @@ p_string: STRING |  STRING_SMALL;
 
 p_list: '[' (p_rhs_value (',' p_rhs_value)*)? ']';
 
-j_type: INT_TYPE | CHAR_TYPE | STRING_TYPE | DOUBLE_TYPE | FLOAT_TYPE | BOOL_TYPE;
+j_type: INT_TYPE | CHAR_TYPE | STRING_TYPE | DOUBLE_TYPE | FLOAT_TYPE | BOOL_TYPE | ID;
 
 //Values
 NUMBER: '0' | '-'?[1-9][0-9]*;

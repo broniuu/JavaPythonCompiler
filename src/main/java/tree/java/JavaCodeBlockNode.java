@@ -1,11 +1,12 @@
-package tree;
+package tree.java;
 
 import codeBuilder.JavaCodeBuilder;
+import tree.GrammarNode;
 
-public class CodeBlockNode extends GrammarNode {
+public class JavaCodeBlockNode extends GrammarNode {
     private String code;
     private final String CODE_BLOCK_SIGN = "`";
-    public CodeBlockNode() {
+    public JavaCodeBlockNode() {
         maxChildrenNumber = 0;
     }
     @Override
