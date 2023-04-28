@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55ac1dd5-855f-479b-b3d2-b5ad1f12cf02" name="Changes" comment="move files">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Grammar.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Grammar.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/input.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/przylady_do_testowania.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/przylady_do_testowania.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/input.txt" afterDir="false" />
-    </list>
+    <list default="true" id="55ac1dd5-855f-479b-b3d2-b5ad1f12cf02" name="Changes" comment="fix no functions bug" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -126,7 +120,7 @@
       <workItem from="1682674386402" duration="95000" />
       <workItem from="1682680851470" duration="351000" />
       <workItem from="1682684988467" duration="2564000" />
-      <workItem from="1682699558927" duration="6882000" />
+      <workItem from="1682699558927" duration="7281000" />
     </task>
     <task id="LOCAL-00001" summary="Create maven project">
       <created>1680178304516</created>
@@ -282,7 +276,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682706097216</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="fix no functions bug">
+      <created>1682706793890</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1682706793890</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -324,7 +325,8 @@
     <MESSAGE value="add custom function declaration" />
     <MESSAGE value="update maven" />
     <MESSAGE value="move files" />
-    <option name="LAST_COMMIT_MESSAGE" value="move files" />
+    <MESSAGE value="fix no functions bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix no functions bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -333,6 +335,16 @@
           <url>file://$PROJECT_DIR$/src/main/java/tree/java/CustomFunctionJavaNode.java</url>
           <line>17</line>
           <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/tree/java/MainJavaNode.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="62" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/JavaGrammarListener.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="63" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -8,18 +8,14 @@ public class JavaGrammarListener extends GrammarBaseListener {
     private MainJavaNode grammarNode = new MainJavaNode();
     private boolean errorOccurred = false;
     @Override
-    public void enterJ_arg_condition(GrammarParser.J_arg_conditionContext ctx) {
-        separateChildrenWithSpace(ctx);
-    }
-    @Override
     public void visitErrorNode(ErrorNode node) {
         errorOccurred = true;
     }
     @Override
-    public void enterJ_initialization(GrammarParser.J_initializationContext ctx) {
-        var childContext = ctx.getChild(0);
-        separateChildrenWithSpace(childContext);
+    public void enterJ_condition(GrammarParser.J_conditionContext ctx) {
+        separateChildrenWithSpace(ctx);
     }
+
     private void separateChildrenWithSpace(ParseTree context) {
         var maxLastChildIndex = context.getChildCount() - 1;
         StringBuilder localStringBuilder = new StringBuilder();
