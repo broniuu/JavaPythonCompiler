@@ -97,7 +97,7 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="corretto-17" />
       <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="javapythoncompiler" />
+      <module name="JavaPythonCompiler" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
