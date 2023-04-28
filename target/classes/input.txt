@@ -9,7 +9,7 @@ choice(
                 `int a = 2;`,
                 `int b = 2;`),
             branchRe(
-                `int c = 2;`,
+                ` c = 2;`,
                 `int d = 2;`,
                 `int e = 2;`)
             ),

@@ -30,11 +30,11 @@ p_line: p_function_call | p_assignment | p_forloop | p_if;
 
 j_line: ((j_declaration | j_array_declaration | j_initialization | j_function_call | j_loopFun | j_if) ';');
 
-j_function_call: ID ('(' j_args ')' | '()');
+j_function_call: ID ('(' j_function_args ')' | '()');
 
-j_args: ( j_arg ',')* j_arg;
+j_function_args: ( j_function_arg ',')* j_function_arg;
 
-j_arg
+j_function_arg
     : BOOL_JAVA
     | j_function_call
     | NUMBER

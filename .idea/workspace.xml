@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55ac1dd5-855f-479b-b3d2-b5ad1f12cf02" name="Changes" comment="add input from file">
-      <change afterPath="$PROJECT_DIR$/src/main/java/tree/javaNodes/SeqSeqJavaNode.java" afterDir="false" />
+    <list default="true" id="55ac1dd5-855f-479b-b3d2-b5ad1f12cf02" name="Changes" comment="add java seqSeq">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/JavaGrammarListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JavaGrammarListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tree/MainJavaNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tree/MainJavaNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tree/javaNodes/SeqJavaNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tree/javaNodes/SeqJavaNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,6 +119,8 @@
       <workItem from="1682440967369" duration="7913000" />
       <workItem from="1682453525704" duration="160000" />
       <workItem from="1682605863279" duration="2114000" />
+      <workItem from="1682674386402" duration="95000" />
+      <workItem from="1682680851470" duration="351000" />
     </task>
     <task id="LOCAL-00001" summary="Create maven project">
       <created>1680178304516</created>
