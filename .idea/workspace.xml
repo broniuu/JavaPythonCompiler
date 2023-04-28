@@ -4,13 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55ac1dd5-855f-479b-b3d2-b5ad1f12cf02" name="Changes" comment="rename java function args">
-      <change afterPath="$PROJECT_DIR$/src/main/java/tree/javaNodes/CustomFunctionJavaNode.java" afterDir="false" />
+    <list default="true" id="55ac1dd5-855f-479b-b3d2-b5ad1f12cf02" name="Changes" comment="add custom function call">
+      <change afterPath="$PROJECT_DIR$/src/main/java/codeBuilder/JavaCodeBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tree/java/JavaFunctionCallToCheck.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tree/java/JavaFunctionDeclaration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Grammar.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Grammar.g4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/JavaGrammarListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JavaGrammarListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tree/CodeBlockNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tree/javaNodes/JavaCodeBlockNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tree/MainJavaNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tree/MainJavaNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tree/MainJavaNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tree/java/MainJavaNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tree/javaNodes/BranchBranchReJavaNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tree/java/specialFunctionsNodes/BranchBranchReJavaNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tree/javaNodes/ChoiceJavaNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tree/java/specialFunctionsNodes/ChoiceJavaNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tree/javaNodes/CustomFunctionJavaNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tree/java/CustomFunctionJavaNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tree/javaNodes/JavaCodeBlockNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tree/java/JavaCodeBlockNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tree/javaNodes/SeqJavaNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tree/java/specialFunctionsNodes/SeqJavaNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tree/javaNodes/SeqSeqJavaNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tree/java/specialFunctionsNodes/SeqSeqJavaNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/input.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/JavaGrammarListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JavaGrammarListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/input.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -127,7 +136,8 @@
       <workItem from="1682605863279" duration="2114000" />
       <workItem from="1682674386402" duration="95000" />
       <workItem from="1682680851470" duration="351000" />
-      <workItem from="1682684988467" duration="2483000" />
+      <workItem from="1682684988467" duration="2564000" />
+      <workItem from="1682699558927" duration="6160000" />
     </task>
     <task id="LOCAL-00001" summary="Create maven project">
       <created>1680178304516</created>
@@ -255,7 +265,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682685367581</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="add custom function call">
+      <created>1682687546940</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1682687546940</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,18 +310,14 @@
     <MESSAGE value="add choice node" />
     <MESSAGE value="add input from file" />
     <MESSAGE value="rename java function args" />
-    <option name="LAST_COMMIT_MESSAGE" value="rename java function args" />
+    <MESSAGE value="add custom function call" />
+    <option name="LAST_COMMIT_MESSAGE" value="add custom function call" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/JavaGrammarListener.java</url>
-          <line>36</line>
-          <option name="timeStamp" value="57" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/tree/javaNodes/CustomFunctionJavaNode.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/tree/java/CustomFunctionJavaNode.java</url>
           <line>17</line>
           <option name="timeStamp" value="60" />
         </line-breakpoint>

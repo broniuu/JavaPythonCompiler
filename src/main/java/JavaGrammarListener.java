@@ -1,13 +1,19 @@
 import gen.GrammarBaseListener;
 import gen.GrammarParser;
-import tree.MainJavaNode;
+import org.antlr.v4.runtime.tree.ErrorNode;
+import tree.java.MainJavaNode;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 public class JavaGrammarListener extends GrammarBaseListener {
     private MainJavaNode grammarNode = new MainJavaNode();
+    private boolean errorOccurred = false;
     @Override
     public void enterJ_arg_condition(GrammarParser.J_arg_conditionContext ctx) {
         separateChildrenWithSpace(ctx);
+    }
+    @Override
+    public void visitErrorNode(ErrorNode node) {
+        errorOccurred = true;
     }
     @Override
     public void enterJ_initialization(GrammarParser.J_initializationContext ctx) {
@@ -44,6 +50,22 @@ public class JavaGrammarListener extends GrammarBaseListener {
     }
 
     @Override
+    public void enterJ_function_declaration(GrammarParser.J_function_declarationContext ctx) {
+        String functionType = ctx.j_type().getText();
+        String functionName  = ctx.ID().getText();
+        grammarNode.addEmptyFunctionDeclaration();
+        grammarNode.setLastFunctionTypeAndName(functionType, functionName);
+    }
+
+    @Override
+    public void enterJ_function_param(GrammarParser.J_function_paramContext ctx) {
+        String type = ctx.j_type().getText();
+        String name = ctx.ID().getText();
+        String param = type + " " + name;
+        grammarNode.addParamToLastFunction(param);
+    }
+
+    @Override
     public void enterJ_seq_normal_args(GrammarParser.J_seq_normal_argsContext ctx) {
         grammarNode.addSeqNodeToTree();
     }
@@ -64,6 +86,7 @@ public class JavaGrammarListener extends GrammarBaseListener {
 
     @Override
     public void exitProg(GrammarParser.ProgContext ctx) {
+        if(errorOccurred) return;
         System.out.println(grammarNode.getCode());
     }
 }
