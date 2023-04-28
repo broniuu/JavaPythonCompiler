@@ -29,6 +29,20 @@ public class JavaGrammarListener extends GrammarBaseListener {
             grammarNode.addCodeBlockNodeToTree(ctx.J_ARG_CODE_BLOCK().getText());
         }
     }
+
+    @Override
+    public void enterJ_function_call(GrammarParser.J_function_callContext ctx) {
+        int numberOfArguments = ctx.j_function_args().j_function_arg().size();
+        String functionName = ctx.ID().getText();
+        grammarNode.addCustomFunctionJavaNode(functionName, numberOfArguments);
+    }
+
+
+    @Override
+    public void enterJ_function_arg(GrammarParser.J_function_argContext ctx) {
+        grammarNode.addCodeBlockNodeToTree(ctx.getText());
+    }
+
     @Override
     public void enterJ_seq_normal_args(GrammarParser.J_seq_normal_argsContext ctx) {
         grammarNode.addSeqNodeToTree();

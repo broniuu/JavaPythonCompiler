@@ -15,6 +15,6 @@ choice(
             ),
             `int a = p + d;`
         ),
-    `p == d;`,
+    ~fun(a, "asd", c)~,
     `int a = p + d;`
 )

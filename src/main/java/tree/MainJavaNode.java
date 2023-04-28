@@ -1,10 +1,7 @@
 package tree;
 
 import codeBuilder.JavaCodeBuilder;
-import tree.javaNodes.BranchBranchReJavaNode;
-import tree.javaNodes.ChoiceJavaNode;
-import tree.javaNodes.SeqJavaNode;
-import tree.javaNodes.SeqSeqJavaNode;
+import tree.javaNodes.*;
 
 public class MainJavaNode extends GrammarNode {
     public MainJavaNode() {
@@ -18,9 +15,13 @@ public class MainJavaNode extends GrammarNode {
         return childGrammarNodes.get(0).getCode(tabNumber);
     }
     public void addCodeBlockNodeToTree(String code){
-        CodeBlockNode codeBlockNode = new CodeBlockNode();
+        JavaCodeBlockNode codeBlockNode = new JavaCodeBlockNode();
         codeBlockNode.setCode(code);
         addChild(codeBlockNode);
+    }
+
+    public void addCustomFunctionJavaNode(String functionName, int numberOfArguments) {
+        this.addChild(new CustomFunctionJavaNode(functionName, numberOfArguments));
     }
     public void addSeqNodeToTree() {
         this.addChild(new SeqJavaNode());
