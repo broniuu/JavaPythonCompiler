@@ -46,6 +46,7 @@ j_function_arg
     | NUMBER
     | STRING
     | ID
+    | CHAR
     ;
 
 p_function_call: ID ('(' p_args ')' | '()');

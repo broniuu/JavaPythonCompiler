@@ -39,13 +39,15 @@ public class MainJavaNode extends GrammarNode {
     @Override
     public JavaCodeBuilder getCode(int tabNumber) {
         checkCustomFunctionCorrectness();
-        return childGrammarNodes.get(0).getCode(tabNumber)
-                .append("\n\n")
+        codeStringBuilder.append(childGrammarNodes.get(0).getCode(tabNumber));
+        if (functionDeclarations.size() == 0) return codeStringBuilder;
+        return codeStringBuilder.append("\n\n")
                 .append("// - - - - Deklaracje funkcji - - - - -")
                 .append("\n\n")
                 .appendFunctionDeclarations(functionDeclarations);
     }
     private void checkCustomFunctionCorrectness() {
+        if (functionDeclarations.isEmpty() && calledFunctions.isEmpty()) return;
         var allFunctionDeclarationsMatchCalledFunctions = functionDeclarations
                 .stream().anyMatch(x ->
                         calledFunctions.stream().anyMatch(
