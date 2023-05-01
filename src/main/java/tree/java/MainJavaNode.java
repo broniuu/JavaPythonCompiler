@@ -2,10 +2,7 @@ package tree.java;
 
 import codeBuilder.JavaCodeBuilder;
 import tree.GrammarNode;
-import tree.java.specialFunctionsNodes.BranchBranchReJavaNode;
-import tree.java.specialFunctionsNodes.ChoiceJavaNode;
-import tree.java.specialFunctionsNodes.SeqJavaNode;
-import tree.java.specialFunctionsNodes.SeqSeqJavaNode;
+import tree.java.specialFunctionsNodes.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,5 +82,8 @@ public class MainJavaNode extends GrammarNode {
     }
     public void addChoiceJavaNode() {this.addChild(new ChoiceJavaNode());}
     public void addSeqSeqJavaNode() {this.addChild(new SeqSeqJavaNode());}
+    public void addCondJavaNode() {this.addChild(new CondJavaNode());}
+    public void addLoopJavaNode() {this.addChild(new LoopJavaNode());}
+
 
 }

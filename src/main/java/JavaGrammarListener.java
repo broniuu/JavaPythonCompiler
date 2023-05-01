@@ -81,6 +81,16 @@ public class JavaGrammarListener extends GrammarBaseListener {
     }
 
     @Override
+    public void enterJ_cond(GrammarParser.J_condContext ctx) {
+        grammarNode.addCondJavaNode();
+    }
+
+    @Override
+    public void enterJ_loop(GrammarParser.J_loopContext ctx) {
+        grammarNode.addLoopJavaNode();
+    }
+
+    @Override
     public void exitProg(GrammarParser.ProgContext ctx) {
         if(errorOccurred) return;
         System.out.println(grammarNode.getCode());

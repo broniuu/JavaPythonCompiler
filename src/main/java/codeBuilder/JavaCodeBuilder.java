@@ -78,6 +78,13 @@ public class JavaCodeBuilder {
                 .append(") {");
         return this;
     }
+    public JavaCodeBuilder appendStartWhile(String condition){
+        stringBuilder.append("while (")
+                .append(condition)
+                .append(") {");
+        return this;
+    }
+
     public JavaCodeBuilder appendClosedBracket(){
         stringBuilder.append("}");
         return this;
