@@ -84,6 +84,7 @@ public class MainJavaNode extends GrammarNode {
     public void addSeqSeqJavaNode() {this.addChild(new SeqSeqJavaNode());}
     public void addCondJavaNode() {this.addChild(new CondJavaNode());}
     public void addLoopJavaNode() {this.addChild(new LoopJavaNode());}
+    public void addParaJavaNode() {this.addChild(new ParaJavaNode());}
 
 
 }

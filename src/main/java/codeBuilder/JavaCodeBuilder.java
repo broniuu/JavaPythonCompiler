@@ -85,6 +85,22 @@ public class JavaCodeBuilder {
         return this;
     }
 
+    public JavaCodeBuilder appendThread(String condition, int threadNumber){
+        stringBuilder.append("Thread thread_")
+                .append(threadNumber)
+                .append(" = new Thread(")
+                .append(condition)
+                .append(")");
+        return this;
+    }
+
+    public JavaCodeBuilder appendStartThread(int threadNumber){
+        stringBuilder.append("thread_")
+                .append(threadNumber)
+                .append(".start()");
+        return this;
+    }
+
     public JavaCodeBuilder appendClosedBracket(){
         stringBuilder.append("}");
         return this;

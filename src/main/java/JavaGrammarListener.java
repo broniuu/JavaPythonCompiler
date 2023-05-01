@@ -91,6 +91,11 @@ public class JavaGrammarListener extends GrammarBaseListener {
     }
 
     @Override
+    public void enterJ_para(GrammarParser.J_paraContext ctx) {
+        grammarNode.addParaJavaNode();
+    }
+
+    @Override
     public void exitProg(GrammarParser.ProgContext ctx) {
         if(errorOccurred) return;
         System.out.println(grammarNode.getCode());

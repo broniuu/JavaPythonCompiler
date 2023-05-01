@@ -1,1 +1,1 @@
-loop(`int a = true;`, ``a == true``, `int b = false;`, `int c = 2;`)
+para(`int a = 1;`, `int q = 4;`, `int b = 1;`, `int c = 2;`)
