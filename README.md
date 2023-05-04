@@ -105,7 +105,9 @@ git rm -r --cached target
     
     }
     ```
-3) w konstruktorze podać `maxNumberOfChild` jako liczbę argumentów i nadpisujemy metode `getCode(tab number)`, tak żeby tworzyła kod naszej funckji
+2) w konstruktorze podać `maxNumberOfChild` jako liczbę argumentów i nadpisujemy metode `getCode(tab number)`, tak żeby tworzyła kod naszej funckji
+   
+   **Ważne!** Pierwsza linia generowanego kodu, musi być pozbawiona drukowania tabulacji (brak funckji `appendTabs())`, a ostatnia pozbawiona drukowania nowej linii (brak funckji `appendNewLine()`). Jeżeli użytkownik tego nie uwzględnii, to kod wysypie się przy wcięciach 
 ``` java
 public class ChoiceJavaNode extends GrammarNode {
     public ChoiceJavaNode() {
@@ -135,7 +137,7 @@ public class ChoiceJavaNode extends GrammarNode {
 }
 ```
 
-4) w klasie `MainJavaNode`, dodać metodę, która dodaje do drzewa obiekt naszej klasy np.
+3) w klasie `MainJavaNode`, dodać metodę, która dodaje do drzewa obiekt naszej klasy np.
 ```java
     public class MainJavaNode extends GrammarNode {
         ...
@@ -146,7 +148,7 @@ public class ChoiceJavaNode extends GrammarNode {
         }
     }
 ```
-5) wywołać metodę, którą stworzyliśmy w listenerze do danej funckji
+4) wywołać metodę, którą stworzyliśmy w listenerze do danej funckji
 ```java
     public class JavaGrammarListener extends GrammarBaseListener {
         
