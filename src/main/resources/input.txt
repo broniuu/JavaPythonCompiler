@@ -1,1 +1,2 @@
-para(`int a = 1;`, `int q = 4;`, `int b = 1;`, `int c = 2;`)
+
+loop(`int a = true;`, `` c < 3``, para(`int a = 1;`, `int q = 4;`, `int b = 1;`, `int c = 2;`), `int c = 2;`)

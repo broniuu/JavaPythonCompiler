@@ -15,12 +15,15 @@ public class LoopJavaNode extends GrammarNode {
         JavaCodeBuilder secondArgument = childGrammarNodes.get(1).getCode(tabNumber + 1);
         JavaCodeBuilder thirdArgument = childGrammarNodes.get(2).getCode(tabNumber + 1);
         JavaCodeBuilder fourthArgument = childGrammarNodes.get(3).getCode(tabNumber + 1);
-        return codeStringBuilder
+//        return codeStringBuilder
+//                .appendFirstLine(firstArgument)
+//                .appendTabs(tabNumber).appendStartWhile(String.valueOf(secondArgument)).appendNewLine()
+//                .appendLine(thirdArgument, tabNumber + 1)
+//                .appendTabs(tabNumber).appendClosedBracket().appendNewLine()
+//                .appendTabs(tabNumber).append(fourthArgument);
+        return  codeStringBuilder.setCurrentTabsNumber(tabNumber)
                 .appendFirstLine(firstArgument)
-                .appendTabs(tabNumber).appendStartWhile(String.valueOf(secondArgument)).appendNewLine()
-                .appendLine(thirdArgument, tabNumber + 1)
-                .appendTabs(tabNumber).appendClosedBracket().appendNewLine()
-                .appendTabs(tabNumber).append(fourthArgument);
-
+                .appendWhile(secondArgument.toString(), thirdArgument).appendNewLine()
+                .appendLastLine(fourthArgument);
     }
 }
