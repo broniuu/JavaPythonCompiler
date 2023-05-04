@@ -99,13 +99,12 @@ public class JavaCodeBuilder {
         return this;
     }
 
-    public JavaCodeBuilder appendThread(String condition, int threadNumber){
-        stringBuilder.append("Thread thread_")
-                .append(threadNumber)
-                .append(" = new Thread(")
-                .append(condition)
-                .append(")");
-        return this;
+    public JavaCodeBuilder appendThread(int threadNumber, JavaCodeBuilder... lines){
+        return this.append("Thread thread_")
+                .append(String.valueOf(threadNumber))
+                .append(" = new Thread(() -> {\n")
+                .appendCodeBlockLines(lines)
+                .append("});");
     }
 
     public JavaCodeBuilder appendStartThread(int threadNumber){

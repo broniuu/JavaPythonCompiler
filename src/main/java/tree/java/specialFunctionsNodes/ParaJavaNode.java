@@ -15,11 +15,11 @@ public class ParaJavaNode extends GrammarNode {
         JavaCodeBuilder secondArgument = childGrammarNodes.get(1).getCode(tabNumber + 1);
         JavaCodeBuilder thirdArgument = childGrammarNodes.get(2).getCode(tabNumber + 1);
         JavaCodeBuilder fourthArgument = childGrammarNodes.get(3).getCode(tabNumber + 1);
-        return codeStringBuilder
+        return codeStringBuilder.setCurrentTabsNumber(tabNumber)
                 .appendFirstLine(firstArgument)
-                .appendTabs(tabNumber).appendThread(String.valueOf(secondArgument), threadNumber).appendNewLine()
+                .appendTabs().appendThread(threadNumber, secondArgument).appendNewLine()
                 .appendStartThread(threadNumber++).appendNewLine()
-                .appendTabs(tabNumber).appendThread(String.valueOf(thirdArgument), threadNumber).appendNewLine()
+                .appendTabs().appendThread(threadNumber, thirdArgument).appendNewLine()
                 .appendStartThread(threadNumber++).appendNewLine()
                 .append(fourthArgument);
 
