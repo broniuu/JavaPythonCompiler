@@ -26,15 +26,11 @@ python: (
             | p_seq
             );
 
-p_line: p_function_call | p_assignment | p_forloop | p_if;
-
 j_function_declaration: j_type ID (('(' j_params ')') | '()');
 
 j_params: ( j_function_param ',')* j_function_param;
 
 j_function_param: j_type ID;
-
-j_line: ((j_declaration | j_array_declaration | j_initialization | j_function_call | j_loopFun | j_if) ';');
 
 j_function_call: ID ('(' j_function_args ')' | '()');
 
@@ -60,76 +56,6 @@ p_arg
     | p_function_call
     | ID
     ;
-
-j_declaration
-    : INT_TYPE ID
-    | STRING_TYPE ID
-    | BOOL_TYPE ID
-    | FLOAT_TYPE ID
-    | DOUBLE_TYPE ID
-    | CHAR_TYPE ID
-    ;
-
-j_array_declaration
-    : INT_TYPE '[]' ID
-    | STRING_TYPE '[]' ID
-    | BOOL_TYPE '[]' ID
-    | FLOAT_TYPE '[]' ID
-    | DOUBLE_TYPE '[]' ID
-    | CHAR_TYPE '[]' ID
-    ;
-
-//initialization
-j_initialization
-    : j_int_initialization
-    | j_float_initialization
-    | j_double_initialization
-    | j_bool_initialization
-    | j_string_initialization
-    | j_char_initialization
-    | j_array_initialization
-    ;
-
-j_int_initialization:
-    INT_TYPE ID '=' (ID | NUMBER);
-j_string_initialization:
-    STRING_TYPE ID '=' (ID | STRING);
-j_bool_initialization:
-    BOOL_TYPE ID '=' (ID | BOOL_JAVA);
-j_float_initialization:
-    FLOAT_TYPE ID '=' (ID | DOBULE);
-j_double_initialization:
-    DOUBLE_TYPE ID '=' (ID | DOBULE);
-j_char_initialization:
-    CHAR_TYPE ID '=' (ID | CHAR);
-j_array_initialization
-    : INT_TYPE '[]' ID '=' (ID
-        | ('new' INT_TYPE '[' NUMBER ']' ('{' (NUMBER (',' NUMBER)*)? '}')?)
-        | (('new' INT_TYPE '[]')? '{' (NUMBER (',' NUMBER)*)? '}')
-    )
-    | STRING_TYPE '[]' ID '=' (ID
-        | ('new' STRING_TYPE '[' NUMBER ']' ('{' (STRING (',' STRING)*)? '}')?)
-        | (('new' STRING_TYPE '[]')? '{' (STRING (',' STRING)*)? '}')
-    )
-    | BOOL_TYPE '[]' ID '=' (ID
-        | ('new' BOOL_TYPE '[' NUMBER ']' ('{' (BOOL_JAVA (',' BOOL_JAVA)*)? '}')?)
-        | (('new' BOOL_TYPE '[]')? '{' (BOOL_JAVA (',' BOOL_JAVA)*)? '}')
-    )
-    | FLOAT_TYPE '[]' ID '=' (ID
-        | ('new' FLOAT_TYPE '[' NUMBER ']' ('{' (DOBULE (',' DOBULE)*)? '}')?)
-        | (('new' FLOAT_TYPE '[]')? '{' (DOBULE (',' DOBULE)*)? '}')
-    )
-    | DOUBLE_TYPE '[]' ID '=' (ID
-        | ('new' DOUBLE_TYPE '[' NUMBER ']' ('{' (DOBULE (',' DOBULE)*)? '}')?)
-        | (('new' DOUBLE_TYPE '[]')? '{' (DOBULE (',' DOBULE)*)? '}')
-    )
-    | CHAR_TYPE '[]' ID '=' (ID
-        | ('new' CHAR_TYPE '[' NUMBER ']' ('{' (CHAR (',' CHAR)*)? '}')?)
-        | (('new' CHAR_TYPE '[]')? '{' (CHAR (',' CHAR)*)? '}')
-    )
-    ;
-
-p_assignment: ID '=' p_rhs_value;
 
 p_rhs_value: ID | NUMBER | BOOL_PYTHON | p_string | p_list;
 
@@ -159,58 +85,6 @@ ID: [a-zA-Z][a-zA-Z0-9_]*;
 
 WS: [ \t\r\n]+ -> skip;
 
-//For loop java
-j_loopFun
-    : statement
-    ;
-
-statement
-	:	forStatement
-	|   whileStatement
-	;
-
-whileStatement
-    : 'while' '(' conditionStatement ')' stmt
-    ;
-
-conditionStatement
-    : ID condition_greater_less NUMBER
-    | BOOL_JAVA
-    ;
-
-forStatement
-	:	basicForStatement
-	;
-
-basicForStatement
-	:	'for' '(' forInit? ';' expression? ';' forUpdate? ')' stmt
-	;
-
-stmt
-    :   block
-    |   j_line
-    ;
-
-block
-    : '{' j_line* '}'
-    ;
-
-forInit
-	:	localVariableDeclaration
-	;
-
-localVariableDeclaration
-	:	j_int_initialization
-	;
-
-forUpdate
-	:	incDecExpression
-	;
-
-expression
-	:	ID condition_greater_less NUMBER
-	;
-
 condition_greater_less
     :   '>'
     |   '<'
@@ -230,46 +104,17 @@ incDecExpression
 	|	ID '--'
 	;
 
-// For loop python
-
-p_forloop
-    :   'for' ID 'in' p_exp ':' p_line*
-    ;
-
-p_exp
-    :   p_string
-    |   ID
-    |   p_range
-    |   p_list
-    ;
-
-p_range
-    : 'range' '(' NUMBER ')'
-    ;
-
-// If java
-
-j_if
-    : 'if' '(' j_condition (('||' | '&&') j_condition)* ')' stmt;
-
 j_condition
     : BOOL_JAVA | j_function_call
     | (BOOL_JAVA | ID) condition_equal_unequal (BOOL_JAVA | ID)
     | (STRING | ID) condition_equal_unequal (STRING | ID)
     | (ID | NUMBER | DOBULE | CHAR | incDecExpression | j_function_call) (condition_greater_less | condition_equal_unequal) (ID | NUMBER | DOBULE | CHAR | incDecExpression| j_function_call)
     ;
-
-// If python
-
-p_if
-    : 'if ' p_condition (('or' | 'and') p_condition)* ':' p_line+;
-
 p_condition
     : BOOL_PYTHON | p_function_call
     | (STRING_SMALL | STRING | ID) condition_equal_unequal (STRING_SMALL | STRING | ID)
     | (ID | NUMBER | DOBULE | p_function_call) (condition_greater_less | condition_equal_unequal) (ID | NUMBER | DOBULE | p_function_call)
     ;
-//ANY: (~[;`][+-/])*;
 
 J_ARG_CODE_BLOCK : ('`' (~[;`])*? ';' '`');
 j_arg_condition: '``'j_condition'``';
