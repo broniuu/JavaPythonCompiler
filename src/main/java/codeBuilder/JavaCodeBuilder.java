@@ -104,14 +104,15 @@ public class JavaCodeBuilder {
                 .append(String.valueOf(threadNumber))
                 .append(" = new Thread(() -> {\n")
                 .appendCodeBlockLines(lines)
-                .append("});");
+                .appendTabs().
+                append("});");
     }
 
     public JavaCodeBuilder appendStartThread(int threadNumber){
-        stringBuilder.append("thread_")
-                .append(threadNumber)
-                .append(".start()");
-        return this;
+        return this.appendTabs()
+                .append("thread_")
+                .append(String.valueOf(threadNumber))
+                .append(".start();");
     }
 
     public JavaCodeBuilder appendClosedBracket(){
