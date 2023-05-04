@@ -1,1 +1,10 @@
-choice(`char cd = 'a';`, repeat(`int a = 1;`,`char cda = 'b';`, ``ab < 2``, `int i = 5;`), `char cd = 'a';`, `char aa = 'b';`)
+seq(
+    branch(
+        ``i < 2``,
+        repeat(`int a = 1;`, choice(`char cd = 'a';`, `char cda = 'b';`, `char cd = 'a';`, `char aa = 'b';`), ``ab < 2``, `int i = 5;`),
+        `int b = 2;`),
+    branchRe(
+        `int c = 2;`,
+        `int d = 2;`,
+        `int e = 2;`)
+    )

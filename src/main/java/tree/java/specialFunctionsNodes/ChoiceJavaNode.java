@@ -13,14 +13,11 @@ public class ChoiceJavaNode extends GrammarNode {
         JavaCodeBuilder secondArgument = childGrammarNodes.get(1).getCode(tabNumber + 1);
         JavaCodeBuilder thirdArgument = childGrammarNodes.get(2).getCode(tabNumber + 1);
         JavaCodeBuilder fourthArgument = childGrammarNodes.get(3).getCode(tabNumber + 1);
-        return codeStringBuilder
+        return codeStringBuilder.setCurrentTabsNumber(tabNumber)
                 .appendFirstLine(firstArgument)
-                .appendTabs(tabNumber).appendStartIf("").appendNewLine()
-                .appendLine(secondArgument, tabNumber + 1)
-                .appendTabs(tabNumber).appendStartElse().appendNewLine()
-                .appendLine(thirdArgument, tabNumber + 1)
-                .appendTabs(tabNumber).appendClosedBracket().appendNewLine()
-                .appendTabs(tabNumber).append(fourthArgument);
+                .appendTabs().appendIf("", secondArgument)
+                .appendElse(thirdArgument)
+                .appendLastLine(fourthArgument);
 
     }
 }

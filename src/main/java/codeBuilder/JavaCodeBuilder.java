@@ -7,8 +7,9 @@ import java.util.List;
 public class JavaCodeBuilder {
     public StringBuilder stringBuilder = new StringBuilder();
     private int currentTabsNumber = 0;
-    public void setCurrentTabsNumber(int currentTabsNumber) {
+    public JavaCodeBuilder setCurrentTabsNumber(int currentTabsNumber) {
         this.currentTabsNumber = currentTabsNumber;
+        return this;
     }
 
     public JavaCodeBuilder append(String string){
@@ -120,19 +121,40 @@ public class JavaCodeBuilder {
         stringBuilder.append("}");
         return this;
     }
+
+    public JavaCodeBuilder appendIf(String condition, JavaCodeBuilder... lines){
+        return this.append("if (")
+                .append(condition)
+                .append(") {\n")
+                .appendCodeBlock(lines)
+                .appendTabs().append("}");
+    }
+
+    public JavaCodeBuilder appendElse(JavaCodeBuilder... lines) {
+        return this.append(" else {\n")
+                .appendCodeBlock(lines)
+                .appendTabs().append("}\n");
+    }
     public JavaCodeBuilder appendStartElse() {
-        stringBuilder.append("} else {");
+        stringBuilder.append("} else {\n");
         return this;
     }
-    public JavaCodeBuilder appendDoWhile(String condition, JavaCodeBuilder... instructions){
-        this.append("do {\n");
+    public JavaCodeBuilder appendDoWhile(String condition, JavaCodeBuilder... lines){
+        return this.append("do {\n")
+                .appendCodeBlock(lines)
+                .appendTabs()
+                .append("} while (")
+                .append(condition)
+                .append(");\n");
+    }
+
+    public JavaCodeBuilder appendCodeBlock(JavaCodeBuilder... lines){
         ++currentTabsNumber;
-        for (JavaCodeBuilder instruction : instructions) {
+        for (JavaCodeBuilder instruction : lines) {
             this.appendLine(instruction);
         }
         --currentTabsNumber;
-        return this.appendTabs().append("} while (").append(condition).append(");\n");
-
+        return this;
     }
     @Override
     public String toString() {
