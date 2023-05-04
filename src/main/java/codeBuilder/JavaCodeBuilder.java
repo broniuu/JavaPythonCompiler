@@ -67,10 +67,6 @@ public class JavaCodeBuilder {
     public JavaCodeBuilder appendLastLine(JavaCodeBuilder codeBuilder) {
         return appendTabs().append(codeBuilder);
     }
-    public JavaCodeBuilder appendLine(JavaCodeBuilder codeBuilder, int tabsNumber) {
-        return appendTabs(tabsNumber).append(codeBuilder).appendNewLine();
-    }
-
     public JavaCodeBuilder appendLine(JavaCodeBuilder code){
         return appendTabs().append(code).appendNewLine();
     }
@@ -88,11 +84,13 @@ public class JavaCodeBuilder {
         stringBuilder.append("\n");
         return this;
     }
-    public JavaCodeBuilder appendStartIf(String condition){
-        stringBuilder.append("if (")
+
+    public  JavaCodeBuilder appendWhile(String condition, JavaCodeBuilder... lines) {
+        return this.append("while (")
                 .append(condition)
-                .append(") {");
-        return this;
+                .append(") {\n")
+                .appendCodeBlockLines(lines)
+                .append("}");
     }
     public JavaCodeBuilder appendStartWhile(String condition){
         stringBuilder.append("while (")
@@ -126,29 +124,25 @@ public class JavaCodeBuilder {
         return this.append("if (")
                 .append(condition)
                 .append(") {\n")
-                .appendCodeBlock(lines)
+                .appendCodeBlockLines(lines)
                 .appendTabs().append("}");
     }
 
     public JavaCodeBuilder appendElse(JavaCodeBuilder... lines) {
         return this.append(" else {\n")
-                .appendCodeBlock(lines)
+                .appendCodeBlockLines(lines)
                 .appendTabs().append("}\n");
-    }
-    public JavaCodeBuilder appendStartElse() {
-        stringBuilder.append("} else {\n");
-        return this;
     }
     public JavaCodeBuilder appendDoWhile(String condition, JavaCodeBuilder... lines){
         return this.append("do {\n")
-                .appendCodeBlock(lines)
+                .appendCodeBlockLines(lines)
                 .appendTabs()
                 .append("} while (")
                 .append(condition)
                 .append(");\n");
     }
 
-    public JavaCodeBuilder appendCodeBlock(JavaCodeBuilder... lines){
+    public JavaCodeBuilder appendCodeBlockLines(JavaCodeBuilder... lines){
         ++currentTabsNumber;
         for (JavaCodeBuilder instruction : lines) {
             this.appendLine(instruction);

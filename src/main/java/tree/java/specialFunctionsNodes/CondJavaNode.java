@@ -15,16 +15,9 @@ public class CondJavaNode extends GrammarNode {
         JavaCodeBuilder secondArgument = childGrammarNodes.get(1).getCode(tabNumber + 1);
         JavaCodeBuilder thirdArgument = childGrammarNodes.get(2).getCode(tabNumber + 1);
         JavaCodeBuilder fourthArgument = childGrammarNodes.get(3).getCode(tabNumber + 1);
-//        return codeStringBuilder
-//                .appendTabs(tabNumber).appendStartIf(String.valueOf(firstArgument)).appendNewLine()
-//                .appendLine(secondArgument, tabNumber + 1)
-//                .appendTabs(tabNumber).appendStartElse().appendNewLine()
-//                .appendLine(thirdArgument, tabNumber + 1)
-//                .appendTabs(tabNumber).appendClosedBracket().appendNewLine()
-//                .appendTabs(tabNumber).append(fourthArgument);
         return codeStringBuilder.setCurrentTabsNumber(tabNumber)
                 .appendIf(firstArgument.toString(), secondArgument)
                 .appendElse(thirdArgument)
-                .appendLastLine(firstArgument)
+                .appendLastLine(fourthArgument);
     }
 }
