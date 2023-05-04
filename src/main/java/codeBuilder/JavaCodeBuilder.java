@@ -6,6 +6,10 @@ import java.util.List;
 
 public class JavaCodeBuilder {
     public StringBuilder stringBuilder = new StringBuilder();
+    private int currentTabsNumber = 0;
+    public void setCurrentTabsNumber(int currentTabsNumber) {
+        this.currentTabsNumber = currentTabsNumber;
+    }
 
     public JavaCodeBuilder append(String string){
         this.stringBuilder.append(string);
@@ -59,12 +63,23 @@ public class JavaCodeBuilder {
     public JavaCodeBuilder appendFirstLine(JavaCodeBuilder codeBuilder) {
         return append(codeBuilder).appendNewLine();
     }
-
+    public JavaCodeBuilder appendLastLine(JavaCodeBuilder codeBuilder) {
+        return appendTabs().append(codeBuilder);
+    }
     public JavaCodeBuilder appendLine(JavaCodeBuilder codeBuilder, int tabsNumber) {
         return appendTabs(tabsNumber).append(codeBuilder).appendNewLine();
     }
+
+    public JavaCodeBuilder appendLine(JavaCodeBuilder code){
+        return appendTabs().append(code).appendNewLine();
+    }
     public JavaCodeBuilder appendTabs(int tabsNumber) {
         stringBuilder.append("\t".repeat(Math.max(0, tabsNumber)));
+        return this;
+    }
+
+    public JavaCodeBuilder appendTabs() {
+        stringBuilder.append("\t".repeat(Math.max(0, currentTabsNumber)));
         return this;
     }
 
@@ -109,7 +124,16 @@ public class JavaCodeBuilder {
         stringBuilder.append("} else {");
         return this;
     }
+    public JavaCodeBuilder appendDoWhile(String condition, JavaCodeBuilder... instructions){
+        this.append("do {\n");
+        ++currentTabsNumber;
+        for (JavaCodeBuilder instruction : instructions) {
+            this.appendLine(instruction);
+        }
+        --currentTabsNumber;
+        return this.appendTabs().append("} while (").append(condition).append(");\n");
 
+    }
     @Override
     public String toString() {
         return stringBuilder.toString();

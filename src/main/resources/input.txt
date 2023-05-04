@@ -1,1 +1,1 @@
-para(`int a = 1;`, `int q = 4;`, `int b = 1;`, `int c = 2;`)
+choice(`char cd = 'a';`, repeat(`int a = 1;`,`char cda = 'b';`, ``ab < 2``, `int i = 5;`), `char cd = 'a';`, `char aa = 'b';`)
