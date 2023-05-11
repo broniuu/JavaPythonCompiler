@@ -1,7 +1,7 @@
 package tree.java.specialFunctionsNodes;
 
-import codeBuilder.JavaCodeBuilder;
-import tree.GrammarNode;
+import builder.codeBuilder.JavaCodeBuilder;
+import tree.java.GrammarNode;
 
 public class SeqJavaNode extends GrammarNode {
     public SeqJavaNode() {
@@ -11,8 +11,8 @@ public class SeqJavaNode extends GrammarNode {
     public JavaCodeBuilder getCode(int tabNumber) {
         JavaCodeBuilder firsArgument = childGrammarNodes.get(0).getCode(tabNumber);
         JavaCodeBuilder secondArgument = childGrammarNodes.get(1).getCode(tabNumber);
-        return codeStringBuilder
+        return workflowPatternBuilder.setCurrentTabsNumber(tabNumber)
                 .append(firsArgument).append("\n")
-                .appendTabs(tabNumber).append(secondArgument).append("\n");
+                .appendTabs().append(secondArgument).append("\n");
     }
 }

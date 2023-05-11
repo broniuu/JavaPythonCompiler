@@ -1,6 +1,6 @@
-package tree;
+package tree.java;
 
-import codeBuilder.JavaCodeBuilder;
+import builder.workflowPatternBuilder.IWorkflowPatternBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,10 @@ import java.util.Optional;
 public abstract class GrammarNode {
     protected int maxChildrenNumber = 0;
     protected List<GrammarNode> childGrammarNodes = new ArrayList<>();
-    protected JavaCodeBuilder codeStringBuilder = new JavaCodeBuilder();
+    protected IWorkflowPatternBuilder workflowPatternBuilder;
+    public IWorkflowPatternBuilder getCode(int tabNumber) {
+        return workflowPatternBuilder;
+    }
     protected void addChild(GrammarNode grammarNode){
         Optional<GrammarNode> firstNotFilledChild = childGrammarNodes.stream()
                 .filter(GrammarNode::notFilled).findFirst();
@@ -22,12 +25,5 @@ public abstract class GrammarNode {
     public boolean notFilled() {
         return this.childGrammarNodes.size() < this.maxChildrenNumber;
     }
-    public JavaCodeBuilder getCode(int tabNumber) {
-        return codeStringBuilder;
-    }
-    public List<GrammarNode> getChildren() {
-        return childGrammarNodes;
-    }
-
 }
 

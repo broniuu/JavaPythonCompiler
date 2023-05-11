@@ -68,13 +68,13 @@ boolean c = true;
 ### PYTHON
 Kod na wejściu:
 
-```python
+```tree.python
 seq(branch(``4 > 5``, `a = 5`, `b = 10`), branchRe(`c = 1`, `d = 2`, `e = 3`))
 ```
 
 Kod na wyjściu:
 
-```python
+```tree.python
 if 4 > 5:
 	a = 5
 	c = 1
@@ -99,7 +99,7 @@ git rm -r --cached target
 
 ##### Narazie zrobić dla Javy, jak dodam obługę dla pythona to dam znać. Metoda działania będzie taka sama jak w przypadku javy
 
-1) stworzyć klasę noda, która dziedziczy po GrammarNode
+1) stworzyć klasę noda, która dziedziczy po tree.GrammarNode
     ```Java
     public class ChoiceJavaNode extends GrammarNode {
     
@@ -109,7 +109,7 @@ git rm -r --cached target
    
    **Ważne!** Pierwsza linia generowanego kodu, musi być pozbawiona drukowania tabulacji (brak funckji `appendTabs())`, a ostatnia pozbawiona drukowania nowej linii (brak funckji `appendNewLine()`). Jeżeli użytkownik tego nie uwzględnii, to kod wysypie się przy wcięciach 
 ``` java
-public class ChoiceJavaNode extends GrammarNode {
+public class ChoiceJavaNode extends tree.GrammarNode {
     public ChoiceJavaNode() {
         maxChildrenNumber = 4;
     }
@@ -138,15 +138,19 @@ public class ChoiceJavaNode extends GrammarNode {
 ```
 
 3) w klasie `MainJavaNode`, dodać metodę, która dodaje do drzewa obiekt naszej klasy np.
+
 ```java
-    public class MainJavaNode extends GrammarNode {
+
+
+public class MainJavaNode extends GrammarNode {
         ...
-        ...
-        ...
-        public void addChoiceJavaNode() {
-            this.addChild(new ChoiceJavaNode());
-        }
-    }
+                ...
+                ...
+
+   public void addChoiceJavaNode() {
+      this.addChild(new ChoiceJavaNode());
+   }
+}
 ```
 4) wywołać metodę, którą stworzyliśmy w listenerze do danej funckji
 ```java

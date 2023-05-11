@@ -1,7 +1,7 @@
 package tree.java.specialFunctionsNodes;
 
-import codeBuilder.JavaCodeBuilder;
-import tree.GrammarNode;
+import builder.codeBuilder.JavaCodeBuilder;
+import tree.java.GrammarNode;
 
 public class CondJavaNode extends GrammarNode {
 
@@ -15,7 +15,7 @@ public class CondJavaNode extends GrammarNode {
         JavaCodeBuilder secondArgument = childGrammarNodes.get(1).getCode(tabNumber + 1);
         JavaCodeBuilder thirdArgument = childGrammarNodes.get(2).getCode(tabNumber + 1);
         JavaCodeBuilder fourthArgument = childGrammarNodes.get(3).getCode(tabNumber + 1);
-        return codeStringBuilder.setCurrentTabsNumber(tabNumber)
+        return workflowPatternBuilder.setCurrentTabsNumber(tabNumber)
                 .appendIf(firstArgument.toString(), secondArgument)
                 .appendElse(thirdArgument)
                 .appendLastLine(fourthArgument);

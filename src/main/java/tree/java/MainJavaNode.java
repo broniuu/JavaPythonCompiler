@@ -1,7 +1,6 @@
 package tree.java;
 
-import codeBuilder.JavaCodeBuilder;
-import tree.GrammarNode;
+import builder.workflowPatternBuilder.IWorkflowPatternBuilder;
 import tree.java.specialFunctionsNodes.*;
 
 import java.util.ArrayList;
@@ -34,11 +33,11 @@ public class MainJavaNode extends GrammarNode {
         return this.getCode(0).toString();
     }
     @Override
-    public JavaCodeBuilder getCode(int tabNumber) {
+    public IWorkflowPatternBuilder getCode(int tabNumber) {
         checkCustomFunctionCorrectness();
-        codeStringBuilder.append(childGrammarNodes.get(0).getCode(tabNumber));
-        if (functionDeclarations.size() == 0) return codeStringBuilder;
-        return codeStringBuilder.append("\n\n")
+        workflowPatternBuilder.appendCode(childGrammarNodes.get(0).getCode(tabNumber).getCode());
+        if (functionDeclarations.size() == 0) return workflowPatternBuilder;
+        return workflowPatternBuilder.append("\n\n")
                 .append("// - - - - Deklaracje funkcji - - - - -")
                 .append("\n\n")
                 .appendFunctionDeclarations(functionDeclarations);

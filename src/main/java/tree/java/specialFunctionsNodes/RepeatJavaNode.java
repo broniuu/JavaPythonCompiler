@@ -1,6 +1,6 @@
 package tree.java.specialFunctionsNodes;
-import codeBuilder.JavaCodeBuilder;
-import tree.GrammarNode;
+import builder.codeBuilder.JavaCodeBuilder;
+import tree.java.GrammarNode;
 public class RepeatJavaNode extends GrammarNode {
     public RepeatJavaNode() {
         maxChildrenNumber = 4;
@@ -12,7 +12,7 @@ public class RepeatJavaNode extends GrammarNode {
         JavaCodeBuilder secondArgument = childGrammarNodes.get(1).getCode(tabNumber + 1);
         JavaCodeBuilder conditionalArgument = childGrammarNodes.get(2).getCode(tabNumber + 1);
         JavaCodeBuilder thirdArgument = childGrammarNodes.get(3).getCode(tabNumber + 1);
-        return codeStringBuilder.setCurrentTabsNumber(tabNumber)
+        return workflowPatternBuilder.setCurrentTabsNumber(tabNumber)
                 .appendFirstLine(firstArgument)
                 .appendTabs()
                 .appendDoWhile(conditionalArgument.toString(), secondArgument)

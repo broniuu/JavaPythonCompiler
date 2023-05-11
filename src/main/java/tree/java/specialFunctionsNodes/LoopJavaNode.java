@@ -1,7 +1,7 @@
 package tree.java.specialFunctionsNodes;
 
-import codeBuilder.JavaCodeBuilder;
-import tree.GrammarNode;
+import builder.codeBuilder.JavaCodeBuilder;
+import tree.java.GrammarNode;
 
 public class LoopJavaNode extends GrammarNode {
 
@@ -21,7 +21,7 @@ public class LoopJavaNode extends GrammarNode {
 //                .appendLine(thirdArgument, tabNumber + 1)
 //                .appendTabs(tabNumber).appendClosedBracket().appendNewLine()
 //                .appendTabs(tabNumber).append(fourthArgument);
-        return  codeStringBuilder.setCurrentTabsNumber(tabNumber)
+        return  workflowPatternBuilder.setCurrentTabsNumber(tabNumber)
                 .appendFirstLine(firstArgument)
                 .appendWhile(secondArgument.toString(), thirdArgument).appendNewLine()
                 .appendLastLine(fourthArgument);

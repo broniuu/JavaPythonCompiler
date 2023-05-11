@@ -1,7 +1,6 @@
 package tree.java;
 
-import codeBuilder.JavaCodeBuilder;
-import tree.GrammarNode;
+import builder.workflowPatternBuilder.IWorkflowPatternBuilder;
 
 public class JavaCodeBlockNode extends GrammarNode {
     private String code;
@@ -10,9 +9,9 @@ public class JavaCodeBlockNode extends GrammarNode {
         maxChildrenNumber = 0;
     }
     @Override
-    public JavaCodeBuilder getCode(int tabsNumber) {
-        return codeStringBuilder
-                .append(code.replace(CODE_BLOCK_SIGN, ""));
+    public IWorkflowPatternBuilder getCode(int tabsNumber) {
+        return workflowPatternBuilder
+                .appendCode(code.replace(CODE_BLOCK_SIGN, ""));
     }
 
     public void setCode(String code) {

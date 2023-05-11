@@ -1,7 +1,6 @@
 package tree.java;
 
-import codeBuilder.JavaCodeBuilder;
-import tree.GrammarNode;
+import builder.codeBuilder.JavaCodeBuilder;
 
 import java.util.List;
 
@@ -15,6 +14,6 @@ public class CustomFunctionJavaNode extends GrammarNode {
     @Override
     public JavaCodeBuilder getCode(int tabNumber) {
         List<JavaCodeBuilder> arguments = childGrammarNodes.stream().map( x -> x.getCode(0)).toList();
-        return codeStringBuilder.appendFunctionCall(functionName, arguments);
+        return workflowPatternBuilder.appendFunctionCall(functionName, arguments);
     }
 }
