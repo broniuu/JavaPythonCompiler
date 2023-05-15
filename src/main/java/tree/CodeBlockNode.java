@@ -1,15 +1,16 @@
-package tree.java;
+package tree;
 
 import builder.workflowPatternBuilder.IWorkflowPatternBuilder;
 
-public class JavaCodeBlockNode extends GrammarNode {
+public class CodeBlockNode extends GrammarNode {
     private String code;
     private final String CODE_BLOCK_SIGN = "`";
-    public JavaCodeBlockNode() {
-        maxChildrenNumber = 0;
+    public CodeBlockNode(IWorkflowPatternBuilder workflowPatternBuilder) {
+        super(workflowPatternBuilder, 0);
     }
+
     @Override
-    public IWorkflowPatternBuilder getCode(int tabsNumber) {
+    public IWorkflowPatternBuilder getPatternBuilder(int tabsNumber) {
         return workflowPatternBuilder
                 .appendCode(code.replace(CODE_BLOCK_SIGN, ""));
     }

@@ -1,8 +1,12 @@
 package builder.workflowPatternBuilder;
 
+import tree.FunctionDeclaration;
+
+import java.util.List;
+
 public interface IWorkflowPatternBuilder {
     IWorkflowPatternBuilder setTabNumber(int tabNumber);
-
+    IWorkflowPatternBuilder createNewInstance();
     IWorkflowPatternBuilder appendSeq(
             IWorkflowPatternBuilder firstInstruction,
             IWorkflowPatternBuilder secondInstruction
@@ -72,7 +76,9 @@ public interface IWorkflowPatternBuilder {
 
     IWorkflowPatternBuilder appendCode(String code);
 
-    IWorkflowPatternBuilder appendFunctionDeclarations(String code);
+    IWorkflowPatternBuilder appendFunctionDeclarations(List<FunctionDeclaration> functionDeclarations);
+
+    IWorkflowPatternBuilder appendFunctionCall(String functionName, List<String> arguments);
 
     String getCode();
 }

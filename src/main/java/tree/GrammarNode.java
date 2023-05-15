@@ -1,4 +1,4 @@
-package tree.java;
+package tree;
 
 import builder.workflowPatternBuilder.IWorkflowPatternBuilder;
 
@@ -10,7 +10,12 @@ public abstract class GrammarNode {
     protected int maxChildrenNumber = 0;
     protected List<GrammarNode> childGrammarNodes = new ArrayList<>();
     protected IWorkflowPatternBuilder workflowPatternBuilder;
-    public IWorkflowPatternBuilder getCode(int tabNumber) {
+
+    public GrammarNode(IWorkflowPatternBuilder workflowPatternBuilder, int maxChildrenNumber) {
+        this.workflowPatternBuilder = workflowPatternBuilder;
+        this.maxChildrenNumber = maxChildrenNumber;
+    }
+    public IWorkflowPatternBuilder getPatternBuilder(int tabNumber) {
         return workflowPatternBuilder;
     }
     protected void addChild(GrammarNode grammarNode){

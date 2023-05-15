@@ -1,2 +1,22 @@
-
-loop(`int a = true;`, `` c < 3``, para(`int a = 1;`, `int q = 4;`, `int b = 1;`, `int c = 2;`), `int c = 2;`)
+choice(
+    `int p = 234;`,
+    choice(
+        `int p = 234;`,
+        `int d = 344;`,
+        seq(
+            branch(
+                ``i < 2``,
+                `int a = 2;`,
+                `int b = 2;`),
+            branchRe(
+                `int c = 2;`,
+                `int d = 2;`,
+                `int e = 2;`)
+            ),
+            `int a = p + d;`
+        ),
+    ~function1(a, "asd", c)~,
+    `int a = p + d;`
+)
+String function(int a, int b, int c)
+String function1(int a, int b, int y)

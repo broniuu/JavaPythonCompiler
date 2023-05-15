@@ -1,6 +1,6 @@
 package builder.codeBuilder;
 
-import tree.java.JavaFunctionDeclaration;
+import tree.FunctionDeclaration;
 
 import java.util.List;
 
@@ -23,11 +23,11 @@ public class JavaCodeBuilder extends CodeBuilder{
                 .appendArgsOrParams(arguments)
                 .append(";");
     }
-    private <T> JavaCodeBuilder appendArgsOrParams(List<T> argsOrParams) {
+    private JavaCodeBuilder appendArgsOrParams(List<String> argsOrParams) {
         stringBuilder.append("(");
         if (argsOrParams.size() > 0){
             int lastIndexOfArguments = argsOrParams.size() - 1;
-            T lastArgument = argsOrParams.get(lastIndexOfArguments);
+            String lastArgument = argsOrParams.get(lastIndexOfArguments);
             argsOrParams.subList(0, lastIndexOfArguments).forEach( x -> {
                 stringBuilder.append(x).append(", ");
             });
@@ -36,12 +36,12 @@ public class JavaCodeBuilder extends CodeBuilder{
         stringBuilder.append(")");
         return this;
     }
-    public JavaCodeBuilder appendFunctionDeclarations(List<JavaFunctionDeclaration> functionDeclaration)
+    public JavaCodeBuilder appendFunctionDeclarations(List<FunctionDeclaration> functionDeclaration)
     {
         functionDeclaration.forEach(this::appendFunctionDeclaration);
         return this;
     }
-    public JavaCodeBuilder appendFunctionDeclaration(JavaFunctionDeclaration functionDeclaration){
+    public JavaCodeBuilder appendFunctionDeclaration(FunctionDeclaration functionDeclaration){
         String functionName = functionDeclaration.getName();
         String functionType = functionDeclaration.getType();
         List<String> functionArguments = functionDeclaration.getParameters();
