@@ -18,22 +18,22 @@ public class PythonCodeBuilder extends CodeBuilder {
         stringBuilder.append("\n");
         return this;
     }
-    public PythonCodeBuilder appendFirstLine(PythonCodeBuilder codeBuilder) {
+    public PythonCodeBuilder appendFirstLine(String codeBuilder) {
         return append(codeBuilder).appendNewLine();
     }
-    public PythonCodeBuilder appendLastLine(PythonCodeBuilder codeBuilder) {
+    public PythonCodeBuilder appendLastLine(String codeBuilder) {
         return appendTabs().append(codeBuilder);
     }
-    public PythonCodeBuilder appendLine(PythonCodeBuilder code){
+    public PythonCodeBuilder appendLine(String code){
         return appendTabs().append(code).appendNewLine();
     }
     public PythonCodeBuilder appendTabs() {
         stringBuilder.append("\t".repeat(Math.max(0, currentTabsNumber)));
         return this;
     }
-    public PythonCodeBuilder appendCodeBlockLines(PythonCodeBuilder... lines){
+    public PythonCodeBuilder appendCodeBlockLines(String... lines){
         ++currentTabsNumber;
-        for (PythonCodeBuilder instruction : lines) {
+        for (String instruction : lines) {
             this.appendLine(instruction);
         }
         --currentTabsNumber;

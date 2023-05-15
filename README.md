@@ -154,7 +154,7 @@ public class MainJavaNode extends GrammarNode {
 ```
 4) wywołać metodę, którą stworzyliśmy w listenerze do danej funckji
 ```java
-    public class JavaGrammarListener extends GrammarBaseListener {
+    public class listener.JavaGrammarListener extends GrammarBaseListener {
         
         private MainJavaNode grammarNode = new MainJavaNode();
         ...
