@@ -22,6 +22,15 @@ public class PythonGrammarListener extends GrammarBaseListener {
     }
 
     @Override
+    public void enterP_function_call(GrammarParser.P_function_callContext ctx) {
+        int numberOfArguments = ctx.p_args().p_arg().size();
+        String functionName = ctx.ID().getText();
+        pythonMainNode.addCustomFunctionJavaNode(functionName, numberOfArguments);
+    }
+
+
+
+    @Override
     public void enterP_arg_universal(GrammarParser.P_arg_universalContext ctx) {
         if (ctx.P_ARG_CODE_BLOCK() != null) {
             pythonMainNode.addCodeBlockNodeToTree(ctx.P_ARG_CODE_BLOCK().getText());
