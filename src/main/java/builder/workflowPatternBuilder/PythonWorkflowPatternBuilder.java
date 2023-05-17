@@ -79,6 +79,7 @@ public class PythonWorkflowPatternBuilder implements IWorkflowPatternBuilder{
 
     @Override
     public IWorkflowPatternBuilder appendFunctionDeclarations(List<FunctionDeclaration> functionDeclarations) {
+        pythonCodeBuilder.appendFunctionDeclarations(functionDeclarations);
         return this;
     }
 

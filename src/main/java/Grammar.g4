@@ -28,7 +28,8 @@ python: (
 
 j_function_declaration: j_type ID (('(' j_params ')') | '()');
 
-p_function_declaration: 'def' ID '(' p_params ')';
+p_function_declaration: 'def' ID ('(' p_params ')' | '()') p_function_type?;
+p_function_type: '->' ID;
 p_params: ( ID ',')* ID;
 
 j_params: ( j_function_param ',')* j_function_param;

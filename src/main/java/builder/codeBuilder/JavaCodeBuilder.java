@@ -1,10 +1,11 @@
 package builder.codeBuilder;
 
+import builder.codeBuilder.helper.CodeBuilderHelper;
 import tree.FunctionDeclaration;
 
 import java.util.List;
 
-public class JavaCodeBuilder extends CodeBuilder{
+public class JavaCodeBuilder extends CodeBuilderBase {
 
     public JavaCodeBuilder setCurrentTabsNumber(int currentTabsNumber) {
         this.currentTabsNumber = currentTabsNumber;
@@ -22,19 +23,6 @@ public class JavaCodeBuilder extends CodeBuilder{
         return this.append(functionName)
                 .appendArgsOrParams(arguments)
                 .append(";");
-    }
-    private JavaCodeBuilder appendArgsOrParams(List<String> argsOrParams) {
-        stringBuilder.append("(");
-        if (argsOrParams.size() > 0){
-            int lastIndexOfArguments = argsOrParams.size() - 1;
-            String lastArgument = argsOrParams.get(lastIndexOfArguments);
-            argsOrParams.subList(0, lastIndexOfArguments).forEach( x -> {
-                stringBuilder.append(x).append(", ");
-            });
-            stringBuilder.append(lastArgument);
-        }
-        stringBuilder.append(")");
-        return this;
     }
     public JavaCodeBuilder appendFunctionDeclarations(List<FunctionDeclaration> functionDeclaration)
     {
@@ -118,6 +106,11 @@ public class JavaCodeBuilder extends CodeBuilder{
             this.appendLine(instruction);
         }
         --currentTabsNumber;
+        return this;
+    }
+
+    private JavaCodeBuilder appendArgsOrParams(List<String> argsOrParams) {
+        stringBuilder.append(CodeBuilderHelper.createArgsOrParamsCode(argsOrParams));
         return this;
     }
 }
