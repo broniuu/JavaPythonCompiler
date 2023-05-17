@@ -3,11 +3,7 @@ package listener;
 import gen.GrammarBaseListener;
 import gen.GrammarParser;
 import org.antlr.v4.runtime.tree.ErrorNode;
-import org.antlr.v4.runtime.tree.ParseTree;
-import tree.mainNode.MainNode;
 import tree.mainNode.PythonMainNode;
-
-import java.io.Console;
 
 public class PythonGrammarListener extends GrammarBaseListener {
     private PythonMainNode pythonMainNode = new PythonMainNode();
@@ -26,7 +22,7 @@ public class PythonGrammarListener extends GrammarBaseListener {
     public void enterP_function_call(GrammarParser.P_function_callContext ctx) {
         int numberOfArguments = ctx.p_args() == null ? 0 : ctx.p_args().p_arg().size();
         String functionName = ctx.ID().getText();
-        pythonMainNode.addCustomFunctionJavaNode(functionName, numberOfArguments);
+        pythonMainNode.addCustomFunctionNode(functionName, numberOfArguments);
     }
 
     @Override
@@ -42,6 +38,13 @@ public class PythonGrammarListener extends GrammarBaseListener {
         ctx.ID().forEach(x -> {
             pythonMainNode.addParamToLastFunction(x.getText());
         });
+    }
+
+    @Override
+    public void enterP_arg(GrammarParser.P_argContext ctx) {
+        if (ctx.ID() != null) {
+            pythonMainNode.addCodeBlockNodeToTree(ctx.ID().getText());
+        }
     }
 
     @Override

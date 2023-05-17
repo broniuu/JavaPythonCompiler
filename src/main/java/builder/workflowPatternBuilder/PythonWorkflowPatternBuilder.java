@@ -85,6 +85,7 @@ public class PythonWorkflowPatternBuilder implements IWorkflowPatternBuilder{
 
     @Override
     public IWorkflowPatternBuilder appendFunctionCall(String functionName, List<String> arguments) {
+        pythonCodeBuilder.appendFunctionCall(functionName, arguments);
         return this;
     }
 

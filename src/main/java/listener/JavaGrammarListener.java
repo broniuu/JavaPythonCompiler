@@ -38,7 +38,7 @@ public class JavaGrammarListener extends GrammarBaseListener {
     public void enterJ_function_call(GrammarParser.J_function_callContext ctx) {
         int numberOfArguments = ctx.j_function_args().j_function_arg().size();
         String functionName = ctx.ID().getText();
-        grammarNode.addCustomFunctionJavaNode(functionName, numberOfArguments);
+        grammarNode.addCustomFunctionNode(functionName, numberOfArguments);
     }
 
 

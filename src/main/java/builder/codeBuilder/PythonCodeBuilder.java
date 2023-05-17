@@ -68,4 +68,9 @@ public class PythonCodeBuilder extends CodeBuilderBase {
         stringBuilder.append(CodeBuilderHelper.createArgsOrParamsCode(argsOrParams));
         return this;
     }
+
+    public PythonCodeBuilder appendFunctionCall(String functionName, List<String> arguments){
+        return this.append(functionName)
+                .appendArgsOrParams(arguments);
+    }
 }

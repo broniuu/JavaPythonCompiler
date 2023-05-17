@@ -62,7 +62,7 @@ public abstract class MainNode extends GrammarNode {
         addChild(codeBlockNode);
     }
 
-    public void addCustomFunctionJavaNode(String functionName, int numberOfArguments) {
+    public void addCustomFunctionNode(String functionName, int numberOfArguments) {
         calledFunctions.add(new FunctionCallToCheck(functionName, numberOfArguments));
         this.addChild(new CustomFunctionNode(workflowPatternBuilder.createNewInstance(), functionName, numberOfArguments));
     }
