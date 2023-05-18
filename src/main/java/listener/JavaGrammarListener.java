@@ -1,11 +1,13 @@
+package listener;
+
 import gen.GrammarBaseListener;
 import gen.GrammarParser;
 import org.antlr.v4.runtime.tree.ErrorNode;
-import tree.java.MainJavaNode;
+import tree.mainNode.JavaMainNode;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 public class JavaGrammarListener extends GrammarBaseListener {
-    private MainJavaNode grammarNode = new MainJavaNode();
+    private JavaMainNode grammarNode = new JavaMainNode();
     private boolean errorOccurred = false;
     @Override
     public void visitErrorNode(ErrorNode node) {
@@ -36,7 +38,7 @@ public class JavaGrammarListener extends GrammarBaseListener {
     public void enterJ_function_call(GrammarParser.J_function_callContext ctx) {
         int numberOfArguments = ctx.j_function_args().j_function_arg().size();
         String functionName = ctx.ID().getText();
-        grammarNode.addCustomFunctionJavaNode(functionName, numberOfArguments);
+        grammarNode.addCustomFunctionNode(functionName, numberOfArguments);
     }
 
 
@@ -63,41 +65,41 @@ public class JavaGrammarListener extends GrammarBaseListener {
 
     @Override
     public void enterJ_seq_normal_args(GrammarParser.J_seq_normal_argsContext ctx) {
-        grammarNode.addSeqNodeToTree();
+        grammarNode.addSeqNode();
     }
     @Override
     public void enterJ_branches(GrammarParser.J_branchesContext ctx) {
-        grammarNode.addBranchBranchReNodeToTree();
+        grammarNode.addBranchBranchReNode();
     }
 
     @Override
     public void enterJ_choice(GrammarParser.J_choiceContext ctx) {
-        grammarNode.addChoiceJavaNode();
+        grammarNode.addChoiceNode();
     }
 
     @Override
     public void enterJ_seqSeq(GrammarParser.J_seqSeqContext ctx) {
-        grammarNode.addSeqSeqJavaNode();
+        grammarNode.addSeqSeqNode();
     }
 
     @Override
     public void enterJ_cond(GrammarParser.J_condContext ctx) {
-        grammarNode.addCondJavaNode();
+        grammarNode.addCondNode();
     }
 
     @Override
     public void enterJ_loop(GrammarParser.J_loopContext ctx) {
-        grammarNode.addLoopJavaNode();
+        grammarNode.addLoopNode();
     }
 
     @Override
     public void enterJ_para(GrammarParser.J_paraContext ctx) {
-        grammarNode.addParaJavaNode();
+        grammarNode.addParaNode();
     }
 
     @Override
     public void enterJ_repeat(GrammarParser.J_repeatContext ctx) {
-        grammarNode.addRepeatJavaNode();
+        grammarNode.addRepeatNode();
     }
 
     @Override

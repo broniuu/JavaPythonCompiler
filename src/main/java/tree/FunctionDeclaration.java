@@ -1,10 +1,9 @@
-package tree.java;
+package tree;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-public class JavaFunctionDeclaration {
+public class FunctionDeclaration {
     private String type;
     private String name;
     private List<String> parameters = new ArrayList<>();
