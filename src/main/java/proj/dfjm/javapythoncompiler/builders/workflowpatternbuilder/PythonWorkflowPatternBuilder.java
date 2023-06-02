@@ -1,18 +1,13 @@
-package builder.workflowPatternBuilder;
+package proj.dfjm.javapythoncompiler.builders.workflowpatternbuilder;
 
-import builder.codeBuilder.PythonCodeBuilder;
-import tree.FunctionDeclaration;
+import proj.dfjm.javapythoncompiler.builders.sourcecodebuilder.PythonSourceCodeBuilder;
+import proj.dfjm.javapythoncompiler.datasets.CustomFunctionDeclaration;
 
 import java.util.List;
 
-public class PythonWorkflowPatternBuilder implements IWorkflowPatternBuilder{
-    PythonCodeBuilder pythonCodeBuilder = new PythonCodeBuilder();
-
-    @Override
-    public IWorkflowPatternBuilder setTabNumber(int tabNumber) {
-        pythonCodeBuilder.setCurrentTabsNumber(tabNumber);
-        return this;
-    }
+public final class PythonWorkflowPatternBuilder implements IWorkflowPatternBuilder {
+    private static int currentThreadNumber = 1;
+    private final PythonSourceCodeBuilder pythonSourceCodeBuilder = new PythonSourceCodeBuilder();
 
     @Override
     public IWorkflowPatternBuilder createNewInstance() {
@@ -20,82 +15,199 @@ public class PythonWorkflowPatternBuilder implements IWorkflowPatternBuilder{
     }
 
     @Override
-    public IWorkflowPatternBuilder appendSeq(IWorkflowPatternBuilder firstInstruction, IWorkflowPatternBuilder secondInstruction) {
-        pythonCodeBuilder.appendFirstLine(firstInstruction.getCode())
-                .appendLastLine(secondInstruction.getCode());
+    public String getSourceCode() {
+        return pythonSourceCodeBuilder.toString();
+    }
+
+    @Override
+    public IWorkflowPatternBuilder setIndentationLevel(int indentationLevel) {
+        pythonSourceCodeBuilder.setCurrentIndentationLevel(indentationLevel);
         return this;
     }
 
     @Override
-    public IWorkflowPatternBuilder appendBranchBranchRe(IWorkflowPatternBuilder condition, IWorkflowPatternBuilder firstInstruction, IWorkflowPatternBuilder secondInstruction, IWorkflowPatternBuilder thirdInstruction, IWorkflowPatternBuilder fourthInstruction, IWorkflowPatternBuilder fifthInstruction) {
+    public IWorkflowPatternBuilder appendSourceCode(String sourceCode) {
+        pythonSourceCodeBuilder.append(sourceCode);
         return this;
     }
 
     @Override
-    public IWorkflowPatternBuilder appendConcur(IWorkflowPatternBuilder firstInstruction, IWorkflowPatternBuilder secondInstruction, IWorkflowPatternBuilder thirdInstruction) {
+    public IWorkflowPatternBuilder appendCustomFunctionDeclarations(
+        List<CustomFunctionDeclaration> customFunctionDeclarations
+    ) {
+        pythonSourceCodeBuilder.appendCustomFunctionDeclarations(customFunctionDeclarations);
         return this;
     }
 
     @Override
-    public IWorkflowPatternBuilder appendConcurRe(IWorkflowPatternBuilder firstInstruction, IWorkflowPatternBuilder secondInstruction, IWorkflowPatternBuilder thirdInstruction) {
+    public IWorkflowPatternBuilder appendCustomFunctionCall(String functionName, List<String> arguments) {
+        pythonSourceCodeBuilder.appendCustomFunctionCall(functionName, arguments);
         return this;
     }
 
     @Override
-    public IWorkflowPatternBuilder appendCond(IWorkflowPatternBuilder condition, IWorkflowPatternBuilder firstInstruction, IWorkflowPatternBuilder secondInstruction, IWorkflowPatternBuilder thirdInstruction) {
+    public IWorkflowPatternBuilder appendSeq(
+        IWorkflowPatternBuilder firstInstruction,
+        IWorkflowPatternBuilder secondInstruction
+    ) {
+        pythonSourceCodeBuilder
+            .appendFirstLine(firstInstruction.getSourceCode())
+            .appendLastLine(secondInstruction.getSourceCode());
+
         return this;
     }
 
     @Override
-    public IWorkflowPatternBuilder appendPara(IWorkflowPatternBuilder firstInstruction, IWorkflowPatternBuilder secondInstruction, IWorkflowPatternBuilder thirdInstruction, IWorkflowPatternBuilder fourthInstruction) {
+    public IWorkflowPatternBuilder appendBranchBranchRe(
+        IWorkflowPatternBuilder condition,
+        IWorkflowPatternBuilder branchFirstInstruction,
+        IWorkflowPatternBuilder branchSecondInstruction,
+        IWorkflowPatternBuilder branchReFirstInstruction,
+        IWorkflowPatternBuilder branchReSecondInstruction,
+        IWorkflowPatternBuilder branchReThirdInstruction
+    ) {
+        /* TODO: Implement the appendIf() and appendElse() methods in the PythonSourceCodeBuilder class,
+            then test if the commented out code below works as expected.
+        pythonSourceCodeBuilder
+            .appendIf(
+                condition.getSourceCode(),
+                branchFirstInstruction.getSourceCode(),
+                branchReFirstInstruction.getSourceCode()
+            )
+            .appendElse(branchSecondInstruction.getSourceCode(), branchReSecondInstruction.getSourceCode())
+            .appendLastLine(branchReThirdInstruction.getSourceCode());
+         */
+
         return this;
     }
 
     @Override
-    public IWorkflowPatternBuilder appendLoop(IWorkflowPatternBuilder firstInstruction, IWorkflowPatternBuilder condition, IWorkflowPatternBuilder secondInstruction, IWorkflowPatternBuilder thirdInstruction) {
+    public IWorkflowPatternBuilder appendConcur(
+        IWorkflowPatternBuilder firstInstruction,
+        IWorkflowPatternBuilder secondInstruction,
+        IWorkflowPatternBuilder thirdInstruction
+    ) {
         return this;
     }
 
     @Override
-    public IWorkflowPatternBuilder appendChoice(IWorkflowPatternBuilder firstInstruction, IWorkflowPatternBuilder secondInstruction, IWorkflowPatternBuilder thirdInstruction, IWorkflowPatternBuilder fourthInstruction) {
+    public IWorkflowPatternBuilder appendConcurRe(
+        IWorkflowPatternBuilder firstInstruction,
+        IWorkflowPatternBuilder secondInstruction,
+        IWorkflowPatternBuilder thirdInstruction
+    ) {
         return this;
     }
 
     @Override
-    public IWorkflowPatternBuilder appendSeqSeq(IWorkflowPatternBuilder firstInstruction, IWorkflowPatternBuilder secondInstruction, IWorkflowPatternBuilder thirdInstruction) {
+    public IWorkflowPatternBuilder appendCond(
+        IWorkflowPatternBuilder condition,
+        IWorkflowPatternBuilder firstInstruction,
+        IWorkflowPatternBuilder secondInstruction,
+        IWorkflowPatternBuilder thirdInstruction
+    ) {
+        /* TODO: Implement the appendIf() and appendElse() methods in the PythonSourceCodeBuilder class,
+            then test if the commented out code below works as expected.
+        pythonSourceCodeBuilder
+            .appendIf(condition.getSourceCode(), firstInstruction.getSourceCode())
+            .appendElse(secondInstruction.getSourceCode())
+            .appendLastLine(thirdInstruction.getSourceCode());
+         */
+
         return this;
     }
 
     @Override
-    public IWorkflowPatternBuilder appendRepeat(IWorkflowPatternBuilder firstInstruction, IWorkflowPatternBuilder secondInstruction, IWorkflowPatternBuilder condition, IWorkflowPatternBuilder thirdInstruction) {
+    public IWorkflowPatternBuilder appendPara(
+        IWorkflowPatternBuilder firstInstruction,
+        IWorkflowPatternBuilder secondInstruction,
+        IWorkflowPatternBuilder thirdInstruction,
+        IWorkflowPatternBuilder fourthInstruction
+    ) {
+        /* TODO: Implement the appendThread() and appendThreadStart() methods in the PythonSourceCodeBuilder class,
+            then test if the commented out code below works as expected.
+        pythonSourceCodeBuilder
+            .appendFirstLine(firstInstruction.getSourceCode())
+            .appendIndentation()
+            .appendThread(currentThreadNumber, secondInstruction.getSourceCode()).appendNewlineCharacter()
+            .appendThreadStart(currentThreadNumber++).appendNewlineCharacter()
+            .appendIndentation()
+            .appendThread(currentThreadNumber, thirdInstruction.getSourceCode()).appendNewlineCharacter()
+            .appendThreadStart(currentThreadNumber++).appendNewlineCharacter()
+            .append(fourthInstruction.getSourceCode());
+         */
+
         return this;
     }
 
     @Override
-    public IWorkflowPatternBuilder appendCode(String code) {
-        pythonCodeBuilder.append(code);
+    public IWorkflowPatternBuilder appendLoop(
+        IWorkflowPatternBuilder firstInstruction,
+        IWorkflowPatternBuilder condition,
+        IWorkflowPatternBuilder secondInstruction,
+        IWorkflowPatternBuilder thirdInstruction
+    ) {
+        /* TODO: Implement the appendWhile() method in the PythonSourceCodeBuilder class,
+            then test if the commented out code below works as expected.
+        pythonSourceCodeBuilder
+            .appendFirstLine(firstInstruction.getSourceCode())
+            .appendWhile(condition.getSourceCode(), secondInstruction.getSourceCode()).appendNewlineCharacter()
+            .appendLastLine(thirdInstruction.getSourceCode());
+         */
+
         return this;
     }
 
     @Override
-    public IWorkflowPatternBuilder appendFunctionDeclarations(List<FunctionDeclaration> functionDeclarations) {
-        pythonCodeBuilder.appendFunctionDeclarations(functionDeclarations);
+    public IWorkflowPatternBuilder appendChoice(
+        IWorkflowPatternBuilder firstInstruction,
+        IWorkflowPatternBuilder secondInstruction,
+        IWorkflowPatternBuilder thirdInstruction,
+        IWorkflowPatternBuilder fourthInstruction
+    ) {
+        /* TODO: Implement the appendIf() and appendElse() methods in the PythonSourceCodeBuilder class,
+            then test if the commented out code below works as expected.
+        pythonSourceCodeBuilder
+            .appendFirstLine(firstInstruction.getSourceCode())
+            .appendIndentation()
+            .appendIf(null, secondInstruction.getSourceCode())
+            .appendElse(thirdInstruction.getSourceCode())
+            .appendLastLine(fourthInstruction.getSourceCode());
+         */
+
         return this;
     }
 
     @Override
-    public IWorkflowPatternBuilder appendFunctionCall(String functionName, List<String> arguments) {
-        pythonCodeBuilder.appendFunctionCall(functionName, arguments);
+    public IWorkflowPatternBuilder appendSeqSeq(
+        IWorkflowPatternBuilder firstInstruction,
+        IWorkflowPatternBuilder secondInstruction,
+        IWorkflowPatternBuilder thirdInstruction
+    ) {
+        pythonSourceCodeBuilder
+            .appendFirstLine(firstInstruction.getSourceCode())
+            .appendLine(secondInstruction.getSourceCode())
+            .appendLastLine(thirdInstruction.getSourceCode());
+
         return this;
     }
 
     @Override
-    public String getCode() {
-        return pythonCodeBuilder.toString();
-    }
+    public IWorkflowPatternBuilder appendRepeat(
+        IWorkflowPatternBuilder firstInstruction,
+        IWorkflowPatternBuilder secondInstruction,
+        IWorkflowPatternBuilder condition,
+        IWorkflowPatternBuilder thirdInstruction
+    ) {
+        /* TODO: Implement the appendDoWhile() method in the PythonSourceCodeBuilder class,
+            then test if the commented out code below works as expected.
+        pythonSourceCodeBuilder
+            .appendFirstLine(firstInstruction.getSourceCode())
+            .appendIndentation()
+            .appendDoWhile(condition.getSourceCode(), secondInstruction.getSourceCode())
+            .appendLastLine(thirdInstruction.getSourceCode());
+         */
 
-    @Override
-    public String toString() {
-        return this.getCode();
+        return this;
     }
 }
