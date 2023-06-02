@@ -1,190 +1,187 @@
 grammar Grammar;
-prog: (java| python) EOF;
 
-java: (
-          j_seqSeq
-          | j_choice
-          | j_repeat
-          | j_loop
-          | j_para
-          | j_concur
-          | j_concurRe
-          | j_cond
-          | j_seq
-          ) j_function_declaration*;
 
-python: (
-            j_seqSeq
-            | p_seqSeq
-            | p_choice
-            | p_repeat
-            | p_loop
-            | p_para
-            | p_concur
-            | p_concurRe
-            | p_cond
-            | p_seq
-            ) p_function_declaration*;
+prog: (javaSyntax | pythonSyntax) EOF;
 
-j_function_declaration: j_type ID (('(' j_params ')') | '()');
 
-p_function_declaration: 'def' ID ('(' p_params ')' | '()') p_function_type?;
-p_function_type: '->' ID;
-p_params: ( ID ',')* ID;
+javaSyntax: jSpecialFunctionCall jCustomFunctionDeclaration*;
+pythonSyntax: pSpecialFunctionCall pCustomFunctionDeclaration*;
 
-j_params: ( j_function_param ',')* j_function_param;
 
-j_function_param: j_type ID;
-
-j_function_call: ID ('(' j_function_args ')' | '()');
-
-j_function_args: ( j_function_arg ',')* j_function_arg;
-
-j_function_arg
-    : BOOL_JAVA
-    | j_function_call
-    | NUMBER
-    | STRING
-    | ID
-    | CHAR
+jSpecialFunctionCall
+    : jSeq
+    | jConcur
+    | jConcurRe
+    | jCond
+    | jPara
+    | jLoop
+    | jChoice
+    | jSeqSeq
+    | jRepeat
     ;
 
-p_function_call: ID ('(' p_args ')' | '()');
-
-p_args: ( p_arg ',')* p_arg;
-
-p_arg
-    : BOOL_PYTHON
-    | p_string
-    | NUMBER
-    | p_function_call
-    | ID
+pSpecialFunctionCall
+    : pSeq
+    | pConcur
+    | pConcurRe
+    | pCond
+    | pPara
+    | pLoop
+    | pChoice
+    | pSeqSeq
+    | pRepeat
     ;
 
-p_rhs_value: ID | NUMBER | BOOL_PYTHON | p_string | p_list;
 
-p_string: STRING |  STRING_SMALL;
+jCustomFunctionDeclaration: dataType ID '(' jCustomFunctionDeclarationParams? ')';
+pCustomFunctionDeclaration: 'def' ID '(' pCustomFunctionDeclarationParams? ')' pCustomFunctionDeclarationReturnType?;
 
-p_list: '[' (p_rhs_value (',' p_rhs_value)*)? ']';
 
-j_type: INT_TYPE | CHAR_TYPE | STRING_TYPE | DOUBLE_TYPE | FLOAT_TYPE | BOOL_TYPE | ID;
+jCustomFunctionDeclarationParams: jCustomFunctionDeclarationParam (',' jCustomFunctionDeclarationParam)*;
+pCustomFunctionDeclarationParams: ID (',' ID)*;
 
-//Values
-NUMBER: '0' | '-'?[1-9][0-9]*;
-CHAR: '\'' . '\'';
-DOBULE: '-'?('0'|[1-9][0-9]*)('.'[0-9]+)?;
-STRING: '"' .*? '"';
-STRING_SMALL: ('\'' .*? '\'');
-BOOL_JAVA: 'true' | 'false';
-BOOL_PYTHON: 'True' | 'False';
 
-//Types
-INT_TYPE: 'int';
-CHAR_TYPE: 'char';
-STRING_TYPE: 'String';
-DOUBLE_TYPE: 'double';
-FLOAT_TYPE: 'float';
-BOOL_TYPE: 'boolean';
-ID: [a-zA-Z][a-zA-Z0-9_]*;
+jCustomFunctionDeclarationParam: dataType ID;
+
+
+pCustomFunctionDeclarationReturnType: '->' ID;
+
+
+jSeq: 'Seq' '(' (jSpecialFunctionParam ',' jSpecialFunctionParam | jBranch ',' jBranchRe) ')';
+jBranch: 'Branch' '(' jSpecialFunctionCondParam ',' jSpecialFunctionParam ',' jSpecialFunctionParam ')';
+jBranchRe: 'BranchRe' '(' jSpecialFunctionParam ',' jSpecialFunctionParam ',' jSpecialFunctionParam ')';
+jConcur: 'Concur' '(' jSpecialFunctionParam ',' jSpecialFunctionParam ',' jSpecialFunctionParam ')';
+jConcurRe: 'ConcurRe' '(' jSpecialFunctionParam ',' jSpecialFunctionParam ',' jSpecialFunctionParam ')';
+jCond: 'Cond' '(' jSpecialFunctionCondParam ',' jSpecialFunctionParam ',' jSpecialFunctionParam ',' jSpecialFunctionParam ')';
+jPara: 'Para' '(' jSpecialFunctionParam ',' jSpecialFunctionParam ',' jSpecialFunctionParam ',' jSpecialFunctionParam ')';
+jLoop: 'Loop' '(' jSpecialFunctionParam ',' jSpecialFunctionCondParam ',' jSpecialFunctionParam ',' jSpecialFunctionParam ')';
+jChoice: 'Choice' '(' jSpecialFunctionParam ',' jSpecialFunctionParam ',' jSpecialFunctionParam ',' jSpecialFunctionParam ')';
+jSeqSeq: 'SeqSeq' '(' jSpecialFunctionParam ',' jSpecialFunctionParam ',' jSpecialFunctionParam ')';
+jRepeat: 'Repeat' '(' jSpecialFunctionParam ',' jSpecialFunctionParam ',' jSpecialFunctionCondParam ',' jSpecialFunctionParam ')';
+
+pSeq: 'Seq' '(' (pSpecialFunctionParam ',' pSpecialFunctionParam | pBranch ',' pBranchRe) ')';
+pBranch: 'Branch' '(' pSpecialFunctionCondParam ',' pSpecialFunctionParam ',' pSpecialFunctionParam ')';
+pBranchRe: 'BranchRe' '(' pSpecialFunctionParam ',' pSpecialFunctionParam ',' pSpecialFunctionParam ')';
+pConcur: 'Concur' '(' pSpecialFunctionParam ',' pSpecialFunctionParam ',' pSpecialFunctionParam ')';
+pConcurRe: 'ConcurRe' '(' pSpecialFunctionParam ',' pSpecialFunctionParam ',' pSpecialFunctionParam ')';
+pCond: 'Cond' '(' pSpecialFunctionCondParam ',' pSpecialFunctionParam ',' pSpecialFunctionParam ',' pSpecialFunctionParam ')';
+pPara: 'Para' '(' pSpecialFunctionParam ',' pSpecialFunctionParam ',' pSpecialFunctionParam ',' pSpecialFunctionParam ')';
+pLoop: 'Loop' '(' pSpecialFunctionParam ',' pSpecialFunctionCondParam ',' pSpecialFunctionParam ',' pSpecialFunctionParam ')';
+pChoice: 'Choice' '(' pSpecialFunctionParam ',' pSpecialFunctionParam ',' pSpecialFunctionParam ',' pSpecialFunctionParam ')';
+pSeqSeq: 'SeqSeq' '(' pSpecialFunctionParam ',' pSpecialFunctionParam ',' pSpecialFunctionParam ')';
+pRepeat: 'Repeat' '(' pSpecialFunctionParam ',' pSpecialFunctionParam ',' pSpecialFunctionCondParam ',' pSpecialFunctionParam ')';
+
+
+jSpecialFunctionParam: jSpecialFunctionCall | jSpecialFunctionFuncParam | JAVA_CODE_SNIPPET;
+pSpecialFunctionParam: pSpecialFunctionCall | pSpecialFunctionFuncParam | PYTHON_CODE_SNIPPET;
+
+
+jSpecialFunctionCondParam: '``' jCondition (jLogicalOperator jCondition)* '``';
+pSpecialFunctionCondParam: '``' pCondition (pLogicalOperator pCondition)* '``';
+
+
+jSpecialFunctionFuncParam: '~' jCustomFunctionCall '~';
+pSpecialFunctionFuncParam: '~' pCustomFunctionCall '~';
+
+
+jCondition
+    : (
+        (JAVA_LOGICAL_VALUE | ID) equalUnequalOperator (JAVA_LOGICAL_VALUE | ID)
+        | (TEXT_STRING_DOUBLE_QUOTES | ID) equalUnequalOperator (TEXT_STRING_DOUBLE_QUOTES | ID)
+        | (
+            (ID | INTEGER_NUMBER | FRACTIONAL_NUMBER | SINGLE_CHARACTER | jCustomFunctionCall)
+            (greaterLessOperator | equalUnequalOperator)
+            (ID | INTEGER_NUMBER | FRACTIONAL_NUMBER | SINGLE_CHARACTER | jCustomFunctionCall)
+        )
+    )
+    | jIncrementDecrement (greaterLessOperator | equalUnequalOperator) jIncrementDecrement
+    | JAVA_LOGICAL_VALUE | ID | jCustomFunctionCall
+    ;
+
+pCondition
+    : pComparison
+    | PYTHON_LOGICAL_VALUE
+    | ID
+    | pCustomFunctionCall
+    ;
+
+
+jCustomFunctionCall: ID '(' jCustomFunctionCallParams? ')';
+pCustomFunctionCall: ID '(' pCustomFunctionCallParams? ')';
+
+
+jCustomFunctionCallParams: jCustomFunctionCallParam (',' jCustomFunctionCallParam)*;
+pCustomFunctionCallParams: pCustomFunctionCallParam (',' pCustomFunctionCallParam)*;
+
+
+jCustomFunctionCallParam
+    : jCustomFunctionCall
+    | INTEGER_NUMBER | FRACTIONAL_NUMBER | SINGLE_CHARACTER | TEXT_STRING_DOUBLE_QUOTES | JAVA_LOGICAL_VALUE | ID
+    ;
+
+pCustomFunctionCallParam
+    : pCustomFunctionCall
+    | pComparison
+    | pRvalue
+    ;
+
+
+jIncrementDecrement
+    : '++' ID
+    | '--' ID
+    | ID '++'
+    | ID '--'
+    ;
+
+
+pComparison: pRvalue (greaterLessOperator | equalUnequalOperator) pRvalue;
+
+
+pRvalue
+    : ID
+    | INTEGER_NUMBER
+    | FRACTIONAL_NUMBER
+    | TEXT_STRING_DOUBLE_QUOTES
+    | TEXT_STRING_SINGLE_QUOTES
+    | PYTHON_LOGICAL_VALUE
+    | '[' (pRvalue (',' pRvalue)*)? ']'
+    | pCustomFunctionCall
+    ;
+
+
+jLogicalOperator: '&&' | '||';
+pLogicalOperator: 'and' | 'or';
+
+
+equalUnequalOperator: '==' | '!=';
+greaterLessOperator: '<' | '>' | '<=' | '>=';
+
+
+dataType: INT_DATA_TYPE | DOUBLE_DATA_TYPE | CHAR_DATA_TYPE | STRING_DATA_TYPE | BOOLEAN_DATA_TYPE;
+
+
+INT_DATA_TYPE: 'int';
+DOUBLE_DATA_TYPE: 'double';
+CHAR_DATA_TYPE: 'char';
+STRING_DATA_TYPE: 'String';
+BOOLEAN_DATA_TYPE: 'boolean';
+
+
+JAVA_CODE_SNIPPET: '`' (~[`;])* ';' '`';
+PYTHON_CODE_SNIPPET: '`' (~[`;])* '`';
+
+
+INTEGER_NUMBER: '0' | '-'?[1-9][0-9]*;
+FRACTIONAL_NUMBER: '0.0' | '-'?('0' | [1-9][0-9]*)?'.'('0' | [0-9]*[1-9]);
+SINGLE_CHARACTER: '\'' . '\'';
+TEXT_STRING_DOUBLE_QUOTES: '"' .*? '"';
+TEXT_STRING_SINGLE_QUOTES: '\'' .*? '\'';
+JAVA_LOGICAL_VALUE: 'true' | 'false';
+PYTHON_LOGICAL_VALUE: 'True' | 'False';
+
+
+// This lexer rule must be kept almost at the bottom, as otherwise it may accidentally cannibalize other similar rules.
+ID: [a-zA-Z_][a-zA-Z0-9_]*;
+
 
 WS: [ \t\r\n]+ -> skip;
-
-condition_greater_less
-    :   '>'
-    |   '<'
-    |   '>='
-    |   '<='
-    ;
-
-condition_equal_unequal
-    : '=='
-    | '!='
-    ;
-
-incDecExpression
-	:	'++' ID
-	|	'--' ID
-	|	ID '++'
-	|	ID '--'
-	;
-
-j_condition
-    : BOOL_JAVA | j_function_call
-    | (BOOL_JAVA | ID) condition_equal_unequal (BOOL_JAVA | ID)
-    | (STRING | ID) condition_equal_unequal (STRING | ID)
-    | (ID | NUMBER | DOBULE | CHAR | incDecExpression | j_function_call) (condition_greater_less | condition_equal_unequal) (ID | NUMBER | DOBULE | CHAR | incDecExpression| j_function_call)
-    ;
-p_condition
-    : BOOL_PYTHON | p_function_call
-    | (STRING_SMALL | STRING | ID) condition_equal_unequal (STRING_SMALL | STRING | ID)
-    | (ID | NUMBER | DOBULE | p_function_call) (condition_greater_less | condition_equal_unequal) (ID | NUMBER | DOBULE | p_function_call)
-    ;
-
-J_ARG_CODE_BLOCK : ('`' (~[;`])*? ';' '`');
-j_arg_condition: '``'j_condition'``';
-j_arg_function: '~'j_function_call'~';
-j_arg_special_function
-    : j_seqSeq
-    | j_choice
-    | j_repeat
-    | j_loop
-    | j_para
-    | j_concur
-    | j_concurRe
-    | j_cond
-    | j_seq
-    | j_branch
-    | j_branchRe
-    ;
-
-j_arg_universal: J_ARG_CODE_BLOCK | j_arg_function | j_arg_special_function;
-
-P_ARG_CODE_BLOCK : ('`' (~[;`])*? '`');
-p_arg_condition: '``'p_condition'``';
-p_arg_function: '~'p_function_call'~';
-p_arg_special_function
-    : p_seqSeq
-    | p_choice
-    | p_repeat
-    | p_loop
-    | p_para
-    | p_concur
-    | p_concurRe
-    | p_cond
-    | p_seq
-    | j_branches
-    | p_branches
-    ;
-
-p_arg_universal: P_ARG_CODE_BLOCK | p_arg_function | p_arg_special_function;
-
-j_seqSeq : 'seqSeq('j_arg_universal ',' j_arg_universal ',' j_arg_universal')';
-p_seqSeq : 'seqSeq('p_arg_universal ',' p_arg_universal ',' p_arg_universal')';
-j_choice : 'choice('j_arg_universal ',' j_arg_universal ',' j_arg_universal',' j_arg_universal')';
-p_choice : 'choice('p_arg_universal ',' p_arg_universal ',' p_arg_universal ',' p_arg_universal')';
-p_repeat : 'repeat('p_arg_universal ',' p_arg_universal ',' p_arg_condition ',' p_arg_universal')';
-j_repeat : 'repeat('j_arg_universal ',' j_arg_universal ',' j_arg_condition ',' j_arg_universal')';
-
-j_loop : 'loop('j_arg_universal ','j_arg_condition','j_arg_universal','j_arg_universal')';
-p_loop : 'loop('p_arg_universal ','p_arg_condition','p_arg_universal','p_arg_universal')';
-j_para : 'para('j_arg_universal ','j_arg_universal','j_arg_universal','j_arg_universal ')';
-p_para : 'para('p_arg_universal ','p_arg_universal','p_arg_universal','p_arg_universal ')';
-
-j_cond: 'cond' '(' j_arg_condition ',' j_arg_universal ',' j_arg_universal ',' j_arg_universal ')';
-p_cond: 'cond' '(' p_arg_condition ',' p_arg_universal ',' p_arg_universal ',' p_arg_universal ')';
-
-j_concur: 'concur' '(' j_arg_universal ',' j_arg_universal ',' j_arg_universal ')';
-p_concur: 'concur' '(' p_arg_universal ',' p_arg_universal ',' p_arg_universal ')';
-j_concurRe: 'concurRe' '(' j_arg_universal ',' j_arg_universal ',' j_arg_universal ')';
-p_concurRe: 'concurRe' '(' p_arg_universal ',' p_arg_universal ',' p_arg_universal ')';
-
-j_seq : 'seq('(j_branches | j_seq_normal_args) ')';
-p_seq : 'seq('(p_branches | p_seq_normal_args)')';
-j_seq_normal_args: j_arg_universal ',' j_arg_universal;
-p_seq_normal_args: p_arg_universal ',' p_arg_universal;
-j_branches: j_branch ',' j_branchRe;
-p_branches: p_branch ',' p_branchRe;
-j_branch : 'branch('j_arg_condition ',' j_arg_universal ',' j_arg_universal')';
-p_branch : 'branch('p_arg_condition ',' p_arg_universal ',' p_arg_universal')';
-j_branchRe : 'branchRe('j_arg_universal ',' j_arg_universal ',' j_arg_universal')';
-p_branchRe : 'branchRe('p_arg_universal ',' p_arg_universal ',' p_arg_universal')';
