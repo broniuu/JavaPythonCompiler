@@ -1,2 +1,0 @@
-seq(~function(y, z)~,`b = 1`)
-def function(a1, b1)
