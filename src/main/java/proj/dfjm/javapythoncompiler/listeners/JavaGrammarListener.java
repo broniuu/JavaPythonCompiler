@@ -1,110 +1,135 @@
-package listener;
+package proj.dfjm.javapythoncompiler.listeners;
 
-import gen.GrammarBaseListener;
-import gen.GrammarParser;
 import org.antlr.v4.runtime.tree.ErrorNode;
-import tree.mainNode.JavaMainNode;
 import org.antlr.v4.runtime.tree.ParseTree;
+import proj.dfjm.javapythoncompiler.antlr.GrammarBaseListener;
+import proj.dfjm.javapythoncompiler.antlr.GrammarParser;
+import proj.dfjm.javapythoncompiler.builders.workflowpatternbuilder.JavaWorkflowPatternBuilder;
+import proj.dfjm.javapythoncompiler.nodes.RootASTNode;
 
-public class JavaGrammarListener extends GrammarBaseListener {
-    private JavaMainNode grammarNode = new JavaMainNode();
+public final class JavaGrammarListener extends GrammarBaseListener {
+    private final RootASTNode rootASTNode = new RootASTNode(new JavaWorkflowPatternBuilder());
     private boolean errorOccurred = false;
+
+    @Override
+    public void exitProg(GrammarParser.ProgContext ctx) {
+        if (errorOccurred || rootASTNode.doesNotHaveChildren()) {
+            return;
+        }
+
+        System.out.println("-------------------------- GENERATED JAVA SOURCE CODE --------------------------");
+        System.out.println(rootASTNode.getSourceCode());
+        System.out.println("--------------------------------------------------------------------------------");
+    }
+
+    @Override
+    public void enterJCustomFunctionDeclaration(GrammarParser.JCustomFunctionDeclarationContext ctx) {
+        rootASTNode.addEmptyCustomFunctionDeclarationASTNode();
+        rootASTNode.setLastCustomFunctionReturnTypeAndName(ctx.dataType().getText(), ctx.ID().getText());
+    }
+
+    @Override
+    public void enterJCustomFunctionDeclarationParam(GrammarParser.JCustomFunctionDeclarationParamContext ctx) {
+        rootASTNode.addArgumentToLastCustomFunction(ctx.dataType().getText() + " " + ctx.ID().getText());
+    }
+
+    @Override
+    public void enterJSeq(GrammarParser.JSeqContext ctx) {
+        if (!ctx.jSpecialFunctionParam().isEmpty()) {
+            rootASTNode.addSeqASTNode();
+        }
+    }
+
+    @Override
+    public void enterJBranch(GrammarParser.JBranchContext ctx) {
+        rootASTNode.addBranchBranchReASTNode();
+    }
+
+    /* TODO: Implement the addConcurASTNode() and addConcurReASTNode() methods in the RootASTNode
+        class and the appendConcur() and appendConcurRe() methods in the JavaWorkflowPatternBuilder
+        class, then uncomment the code below and test if it works as expected.
+    @Override
+    public void enterJConcur(GrammarParser.JConcurContext ctx) {
+        rootASTNode.addConcurASTNode();
+    }
+
+    @Override
+    public void enterJConcurRe(GrammarParser.JConcurReContext ctx) {
+        rootASTNode.addConcurReASTNode();
+    }
+     */
+
+    @Override
+    public void enterJCond(GrammarParser.JCondContext ctx) {
+        rootASTNode.addCondASTNode();
+    }
+
+    @Override
+    public void enterJPara(GrammarParser.JParaContext ctx) {
+        rootASTNode.addParaASTNode();
+    }
+
+    @Override
+    public void enterJLoop(GrammarParser.JLoopContext ctx) {
+        rootASTNode.addLoopASTNode();
+    }
+
+    @Override
+    public void enterJChoice(GrammarParser.JChoiceContext ctx) {
+        rootASTNode.addChoiceASTNode();
+    }
+
+    @Override
+    public void enterJSeqSeq(GrammarParser.JSeqSeqContext ctx) {
+        rootASTNode.addSeqSeqASTNode();
+    }
+
+    @Override
+    public void enterJRepeat(GrammarParser.JRepeatContext ctx) {
+        rootASTNode.addRepeatASTNode();
+    }
+
+    @Override
+    public void enterJSpecialFunctionParam(GrammarParser.JSpecialFunctionParamContext ctx) {
+        if (ctx.JAVA_CODE_SNIPPET() != null) {
+            rootASTNode.addSpecialFunctionParamASTNode(ctx.JAVA_CODE_SNIPPET().getText());
+        }
+    }
+
+    @Override
+    public void enterJCondition(GrammarParser.JConditionContext ctx) {
+        separateItemsWithWhitespaces(ctx);
+    }
+
+    @Override
+    public void enterJCustomFunctionCall(GrammarParser.JCustomFunctionCallContext ctx) {
+        rootASTNode.addCustomFunctionCallASTNode(
+            ctx.ID().getText(),
+            ctx.jCustomFunctionCallParams() != null
+                ? ctx.jCustomFunctionCallParams().jCustomFunctionCallParam().size()
+                : 0
+        );
+    }
+
+    @Override
+    public void enterJCustomFunctionCallParam(GrammarParser.JCustomFunctionCallParamContext ctx) {
+        rootASTNode.addSpecialFunctionParamASTNode(ctx.getText());
+    }
+
     @Override
     public void visitErrorNode(ErrorNode node) {
         errorOccurred = true;
     }
-    @Override
-    public void enterJ_condition(GrammarParser.J_conditionContext ctx) {
-        separateChildrenWithSpace(ctx);
-    }
 
-    private void separateChildrenWithSpace(ParseTree context) {
-        var maxLastChildIndex = context.getChildCount() - 1;
-        StringBuilder localStringBuilder = new StringBuilder();
-        for (int i = 0; i < maxLastChildIndex; ++i) {
-            localStringBuilder.append(context.getChild(i).getText()).append(" ");
+    private void separateItemsWithWhitespaces(ParseTree context) {
+        StringBuilder internalStringBuilder = new StringBuilder();
+        int lastChildIndex = context.getChildCount() - 1;
+
+        for (int i = 0; i < lastChildIndex; i++) {
+            internalStringBuilder.append(context.getChild(i).getText()).append(" ");
         }
-        localStringBuilder.append(context.getChild(maxLastChildIndex).getText());
-        grammarNode.addCodeBlockNodeToTree(localStringBuilder.toString());
-    }
-    @Override
-    public void enterJ_arg_universal(GrammarParser.J_arg_universalContext ctx) {
-        if (ctx.J_ARG_CODE_BLOCK() != null) {
-            grammarNode.addCodeBlockNodeToTree(ctx.J_ARG_CODE_BLOCK().getText());
-        }
-    }
+        internalStringBuilder.append(context.getChild(lastChildIndex).getText());
 
-    @Override
-    public void enterJ_function_call(GrammarParser.J_function_callContext ctx) {
-        int numberOfArguments = ctx.j_function_args().j_function_arg().size();
-        String functionName = ctx.ID().getText();
-        grammarNode.addCustomFunctionNode(functionName, numberOfArguments);
-    }
-
-
-    @Override
-    public void enterJ_function_arg(GrammarParser.J_function_argContext ctx) {
-        grammarNode.addCodeBlockNodeToTree(ctx.getText());
-    }
-
-    @Override
-    public void enterJ_function_declaration(GrammarParser.J_function_declarationContext ctx) {
-        String functionType = ctx.j_type().getText();
-        String functionName  = ctx.ID().getText();
-        grammarNode.addEmptyFunctionDeclaration();
-        grammarNode.setLastFunctionTypeAndName(functionType, functionName);
-    }
-
-    @Override
-    public void enterJ_function_param(GrammarParser.J_function_paramContext ctx) {
-        String type = ctx.j_type().getText();
-        String name = ctx.ID().getText();
-        String param = type + " " + name;
-        grammarNode.addParamToLastFunction(param);
-    }
-
-    @Override
-    public void enterJ_seq_normal_args(GrammarParser.J_seq_normal_argsContext ctx) {
-        grammarNode.addSeqNode();
-    }
-    @Override
-    public void enterJ_branches(GrammarParser.J_branchesContext ctx) {
-        grammarNode.addBranchBranchReNode();
-    }
-
-    @Override
-    public void enterJ_choice(GrammarParser.J_choiceContext ctx) {
-        grammarNode.addChoiceNode();
-    }
-
-    @Override
-    public void enterJ_seqSeq(GrammarParser.J_seqSeqContext ctx) {
-        grammarNode.addSeqSeqNode();
-    }
-
-    @Override
-    public void enterJ_cond(GrammarParser.J_condContext ctx) {
-        grammarNode.addCondNode();
-    }
-
-    @Override
-    public void enterJ_loop(GrammarParser.J_loopContext ctx) {
-        grammarNode.addLoopNode();
-    }
-
-    @Override
-    public void enterJ_para(GrammarParser.J_paraContext ctx) {
-        grammarNode.addParaNode();
-    }
-
-    @Override
-    public void enterJ_repeat(GrammarParser.J_repeatContext ctx) {
-        grammarNode.addRepeatNode();
-    }
-
-    @Override
-    public void exitProg(GrammarParser.ProgContext ctx) {
-        if(errorOccurred) return;
-        System.out.println(grammarNode.getCode());
+        rootASTNode.addSpecialFunctionParamASTNode(internalStringBuilder.toString());
     }
 }
