@@ -66,8 +66,9 @@ public final class PythonWorkflowPatternBuilder implements IWorkflowPatternBuild
         IWorkflowPatternBuilder branchReSecondInstruction,
         IWorkflowPatternBuilder branchReThirdInstruction
     ) {
-        /* TODO: Implement the appendIf() and appendElse() methods in the PythonSourceCodeBuilder class,
+         /*TODO: Implement the appendIf() and appendElse() methods in the PythonSourceCodeBuilder class,
             then test if the commented out code below works as expected.
+            */
         pythonSourceCodeBuilder
             .appendIf(
                 condition.getSourceCode(),
@@ -76,7 +77,7 @@ public final class PythonWorkflowPatternBuilder implements IWorkflowPatternBuild
             )
             .appendElse(branchSecondInstruction.getSourceCode(), branchReSecondInstruction.getSourceCode())
             .appendLastLine(branchReThirdInstruction.getSourceCode());
-         */
+
 
         return this;
     }
@@ -100,6 +101,18 @@ public final class PythonWorkflowPatternBuilder implements IWorkflowPatternBuild
     }
 
     @Override
+    public IWorkflowPatternBuilder appendConcurConcurRe(
+            IWorkflowPatternBuilder concurFirstInstruction,
+            IWorkflowPatternBuilder concurSecondInstruction,
+            IWorkflowPatternBuilder concurThirdInstruction,
+            IWorkflowPatternBuilder concurReFirstInstruction,
+            IWorkflowPatternBuilder concurReSecondInstruction,
+            IWorkflowPatternBuilder concurReThirdInstruction
+    ) {
+        return this;
+    }
+
+    @Override
     public IWorkflowPatternBuilder appendCond(
         IWorkflowPatternBuilder condition,
         IWorkflowPatternBuilder firstInstruction,
@@ -107,12 +120,12 @@ public final class PythonWorkflowPatternBuilder implements IWorkflowPatternBuild
         IWorkflowPatternBuilder thirdInstruction
     ) {
         /* TODO: Implement the appendIf() and appendElse() methods in the PythonSourceCodeBuilder class,
-            then test if the commented out code below works as expected.
+            then test if the commented out code below works as expected.*/
         pythonSourceCodeBuilder
             .appendIf(condition.getSourceCode(), firstInstruction.getSourceCode())
             .appendElse(secondInstruction.getSourceCode())
             .appendLastLine(thirdInstruction.getSourceCode());
-         */
+
 
         return this;
     }
@@ -125,7 +138,7 @@ public final class PythonWorkflowPatternBuilder implements IWorkflowPatternBuild
         IWorkflowPatternBuilder fourthInstruction
     ) {
         /* TODO: Implement the appendThread() and appendThreadStart() methods in the PythonSourceCodeBuilder class,
-            then test if the commented out code below works as expected.
+            then test if the commented out code below works as expected.*/
         pythonSourceCodeBuilder
             .appendFirstLine(firstInstruction.getSourceCode())
             .appendIndentation()
@@ -135,7 +148,7 @@ public final class PythonWorkflowPatternBuilder implements IWorkflowPatternBuild
             .appendThread(currentThreadNumber, thirdInstruction.getSourceCode()).appendNewlineCharacter()
             .appendThreadStart(currentThreadNumber++).appendNewlineCharacter()
             .append(fourthInstruction.getSourceCode());
-         */
+
 
         return this;
     }
@@ -148,12 +161,12 @@ public final class PythonWorkflowPatternBuilder implements IWorkflowPatternBuild
         IWorkflowPatternBuilder thirdInstruction
     ) {
         /* TODO: Implement the appendWhile() method in the PythonSourceCodeBuilder class,
-            then test if the commented out code below works as expected.
+            then test if the commented out code below works as expected.*/
         pythonSourceCodeBuilder
             .appendFirstLine(firstInstruction.getSourceCode())
             .appendWhile(condition.getSourceCode(), secondInstruction.getSourceCode()).appendNewlineCharacter()
             .appendLastLine(thirdInstruction.getSourceCode());
-         */
+
 
         return this;
     }
@@ -166,14 +179,14 @@ public final class PythonWorkflowPatternBuilder implements IWorkflowPatternBuild
         IWorkflowPatternBuilder fourthInstruction
     ) {
         /* TODO: Implement the appendIf() and appendElse() methods in the PythonSourceCodeBuilder class,
-            then test if the commented out code below works as expected.
+            then test if the commented out code below works as expected.*/
         pythonSourceCodeBuilder
             .appendFirstLine(firstInstruction.getSourceCode())
             .appendIndentation()
             .appendIf(null, secondInstruction.getSourceCode())
             .appendElse(thirdInstruction.getSourceCode())
             .appendLastLine(fourthInstruction.getSourceCode());
-         */
+
 
         return this;
     }
@@ -206,8 +219,9 @@ public final class PythonWorkflowPatternBuilder implements IWorkflowPatternBuild
             .appendIndentation()
             .appendDoWhile(condition.getSourceCode(), secondInstruction.getSourceCode())
             .appendLastLine(thirdInstruction.getSourceCode());
-         */
 
+        */
         return this;
+
     }
 }

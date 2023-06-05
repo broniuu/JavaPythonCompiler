@@ -86,4 +86,51 @@ public final class PythonSourceCodeBuilder extends SourceCodeBuilderBase {
         stringBuilder.append(SourceCodeBuilderHelper.createSourceCodeForArguments(arguments));
         return this;
     }
+
+    public PythonSourceCodeBuilder appendIf(String condition, String... linesInside) {
+        return append("if ")
+                .append(condition != null ? condition : "/* implementation required */")
+                .append(":\n")
+                .appendCodeBlockLines(linesInside)
+                .appendIndentation();
+    }
+
+    public PythonSourceCodeBuilder appendElse(String... linesInside) {
+        return append("else:\n")
+                .appendCodeBlockLines(linesInside)
+                .appendIndentation()
+                .append("\n");
+    }
+
+    public PythonSourceCodeBuilder appendWhile(String condition, String... linesInside) {
+        return append("while")
+                .append(condition)
+                .append(":\n")
+                .appendCodeBlockLines(linesInside);
+    }
+    /*
+    public PythonSourceCodeBuilder appendDoWhile(String condition, String... linesInside) {
+        return append("do {\n")
+                .appendCodeBlockLines(linesInside)
+                .appendIndentation()
+                .append("} while (")
+                .append(condition)
+                .append(");\n");
+    }
+    */
+    public PythonSourceCodeBuilder appendThread(int threadNumber, String... linesInside) {
+        return append("thread")
+                .append(String.valueOf(threadNumber))
+                .append(" = threading.Thread(target=")
+                .append(linesInside[0])
+                .append(", args=(1,))\"")
+                .appendIndentation();
+    }
+
+    public PythonSourceCodeBuilder appendThreadStart(int threadNumber) {
+        return appendIndentation()
+                .append("thread")
+                .append(String.valueOf(threadNumber))
+                .append(".start()");
+    }
 }
