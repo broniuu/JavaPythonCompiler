@@ -121,9 +121,10 @@ public final class PythonSourceCodeBuilder extends SourceCodeBuilderBase {
     public PythonSourceCodeBuilder appendThread(int threadNumber, String... linesInside) {
         return append("thread")
                 .append(String.valueOf(threadNumber))
-                .append(" = threading.Thread(target=")
-                .append(linesInside[0])
-                .append(", args=(1,))\"")
+                .append(" = threading.Thread(target=exec")
+                .append(", args=(")
+                .appendCodeBlockLines(linesInside)
+                .append("))")
                 .appendIndentation();
     }
 
