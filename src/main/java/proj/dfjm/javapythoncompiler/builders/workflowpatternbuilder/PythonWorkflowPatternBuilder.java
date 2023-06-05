@@ -101,18 +101,6 @@ public final class PythonWorkflowPatternBuilder implements IWorkflowPatternBuild
     }
 
     @Override
-    public IWorkflowPatternBuilder appendConcurConcurRe(
-            IWorkflowPatternBuilder concurFirstInstruction,
-            IWorkflowPatternBuilder concurSecondInstruction,
-            IWorkflowPatternBuilder concurThirdInstruction,
-            IWorkflowPatternBuilder concurReFirstInstruction,
-            IWorkflowPatternBuilder concurReSecondInstruction,
-            IWorkflowPatternBuilder concurReThirdInstruction
-    ) {
-        return this;
-    }
-
-    @Override
     public IWorkflowPatternBuilder appendCond(
         IWorkflowPatternBuilder condition,
         IWorkflowPatternBuilder firstInstruction,
