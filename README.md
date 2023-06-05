@@ -1,167 +1,112 @@
 # Projekt Kompilatory
-
-## Wejście
-
-Plik wejściowy to `input.txt`, znajdujący się w folderze `resources`
-
-![](https://i.imgur.com/XTrIh7I.png)
-
-
-## Używanie funckcji (przykład)
-
+### Przedstawienie zasady działania
 Kod na wejściu:
-
-```
-choice(
-    `int p = 234;`,
-    ~function(1, 4, 'c')~,
-    ~function1(a, "asd", c)~,
-    `int a = p + d;`
+```text
+Loop(
+    `int a = 5;`,
+    ``b < 10``,
+    ~func1(1, 2.0, "three")~,
+    ~func2(true, 2.5, 'c')~
 )
-String function(int a, int b, int c)
-String function1(int a, int b, char y)
+
+int func1(int p1, double p2, String p3)
+String func2(boolean q1, double q2, char q3)
 ```
 
-Kod na wyjściu(java):
-
+Kod na wyjściu (dla Javy):
 ```java
-int p = 234;
-if () {
-	function(1, 4, 'c');
-} else {
-	function1(a, "asd", c);
+int a = 5;
+while (b < 10) {
+	func1(1, 2.0, "three");
 }
-int a = p + d;
+func2(true, 2.5, 'c');
 
-// - - - - Deklaracje funkcji - - - - -
-
-String function(int a, int b, int c) {
-	// Umieść tutaj swój kod
+// - - - - - Function definitions - - - - -
+int func1(int p1, double p2, String p3) {
+	// Enter your function code here
 }
-String function1(int a, int b, char y) {
-	// Umieść tutaj swój kod
+String func2(boolean q1, double q2, char q3) {
+	// Enter your function code here
 }
 ```
 
-## Branch, BranchRe (przykłady)
-
-### JAVA
-Kod na wejściu:
-
+### Instrukcja dodawania obługi dla nowych funkcji (na przykładzie funkcji `Choice`)
+1. W pakiecie „nodes” stworzyć klasę danego węzła, która dziedziczy po klasie abstrakcyjnej `ASTNode`. Przykład:
+```Java
+public final class ChoiceASTNode extends ASTNode {
+}
+```
+2. W konstruktorze tej nowo utworzonej klasy danego węzła wywołać konstruktor klasy nadrzędnej (tj. klasy `ASTNode`), podając mu jako argumenty liczbę dzieci, jaką ten nowo utworzony węzeł spodziewa się mieć (dla `Choice` będzie to 4), jak również przekazując dalej otrzymaną jako argument swojego konstruktora zmienną interfejsową `workflowPatternBuilder`. Przykład:
 ```java
-seq(branch(``4 > 5``, `int b = 5;`, `int a = 10;`), branchRe(`int a = 1 + 2;`, `double b = 2.3;`, `boolean c = true;`))
-```
-
-Kod na wyjściu:
-
-```java
-if (4 > 5) {
-	int b = 5;
-	int a = 1 + 2;
-} else {
-	int a = 10;
-	double b = 2.3;
+public ChoiceASTNode(IWorkflowPatternBuilder workflowPatternBuilder) {
+    super(4, workflowPatternBuilder);
 }
-boolean c = true;
 ```
-
-### PYTHON
-Kod na wejściu:
-
-```tree.python
-seq(branch(``4 > 5``, `a = 5`, `b = 10`), branchRe(`c = 1`, `d = 2`, `e = 3`))
-```
-
-Kod na wyjściu:
-
-```tree.python
-if 4 > 5:
-	a = 5
-	c = 1
-else:
-	b = 10
-	d = 2
-e = 3
-```
-
-## Ważne odnośnie gita
-
-po zrobieniu pulla na branhcu `master` wykonać następujące komendy w konsoli
-
-```
-git rm -r --cached src/main/java/gen 
-git rm -r --cached target/classes/gen
-git rm -r --cached .idea 
-git rm -r --cached target
-```
-
-## Sposób dodawania obługi dla nowych metod (na przykładzie metody `Choice`)
-
-##### Narazie zrobić dla Javy, jak dodam obługę dla pythona to dam znać. Metoda działania będzie taka sama jak w przypadku javy
-
-1) stworzyć klasę noda, która dziedziczy po tree.GrammarNode
-    ```Java
-    public class ChoiceJavaNode extends GrammarNode {
-    
-    }
-    ```
-2) w konstruktorze podać `maxNumberOfChild` jako liczbę argumentów i nadpisujemy metode `getCode(tab number)`, tak żeby tworzyła kod naszej funckji
-   
-   **Ważne!** Pierwsza linia generowanego kodu, musi być pozbawiona drukowania tabulacji (brak funckji `appendTabs())`, a ostatnia pozbawiona drukowania nowej linii (brak funckji `appendNewLine()`). Jeżeli użytkownik tego nie uwzględnii, to kod wysypie się przy wcięciach 
-``` java
-public class ChoiceJavaNode extends tree.GrammarNode {
-    public ChoiceJavaNode() {
-        maxChildrenNumber = 4;
-    }
-    @Override
-    public JavaCodeBuilder getCode(int tabNumber) {
-        JavaCodeBuilder firstArgument = childGrammarNodes.get(0).getCode(tabNumber + 1);
-        JavaCodeBuilder secondArgument = childGrammarNodes.get(1).getCode(tabNumber + 1);
-        JavaCodeBuilder thirdArgument = childGrammarNodes.get(2).getCode(tabNumber + 1);
-        JavaCodeBuilder fourthArgument = childGrammarNodes.get(3).getCode(tabNumber + 1);
-        return codeStringBuilder.setCurrentTabsNumber(tabNumber)
-                .appendFirstLine(firstArgument)
-                .appendTabs().appendIf("", secondArgument)
-                .appendElse(thirdArgument)
-                .appendLastLine(fourthArgument);
-        
-        // Metoda zwróci JavaCodeBuilder zawierający następujący kod:
-        // *firstArgument*
-        // if () {
-        //      *secondArgument*
-        // } else {
-        //     *thirdArgument*
-        // }
-        // *fourthArgument*
-    }
+3. Zaimplementować/nadpisać odziedziczoną z klasy ASTNode metodę abstrakcyjną `getWorkflowPatternBuilder(int indentationLevel)`, tak aby wywoływała ona odpowiadającą temu węzłowi metodę z interfejsu `IWorkflowPatternBuilder` (wraz z ewentualnymi metodami pomocniczymi typu `setIndentationLevel(indentationLevel)`), dorzucającą reprezentację danego węzła w formie kodu źródłowego do już istniejącego wcześniej kodu (dla `Choice` będzie to `appendChoice(firstInstruction, secondInstruction, thirdInstruction, fourthInstruction)`). Przykład:
+```java
+@Override
+protected IWorkflowPatternBuilder getWorkflowPatternBuilder(int indentationLevel) {
+    return workflowPatternBuilder
+        .setIndentationLevel(indentationLevel)
+        .appendChoice(
+            children.get(0).getWorkflowPatternBuilder(indentationLevel + 1),
+            children.get(1).getWorkflowPatternBuilder(indentationLevel + 1),
+            children.get(2).getWorkflowPatternBuilder(indentationLevel + 1),
+            children.get(3).getWorkflowPatternBuilder(indentationLevel + 1)
+        );
 }
 ```
 
-3) w klasie `MainJavaNode`, dodać metodę, która dodaje do drzewa obiekt naszej klasy np.
-
+4. W klasach `JavaWorkflowPatternBuilder` oraz `PythonWorkflowPatternBuilder` zaimplementować/nadpisać uprzednio wywołaną metodę (w przykładzie było to `IWorkflowPatternBuilder appendChoice(IWorkflowPatternBuilder firstInstruction, IWorkflowPatternBuilder secondInstruction, IWorkflowPatternBuilder thirdInstruction, IWorkflowPatternBuilder fourthInstruction)`) pochodzącą z interfejsu `IWorkflowPatternBuilder`. Przykładowa implementacja może wyglądać na przykład tak (dla Javy):
 ```java
+@Override
+public IWorkflowPatternBuilder appendChoice(
+    IWorkflowPatternBuilder firstInstruction,
+    IWorkflowPatternBuilder secondInstruction,
+    IWorkflowPatternBuilder thirdInstruction,
+    IWorkflowPatternBuilder fourthInstruction
+) {
+    javaSourceCodeBuilder
+        .appendFirstLine(firstInstruction.getSourceCode())
+        .appendIndentation()
+        .appendIf(null, secondInstruction.getSourceCode())
+        .appendElse(thirdInstruction.getSourceCode())
+        .appendLastLine(fourthInstruction.getSourceCode());
 
-
-public class MainJavaNode extends GrammarNode {
-        ...
-                ...
-                ...
-
-   public void addChoiceJavaNode() {
-      this.addChild(new ChoiceJavaNode());
-   }
+    return this;
 }
 ```
-4) wywołać metodę, którą stworzyliśmy w listenerze do danej funckji
+
+5. (Opcjonalnie) Jeżeli w klasach `JavaSourceCodeBuilder` bądź `PythonSourceCodeBuilder` brakuje jakiejś metody generowania kodu, która okazała się być potrzebna przy imlementowaniu metody z poprzedniego kroku instrukcji, i dobrze byłoby ją mieć, to należy samemu dodać ją w klasie `JavaSourceCodeBuilder` bądź `PythonSourceCodeBuilder` (w zależności od tego, gdzie była ona potrzebna). Przykładowa implementacja brakującej metody (załóżmy, że brakowało nam metody tworzącej kod dla instrukcji `if`, którą nazwaliśmy np. `appendIf()`, by zachować spójność z istniejącymi już w tej klasie metodami) mogłaby wyglądać np. tak (dla Javy):
 ```java
-    public class listener.JavaGrammarListener extends GrammarBaseListener {
-        
-        private MainJavaNode grammarNode = new MainJavaNode();
-        ...
-        ...
-        @Override
-        public void enterJ_choice(GrammarParser.J_choiceContext ctx) {
-            grammarNode.addChoiceJavaNode();
-        }
-    }
+public JavaSourceCodeBuilder appendIf(String condition, String... linesInside) {
+    return append("if (")
+        .append(condition != null ? condition : "/* implementation required */")
+        .append(") {\n")
+        .appendCodeBlockLines(linesInside)
+        .appendIndentation()
+        .append('}');
+}
+
+// Powyższa metoda zwróci referencję do obiektu klasy
+// JavaSourceCodeBuilder zawierającego następujący kod źródłowy:
+//
+// if (condition) {
+//     blok_instrukcji
+// }
+```
+
+6. W klasie `RootASTNode` utworzyć i zaimplementowć metodę dodającą do drzewa składniowego jako dziecko obiekt naszej nowo utworzonej klasy danego węzła (dla `Choice` będzie to klasa `ChoiceASTNode` dodawana w metodzie `addChoiceASTNode()`). Przykład:
+```java
+public void addChoiceASTNode() {
+    addAsChild(new ChoiceASTNode(workflowPatternBuilder.createNewInstance()));
+}
+```
+
+7. Gdy wszystko jest już gotowe, to w klasach `JavaGrammarListener` oraz `PythonGrammarListener` należy zaimplementować/nadpisać odpowiednie metody listenera i w nich wywołać tę nowo utworzoną metodę z poprzedniego kroku instrukcji (dla funkcji `Choice` interesuje nas np. metoda listenera `enterJChoice(GrammarParser.JChoiceContext ctx)` oraz metoda `addChoiceASTNode()` z poprzedniego kroku).
+```java
+@Override
+public void enterJChoice(GrammarParser.JChoiceContext ctx) {
+    rootASTNode.addChoiceASTNode();
+}
 ```

@@ -19,7 +19,6 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/User/IdeaProjects/JavaPythonCompiler",
     "settings.editor.selected.configurable": "configurable.group.appearance"
   }
 }]]></component>
@@ -32,7 +31,7 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="proj.dfjm.javapythoncompiler.Main" />
       <module name="javapythoncompiler" />
-      <option name="PROGRAM_PARAMETERS" value="input.txt input2.txt" />
+      <option name="PROGRAM_PARAMETERS" value="input.txt" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="proj.dfjm.javapythoncompiler.*" />
