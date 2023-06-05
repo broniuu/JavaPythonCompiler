@@ -103,7 +103,7 @@ public final class PythonSourceCodeBuilder extends SourceCodeBuilderBase {
     }
 
     public PythonSourceCodeBuilder appendWhile(String condition, String... linesInside) {
-        return append("while")
+        return append("while ")
                 .append(condition)
                 .append(":\n")
                 .appendCodeBlockLines(linesInside);
