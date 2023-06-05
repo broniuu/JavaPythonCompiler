@@ -68,7 +68,7 @@ public final class RootASTNode extends ASTNode {
             );
 
         if (!allFunctionDeclarationsMatchCalledFunctions) {
-            throw new RuntimeException("Function declarations do not match their calls.");
+            throw new RuntimeException("Function declarations do not match their calls (or vice versa).");
         }
 
         List<String> duplicates = customFunctionDeclarations

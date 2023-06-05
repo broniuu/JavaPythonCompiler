@@ -123,7 +123,7 @@ public final class PythonGrammarListener extends GrammarBaseListener {
     }
 
     @Override
-    public void enterJCondition(GrammarParser.JConditionContext ctx) {
+    public void enterPCondition(GrammarParser.PConditionContext ctx) {
         separateItemsWithWhitespaces(ctx);
     }
 
