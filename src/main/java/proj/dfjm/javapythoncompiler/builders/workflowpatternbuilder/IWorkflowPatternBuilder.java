@@ -43,6 +43,15 @@ public interface IWorkflowPatternBuilder {
         IWorkflowPatternBuilder thirdInstruction
     );
 
+    IWorkflowPatternBuilder appendConcurConcurRe(
+            IWorkflowPatternBuilder concurFirstInstruction,
+            IWorkflowPatternBuilder concurSecondInstruction,
+            IWorkflowPatternBuilder concurThirdInstruction,
+            IWorkflowPatternBuilder concurReFirstInstruction,
+            IWorkflowPatternBuilder concurReSecondInstruction,
+            IWorkflowPatternBuilder concurReThirdInstruction
+    );
+
     IWorkflowPatternBuilder appendCond(
         IWorkflowPatternBuilder condition,
         IWorkflowPatternBuilder firstInstruction,

@@ -79,6 +79,28 @@ public final class JavaWorkflowPatternBuilder implements IWorkflowPatternBuilder
     }
 
     @Override
+    public IWorkflowPatternBuilder appendConcurConcurRe(
+            IWorkflowPatternBuilder concurFirstInstruction,
+            IWorkflowPatternBuilder concurSecondInstruction,
+            IWorkflowPatternBuilder concurThirdInstruction,
+            IWorkflowPatternBuilder concurReFirstInstruction,
+            IWorkflowPatternBuilder concurReSecondInstruction,
+            IWorkflowPatternBuilder concurReThirdInstruction
+    ) {
+        javaSourceCodeBuilder
+                .appendFirstLine(concurFirstInstruction.getSourceCode())
+                .appendIndentation()
+                .appendThread(currentThreadNumber, concurSecondInstruction.getSourceCode()).appendNewlineCharacter()
+                .appendThreadStart(currentThreadNumber++).appendNewlineCharacter()
+                .appendIndentation()
+                .appendThread(currentThreadNumber, concurReFirstInstruction.getSourceCode()).appendNewlineCharacter()
+                .appendThreadStart(currentThreadNumber++).appendNewlineCharacter()
+                .append(concurReSecondInstruction.getSourceCode());
+
+        return this;
+    }
+
+    @Override
     public IWorkflowPatternBuilder appendConcur(
         IWorkflowPatternBuilder firstInstruction,
         IWorkflowPatternBuilder secondInstruction,
