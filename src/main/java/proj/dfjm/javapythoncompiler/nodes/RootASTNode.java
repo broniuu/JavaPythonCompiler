@@ -100,14 +100,15 @@ public final class RootASTNode extends ASTNode {
 
     /* TODO: Create the ConcurASTNode and ConcurReASTNode classes, implement the necessary
         methods in them, then uncomment the code below and test if it works as expected.
-    public void addConcurASTNode() {
-        addAsChild(new ConcurASTNode(workflowPatternBuilder.createNewInstance()));
-    }
 
     public void addConcurReASTNode() {
         addAsChild(new ConcurReASTNode(workflowPatternBuilder.createNewInstance()));
     }
      */
+
+    public void addConcurASTNode() {
+        addAsChild(new ConcurASTNode(workflowPatternBuilder.createNewInstance()));
+    }
     public void addCondASTNode() {
         addAsChild(new CondASTNode(workflowPatternBuilder.createNewInstance()));
     }

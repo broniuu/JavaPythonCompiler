@@ -33,7 +33,7 @@ public final class JavaWorkflowPatternBuilder implements IWorkflowPatternBuilder
 
     @Override
     public IWorkflowPatternBuilder appendCustomFunctionDeclarations(
-        List<CustomFunctionDeclaration> customFunctionDeclarations
+            List<CustomFunctionDeclaration> customFunctionDeclarations
     ) {
         javaSourceCodeBuilder.appendCustomFunctionDeclarations(customFunctionDeclarations);
         return this;
@@ -47,148 +47,162 @@ public final class JavaWorkflowPatternBuilder implements IWorkflowPatternBuilder
 
     @Override
     public IWorkflowPatternBuilder appendSeq(
-        IWorkflowPatternBuilder firstInstruction,
-        IWorkflowPatternBuilder secondInstruction
+            IWorkflowPatternBuilder firstInstruction,
+            IWorkflowPatternBuilder secondInstruction
     ) {
         javaSourceCodeBuilder
-            .appendFirstLine(firstInstruction.getSourceCode())
-            .appendLastLine(secondInstruction.getSourceCode());
+                .appendFirstLine(firstInstruction.getSourceCode())
+                .appendLastLine(secondInstruction.getSourceCode());
 
         return this;
     }
 
     @Override
     public IWorkflowPatternBuilder appendBranchBranchRe(
-        IWorkflowPatternBuilder condition,
-        IWorkflowPatternBuilder branchFirstInstruction,
-        IWorkflowPatternBuilder branchSecondInstruction,
-        IWorkflowPatternBuilder branchReFirstInstruction,
-        IWorkflowPatternBuilder branchReSecondInstruction,
-        IWorkflowPatternBuilder branchReThirdInstruction
+            IWorkflowPatternBuilder condition,
+            IWorkflowPatternBuilder branchFirstInstruction,
+            IWorkflowPatternBuilder branchSecondInstruction,
+            IWorkflowPatternBuilder branchReFirstInstruction,
+            IWorkflowPatternBuilder branchReSecondInstruction,
+            IWorkflowPatternBuilder branchReThirdInstruction
     ) {
         javaSourceCodeBuilder
-            .appendIf(
-                condition.getSourceCode(),
-                branchFirstInstruction.getSourceCode(),
-                branchReFirstInstruction.getSourceCode()
-            )
-            .appendElse(branchSecondInstruction.getSourceCode(), branchReSecondInstruction.getSourceCode())
-            .appendLastLine(branchReThirdInstruction.getSourceCode());
+                .appendIf(
+                        condition.getSourceCode(),
+                        branchFirstInstruction.getSourceCode(),
+                        branchReFirstInstruction.getSourceCode()
+                )
+                .appendElse(branchSecondInstruction.getSourceCode(), branchReSecondInstruction.getSourceCode())
+                .appendLastLine(branchReThirdInstruction.getSourceCode());
 
         return this;
     }
 
     @Override
     public IWorkflowPatternBuilder appendConcur(
-        IWorkflowPatternBuilder firstInstruction,
-        IWorkflowPatternBuilder secondInstruction,
-        IWorkflowPatternBuilder thirdInstruction
+            IWorkflowPatternBuilder firstInstruction,
+            IWorkflowPatternBuilder secondInstruction,
+            IWorkflowPatternBuilder thirdInstruction
     ) {
+        int firstThreadNumber = currentThreadNumber++;
+        int secondThreadNumber = currentThreadNumber++;
+        javaSourceCodeBuilder.appendFirstLine(firstInstruction.getSourceCode())
+                .appendIndentation()
+                .appendThread(firstThreadNumber, secondInstruction.getSourceCode())
+                .appendNewlineCharacter()
+                .appendIndentation()
+                .appendThread(secondThreadNumber, thirdInstruction.getSourceCode())
+                .appendNewlineCharacter()
+                .appendIndentation()
+                .appendThreadStart(firstThreadNumber)
+                .appendNewlineCharacter()
+                .appendIndentation()
+                .appendThreadStart(secondThreadNumber);
         return this;
     }
 
     @Override
     public IWorkflowPatternBuilder appendConcurRe(
-        IWorkflowPatternBuilder firstInstruction,
-        IWorkflowPatternBuilder secondInstruction,
-        IWorkflowPatternBuilder thirdInstruction
+            IWorkflowPatternBuilder firstInstruction,
+            IWorkflowPatternBuilder secondInstruction,
+            IWorkflowPatternBuilder thirdInstruction
     ) {
         return this;
     }
 
     @Override
     public IWorkflowPatternBuilder appendCond(
-        IWorkflowPatternBuilder condition,
-        IWorkflowPatternBuilder firstInstruction,
-        IWorkflowPatternBuilder secondInstruction,
-        IWorkflowPatternBuilder thirdInstruction
+            IWorkflowPatternBuilder condition,
+            IWorkflowPatternBuilder firstInstruction,
+            IWorkflowPatternBuilder secondInstruction,
+            IWorkflowPatternBuilder thirdInstruction
     ) {
         javaSourceCodeBuilder
-            .appendIf(condition.getSourceCode(), firstInstruction.getSourceCode())
-            .appendElse(secondInstruction.getSourceCode())
-            .appendLastLine(thirdInstruction.getSourceCode());
+                .appendIf(condition.getSourceCode(), firstInstruction.getSourceCode())
+                .appendElse(secondInstruction.getSourceCode())
+                .appendLastLine(thirdInstruction.getSourceCode());
 
         return this;
     }
 
     @Override
     public IWorkflowPatternBuilder appendPara(
-        IWorkflowPatternBuilder firstInstruction,
-        IWorkflowPatternBuilder secondInstruction,
-        IWorkflowPatternBuilder thirdInstruction,
-        IWorkflowPatternBuilder fourthInstruction
+            IWorkflowPatternBuilder firstInstruction,
+            IWorkflowPatternBuilder secondInstruction,
+            IWorkflowPatternBuilder thirdInstruction,
+            IWorkflowPatternBuilder fourthInstruction
     ) {
         javaSourceCodeBuilder
-            .appendFirstLine(firstInstruction.getSourceCode())
-            .appendIndentation()
-            .appendThread(currentThreadNumber, secondInstruction.getSourceCode()).appendNewlineCharacter()
-            .appendThreadStart(currentThreadNumber++).appendNewlineCharacter()
-            .appendIndentation()
-            .appendThread(currentThreadNumber, thirdInstruction.getSourceCode()).appendNewlineCharacter()
-            .appendThreadStart(currentThreadNumber++).appendNewlineCharacter()
-            .append(fourthInstruction.getSourceCode());
+                .appendFirstLine(firstInstruction.getSourceCode())
+                .appendIndentation()
+                .appendThread(currentThreadNumber, secondInstruction.getSourceCode()).appendNewlineCharacter()
+                .appendThreadStart(currentThreadNumber++).appendNewlineCharacter()
+                .appendIndentation()
+                .appendThread(currentThreadNumber, thirdInstruction.getSourceCode()).appendNewlineCharacter()
+                .appendThreadStart(currentThreadNumber++).appendNewlineCharacter()
+                .append(fourthInstruction.getSourceCode());
 
         return this;
     }
 
     @Override
     public IWorkflowPatternBuilder appendLoop(
-        IWorkflowPatternBuilder firstInstruction,
-        IWorkflowPatternBuilder condition,
-        IWorkflowPatternBuilder secondInstruction,
-        IWorkflowPatternBuilder thirdInstruction
+            IWorkflowPatternBuilder firstInstruction,
+            IWorkflowPatternBuilder condition,
+            IWorkflowPatternBuilder secondInstruction,
+            IWorkflowPatternBuilder thirdInstruction
     ) {
         javaSourceCodeBuilder
-            .appendFirstLine(firstInstruction.getSourceCode())
-            .appendWhile(condition.getSourceCode(), secondInstruction.getSourceCode()).appendNewlineCharacter()
-            .appendLastLine(thirdInstruction.getSourceCode());
+                .appendFirstLine(firstInstruction.getSourceCode())
+                .appendWhile(condition.getSourceCode(), secondInstruction.getSourceCode()).appendNewlineCharacter()
+                .appendLastLine(thirdInstruction.getSourceCode());
 
         return this;
     }
 
     @Override
     public IWorkflowPatternBuilder appendChoice(
-        IWorkflowPatternBuilder firstInstruction,
-        IWorkflowPatternBuilder secondInstruction,
-        IWorkflowPatternBuilder thirdInstruction,
-        IWorkflowPatternBuilder fourthInstruction
+            IWorkflowPatternBuilder firstInstruction,
+            IWorkflowPatternBuilder secondInstruction,
+            IWorkflowPatternBuilder thirdInstruction,
+            IWorkflowPatternBuilder fourthInstruction
     ) {
         javaSourceCodeBuilder
-            .appendFirstLine(firstInstruction.getSourceCode())
-            .appendIndentation()
-            .appendIf(null, secondInstruction.getSourceCode())
-            .appendElse(thirdInstruction.getSourceCode())
-            .appendLastLine(fourthInstruction.getSourceCode());
+                .appendFirstLine(firstInstruction.getSourceCode())
+                .appendIndentation()
+                .appendIf(null, secondInstruction.getSourceCode())
+                .appendElse(thirdInstruction.getSourceCode())
+                .appendLastLine(fourthInstruction.getSourceCode());
 
         return this;
     }
 
     @Override
     public IWorkflowPatternBuilder appendSeqSeq(
-        IWorkflowPatternBuilder firstInstruction,
-        IWorkflowPatternBuilder secondInstruction,
-        IWorkflowPatternBuilder thirdInstruction
+            IWorkflowPatternBuilder firstInstruction,
+            IWorkflowPatternBuilder secondInstruction,
+            IWorkflowPatternBuilder thirdInstruction
     ) {
         javaSourceCodeBuilder
-            .appendFirstLine(firstInstruction.getSourceCode())
-            .appendLine(secondInstruction.getSourceCode())
-            .appendLastLine(thirdInstruction.getSourceCode());
+                .appendFirstLine(firstInstruction.getSourceCode())
+                .appendLine(secondInstruction.getSourceCode())
+                .appendLastLine(thirdInstruction.getSourceCode());
 
         return this;
     }
 
     @Override
     public IWorkflowPatternBuilder appendRepeat(
-        IWorkflowPatternBuilder firstInstruction,
-        IWorkflowPatternBuilder secondInstruction,
-        IWorkflowPatternBuilder condition,
-        IWorkflowPatternBuilder thirdInstruction
+            IWorkflowPatternBuilder firstInstruction,
+            IWorkflowPatternBuilder secondInstruction,
+            IWorkflowPatternBuilder condition,
+            IWorkflowPatternBuilder thirdInstruction
     ) {
         javaSourceCodeBuilder
-            .appendFirstLine(firstInstruction.getSourceCode())
-            .appendIndentation()
-            .appendDoWhile(condition.getSourceCode(), secondInstruction.getSourceCode())
-            .appendLastLine(thirdInstruction.getSourceCode());
+                .appendFirstLine(firstInstruction.getSourceCode())
+                .appendIndentation()
+                .appendDoWhile(condition.getSourceCode(), secondInstruction.getSourceCode())
+                .appendLastLine(thirdInstruction.getSourceCode());
 
         return this;
     }
