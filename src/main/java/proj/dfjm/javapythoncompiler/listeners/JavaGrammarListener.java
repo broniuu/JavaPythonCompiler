@@ -45,15 +45,10 @@ public final class JavaGrammarListener extends GrammarBaseListener {
         rootASTNode.addBranchBranchReASTNode();
     }
 
-    /* TODO: Implement the addConcurASTNode() and addConcurReASTNode() methods in the RootASTNode
-        class and the appendConcur() and appendConcurRe() methods in the JavaWorkflowPatternBuilder
-        class, then uncomment the code below and test if it works as expected.
-
     @Override
     public void enterJConcurRe(GrammarParser.JConcurReContext ctx) {
         rootASTNode.addConcurReASTNode();
     }
-     */
 
     @Override
     public void enterJConcur(GrammarParser.JConcurContext ctx) {

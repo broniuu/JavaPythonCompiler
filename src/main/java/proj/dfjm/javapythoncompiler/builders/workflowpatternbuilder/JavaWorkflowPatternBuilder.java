@@ -107,6 +107,21 @@ public final class JavaWorkflowPatternBuilder implements IWorkflowPatternBuilder
             IWorkflowPatternBuilder secondInstruction,
             IWorkflowPatternBuilder thirdInstruction
     ) {
+        int firstThreadNumber = currentThreadNumber++;
+        int secondThreadNumber = currentThreadNumber++;
+        javaSourceCodeBuilder
+                .appendThread(firstThreadNumber, secondInstruction.getSourceCode())
+                .appendNewlineCharacter()
+                .appendIndentation()
+                .appendThread(secondThreadNumber, thirdInstruction.getSourceCode())
+                .appendNewlineCharacter()
+                .appendIndentation()
+                .appendThreadStart(firstThreadNumber)
+                .appendNewlineCharacter()
+                .appendIndentation()
+                .appendThreadStart(secondThreadNumber)
+                .appendNewlineCharacter()
+                .appendLastLine(firstInstruction.getSourceCode());
         return this;
     }
 

@@ -112,7 +112,7 @@ public final class PythonWorkflowPatternBuilder implements IWorkflowPatternBuild
                 .appendIndentation().appendThreadStart(firstThreadNumber).appendNewlineCharacter()
                 .appendIndentation().appendThread(secondThreadNumber, secondInstruction.getSourceCode()).appendNewlineCharacter()
                 .appendIndentation().appendThreadStart(secondThreadNumber).appendNewlineCharacter()
-                .appendFirstLine(thirdInstruction.getSourceCode());
+                .appendLastLine(thirdInstruction.getSourceCode());
         return this;
     }
 
