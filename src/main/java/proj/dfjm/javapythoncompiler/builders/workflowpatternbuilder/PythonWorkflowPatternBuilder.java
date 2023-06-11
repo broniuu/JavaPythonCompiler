@@ -88,6 +88,12 @@ public final class PythonWorkflowPatternBuilder implements IWorkflowPatternBuild
         IWorkflowPatternBuilder secondInstruction,
         IWorkflowPatternBuilder thirdInstruction
     ) {
+        int firstThreadNumber = currentThreadNumber++;
+        int secondThreadNumber = currentThreadNumber++;
+        pythonSourceCodeBuilder
+                .appendFirstLine(firstInstruction.getSourceCode())
+                .appendIndentation().appendThread(firstThreadNumber, secondInstruction.getSourceCode()).appendNewlineCharacter()
+                .appendIndentation().appendThread(secondThreadNumber, thirdInstruction.getSourceCode()).appendNewlineCharacter();
         return this;
     }
 

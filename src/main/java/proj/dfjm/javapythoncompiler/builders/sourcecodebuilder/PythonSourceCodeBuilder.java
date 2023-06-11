@@ -6,6 +6,8 @@ import proj.dfjm.javapythoncompiler.util.SourceCodeBuilderHelper;
 import java.util.List;
 
 public final class PythonSourceCodeBuilder extends SourceCodeBuilderBase {
+
+    private final StringBuilder threadFunctionDeclarationsBuilder = new StringBuilder();
     public PythonSourceCodeBuilder setCurrentIndentationLevel(int indentationLevel) {
         currentIndentationLevel = indentationLevel;
         return this;
@@ -119,19 +121,38 @@ public final class PythonSourceCodeBuilder extends SourceCodeBuilderBase {
     }
     */
     public PythonSourceCodeBuilder appendThread(int threadNumber, String... linesInside) {
-        return append("thread")
-                .append(String.valueOf(threadNumber))
-                .append(" = threading.Thread(target=exec")
-                .append(", args=(")
-                .appendCodeBlockLines(linesInside)
-                .append("))")
-                .appendIndentation();
+        String threadFunctionName = "thread_function" + threadNumber;
+        String threadName = "thread" + threadNumber;
+        return appendThreadFunctionDeclaration(threadFunctionName, linesInside)
+                .append(threadName)
+                .append(" = threading.Thread(target=")
+                .append(threadFunctionName)
+                .append(")\n")
+                .appendIndentation().append(threadName).append(".start()");
     }
 
+    private PythonSourceCodeBuilder appendThreadFunctionDeclaration(String threadFunctionName, String... linesInside) {
+        threadFunctionDeclarationsBuilder.append("def ")
+                .append(threadFunctionName)
+                .append("():\n");
+        for (String line: linesInside) {
+          threadFunctionDeclarationsBuilder
+                  .append("\t")
+                  .append(line)
+                  .append("\n");
+        }
+        threadFunctionDeclarationsBuilder.append("\n");
+        return this;
+    }
     public PythonSourceCodeBuilder appendThreadStart(int threadNumber) {
         return appendIndentation()
                 .append("thread")
                 .append(String.valueOf(threadNumber))
                 .append(".start()");
+    }
+
+    @Override
+    public String toString() {
+        return threadFunctionDeclarationsBuilder.append(stringBuilder).toString();
     }
 }

@@ -59,16 +59,17 @@ public final class PythonGrammarListener extends GrammarBaseListener {
     /* TODO: Implement the addConcurASTNode() and addConcurReASTNode() methods in the RootASTNode
         class and the appendConcur() and appendConcurRe() methods in the PythonWorkflowPatternBuilder
         class, then uncomment the code below and test if it works as expected.
-    @Override
-    public void enterPConcur(GrammarParser.PConcurContext ctx) {
-        rootASTNode.addConcurASTNode();
-    }
 
     @Override
     public void enterPConcurRe(GrammarParser.PConcurReContext ctx) {
         rootASTNode.addConcurReASTNode();
     }
      */
+
+    @Override
+    public void enterPConcur(GrammarParser.PConcurContext ctx) {
+        rootASTNode.addConcurASTNode();
+    }
 
     /* TODO: Implement the appendCond() method in the PythonWorkflowPatternBuilder
         class, then uncomment the code below and test if it works as expected.*/
