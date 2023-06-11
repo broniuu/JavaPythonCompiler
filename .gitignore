@@ -39,3 +39,5 @@ build/
 
 ### Project Specific ###
 antlr/
+
+input.txt
