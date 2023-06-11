@@ -127,8 +127,7 @@ public final class PythonSourceCodeBuilder extends SourceCodeBuilderBase {
                 .append(threadName)
                 .append(" = threading.Thread(target=")
                 .append(threadFunctionName)
-                .append(")\n")
-                .appendIndentation().append(threadName).append(".start()");
+                .append(")");
     }
 
     private PythonSourceCodeBuilder appendThreadFunctionDeclaration(String threadFunctionName, String... linesInside) {
