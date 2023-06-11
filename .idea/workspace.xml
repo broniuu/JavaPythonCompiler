@@ -4,11 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51054110-da49-4cee-9119-ac0917f5d76a" name="Changes" comment="" />
+    <list default="true" id="51054110-da49-4cee-9119-ac0917f5d76a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/input.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/proj/dfjm/javapythoncompiler/nodes/ConcurASTNode.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2QEiWWZiQ2VluGQKvtv2hfJV1TZ" />
   <component name="ProjectViewState">
@@ -19,6 +39,10 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "settings.editor.selected.configurable": "configurable.group.appearance"
   }
 }]]></component>
@@ -71,5 +95,15 @@
       <updated>1683481505993</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="grammarNode.SeqGrammarNode" memberName="maxNodesNumber" />
+        <PinnedItemInfo parentTag="codeBuilder.CodeStackBuilder" memberName="codeStack" />
+        <PinnedItemInfo parentTag="grammarNode.BranchBranchReNode" memberName="childGrammarNodes" />
+        <PinnedItemInfo parentTag="tree.CustomFunctionNode" memberName="childGrammarNodes" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>
