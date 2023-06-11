@@ -110,16 +110,18 @@ public final class PythonSourceCodeBuilder extends SourceCodeBuilderBase {
                 .append(":\n")
                 .appendCodeBlockLines(linesInside);
     }
-    /*
+
     public PythonSourceCodeBuilder appendDoWhile(String condition, String... linesInside) {
-        return append("do {\n")
+        return append("while True:\n")
                 .appendCodeBlockLines(linesInside)
                 .appendIndentation()
-                .append("} while (")
+                .append("if ")
                 .append(condition)
-                .append(");\n");
+                .append(":\n")
+                .appendIndentation()
+                .append("\tbreak");
     }
-    */
+
     public PythonSourceCodeBuilder appendThread(int threadNumber, String... linesInside) {
         String threadFunctionName = "thread_function" + threadNumber;
         String threadName = "thread" + threadNumber;

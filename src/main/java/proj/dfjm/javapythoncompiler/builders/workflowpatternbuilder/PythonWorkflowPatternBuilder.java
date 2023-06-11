@@ -216,15 +216,11 @@ public final class PythonWorkflowPatternBuilder implements IWorkflowPatternBuild
         IWorkflowPatternBuilder condition,
         IWorkflowPatternBuilder thirdInstruction
     ) {
-        /* TODO: Implement the appendDoWhile() method in the PythonSourceCodeBuilder class,
-            then test if the commented out code below works as expected.
         pythonSourceCodeBuilder
             .appendFirstLine(firstInstruction.getSourceCode())
             .appendIndentation()
-            .appendDoWhile(condition.getSourceCode(), secondInstruction.getSourceCode())
+            .appendDoWhile(condition.getSourceCode(), secondInstruction.getSourceCode()).appendNewlineCharacter()
             .appendLastLine(thirdInstruction.getSourceCode());
-
-        */
         return this;
 
     }
