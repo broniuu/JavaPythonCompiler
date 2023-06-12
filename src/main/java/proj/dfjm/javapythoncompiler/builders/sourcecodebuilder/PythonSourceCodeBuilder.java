@@ -91,65 +91,66 @@ public final class PythonSourceCodeBuilder extends SourceCodeBuilderBase {
 
     public PythonSourceCodeBuilder appendIf(String condition, String... linesInside) {
         return append("if ")
-                .append(condition != null ? condition : "/* implementation required */")
-                .append(":\n")
-                .appendCodeBlockLines(linesInside)
-                .appendIndentation();
+            .append(condition != null ? condition : "False")
+            .append(condition != null ? ":\n" : ": #implementation required\n")
+            .appendCodeBlockLines(linesInside)
+            .appendIndentation();
     }
 
     public PythonSourceCodeBuilder appendElse(String... linesInside) {
         return append("else:\n")
-                .appendCodeBlockLines(linesInside)
-                .appendIndentation()
-                .append("\n");
+            .appendCodeBlockLines(linesInside)
+            .appendIndentation()
+            .append("\n");
     }
 
     public PythonSourceCodeBuilder appendWhile(String condition, String... linesInside) {
         return append("while ")
-                .append(condition)
-                .append(":\n")
-                .appendCodeBlockLines(linesInside);
+            .append(condition)
+            .append(":\n")
+            .appendCodeBlockLines(linesInside);
     }
 
     public PythonSourceCodeBuilder appendDoWhile(String condition, String... linesInside) {
         return append("while True:\n")
-                .appendCodeBlockLines(linesInside)
-                .appendIndentation()
-                .append("if ")
-                .append(condition)
-                .append(":\n")
-                .appendIndentation()
-                .append("\tbreak");
+            .appendCodeBlockLines(linesInside)
+            .appendIndentation()
+            .append("if ")
+            .append(condition)
+            .append(":\n")
+            .appendIndentation()
+            .append("\tbreak");
     }
 
     public PythonSourceCodeBuilder appendThread(int threadNumber, String... linesInside) {
         String threadFunctionName = "thread_function" + threadNumber;
         String threadName = "thread" + threadNumber;
         return appendThreadFunctionDeclaration(threadFunctionName, linesInside)
-                .append(threadName)
-                .append(" = threading.Thread(target=")
-                .append(threadFunctionName)
-                .append(")");
+            .append(threadName)
+            .append(" = threading.Thread(target=")
+            .append(threadFunctionName)
+            .append(")");
     }
 
     private PythonSourceCodeBuilder appendThreadFunctionDeclaration(String threadFunctionName, String... linesInside) {
         threadFunctionDeclarationsBuilder.append("def ")
-                .append(threadFunctionName)
-                .append("():\n");
-        for (String line: linesInside) {
-          threadFunctionDeclarationsBuilder
-                  .append("\t")
-                  .append(line)
-                  .append("\n");
+            .append(threadFunctionName)
+            .append("():\n");
+        for (String line : linesInside) {
+            threadFunctionDeclarationsBuilder
+                .append("\t")
+                .append(line)
+                .append("\n");
         }
         threadFunctionDeclarationsBuilder.append("\n");
+
         return this;
     }
     public PythonSourceCodeBuilder appendThreadStart(int threadNumber) {
         return appendIndentation()
-                .append("thread")
-                .append(String.valueOf(threadNumber))
-                .append(".start()");
+            .append("thread")
+            .append(String.valueOf(threadNumber))
+            .append(".start()");
     }
 
     @Override

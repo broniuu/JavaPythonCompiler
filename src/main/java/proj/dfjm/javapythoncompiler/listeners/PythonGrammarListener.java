@@ -48,66 +48,50 @@ public final class PythonGrammarListener extends GrammarBaseListener {
         }
     }
 
-    /* TODO: Implement the appendBranchBranchRe() method in the PythonWorkflowPatternBuilder
-        class, then uncomment the code below and test if it works as expected.*/
     @Override
     public void enterPBranch(GrammarParser.PBranchContext ctx) {
         rootASTNode.addBranchBranchReASTNode();
     }
 
     @Override
-    public void enterPConcurRe(GrammarParser.PConcurReContext ctx) {
-        rootASTNode.addConcurReASTNode();
-    }
-    @Override
     public void enterPConcur(GrammarParser.PConcurContext ctx) {
         rootASTNode.addConcurASTNode();
     }
 
-    /* TODO: Implement the appendCond() method in the PythonWorkflowPatternBuilder
-        class, then uncomment the code below and test if it works as expected.*/
+    @Override
+    public void enterPConcurRe(GrammarParser.PConcurReContext ctx) {
+        rootASTNode.addConcurReASTNode();
+    }
+
     @Override
     public void enterPCond(GrammarParser.PCondContext ctx) {
         rootASTNode.addCondASTNode();
     }
 
-
-    /* TODO: Implement the appendPara() method in the PythonWorkflowPatternBuilder
-        class, then uncomment the code below and test if it works as expected.*/
     @Override
     public void enterPPara(GrammarParser.PParaContext ctx) {
         rootASTNode.addParaASTNode();
     }
 
-
-    /* TODO: Implement the appendLoop() method in the PythonWorkflowPatternBuilder
-        class, then uncomment the code below and test if it works as expected.*/
     @Override
     public void enterPLoop(GrammarParser.PLoopContext ctx) {
         rootASTNode.addLoopASTNode();
     }
 
-
-    /* TODO: Implement the appendChoice() method in the PythonWorkflowPatternBuilder
-        class, then uncomment the code below and test if it works as expected.*/
     @Override
     public void enterPChoice(GrammarParser.PChoiceContext ctx) {
         rootASTNode.addChoiceASTNode();
     }
-
 
     @Override
     public void enterPSeqSeq(GrammarParser.PSeqSeqContext ctx) {
         rootASTNode.addSeqSeqASTNode();
     }
 
-    /* TODO: Implement the appendRepeat() method in the PythonWorkflowPatternBuilder
-        class, then uncomment the code below and test if it works as expected.*/
     @Override
     public void enterPRepeat(GrammarParser.PRepeatContext ctx) {
         rootASTNode.addRepeatASTNode();
     }
-
 
     @Override
     public void enterPSpecialFunctionParam(GrammarParser.PSpecialFunctionParamContext ctx) {

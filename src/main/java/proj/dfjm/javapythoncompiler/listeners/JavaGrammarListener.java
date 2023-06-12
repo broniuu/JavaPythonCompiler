@@ -46,13 +46,13 @@ public final class JavaGrammarListener extends GrammarBaseListener {
     }
 
     @Override
-    public void enterJConcurRe(GrammarParser.JConcurReContext ctx) {
-        rootASTNode.addConcurReASTNode();
+    public void enterJConcur(GrammarParser.JConcurContext ctx) {
+        rootASTNode.addConcurASTNode();
     }
 
     @Override
-    public void enterJConcur(GrammarParser.JConcurContext ctx) {
-        rootASTNode.addConcurASTNode();
+    public void enterJConcurRe(GrammarParser.JConcurReContext ctx) {
+        rootASTNode.addConcurReASTNode();
     }
 
     @Override
