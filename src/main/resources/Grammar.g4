@@ -76,8 +76,8 @@ jSpecialFunctionParam: jSpecialFunctionCall | jSpecialFunctionFuncParam | JAVA_C
 pSpecialFunctionParam: pSpecialFunctionCall | pSpecialFunctionFuncParam | PYTHON_CODE_SNIPPET;
 
 
-jSpecialFunctionCondParam: '``' jCondition (jLogicalOperator jCondition)* '``';
-pSpecialFunctionCondParam: '``' pCondition (pLogicalOperator pCondition)* '``';
+jSpecialFunctionCondParam: '``' jCondition '``';
+pSpecialFunctionCondParam: '``' pCondition '``';
 
 
 jSpecialFunctionFuncParam: '~' jCustomFunctionCall '~';
@@ -147,10 +147,6 @@ pRvalue
     | '[' (pRvalue (',' pRvalue)*)? ']'
     | pCustomFunctionCall
     ;
-
-
-jLogicalOperator: '&&' | '||';
-pLogicalOperator: 'and' | 'or';
 
 
 equalUnequalOperator: '==' | '!=';
