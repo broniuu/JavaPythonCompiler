@@ -40,3 +40,5 @@ build/
 ### Project Specific ###
 antlr/
 input.txt
+
+dependency-reduced-pom.xml

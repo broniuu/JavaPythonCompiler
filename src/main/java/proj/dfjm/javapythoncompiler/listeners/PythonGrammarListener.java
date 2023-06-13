@@ -8,19 +8,9 @@ import proj.dfjm.javapythoncompiler.antlr.GrammarParser;
 import proj.dfjm.javapythoncompiler.builders.workflowpatternbuilder.PythonWorkflowPatternBuilder;
 import proj.dfjm.javapythoncompiler.nodes.RootASTNode;
 
-public final class PythonGrammarListener extends GrammarBaseListener {
-    private final RootASTNode rootASTNode = new RootASTNode(new PythonWorkflowPatternBuilder());
-    private boolean errorOccurred = false;
-
-    @Override
-    public void exitProg(GrammarParser.ProgContext ctx) {
-        if (errorOccurred || rootASTNode.doesNotHaveChildren()) {
-            return;
-        }
-
-        System.out.println("------------------------- GENERATED PYTHON SOURCE CODE -------------------------");
-        System.out.println(rootASTNode.getSourceCode());
-        System.out.println("--------------------------------------------------------------------------------");
+public final class PythonGrammarListener extends GrammarCodeRetrievableListener {
+    public PythonGrammarListener() {
+        rootASTNode = new RootASTNode(new PythonWorkflowPatternBuilder());
     }
 
     @Override
@@ -118,11 +108,6 @@ public final class PythonGrammarListener extends GrammarBaseListener {
     @Override
     public void enterPCustomFunctionCallParam(GrammarParser.PCustomFunctionCallParamContext ctx) {
         rootASTNode.addSpecialFunctionParamASTNode(ctx.getText());
-    }
-
-    @Override
-    public void visitErrorNode(ErrorNode node) {
-        errorOccurred = true;
     }
 
     private void separateItemsWithWhitespaces(ParseTree context) {

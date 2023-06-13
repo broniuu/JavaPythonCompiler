@@ -7,19 +7,9 @@ import proj.dfjm.javapythoncompiler.antlr.GrammarParser;
 import proj.dfjm.javapythoncompiler.builders.workflowpatternbuilder.JavaWorkflowPatternBuilder;
 import proj.dfjm.javapythoncompiler.nodes.RootASTNode;
 
-public final class JavaGrammarListener extends GrammarBaseListener {
-    private final RootASTNode rootASTNode = new RootASTNode(new JavaWorkflowPatternBuilder());
-    private boolean errorOccurred = false;
-
-    @Override
-    public void exitProg(GrammarParser.ProgContext ctx) {
-        if (errorOccurred || rootASTNode.doesNotHaveChildren()) {
-            return;
-        }
-
-        System.out.println("-------------------------- GENERATED JAVA SOURCE CODE --------------------------");
-        System.out.println(rootASTNode.getSourceCode());
-        System.out.println("--------------------------------------------------------------------------------");
+public final class JavaGrammarListener extends GrammarCodeRetrievableListener {
+    public JavaGrammarListener() {
+        rootASTNode = new RootASTNode(new JavaWorkflowPatternBuilder());
     }
 
     @Override
@@ -110,11 +100,6 @@ public final class JavaGrammarListener extends GrammarBaseListener {
     @Override
     public void enterJCustomFunctionCallParam(GrammarParser.JCustomFunctionCallParamContext ctx) {
         rootASTNode.addSpecialFunctionParamASTNode(ctx.getText());
-    }
-
-    @Override
-    public void visitErrorNode(ErrorNode node) {
-        errorOccurred = true;
     }
 
     private void separateItemsWithWhitespaces(ParseTree context) {

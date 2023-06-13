@@ -11,9 +11,15 @@ import proj.dfjm.javapythoncompiler.antlr.GrammarLexer;
 import proj.dfjm.javapythoncompiler.antlr.GrammarParser;
 import proj.dfjm.javapythoncompiler.listeners.JavaGrammarListener;
 import proj.dfjm.javapythoncompiler.listeners.PythonGrammarListener;
+import proj.dfjm.javapythoncompiler.parser.BaseParser;
+import proj.dfjm.javapythoncompiler.parser.JavaParser;
+import proj.dfjm.javapythoncompiler.parser.PythonParser;
 
+import java.io.Console;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.InvalidPathException;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -24,19 +30,16 @@ public class Main {
 
         for (String arg : args) {
             try {
-                CharStream charStream = CharStreams.fromFileName(arg);
-
-                GrammarLexer grammarLexer = new GrammarLexer(charStream);
-                CommonTokenStream commonTokenStream = new CommonTokenStream(grammarLexer);
-                GrammarParser grammarParser = new GrammarParser(commonTokenStream);
-
-                grammarParser.setErrorHandler(new BailErrorStrategy());
-
-                ParseTree parseTreeRoot = grammarParser.prog();
-
-                ParseTreeWalker parseTreeWalker = new ParseTreeWalker();
-                parseTreeWalker.walk(new JavaGrammarListener(), parseTreeRoot);
-                parseTreeWalker.walk(new PythonGrammarListener(), parseTreeRoot);
+                File myObj = new File(arg);
+                Scanner myReader = new Scanner(myObj);
+                StringBuilder codeToParse = new StringBuilder();
+                while (myReader.hasNextLine()) {
+                    codeToParse.append(myReader.nextLine());
+                }
+                myReader.close();
+                BaseParser pythonParser = new PythonParser();
+                String resultCode = pythonParser.parse(codeToParse.toString());
+                System.out.println(resultCode);
             } catch (IOException | InvalidPathException e) {
                 System.err.println("Unable to open file '" + arg + "'!");
             } catch (ParseCancellationException e) {
