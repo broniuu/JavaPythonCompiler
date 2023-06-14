@@ -16,18 +16,18 @@ String func2(boolean q1, double q2, char q3)
 Kod na wyjściu (dla Javy):
 ```java
 int a = 5;
-while (b < 10) {
-	func1(1, 2.0, "three");
-}
-func2(true, 2.5, 'c');
+        while (b < 10) {
+        func1(1, 2.0, "three");
+        }
+        func2(true, 2.5, 'c');
 
 // - - - - - Function definitions - - - - -
-int func1(int p1, double p2, String p3) {
-	// Enter your function code here
-}
-String func2(boolean q1, double q2, char q3) {
-	// Enter your function code here
-}
+        int func1(int p1, double p2, String p3) {
+        // Enter your function code here
+        }
+        String func2(boolean q1, double q2, char q3) {
+        // Enter your function code here
+        }
 ```
 
 ### Przykłady do testowania
@@ -103,13 +103,13 @@ String function1(int a, int b, char y)
 - [x] Seq
 - [x] Branch + BranchRe
 - [x] Concur
-- [ ] ConcurRe
+- [x] ConcurRe
 - [x] Cond
 - [x] Para
 - [x] Loop
 - [x] Choice
 - [x] SeqSeq
-- [ ] Repeat
+- [x] Repeat
 
 ---
 
@@ -569,3 +569,80 @@ public void enterJChoice(GrammarParser.JChoiceContext ctx) {
     rootASTNode.addChoiceASTNode();
 }
 ```
+
+### Podłączenie programu jako biblioteki na przykładzie projektu `Maven`
+1. Plik `javaPythonCompiler.jar` umieścić w folderze `resources` docelowego projektu
+   ![](https://hackmd.io/_uploads/rJELFPvv2.png)
+
+
+2. W pliku `pom.xml` dodać odpowiednią zależność (`dependency`), aby połączyć się z biblioteką w folderze `resources`
+
+    ```xml=
+    <dependency>
+        <groupId>com.javapythoncompiler</groupId>
+        <artifactId>javapythoncompiler</artifactId>
+        <version>1.0</version>
+        <scope>system</scope>
+        <systemPath>${project.basedir}/src/main/resources/javaPythonCompiler.jar</systemPath>
+    </dependency>
+    ```
+
+   Przykład całego pliku `pom.xml` po dodaniu zależnoći:
+
+    ```xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <project xmlns="http://maven.apache.org/POM/4.0.0"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+        <modelVersion>4.0.0</modelVersion>
+
+        <groupId>org.example</groupId>
+        <artifactId>TestParser</artifactId>
+        <version>1.0-SNAPSHOT</version>
+
+        <properties>
+            <maven.compiler.source>18</maven.compiler.source>
+            <maven.compiler.target>18</maven.compiler.target>
+            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        </properties>
+        <dependencies>
+            <dependency>
+                <groupId>com.javapythoncompiler</groupId>
+                <artifactId>javapythoncompiler</artifactId>
+                <version>1.0</version>
+                <scope>system</scope>
+                <systemPath>${project.basedir}/src/main/resources/javaPythonCompiler.jar</systemPath>
+            </dependency>
+        </dependencies>
+
+    </project>
+
+    ```
+
+
+
+3. Teraz klasy `JavaParser` i `PythonParser` są dostępne w całym projekcie. Parsowania kodu dokonuje się za pomocą funkcji `parse()`, która przyjmuje funkcję jako `String` i zwraca kod wynikowy, także w `Stringu`
+
+   Przykład użycia:
+
+    ```java
+    package org.example;
+    import proj.dfjm.javapythoncompiler.parser.BaseParser;
+    import proj.dfjm.javapythoncompiler.parser.JavaParser;
+    import proj.dfjm.javapythoncompiler.parser.PythonParser;
+
+    public class Main {
+        public static void main(String[] args) {
+            String codeToParse = "Para(`int a = 1;`, `int q = 4;`, `int b = 1;`, `int c = 2;`)";
+            BaseParser javaParser = new JavaParser();
+            String resultJavaCode = javaParser.parse(codeToParse);
+            BaseParser pythonParser = new PythonParser();
+            String pythonCodeToParse = "Concur(`a = 'str'`, `func()`, `c != True`)";
+            String resultPythonCode = pythonParser.parse(pythonCodeToParse);
+            System.out.println("\n--- Java ---\n");
+            System.out.println(resultJavaCode);
+            System.out.println("\n--- Python --- \n");
+            System.out.println(resultPythonCode);
+        }
+    }
+    ```
