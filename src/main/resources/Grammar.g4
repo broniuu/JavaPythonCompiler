@@ -153,7 +153,7 @@ equalUnequalOperator: '==' | '!=';
 greaterLessOperator: '<' | '>' | '<=' | '>=';
 
 
-dataType: INT_DATA_TYPE | DOUBLE_DATA_TYPE | CHAR_DATA_TYPE | STRING_DATA_TYPE | BOOLEAN_DATA_TYPE;
+dataType: INT_DATA_TYPE | DOUBLE_DATA_TYPE | CHAR_DATA_TYPE | STRING_DATA_TYPE | BOOLEAN_DATA_TYPE | VOID_DATA_TYPE;
 
 
 INT_DATA_TYPE: 'int';
@@ -161,6 +161,7 @@ DOUBLE_DATA_TYPE: 'double';
 CHAR_DATA_TYPE: 'char';
 STRING_DATA_TYPE: 'String';
 BOOLEAN_DATA_TYPE: 'boolean';
+VOID_DATA_TYPE: 'void';
 
 
 JAVA_CODE_SNIPPET: '`' (~[`;])* ';' '`';

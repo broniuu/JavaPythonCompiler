@@ -37,13 +37,14 @@ public class Main {
                     codeToParse.append(myReader.nextLine());
                 }
                 myReader.close();
-                BaseParser pythonParser = new PythonParser();
+                BaseParser pythonParser = new JavaParser();
                 String resultCode = pythonParser.parse(codeToParse.toString());
                 System.out.println(resultCode);
             } catch (IOException | InvalidPathException e) {
                 System.err.println("Unable to open file '" + arg + "'!");
             } catch (ParseCancellationException e) {
                 System.err.println("Failed to parse file '" + arg + "'!");
+                e.printStackTrace();
             } catch (RuntimeException e) {
                 e.printStackTrace();
             }
