@@ -33,6 +33,6 @@ public abstract class BaseParser {
     public String parse(String sourceCode) {
         initializeParseTree(sourceCode);
         parseTreeWalker.walk(grammarListener, parseTreeRoot);
-        return grammarListener.getGeneratedCode();
+        return grammarListener.getGeneratedSourceCode();
     }
 }

@@ -86,12 +86,20 @@ public final class PythonWorkflowPatternBuilder implements IWorkflowPatternBuild
     ) {
         int firstThreadNumber = currentThreadNumber++;
         int secondThreadNumber = currentThreadNumber++;
+
         pythonSourceCodeBuilder
             .appendFirstLine(firstInstruction.getSourceCode())
-            .appendIndentation().appendThread(firstThreadNumber, secondInstruction.getSourceCode()).appendNewlineCharacter()
-            .appendIndentation().appendThreadStart(firstThreadNumber).appendNewlineCharacter()
-            .appendIndentation().appendThread(secondThreadNumber, thirdInstruction.getSourceCode()).appendNewlineCharacter()
-            .appendIndentation().appendThreadStart(secondThreadNumber).appendNewlineCharacter();
+            .appendIndentation()
+            .appendThread(firstThreadNumber, secondInstruction.getSourceCode())
+            .appendNewlineCharacter()
+            .appendIndentation()
+            .appendThread(secondThreadNumber, thirdInstruction.getSourceCode())
+            .appendNewlineCharacter()
+            .appendIndentation()
+            .appendThreadStart(firstThreadNumber)
+            .appendNewlineCharacter()
+            .appendIndentation()
+            .appendThreadStart(secondThreadNumber);
 
         return this;
     }
@@ -104,12 +112,20 @@ public final class PythonWorkflowPatternBuilder implements IWorkflowPatternBuild
     ) {
         int firstThreadNumber = currentThreadNumber++;
         int secondThreadNumber = currentThreadNumber++;
+
         pythonSourceCodeBuilder
-            .appendIndentation().appendThread(firstThreadNumber, firstInstruction.getSourceCode()).appendNewlineCharacter()
-            .appendIndentation().appendThreadStart(firstThreadNumber).appendNewlineCharacter()
-            .appendIndentation().appendThread(secondThreadNumber, secondInstruction.getSourceCode()).appendNewlineCharacter()
-            .appendIndentation().appendThreadStart(secondThreadNumber).appendNewlineCharacter()
-            .appendLastLine(thirdInstruction.getSourceCode());
+            .appendThread(firstThreadNumber, secondInstruction.getSourceCode())
+            .appendNewlineCharacter()
+            .appendIndentation()
+            .appendThread(secondThreadNumber, thirdInstruction.getSourceCode())
+            .appendNewlineCharacter()
+            .appendIndentation()
+            .appendThreadStart(firstThreadNumber)
+            .appendNewlineCharacter()
+            .appendIndentation()
+            .appendThreadStart(secondThreadNumber)
+            .appendNewlineCharacter()
+            .appendLastLine(firstInstruction.getSourceCode());
 
         return this;
     }
@@ -139,11 +155,15 @@ public final class PythonWorkflowPatternBuilder implements IWorkflowPatternBuild
         pythonSourceCodeBuilder
             .appendFirstLine(firstInstruction.getSourceCode())
             .appendIndentation()
-            .appendThread(currentThreadNumber, secondInstruction.getSourceCode()).appendNewlineCharacter()
-            .appendThreadStart(currentThreadNumber++).appendNewlineCharacter()
+            .appendThread(currentThreadNumber, secondInstruction.getSourceCode())
+            .appendNewlineCharacter()
+            .appendThreadStart(currentThreadNumber++)
+            .appendNewlineCharacter()
             .appendIndentation()
-            .appendThread(currentThreadNumber, thirdInstruction.getSourceCode()).appendNewlineCharacter()
-            .appendThreadStart(currentThreadNumber++).appendNewlineCharacter()
+            .appendThread(currentThreadNumber, thirdInstruction.getSourceCode())
+            .appendNewlineCharacter()
+            .appendThreadStart(currentThreadNumber++)
+            .appendNewlineCharacter()
             .append(fourthInstruction.getSourceCode());
 
         return this;
@@ -158,7 +178,8 @@ public final class PythonWorkflowPatternBuilder implements IWorkflowPatternBuild
     ) {
         pythonSourceCodeBuilder
             .appendFirstLine(firstInstruction.getSourceCode())
-            .appendWhile(condition.getSourceCode(), secondInstruction.getSourceCode()).appendNewlineCharacter()
+            .appendWhile(condition.getSourceCode(), secondInstruction.getSourceCode())
+            .appendNewlineCharacter()
             .appendLastLine(thirdInstruction.getSourceCode());
 
         return this;
@@ -205,8 +226,22 @@ public final class PythonWorkflowPatternBuilder implements IWorkflowPatternBuild
         pythonSourceCodeBuilder
             .appendFirstLine(firstInstruction.getSourceCode())
             .appendIndentation()
-            .appendDoWhile(condition.getSourceCode(), secondInstruction.getSourceCode()).appendNewlineCharacter()
+            .appendDoWhile(condition.getSourceCode(), secondInstruction.getSourceCode())
+            .appendNewlineCharacter()
             .appendLastLine(thirdInstruction.getSourceCode());
+
+        return this;
+    }
+
+    @Override
+    public IWorkflowPatternBuilder appendAlt(
+        IWorkflowPatternBuilder condition,
+        IWorkflowPatternBuilder firstInstruction,
+        IWorkflowPatternBuilder secondInstruction
+    ) {
+        pythonSourceCodeBuilder
+            .appendIf(condition.getSourceCode(), firstInstruction.getSourceCode())
+            .appendLastLine(secondInstruction.getSourceCode());
 
         return this;
     }

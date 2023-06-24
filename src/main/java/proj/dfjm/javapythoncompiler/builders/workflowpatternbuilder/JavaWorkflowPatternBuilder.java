@@ -33,7 +33,7 @@ public final class JavaWorkflowPatternBuilder implements IWorkflowPatternBuilder
 
     @Override
     public IWorkflowPatternBuilder appendCustomFunctionDeclarations(
-            List<CustomFunctionDeclaration> customFunctionDeclarations
+        List<CustomFunctionDeclaration> customFunctionDeclarations
     ) {
         javaSourceCodeBuilder.appendCustomFunctionDeclarations(customFunctionDeclarations);
         return this;
@@ -86,7 +86,9 @@ public final class JavaWorkflowPatternBuilder implements IWorkflowPatternBuilder
     ) {
         int firstThreadNumber = currentThreadNumber++;
         int secondThreadNumber = currentThreadNumber++;
-        javaSourceCodeBuilder.appendFirstLine(firstInstruction.getSourceCode())
+
+        javaSourceCodeBuilder
+            .appendFirstLine(firstInstruction.getSourceCode())
             .appendIndentation()
             .appendThread(firstThreadNumber, secondInstruction.getSourceCode())
             .appendNewlineCharacter()
@@ -110,6 +112,7 @@ public final class JavaWorkflowPatternBuilder implements IWorkflowPatternBuilder
     ) {
         int firstThreadNumber = currentThreadNumber++;
         int secondThreadNumber = currentThreadNumber++;
+
         javaSourceCodeBuilder
             .appendThread(firstThreadNumber, secondInstruction.getSourceCode())
             .appendNewlineCharacter()
@@ -152,11 +155,15 @@ public final class JavaWorkflowPatternBuilder implements IWorkflowPatternBuilder
         javaSourceCodeBuilder
             .appendFirstLine(firstInstruction.getSourceCode())
             .appendIndentation()
-            .appendThread(currentThreadNumber, secondInstruction.getSourceCode()).appendNewlineCharacter()
-            .appendThreadStart(currentThreadNumber++).appendNewlineCharacter()
+            .appendThread(currentThreadNumber, secondInstruction.getSourceCode())
+            .appendNewlineCharacter()
+            .appendThreadStart(currentThreadNumber++)
+            .appendNewlineCharacter()
             .appendIndentation()
-            .appendThread(currentThreadNumber, thirdInstruction.getSourceCode()).appendNewlineCharacter()
-            .appendThreadStart(currentThreadNumber++).appendNewlineCharacter()
+            .appendThread(currentThreadNumber, thirdInstruction.getSourceCode())
+            .appendNewlineCharacter()
+            .appendThreadStart(currentThreadNumber++)
+            .appendNewlineCharacter()
             .append(fourthInstruction.getSourceCode());
 
         return this;
@@ -171,7 +178,8 @@ public final class JavaWorkflowPatternBuilder implements IWorkflowPatternBuilder
     ) {
         javaSourceCodeBuilder
             .appendFirstLine(firstInstruction.getSourceCode())
-            .appendWhile(condition.getSourceCode(), secondInstruction.getSourceCode()).appendNewlineCharacter()
+            .appendWhile(condition.getSourceCode(), secondInstruction.getSourceCode())
+            .appendNewlineCharacter()
             .appendLastLine(thirdInstruction.getSourceCode());
 
         return this;
@@ -220,6 +228,20 @@ public final class JavaWorkflowPatternBuilder implements IWorkflowPatternBuilder
             .appendIndentation()
             .appendDoWhile(condition.getSourceCode(), secondInstruction.getSourceCode())
             .appendLastLine(thirdInstruction.getSourceCode());
+
+        return this;
+    }
+
+    @Override
+    public IWorkflowPatternBuilder appendAlt(
+        IWorkflowPatternBuilder condition,
+        IWorkflowPatternBuilder firstInstruction,
+        IWorkflowPatternBuilder secondInstruction
+    ) {
+        javaSourceCodeBuilder
+            .appendIf(condition.getSourceCode(), firstInstruction.getSourceCode())
+            .appendNewlineCharacter()
+            .appendLastLine(secondInstruction.getSourceCode());
 
         return this;
     }

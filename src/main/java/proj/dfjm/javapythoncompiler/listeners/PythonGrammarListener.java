@@ -1,16 +1,14 @@
 package proj.dfjm.javapythoncompiler.listeners;
 
-import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
-import proj.dfjm.javapythoncompiler.antlr.GrammarBaseListener;
 import proj.dfjm.javapythoncompiler.antlr.GrammarParser;
 import proj.dfjm.javapythoncompiler.builders.workflowpatternbuilder.PythonWorkflowPatternBuilder;
 import proj.dfjm.javapythoncompiler.nodes.RootASTNode;
 
 public final class PythonGrammarListener extends GrammarCodeRetrievableListener {
     public PythonGrammarListener() {
-        rootASTNode = new RootASTNode(new PythonWorkflowPatternBuilder());
+        super(new RootASTNode(new PythonWorkflowPatternBuilder()));
     }
 
     @Override
@@ -81,6 +79,11 @@ public final class PythonGrammarListener extends GrammarCodeRetrievableListener 
     @Override
     public void enterPRepeat(GrammarParser.PRepeatContext ctx) {
         rootASTNode.addRepeatASTNode();
+    }
+
+    @Override
+    public void enterPAlt(GrammarParser.PAltContext ctx) {
+        rootASTNode.addAltASTNode();
     }
 
     @Override

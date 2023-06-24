@@ -117,8 +117,8 @@ public final class JavaSourceCodeBuilder extends SourceCodeBuilderBase {
             .append(String.valueOf(threadNumber))
             .append(" = new Thread(() -> {\n")
             .appendCodeBlockLines(linesInside)
-            .appendIndentation().
-            append("});");
+            .appendIndentation()
+            .append("});");
     }
 
     public JavaSourceCodeBuilder appendThreadStart(int threadNumber) {
@@ -132,6 +132,4 @@ public final class JavaSourceCodeBuilder extends SourceCodeBuilderBase {
         stringBuilder.append(SourceCodeBuilderHelper.createSourceCodeForArguments(arguments));
         return this;
     }
-
-
 }

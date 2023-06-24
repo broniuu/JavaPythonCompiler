@@ -18,6 +18,7 @@ jSpecialFunctionCall
     | jChoice
     | jSeqSeq
     | jRepeat
+    | jAlt
     ;
 
 pSpecialFunctionCall
@@ -30,10 +31,11 @@ pSpecialFunctionCall
     | pChoice
     | pSeqSeq
     | pRepeat
+    | pAlt
     ;
 
 
-jCustomFunctionDeclaration: dataType ID '(' jCustomFunctionDeclarationParams? ')';
+jCustomFunctionDeclaration: functionReturnDataType ID '(' jCustomFunctionDeclarationParams? ')';
 pCustomFunctionDeclaration: 'def' ID '(' pCustomFunctionDeclarationParams? ')' pCustomFunctionDeclarationReturnType?;
 
 
@@ -41,7 +43,7 @@ jCustomFunctionDeclarationParams: jCustomFunctionDeclarationParam (',' jCustomFu
 pCustomFunctionDeclarationParams: ID (',' ID)*;
 
 
-jCustomFunctionDeclarationParam: dataType ID;
+jCustomFunctionDeclarationParam: variableDataType ID;
 
 
 pCustomFunctionDeclarationReturnType: '->' ID;
@@ -58,6 +60,7 @@ jLoop: 'Loop' '(' jSpecialFunctionParam ',' jSpecialFunctionCondParam ',' jSpeci
 jChoice: 'Choice' '(' jSpecialFunctionParam ',' jSpecialFunctionParam ',' jSpecialFunctionParam ',' jSpecialFunctionParam ')';
 jSeqSeq: 'SeqSeq' '(' jSpecialFunctionParam ',' jSpecialFunctionParam ',' jSpecialFunctionParam ')';
 jRepeat: 'Repeat' '(' jSpecialFunctionParam ',' jSpecialFunctionParam ',' jSpecialFunctionCondParam ',' jSpecialFunctionParam ')';
+jAlt: 'Alt' '(' jSpecialFunctionCondParam ',' jSpecialFunctionParam ',' jSpecialFunctionParam ')';
 
 pSeq: 'Seq' '(' (pSpecialFunctionParam ',' pSpecialFunctionParam | pBranch ',' pBranchRe) ')';
 pBranch: 'Branch' '(' pSpecialFunctionCondParam ',' pSpecialFunctionParam ',' pSpecialFunctionParam ')';
@@ -70,6 +73,7 @@ pLoop: 'Loop' '(' pSpecialFunctionParam ',' pSpecialFunctionCondParam ',' pSpeci
 pChoice: 'Choice' '(' pSpecialFunctionParam ',' pSpecialFunctionParam ',' pSpecialFunctionParam ',' pSpecialFunctionParam ')';
 pSeqSeq: 'SeqSeq' '(' pSpecialFunctionParam ',' pSpecialFunctionParam ',' pSpecialFunctionParam ')';
 pRepeat: 'Repeat' '(' pSpecialFunctionParam ',' pSpecialFunctionParam ',' pSpecialFunctionCondParam ',' pSpecialFunctionParam ')';
+pAlt: 'Alt' '(' pSpecialFunctionCondParam ',' pSpecialFunctionParam ',' pSpecialFunctionParam ')';
 
 
 jSpecialFunctionParam: jSpecialFunctionCall | jSpecialFunctionFuncParam | JAVA_CODE_SNIPPET;
@@ -153,7 +157,8 @@ equalUnequalOperator: '==' | '!=';
 greaterLessOperator: '<' | '>' | '<=' | '>=';
 
 
-dataType: INT_DATA_TYPE | DOUBLE_DATA_TYPE | CHAR_DATA_TYPE | STRING_DATA_TYPE | BOOLEAN_DATA_TYPE | VOID_DATA_TYPE;
+variableDataType: INT_DATA_TYPE | DOUBLE_DATA_TYPE | CHAR_DATA_TYPE | STRING_DATA_TYPE | BOOLEAN_DATA_TYPE;
+functionReturnDataType: variableDataType | VOID_DATA_TYPE;
 
 
 INT_DATA_TYPE: 'int';

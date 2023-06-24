@@ -43,7 +43,6 @@ public interface IWorkflowPatternBuilder {
         IWorkflowPatternBuilder thirdInstruction
     );
 
-
     IWorkflowPatternBuilder appendCond(
         IWorkflowPatternBuilder condition,
         IWorkflowPatternBuilder firstInstruction,
@@ -83,5 +82,11 @@ public interface IWorkflowPatternBuilder {
         IWorkflowPatternBuilder secondInstruction,
         IWorkflowPatternBuilder condition,
         IWorkflowPatternBuilder thirdInstruction
+    );
+
+    IWorkflowPatternBuilder appendAlt(
+        IWorkflowPatternBuilder condition,
+        IWorkflowPatternBuilder firstInstruction,
+        IWorkflowPatternBuilder secondInstruction
     );
 }

@@ -6,8 +6,8 @@ import proj.dfjm.javapythoncompiler.util.SourceCodeBuilderHelper;
 import java.util.List;
 
 public final class PythonSourceCodeBuilder extends SourceCodeBuilderBase {
+    private final StringBuilder threadFunctionDefinitionsBuilder = new StringBuilder();
 
-    private final StringBuilder threadFunctionDeclarationsBuilder = new StringBuilder();
     public PythonSourceCodeBuilder setCurrentIndentationLevel(int indentationLevel) {
         currentIndentationLevel = indentationLevel;
         return this;
@@ -84,11 +84,6 @@ public final class PythonSourceCodeBuilder extends SourceCodeBuilderBase {
         return append(functionName).appendFunctionArguments(arguments);
     }
 
-    private PythonSourceCodeBuilder appendFunctionArguments(List<String> arguments) {
-        stringBuilder.append(SourceCodeBuilderHelper.createSourceCodeForArguments(arguments));
-        return this;
-    }
-
     public PythonSourceCodeBuilder appendIf(String condition, String... linesInside) {
         return append("if ")
             .append(condition != null ? condition : "False")
@@ -101,7 +96,7 @@ public final class PythonSourceCodeBuilder extends SourceCodeBuilderBase {
         return append("else:\n")
             .appendCodeBlockLines(linesInside)
             .appendIndentation()
-            .append("\n");
+            .append('\n');
     }
 
     public PythonSourceCodeBuilder appendWhile(String condition, String... linesInside) {
@@ -124,28 +119,15 @@ public final class PythonSourceCodeBuilder extends SourceCodeBuilderBase {
 
     public PythonSourceCodeBuilder appendThread(int threadNumber, String... linesInside) {
         String threadFunctionName = "thread_function" + threadNumber;
-        String threadName = "thread" + threadNumber;
-        return appendThreadFunctionDeclaration(threadFunctionName, linesInside)
-            .append(threadName)
+
+        return appendThreadFunctionDefinition(threadFunctionName, linesInside)
+            .append("thread")
+            .append(String.valueOf(threadNumber))
             .append(" = threading.Thread(target=")
             .append(threadFunctionName)
-            .append(")");
+            .append(')');
     }
 
-    private PythonSourceCodeBuilder appendThreadFunctionDeclaration(String threadFunctionName, String... linesInside) {
-        threadFunctionDeclarationsBuilder.append("def ")
-            .append(threadFunctionName)
-            .append("():\n");
-        for (String line : linesInside) {
-            threadFunctionDeclarationsBuilder
-                .append("\t")
-                .append(line)
-                .append("\n");
-        }
-        threadFunctionDeclarationsBuilder.append("\n");
-
-        return this;
-    }
     public PythonSourceCodeBuilder appendThreadStart(int threadNumber) {
         return appendIndentation()
             .append("thread")
@@ -153,8 +135,31 @@ public final class PythonSourceCodeBuilder extends SourceCodeBuilderBase {
             .append(".start()");
     }
 
+    private PythonSourceCodeBuilder appendThreadFunctionDefinition(String threadFunctionName, String... linesInside) {
+        threadFunctionDefinitionsBuilder
+            .append("def ")
+            .append(threadFunctionName)
+            .append("():\n");
+
+        for (String line : linesInside) {
+            threadFunctionDefinitionsBuilder
+                .append('\t')
+                .append(line)
+                .append('\n');
+        }
+
+        threadFunctionDefinitionsBuilder.append('\n');
+
+        return this;
+    }
+
+    private PythonSourceCodeBuilder appendFunctionArguments(List<String> arguments) {
+        stringBuilder.append(SourceCodeBuilderHelper.createSourceCodeForArguments(arguments));
+        return this;
+    }
+
     @Override
     public String toString() {
-        return threadFunctionDeclarationsBuilder.append(stringBuilder).toString();
+        return threadFunctionDefinitionsBuilder.append(stringBuilder).toString();
     }
 }

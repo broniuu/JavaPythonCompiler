@@ -1,26 +1,24 @@
 package proj.dfjm.javapythoncompiler.listeners;
 
-import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
-import proj.dfjm.javapythoncompiler.antlr.GrammarBaseListener;
 import proj.dfjm.javapythoncompiler.antlr.GrammarParser;
 import proj.dfjm.javapythoncompiler.builders.workflowpatternbuilder.JavaWorkflowPatternBuilder;
 import proj.dfjm.javapythoncompiler.nodes.RootASTNode;
 
 public final class JavaGrammarListener extends GrammarCodeRetrievableListener {
     public JavaGrammarListener() {
-        rootASTNode = new RootASTNode(new JavaWorkflowPatternBuilder());
+        super(new RootASTNode(new JavaWorkflowPatternBuilder()));
     }
 
     @Override
     public void enterJCustomFunctionDeclaration(GrammarParser.JCustomFunctionDeclarationContext ctx) {
         rootASTNode.addEmptyCustomFunctionDeclarationASTNode();
-        rootASTNode.setLastCustomFunctionReturnTypeAndName(ctx.dataType().getText(), ctx.ID().getText());
+        rootASTNode.setLastCustomFunctionReturnTypeAndName(ctx.functionReturnDataType().getText(), ctx.ID().getText());
     }
 
     @Override
     public void enterJCustomFunctionDeclarationParam(GrammarParser.JCustomFunctionDeclarationParamContext ctx) {
-        rootASTNode.addArgumentToLastCustomFunction(ctx.dataType().getText() + " " + ctx.ID().getText());
+        rootASTNode.addArgumentToLastCustomFunction(ctx.variableDataType().getText() + " " + ctx.ID().getText());
     }
 
     @Override
@@ -73,6 +71,11 @@ public final class JavaGrammarListener extends GrammarCodeRetrievableListener {
     @Override
     public void enterJRepeat(GrammarParser.JRepeatContext ctx) {
         rootASTNode.addRepeatASTNode();
+    }
+
+    @Override
+    public void enterJAlt(GrammarParser.JAltContext ctx) {
+        rootASTNode.addAltASTNode();
     }
 
     @Override
