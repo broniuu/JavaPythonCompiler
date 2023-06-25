@@ -1,8 +1,10 @@
 package proj.dfjm.javapythoncompiler.util;
 
+import org.antlr.v4.runtime.tree.ParseTree;
+
 import java.util.List;
 
-public final class SourceCodeBuilderHelper {
+public final class CommonUtilities {
     public static String createSourceCodeForArguments(List<String> arguments) {
         StringBuilder internalStringBuilder = new StringBuilder();
 
@@ -19,6 +21,18 @@ public final class SourceCodeBuilderHelper {
         }
 
         internalStringBuilder.append(')');
+
+        return internalStringBuilder.toString();
+    }
+
+    public static String separateElementsWithWhitespaces(ParseTree context) {
+        StringBuilder internalStringBuilder = new StringBuilder();
+        int lastChildIndex = context.getChildCount() - 1;
+
+        for (int i = 0; i < lastChildIndex; i++) {
+            internalStringBuilder.append(context.getChild(i).getText()).append(" ");
+        }
+        internalStringBuilder.append(context.getChild(lastChildIndex).getText());
 
         return internalStringBuilder.toString();
     }

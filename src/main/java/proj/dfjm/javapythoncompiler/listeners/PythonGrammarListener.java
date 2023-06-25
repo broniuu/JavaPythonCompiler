@@ -1,10 +1,10 @@
 package proj.dfjm.javapythoncompiler.listeners;
 
-import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
 import proj.dfjm.javapythoncompiler.antlr.GrammarParser;
 import proj.dfjm.javapythoncompiler.builders.workflowpatternbuilder.PythonWorkflowPatternBuilder;
 import proj.dfjm.javapythoncompiler.nodes.RootASTNode;
+import proj.dfjm.javapythoncompiler.util.CommonUtilities;
 
 public final class PythonGrammarListener extends GrammarCodeRetrievableListener {
     public PythonGrammarListener() {
@@ -95,7 +95,7 @@ public final class PythonGrammarListener extends GrammarCodeRetrievableListener 
 
     @Override
     public void enterPCondition(GrammarParser.PConditionContext ctx) {
-        separateItemsWithWhitespaces(ctx);
+        rootASTNode.addSpecialFunctionParamASTNode(CommonUtilities.separateElementsWithWhitespaces(ctx));
     }
 
     @Override
@@ -111,17 +111,5 @@ public final class PythonGrammarListener extends GrammarCodeRetrievableListener 
     @Override
     public void enterPCustomFunctionCallParam(GrammarParser.PCustomFunctionCallParamContext ctx) {
         rootASTNode.addSpecialFunctionParamASTNode(ctx.getText());
-    }
-
-    private void separateItemsWithWhitespaces(ParseTree context) {
-        StringBuilder internalStringBuilder = new StringBuilder();
-        int lastChildIndex = context.getChildCount() - 1;
-
-        for (int i = 0; i < lastChildIndex; i++) {
-            internalStringBuilder.append(context.getChild(i).getText()).append(" ");
-        }
-        internalStringBuilder.append(context.getChild(lastChildIndex).getText());
-
-        rootASTNode.addSpecialFunctionParamASTNode(internalStringBuilder.toString());
     }
 }

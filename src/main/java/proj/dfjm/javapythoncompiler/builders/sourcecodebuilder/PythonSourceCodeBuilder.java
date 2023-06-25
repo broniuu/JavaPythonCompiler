@@ -1,7 +1,7 @@
 package proj.dfjm.javapythoncompiler.builders.sourcecodebuilder;
 
 import proj.dfjm.javapythoncompiler.datasets.CustomFunctionDeclaration;
-import proj.dfjm.javapythoncompiler.util.SourceCodeBuilderHelper;
+import proj.dfjm.javapythoncompiler.util.CommonUtilities;
 
 import java.util.List;
 
@@ -154,7 +154,7 @@ public final class PythonSourceCodeBuilder extends SourceCodeBuilderBase {
     }
 
     private PythonSourceCodeBuilder appendFunctionArguments(List<String> arguments) {
-        stringBuilder.append(SourceCodeBuilderHelper.createSourceCodeForArguments(arguments));
+        stringBuilder.append(CommonUtilities.createSourceCodeForArguments(arguments));
         return this;
     }
 
