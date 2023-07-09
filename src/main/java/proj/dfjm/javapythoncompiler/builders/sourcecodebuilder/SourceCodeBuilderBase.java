@@ -1,6 +1,6 @@
 package proj.dfjm.javapythoncompiler.builders.sourcecodebuilder;
 
-public abstract class SourceCodeBuilderBase {
+abstract class SourceCodeBuilderBase {
     protected final StringBuilder stringBuilder = new StringBuilder();
     protected int currentIndentationLevel = 0;
 

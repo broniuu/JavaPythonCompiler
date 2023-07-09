@@ -2,7 +2,7 @@ package proj.dfjm.javapythoncompiler.nodes;
 
 import proj.dfjm.javapythoncompiler.builders.workflowpatternbuilder.IWorkflowPatternBuilder;
 
-public final class SeqASTNode extends ASTNode {
+final class SeqASTNode extends ASTNode {
     public SeqASTNode(IWorkflowPatternBuilder workflowPatternBuilder) {
         super(2, workflowPatternBuilder);
     }

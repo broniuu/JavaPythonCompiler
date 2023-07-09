@@ -4,7 +4,7 @@ import proj.dfjm.javapythoncompiler.builders.workflowpatternbuilder.IWorkflowPat
 
 import java.util.List;
 
-public final class CustomFunctionCallASTNode extends ASTNode {
+final class CustomFunctionCallASTNode extends ASTNode {
     private final String functionName;
 
     public CustomFunctionCallASTNode(

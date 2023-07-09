@@ -2,7 +2,7 @@ package proj.dfjm.javapythoncompiler.nodes;
 
 import proj.dfjm.javapythoncompiler.builders.workflowpatternbuilder.IWorkflowPatternBuilder;
 
-public final class ChoiceASTNode extends ASTNode {
+final class ChoiceASTNode extends ASTNode {
     public ChoiceASTNode(IWorkflowPatternBuilder workflowPatternBuilder) {
         super(4, workflowPatternBuilder);
     }

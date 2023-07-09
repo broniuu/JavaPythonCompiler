@@ -179,7 +179,6 @@ public final class PythonWorkflowPatternBuilder implements IWorkflowPatternBuild
         pythonSourceCodeBuilder
             .appendFirstLine(firstInstruction.getSourceCode())
             .appendWhile(condition.getSourceCode(), secondInstruction.getSourceCode())
-            .appendNewlineCharacter()
             .appendLastLine(thirdInstruction.getSourceCode());
 
         return this;

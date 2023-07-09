@@ -2,7 +2,7 @@ package proj.dfjm.javapythoncompiler.nodes;
 
 import proj.dfjm.javapythoncompiler.builders.workflowpatternbuilder.IWorkflowPatternBuilder;
 
-public final class LoopASTNode extends ASTNode {
+final class LoopASTNode extends ASTNode {
     public LoopASTNode(IWorkflowPatternBuilder workflowPatternBuilder) {
         super(4, workflowPatternBuilder);
     }

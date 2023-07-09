@@ -2,7 +2,7 @@ package proj.dfjm.javapythoncompiler.nodes;
 
 import proj.dfjm.javapythoncompiler.builders.workflowpatternbuilder.IWorkflowPatternBuilder;
 
-public final class ConcurReASTNode extends ASTNode {
+final class ConcurReASTNode extends ASTNode {
     public ConcurReASTNode(IWorkflowPatternBuilder workflowPatternBuilder) {
         super(3, workflowPatternBuilder);
     }

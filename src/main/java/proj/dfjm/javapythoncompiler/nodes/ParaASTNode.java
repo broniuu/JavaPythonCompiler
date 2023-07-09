@@ -2,7 +2,7 @@ package proj.dfjm.javapythoncompiler.nodes;
 
 import proj.dfjm.javapythoncompiler.builders.workflowpatternbuilder.IWorkflowPatternBuilder;
 
-public final class ParaASTNode extends ASTNode {
+final class ParaASTNode extends ASTNode {
     public ParaASTNode(IWorkflowPatternBuilder workflowPatternBuilder) {
         super(4, workflowPatternBuilder);
     }

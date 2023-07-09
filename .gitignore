@@ -4,10 +4,7 @@ target/
 !**/src/test/**/target/
 
 ### IntelliJ IDEA ###
-/.idea/**
-!/.idea/encodings.xml
-!/.idea/misc.xml
-!/.idea/workspace.xml
+/.idea/
 *.iws
 *.iml
 *.ipr
@@ -32,13 +29,10 @@ build/
 !**/src/test/**/build/
 
 ### VS Code ###
-.vscode/
+/.vscode/
 
 ### Mac OS ###
 .DS_Store
 
 ### Project Specific ###
 antlr/
-input.txt
-
-dependency-reduced-pom.xml

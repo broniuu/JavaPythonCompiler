@@ -3,6 +3,7 @@ package proj.dfjm.javapythoncompiler.nodes;
 import proj.dfjm.javapythoncompiler.builders.workflowpatternbuilder.IWorkflowPatternBuilder;
 import proj.dfjm.javapythoncompiler.datasets.CustomFunctionDeclaration;
 import proj.dfjm.javapythoncompiler.datasets.CustomFunctionCallToCheck;
+import proj.dfjm.javapythoncompiler.exceptions.CodeParsingException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -111,22 +112,23 @@ public final class RootASTNode extends ASTNode {
         ));
     }
 
-    private void checkCustomFunctionCorrectness() {
+    private void checkCustomFunctionCorrectness() throws CodeParsingException {
         if (customFunctionDeclarations.isEmpty() && calledCustomFunctions.isEmpty()) {
             return;
         }
 
         boolean allFunctionDeclarationsMatchCalledFunctions = customFunctionDeclarations
             .stream()
-            .anyMatch(x ->
+            .allMatch(x ->
                 calledCustomFunctions.stream().anyMatch(y ->
                     y.getFunctionName().equals(x.getFunctionName()) && y.getArgumentNumber() == x.getArguments().size()
                 )
             );
 
         if (!allFunctionDeclarationsMatchCalledFunctions) {
-            throw new IllegalArgumentException(
-                "Function declarations do not match their calls (or the other way around)!"
+            throw new CodeParsingException(
+                "In the code provided as input, function declarations" +
+                " do not match their calls (or the other way around)!"
             );
         }
 
@@ -141,7 +143,9 @@ public final class RootASTNode extends ASTNode {
             .toList();
 
         if (duplicates.size() > 0) {
-            throw new IllegalArgumentException("The same function has been declared twice!");
+            throw new CodeParsingException(
+                "In the code provided as input, functions with the same name have been declared multiple times!"
+            );
         }
     }
 }

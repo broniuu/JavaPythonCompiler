@@ -5,7 +5,7 @@ import proj.dfjm.javapythoncompiler.builders.workflowpatternbuilder.IWorkflowPat
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ASTNode {
+abstract class ASTNode {
     private final int expectedChildrenNumber;
 
     protected IWorkflowPatternBuilder workflowPatternBuilder;

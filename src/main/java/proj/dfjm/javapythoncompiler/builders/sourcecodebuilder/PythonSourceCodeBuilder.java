@@ -87,7 +87,7 @@ public final class PythonSourceCodeBuilder extends SourceCodeBuilderBase {
     public PythonSourceCodeBuilder appendIf(String condition, String... linesInside) {
         return append("if ")
             .append(condition != null ? condition : "False")
-            .append(condition != null ? ":\n" : ": #implementation required\n")
+            .append(condition != null ? ":\n" : ": #<- Implementation required\n")
             .appendCodeBlockLines(linesInside)
             .appendIndentation();
     }
