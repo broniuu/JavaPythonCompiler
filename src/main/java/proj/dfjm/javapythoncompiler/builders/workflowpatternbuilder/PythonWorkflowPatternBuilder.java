@@ -2,6 +2,7 @@ package proj.dfjm.javapythoncompiler.builders.workflowpatternbuilder;
 
 import proj.dfjm.javapythoncompiler.builders.sourcecodebuilder.PythonSourceCodeBuilder;
 import proj.dfjm.javapythoncompiler.datasets.CustomFunctionDeclaration;
+import proj.dfjm.javapythoncompiler.datasets.ThreadFunctionDefinition;
 
 import java.util.List;
 
@@ -21,7 +22,7 @@ public final class PythonWorkflowPatternBuilder implements IWorkflowPatternBuild
 
     @Override
     public IWorkflowPatternBuilder setIndentationLevel(int indentationLevel) {
-        pythonSourceCodeBuilder.setCurrentIndentationLevel(indentationLevel);
+        pythonSourceCodeBuilder.setIndentationLevel(indentationLevel);
         return this;
     }
 
@@ -35,7 +36,15 @@ public final class PythonWorkflowPatternBuilder implements IWorkflowPatternBuild
     public IWorkflowPatternBuilder appendCustomFunctionDeclarations(
         List<CustomFunctionDeclaration> customFunctionDeclarations
     ) {
-        pythonSourceCodeBuilder.appendCustomFunctionDeclarations(customFunctionDeclarations);
+        pythonSourceCodeBuilder.appendCustomFunctionDefinitions(customFunctionDeclarations);
+        return this;
+    }
+
+    @Override
+    public IWorkflowPatternBuilder appendThreadFunctionDefinitions(
+        List<ThreadFunctionDefinition> threadFunctionDefinitions
+    ) {
+        pythonSourceCodeBuilder.appendThreadFunctionDefinitions(threadFunctionDefinitions);
         return this;
     }
 
@@ -84,22 +93,15 @@ public final class PythonWorkflowPatternBuilder implements IWorkflowPatternBuild
         IWorkflowPatternBuilder secondInstruction,
         IWorkflowPatternBuilder thirdInstruction
     ) {
-        int firstThreadNumber = currentThreadNumber++;
-        int secondThreadNumber = currentThreadNumber++;
-
         pythonSourceCodeBuilder
             .appendFirstLine(firstInstruction.getSourceCode())
             .appendIndentation()
-            .appendThread(firstThreadNumber, secondInstruction.getSourceCode())
+            .appendThreadCreation(currentThreadNumber)
+            .appendThreadStart(currentThreadNumber++)
             .appendNewlineCharacter()
             .appendIndentation()
-            .appendThread(secondThreadNumber, thirdInstruction.getSourceCode())
-            .appendNewlineCharacter()
-            .appendIndentation()
-            .appendThreadStart(firstThreadNumber)
-            .appendNewlineCharacter()
-            .appendIndentation()
-            .appendThreadStart(secondThreadNumber);
+            .appendThreadCreation(currentThreadNumber)
+            .appendThreadStart(currentThreadNumber++);
 
         return this;
     }
@@ -114,18 +116,15 @@ public final class PythonWorkflowPatternBuilder implements IWorkflowPatternBuild
         int secondThreadNumber = currentThreadNumber++;
 
         pythonSourceCodeBuilder
-            .appendThread(firstThreadNumber, secondInstruction.getSourceCode())
-            .appendNewlineCharacter()
-            .appendIndentation()
-            .appendThread(secondThreadNumber, thirdInstruction.getSourceCode())
-            .appendNewlineCharacter()
-            .appendIndentation()
+            .appendThreadCreation(firstThreadNumber)
             .appendThreadStart(firstThreadNumber)
             .appendNewlineCharacter()
             .appendIndentation()
+            .appendThreadCreation(secondThreadNumber)
             .appendThreadStart(secondThreadNumber)
             .appendNewlineCharacter()
-            .appendLastLine(firstInstruction.getSourceCode());
+            .appendThreadsJoin(firstThreadNumber, secondThreadNumber)
+            .appendLastLine(thirdInstruction.getSourceCode());
 
         return this;
     }
@@ -152,19 +151,21 @@ public final class PythonWorkflowPatternBuilder implements IWorkflowPatternBuild
         IWorkflowPatternBuilder thirdInstruction,
         IWorkflowPatternBuilder fourthInstruction
     ) {
+        int firstThreadNumber = currentThreadNumber++;
+        int secondThreadNumber = currentThreadNumber++;
+
         pythonSourceCodeBuilder
             .appendFirstLine(firstInstruction.getSourceCode())
             .appendIndentation()
-            .appendThread(currentThreadNumber, secondInstruction.getSourceCode())
-            .appendNewlineCharacter()
-            .appendThreadStart(currentThreadNumber++)
+            .appendThreadCreation(firstThreadNumber)
+            .appendThreadStart(firstThreadNumber)
             .appendNewlineCharacter()
             .appendIndentation()
-            .appendThread(currentThreadNumber, thirdInstruction.getSourceCode())
+            .appendThreadCreation(secondThreadNumber)
+            .appendThreadStart(secondThreadNumber)
             .appendNewlineCharacter()
-            .appendThreadStart(currentThreadNumber++)
-            .appendNewlineCharacter()
-            .append(fourthInstruction.getSourceCode());
+            .appendThreadsJoin(firstThreadNumber, secondThreadNumber)
+            .appendLastLine(fourthInstruction.getSourceCode());
 
         return this;
     }
@@ -226,7 +227,6 @@ public final class PythonWorkflowPatternBuilder implements IWorkflowPatternBuild
             .appendFirstLine(firstInstruction.getSourceCode())
             .appendIndentation()
             .appendDoWhile(condition.getSourceCode(), secondInstruction.getSourceCode())
-            .appendNewlineCharacter()
             .appendLastLine(thirdInstruction.getSourceCode());
 
         return this;

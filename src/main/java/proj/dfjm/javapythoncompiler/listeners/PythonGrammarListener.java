@@ -13,7 +13,7 @@ public final class PythonGrammarListener extends GrammarCodeRetrievableListener 
 
     @Override
     public void enterPCustomFunctionDeclaration(GrammarParser.PCustomFunctionDeclarationContext ctx) {
-        rootASTNode.addEmptyCustomFunctionDeclarationASTNode();
+        rootASTNode.addEmptyCustomFunctionDeclaration();
         rootASTNode.setLastCustomFunctionReturnTypeAndName(
             ctx.pCustomFunctionDeclarationReturnType() != null
                 ? ctx.pCustomFunctionDeclarationReturnType().ID().getText()
@@ -99,17 +99,17 @@ public final class PythonGrammarListener extends GrammarCodeRetrievableListener 
     }
 
     @Override
-    public void enterPCustomFunctionCall(GrammarParser.PCustomFunctionCallContext ctx) {
+    public void enterPCheckedCustomFunctionCall(GrammarParser.PCheckedCustomFunctionCallContext ctx) {
         rootASTNode.addCustomFunctionCallASTNode(
             ctx.ID().getText(),
-            ctx.pCustomFunctionCallParams() != null
-                ? ctx.pCustomFunctionCallParams().pCustomFunctionCallParam().size()
+            ctx.pCheckedCustomFunctionCallParams() != null
+                ? ctx.pCheckedCustomFunctionCallParams().pCheckedCustomFunctionCallParam().size()
                 : 0
         );
     }
 
     @Override
-    public void enterPCustomFunctionCallParam(GrammarParser.PCustomFunctionCallParamContext ctx) {
+    public void enterPCheckedCustomFunctionCallParam(GrammarParser.PCheckedCustomFunctionCallParamContext ctx) {
         rootASTNode.addSpecialFunctionParamASTNode(ctx.getText());
     }
 }

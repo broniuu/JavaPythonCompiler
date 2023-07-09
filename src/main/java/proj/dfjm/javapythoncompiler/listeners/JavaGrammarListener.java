@@ -12,7 +12,7 @@ public final class JavaGrammarListener extends GrammarCodeRetrievableListener {
 
     @Override
     public void enterJCustomFunctionDeclaration(GrammarParser.JCustomFunctionDeclarationContext ctx) {
-        rootASTNode.addEmptyCustomFunctionDeclarationASTNode();
+        rootASTNode.addEmptyCustomFunctionDeclaration();
         rootASTNode.setLastCustomFunctionReturnTypeAndName(ctx.functionReturnDataType().getText(), ctx.ID().getText());
     }
 
@@ -91,17 +91,17 @@ public final class JavaGrammarListener extends GrammarCodeRetrievableListener {
     }
 
     @Override
-    public void enterJCustomFunctionCall(GrammarParser.JCustomFunctionCallContext ctx) {
+    public void enterJCheckedCustomFunctionCall(GrammarParser.JCheckedCustomFunctionCallContext ctx) {
         rootASTNode.addCustomFunctionCallASTNode(
             ctx.ID().getText(),
-            ctx.jCustomFunctionCallParams() != null
-                ? ctx.jCustomFunctionCallParams().jCustomFunctionCallParam().size()
+            ctx.jCheckedCustomFunctionCallParams() != null
+                ? ctx.jCheckedCustomFunctionCallParams().jCheckedCustomFunctionCallParam().size()
                 : 0
         );
     }
 
     @Override
-    public void enterJCustomFunctionCallParam(GrammarParser.JCustomFunctionCallParamContext ctx) {
+    public void enterJCheckedCustomFunctionCallParam(GrammarParser.JCheckedCustomFunctionCallParamContext ctx) {
         rootASTNode.addSpecialFunctionParamASTNode(ctx.getText());
     }
 }

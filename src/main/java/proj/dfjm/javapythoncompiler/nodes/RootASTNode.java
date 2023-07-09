@@ -3,6 +3,7 @@ package proj.dfjm.javapythoncompiler.nodes;
 import proj.dfjm.javapythoncompiler.builders.workflowpatternbuilder.IWorkflowPatternBuilder;
 import proj.dfjm.javapythoncompiler.datasets.CustomFunctionDeclaration;
 import proj.dfjm.javapythoncompiler.datasets.CustomFunctionCallToCheck;
+import proj.dfjm.javapythoncompiler.datasets.ThreadFunctionDefinition;
 import proj.dfjm.javapythoncompiler.exceptions.CodeParsingException;
 
 import java.util.ArrayList;
@@ -14,6 +15,8 @@ import java.util.stream.Collectors;
 public final class RootASTNode extends ASTNode {
     private final List<CustomFunctionDeclaration> customFunctionDeclarations = new ArrayList<>();
     private final List<CustomFunctionCallToCheck> calledCustomFunctions = new ArrayList<>();
+
+    private final List<ThreadFunctionDefinition> threadFunctionDefinitions = new ArrayList<>();
 
     public RootASTNode(IWorkflowPatternBuilder workflowPatternBuilder) {
         super(1, workflowPatternBuilder);
@@ -27,11 +30,19 @@ public final class RootASTNode extends ASTNode {
             children.get(0).getWorkflowPatternBuilder(indentationLevel).getSourceCode()
         );
 
-        if (customFunctionDeclarations.size() == 0) {
-            return workflowPatternBuilder;
+        if (customFunctionDeclarations.size() > 0) {
+            workflowPatternBuilder.appendCustomFunctionDeclarations(customFunctionDeclarations);
         }
 
-        return workflowPatternBuilder.appendCustomFunctionDeclarations(customFunctionDeclarations);
+        if (threadFunctionDefinitions.size() > 0) {
+            workflowPatternBuilder.appendThreadFunctionDefinitions(threadFunctionDefinitions);
+        }
+
+        return workflowPatternBuilder;
+    }
+
+    public int getThreadFunctionDefinitionNumber() {
+        return threadFunctionDefinitions.size();
     }
 
     public String getSourceCode() {
@@ -51,8 +62,12 @@ public final class RootASTNode extends ASTNode {
         lastCustomFunctionDeclaration.setReturnType(returnType);
     }
 
-    public void addEmptyCustomFunctionDeclarationASTNode() {
+    public void addEmptyCustomFunctionDeclaration() {
         customFunctionDeclarations.add(new CustomFunctionDeclaration());
+    }
+
+    public void addThreadFunctionDefinition(ThreadFunctionDefinition threadFunctionDefinition) {
+        threadFunctionDefinitions.add(threadFunctionDefinition);
     }
 
     public void addSeqASTNode() {
@@ -64,11 +79,11 @@ public final class RootASTNode extends ASTNode {
     }
 
     public void addConcurASTNode() {
-        addAsChild(new ConcurASTNode(workflowPatternBuilder.createNewInstance()));
+        addAsChild(new ConcurASTNode(this, workflowPatternBuilder.createNewInstance()));
     }
 
     public void addConcurReASTNode() {
-        addAsChild(new ConcurReASTNode(workflowPatternBuilder.createNewInstance()));
+        addAsChild(new ConcurReASTNode(this, workflowPatternBuilder.createNewInstance()));
     }
 
     public void addCondASTNode() {
@@ -76,7 +91,7 @@ public final class RootASTNode extends ASTNode {
     }
 
     public void addParaASTNode() {
-        addAsChild(new ParaASTNode(workflowPatternBuilder.createNewInstance()));
+        addAsChild(new ParaASTNode(this, workflowPatternBuilder.createNewInstance()));
     }
 
     public void addLoopASTNode() {
@@ -117,15 +132,22 @@ public final class RootASTNode extends ASTNode {
             return;
         }
 
-        boolean allFunctionDeclarationsMatchCalledFunctions = customFunctionDeclarations
-            .stream()
-            .allMatch(x ->
-                calledCustomFunctions.stream().anyMatch(y ->
-                    y.getFunctionName().equals(x.getFunctionName()) && y.getArgumentNumber() == x.getArguments().size()
-                )
-            );
+        boolean doAllFunctionDeclarationsMatchFunctionCalls = false;
 
-        if (!allFunctionDeclarationsMatchCalledFunctions) {
+        // In theory, there is no chance that lists of different sizes can contain the same elements, but in
+        // practice, the Stream#allMatch() method could still return 'true' in such case. We don't want that.
+        if (customFunctionDeclarations.size() == calledCustomFunctions.size()) {
+            doAllFunctionDeclarationsMatchFunctionCalls = customFunctionDeclarations
+                .stream()
+                .allMatch(x ->
+                    calledCustomFunctions.stream().anyMatch(y ->
+                        y.getFunctionName().equals(x.getFunctionName())
+                        && y.getArgumentNumber() == x.getArguments().size()
+                    )
+                );
+        }
+
+        if (!doAllFunctionDeclarationsMatchFunctionCalls) {
             throw new CodeParsingException(
                 "In the code provided as input, function declarations" +
                 " do not match their calls (or the other way around)!"
@@ -144,7 +166,7 @@ public final class RootASTNode extends ASTNode {
 
         if (duplicates.size() > 0) {
             throw new CodeParsingException(
-                "In the code provided as input, functions with the same name have been declared multiple times!"
+                "In the code provided as input, functions with the same name have been detected!"
             );
         }
     }

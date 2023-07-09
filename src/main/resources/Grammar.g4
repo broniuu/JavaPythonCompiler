@@ -84,8 +84,8 @@ jSpecialFunctionCondParam: '``' jCondition '``';
 pSpecialFunctionCondParam: '``' pCondition '``';
 
 
-jSpecialFunctionFuncParam: '~' jCustomFunctionCall '~';
-pSpecialFunctionFuncParam: '~' pCustomFunctionCall '~';
+jSpecialFunctionFuncParam: '~' jCheckedCustomFunctionCall '~';
+pSpecialFunctionFuncParam: '~' pCheckedCustomFunctionCall '~';
 
 
 jCondition
@@ -93,38 +93,58 @@ jCondition
         (JAVA_LOGICAL_VALUE | ID) equalUnequalOperator (JAVA_LOGICAL_VALUE | ID)
         | (TEXT_STRING_DOUBLE_QUOTES | ID) equalUnequalOperator (TEXT_STRING_DOUBLE_QUOTES | ID)
         | (
-            (ID | INTEGER_NUMBER | FRACTIONAL_NUMBER | SINGLE_CHARACTER | jCustomFunctionCall)
+            (ID | INTEGER_NUMBER | FRACTIONAL_NUMBER | SINGLE_CHARACTER | jUncheckedCustomFunctionCall)
             (greaterLessOperator | equalUnequalOperator)
-            (ID | INTEGER_NUMBER | FRACTIONAL_NUMBER | SINGLE_CHARACTER | jCustomFunctionCall)
+            (ID | INTEGER_NUMBER | FRACTIONAL_NUMBER | SINGLE_CHARACTER | jUncheckedCustomFunctionCall)
         )
     )
     | jIncrementDecrement (greaterLessOperator | equalUnequalOperator) jIncrementDecrement
-    | JAVA_LOGICAL_VALUE | ID | jCustomFunctionCall
+    | JAVA_LOGICAL_VALUE | ID | jUncheckedCustomFunctionCall
     ;
 
 pCondition
     : pComparison
     | PYTHON_LOGICAL_VALUE
     | ID
-    | pCustomFunctionCall
+    | pUncheckedCustomFunctionCall
     ;
 
 
-jCustomFunctionCall: ID '(' jCustomFunctionCallParams? ')';
-pCustomFunctionCall: ID '(' pCustomFunctionCallParams? ')';
+jCheckedCustomFunctionCall: ID '(' jCheckedCustomFunctionCallParams? ')';
+pCheckedCustomFunctionCall: ID '(' pCheckedCustomFunctionCallParams? ')';
 
 
-jCustomFunctionCallParams: jCustomFunctionCallParam (',' jCustomFunctionCallParam)*;
-pCustomFunctionCallParams: pCustomFunctionCallParam (',' pCustomFunctionCallParam)*;
+jUncheckedCustomFunctionCall: ID '(' jUncheckedCustomFunctionCallParams? ')';
+pUncheckedCustomFunctionCall: ID '(' pUncheckedCustomFunctionCallParams? ')';
 
 
-jCustomFunctionCallParam
-    : jCustomFunctionCall
+jCheckedCustomFunctionCallParams: jCheckedCustomFunctionCallParam (',' jCheckedCustomFunctionCallParam)*;
+pCheckedCustomFunctionCallParams: pCheckedCustomFunctionCallParam (',' pCheckedCustomFunctionCallParam)*;
+
+
+jUncheckedCustomFunctionCallParams: jUncheckedCustomFunctionCallParam (',' jUncheckedCustomFunctionCallParam)*;
+pUncheckedCustomFunctionCallParams: pUncheckedCustomFunctionCallParam (',' pUncheckedCustomFunctionCallParam)*;
+
+
+jCheckedCustomFunctionCallParam
+    : jCheckedCustomFunctionCall
     | INTEGER_NUMBER | FRACTIONAL_NUMBER | SINGLE_CHARACTER | TEXT_STRING_DOUBLE_QUOTES | JAVA_LOGICAL_VALUE | ID
     ;
 
-pCustomFunctionCallParam
-    : pCustomFunctionCall
+pCheckedCustomFunctionCallParam
+    : pCheckedCustomFunctionCall
+    | pComparison
+    | pRvalue
+    ;
+
+
+jUncheckedCustomFunctionCallParam
+    : jUncheckedCustomFunctionCall
+    | INTEGER_NUMBER | FRACTIONAL_NUMBER | SINGLE_CHARACTER | TEXT_STRING_DOUBLE_QUOTES | JAVA_LOGICAL_VALUE | ID
+    ;
+
+pUncheckedCustomFunctionCallParam
+    : pUncheckedCustomFunctionCall
     | pComparison
     | pRvalue
     ;
@@ -149,7 +169,7 @@ pRvalue
     | TEXT_STRING_SINGLE_QUOTES
     | PYTHON_LOGICAL_VALUE
     | '[' (pRvalue (',' pRvalue)*)? ']'
-    | pCustomFunctionCall
+    | pUncheckedCustomFunctionCall
     ;
 
 

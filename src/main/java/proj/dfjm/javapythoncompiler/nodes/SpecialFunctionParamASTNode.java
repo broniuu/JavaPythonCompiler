@@ -3,7 +3,7 @@ package proj.dfjm.javapythoncompiler.nodes;
 import proj.dfjm.javapythoncompiler.builders.workflowpatternbuilder.IWorkflowPatternBuilder;
 
 final class SpecialFunctionParamASTNode extends ASTNode {
-    String content;
+    private final String content;
 
     public SpecialFunctionParamASTNode(IWorkflowPatternBuilder workflowPatternBuilder, String content) {
         super(0, workflowPatternBuilder);

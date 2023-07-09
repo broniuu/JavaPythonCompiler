@@ -1,6 +1,7 @@
 package proj.dfjm.javapythoncompiler.builders.workflowpatternbuilder;
 
 import proj.dfjm.javapythoncompiler.datasets.CustomFunctionDeclaration;
+import proj.dfjm.javapythoncompiler.datasets.ThreadFunctionDefinition;
 
 import java.util.List;
 
@@ -13,7 +14,13 @@ public interface IWorkflowPatternBuilder {
 
     IWorkflowPatternBuilder appendSourceCode(String sourceCode);
 
-    IWorkflowPatternBuilder appendCustomFunctionDeclarations(List<CustomFunctionDeclaration> customFunctionDeclarations);
+    IWorkflowPatternBuilder appendCustomFunctionDeclarations(
+        List<CustomFunctionDeclaration> customFunctionDeclarations
+    );
+
+    IWorkflowPatternBuilder appendThreadFunctionDefinitions(
+        List<ThreadFunctionDefinition> threadFunctionDefinitions
+    );
 
     IWorkflowPatternBuilder appendCustomFunctionCall(String functionName, List<String> arguments);
 

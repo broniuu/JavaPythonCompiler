@@ -1,15 +1,18 @@
 package proj.dfjm.javapythoncompiler.builders.sourcecodebuilder;
 
 import proj.dfjm.javapythoncompiler.datasets.CustomFunctionDeclaration;
+import proj.dfjm.javapythoncompiler.datasets.ThreadFunctionDefinition;
 import proj.dfjm.javapythoncompiler.util.CommonUtilities;
 
 import java.util.List;
 
 public final class PythonSourceCodeBuilder extends SourceCodeBuilderBase {
-    private final StringBuilder threadFunctionDefinitionsBuilder = new StringBuilder();
+    public PythonSourceCodeBuilder setIndentationLevel(int indentationLevel) throws IllegalArgumentException {
+        if (indentationLevel < 0) {
+            throw new IllegalArgumentException("Indentation level cannot be negative!");
+        }
 
-    public PythonSourceCodeBuilder setCurrentIndentationLevel(int indentationLevel) {
-        currentIndentationLevel = indentationLevel;
+        this.indentationLevel = indentationLevel;
         return this;
     }
 
@@ -23,25 +26,20 @@ public final class PythonSourceCodeBuilder extends SourceCodeBuilderBase {
         return this;
     }
 
-    public PythonSourceCodeBuilder appendFirstLine(String sourceCode) {
-        return append(sourceCode).appendNewlineCharacter();
+    public PythonSourceCodeBuilder appendLine(String content) {
+        return appendIndentation().append(content).appendNewlineCharacter();
     }
 
-    public PythonSourceCodeBuilder appendLine(String sourceCode) {
-        return appendIndentation().append(sourceCode).appendNewlineCharacter();
+    public PythonSourceCodeBuilder appendFirstLine(String content) {
+        return append(content).appendNewlineCharacter();
     }
 
-    public PythonSourceCodeBuilder appendLastLine(String sourceCode) {
-        return appendIndentation().append(sourceCode);
+    public PythonSourceCodeBuilder appendLastLine(String content) {
+        return appendIndentation().append(content);
     }
 
-    public PythonSourceCodeBuilder appendCodeBlockLines(String... lines) {
-        currentIndentationLevel++;
-        for (String line : lines) {
-            appendLine(line);
-        }
-        currentIndentationLevel--;
-
+    public PythonSourceCodeBuilder appendIndentation() {
+        stringBuilder.append(SINGLE_INDENTATION_REPRESENTATION.repeat(indentationLevel));
         return this;
     }
 
@@ -50,17 +48,12 @@ public final class PythonSourceCodeBuilder extends SourceCodeBuilderBase {
         return this;
     }
 
-    public PythonSourceCodeBuilder appendIndentation() {
-        stringBuilder.append("\t".repeat(Math.max(0, currentIndentationLevel)));
-        return this;
-    }
-
-    public PythonSourceCodeBuilder appendCustomFunctionDeclarations(
+    public PythonSourceCodeBuilder appendCustomFunctionDefinitions(
         List<CustomFunctionDeclaration> customFunctionDeclarations
     ) {
         final String EMPTY_FUNCTION_BODY_COMMENT = "\t// Enter your function code here\n";
 
-        append("\n\n# - - - - - Function definitions - - - - -\n");
+        append("\n\n# Function definitions:\n");
 
         for (CustomFunctionDeclaration customFunctionDeclaration : customFunctionDeclarations) {
             append("def ")
@@ -80,52 +73,73 @@ public final class PythonSourceCodeBuilder extends SourceCodeBuilderBase {
         return this;
     }
 
+    public PythonSourceCodeBuilder appendThreadFunctionDefinitions(
+        List<ThreadFunctionDefinition> threadFunctionDefinitions
+    ) {
+        append("\n\n# Thread function definitions:\n");
+
+        for (ThreadFunctionDefinition threadFunctionDefinition : threadFunctionDefinitions) {
+            append("def thread_function")
+                .append(String.valueOf(threadFunctionDefinition.getFunctionNumber()))
+                .append("():\n");
+
+            indentationLevel++;
+            appendIndentation().append(threadFunctionDefinition.getFunctionBody()).appendNewlineCharacter();
+            indentationLevel--;
+        }
+
+        return this;
+    }
+
     public PythonSourceCodeBuilder appendCustomFunctionCall(String functionName, List<String> arguments) {
         return append(functionName).appendFunctionArguments(arguments);
     }
 
-    public PythonSourceCodeBuilder appendIf(String condition, String... linesInside) {
+    public PythonSourceCodeBuilder appendIf(String condition, String... instructionsInside) {
         return append("if ")
             .append(condition != null ? condition : "False")
             .append(condition != null ? ":\n" : ": #<- Implementation required\n")
-            .appendCodeBlockLines(linesInside)
-            .appendIndentation();
+            .appendCodeBlockInstructions(instructionsInside);
     }
 
-    public PythonSourceCodeBuilder appendElse(String... linesInside) {
-        return append("else:\n")
-            .appendCodeBlockLines(linesInside)
-            .appendIndentation()
-            .append('\n');
+    public PythonSourceCodeBuilder appendElse(String... instructionsInside) {
+        return appendIndentation()
+            .append("else:\n")
+            .appendCodeBlockInstructions(instructionsInside);
     }
 
-    public PythonSourceCodeBuilder appendWhile(String condition, String... linesInside) {
+    public PythonSourceCodeBuilder appendWhile(String condition, String... instructionsInside) {
         return append("while ")
             .append(condition)
             .append(":\n")
-            .appendCodeBlockLines(linesInside);
+            .appendCodeBlockInstructions(instructionsInside);
     }
 
-    public PythonSourceCodeBuilder appendDoWhile(String condition, String... linesInside) {
-        return append("while True:\n")
-            .appendCodeBlockLines(linesInside)
-            .appendIndentation()
-            .append("if ")
+    public PythonSourceCodeBuilder appendDoWhile(String condition, String... instructionsInside) {
+        append("while True:\n")
+            .appendCodeBlockInstructions(instructionsInside);
+
+        indentationLevel++;
+        appendIndentation()
+            .append("if not ")
             .append(condition)
-            .append(":\n")
-            .appendIndentation()
-            .append("\tbreak");
+            .append(":\n");
+
+        indentationLevel++;
+        appendIndentation().append("break\n");
+
+        indentationLevel -= 2;
+
+        return this;
     }
 
-    public PythonSourceCodeBuilder appendThread(int threadNumber, String... linesInside) {
-        String threadFunctionName = "thread_function" + threadNumber;
-
-        return appendThreadFunctionDefinition(threadFunctionName, linesInside)
-            .append("thread")
+    public PythonSourceCodeBuilder appendThreadCreation(int threadNumber) {
+        return append("thread")
             .append(String.valueOf(threadNumber))
             .append(" = threading.Thread(target=")
-            .append(threadFunctionName)
-            .append(')');
+            .append("thread_function")
+            .append(String.valueOf(threadNumber))
+            .append(")\n");
     }
 
     public PythonSourceCodeBuilder appendThreadStart(int threadNumber) {
@@ -135,20 +149,23 @@ public final class PythonSourceCodeBuilder extends SourceCodeBuilderBase {
             .append(".start()");
     }
 
-    private PythonSourceCodeBuilder appendThreadFunctionDefinition(String threadFunctionName, String... linesInside) {
-        threadFunctionDefinitionsBuilder
-            .append("def ")
-            .append(threadFunctionName)
-            .append("():\n");
+    public PythonSourceCodeBuilder appendThreadsJoin(int firstThreadNumber, int secondThreadNumber) {
+        return appendIndentation()
+            .append("thread")
+            .append(String.valueOf(firstThreadNumber))
+            .append(".join()\n")
+            .appendIndentation()
+            .append("thread")
+            .append(String.valueOf(secondThreadNumber))
+            .append(".join()\n");
+    }
 
-        for (String line : linesInside) {
-            threadFunctionDefinitionsBuilder
-                .append('\t')
-                .append(line)
-                .append('\n');
+    private PythonSourceCodeBuilder appendCodeBlockInstructions(String... instructions) {
+        indentationLevel++;
+        for (String instruction : instructions) {
+            appendLine(instruction);
         }
-
-        threadFunctionDefinitionsBuilder.append('\n');
+        indentationLevel--;
 
         return this;
     }
@@ -156,10 +173,5 @@ public final class PythonSourceCodeBuilder extends SourceCodeBuilderBase {
     private PythonSourceCodeBuilder appendFunctionArguments(List<String> arguments) {
         stringBuilder.append(CommonUtilities.createSourceCodeForArguments(arguments));
         return this;
-    }
-
-    @Override
-    public String toString() {
-        return threadFunctionDefinitionsBuilder.append(stringBuilder).toString();
     }
 }
